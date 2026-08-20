@@ -83,20 +83,29 @@ for skill in $skills
             continue
         end
 
+        set backup ""
         if test -e "$destination"; or test -L "$destination"
             echo "PLAN backup $destination"
             if $apply_mode
                 set backup "$backup_root/$target_id/$skill"
-                mkdir -p (dirname "$backup")
-                mv "$destination" "$backup"
+                if not mkdir -p (dirname "$backup"); or not mv "$destination" "$backup"
+                    echo "ERROR could not back up $destination" >&2
+                    exit 1
+                end
                 set backup_count (math $backup_count + 1)
             end
         end
 
         echo "PLAN link $destination -> $source"
         if $apply_mode
-            mkdir -p "$target_root"
-            ln -s "$source" "$destination"
+            if not mkdir -p "$target_root"; or not ln -s "$source" "$destination"
+                echo "ERROR could not link $destination" >&2
+                if test -n "$backup"; and test -e "$backup"
+                    mv "$backup" "$destination"
+                    echo "RESTORED $destination" >&2
+                end
+                exit 1
+            end
             set link_count (math $link_count + 1)
         end
     end

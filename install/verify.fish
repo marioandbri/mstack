@@ -72,6 +72,16 @@ for index in (seq (count $target_ids))
     end
 end
 
+set upstream_lock "$target_home/.agents/.skill-lock.json"
+if test -f "$upstream_lock"
+    for skill in $skills
+        if jq -e --arg name "$skill" '.skills[$name] != null' "$upstream_lock" >/dev/null
+            echo "ERROR managed skill remains upstream-owned in .skill-lock.json: $skill" >&2
+            set errors (math $errors + 1)
+        end
+    end
+end
+
 if test $errors -gt 0
     echo "FAIL checked=$checked errors=$errors" >&2
     exit 1

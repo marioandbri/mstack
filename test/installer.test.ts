@@ -82,4 +82,17 @@ describe("cross-harness installer", () => {
     expect(duplicateCheck.exitCode).toBe(1);
     expect(duplicateCheck.stderr.toString()).toContain("ERROR duplicate agents/code-review");
   });
+
+  test("rejects upstream ownership lock entries for managed skills", () => {
+    const home = mkdtempSync(join(tmpdir(), "engineering-skills-lock-home-"));
+    homes.push(home);
+    const apply = run(setup, home, "--apply");
+    expect(apply.exitCode).toBe(0);
+
+    const lock = join(home, ".agents", ".skill-lock.json");
+    writeFileSync(lock, JSON.stringify({ version: 3, skills: { "code-review": { source: "upstream" } } }));
+    const check = run(verify, home);
+    expect(check.exitCode).toBe(1);
+    expect(check.stderr.toString()).toContain("managed skill remains upstream-owned");
+  });
 });
