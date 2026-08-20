@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "targets": ["agents", "claude", "codex", "pi"],
+  "skills": [
+    {"name":"caveman","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/productivity/caveman","importRef":"folder:17972a1bdbf5909b9dbdc435ad348f0bf45f8664","license":"MIT-Matt-Pocock"},
+    {"name":"code-review","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/code-review","importRef":"folder:d8e341cee7980127dddda05159bedf25dc853615","license":"MIT-Matt-Pocock"},
+    {"name":"conventions-aware-engineering","owner":"original","source":"self","sourcePath":"skills/conventions-aware-engineering","importRef":"initial","license":"MIT-Mario-Brito"},
+    {"name":"diagnose","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/diagnose","importRef":"folder:43d464d0e9d1049b9d525975c0f7367ab7e01a5f","license":"MIT-Matt-Pocock"},
+    {"name":"gh-axi","owner":"forked","source":"https://github.com/kunchenguid/gh-axi.git","sourcePath":"skills/gh-axi","importRef":"folder:d09c2cc3a1cb24accef7df561555e8f54fde0c9d","license":"MIT-Kun-Chen"},
+    {"name":"grill-me","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/productivity/grill-me","importRef":"folder:2a1ad17028306ebe45f0e49703fa28b9b2e7f499","license":"MIT-Matt-Pocock"},
+    {"name":"grill-with-docs","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/grill-with-docs","importRef":"folder:2969a1224c70fe41b9dd2ddbe32c2ec62f2815bd","license":"MIT-Matt-Pocock"},
+    {"name":"handoff","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/productivity/handoff","importRef":"folder:7bbb60d64c911617cee7f71b2ba9e24364faa14e","license":"MIT-Matt-Pocock"},
+    {"name":"implement","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/implement","importRef":"folder:f07d230f645fc9ac390cf13a450bbff12ad791a3","license":"MIT-Matt-Pocock"},
+    {"name":"improve-codebase-architecture","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/improve-codebase-architecture","importRef":"folder:3ad8fa787b3b9b622d1f5a3d0afc27812ac782fa","license":"MIT-Matt-Pocock"},
+    {"name":"lavish","owner":"forked","source":"https://github.com/kunchenguid/lavish-axi.git","sourcePath":"skills/lavish","importRef":"folder:a941a09d44e77022a7e6f3842f7d2d95ccf71fbc","license":"MIT-Kun-Chen"},
+    {"name":"receiving-code-review","owner":"forked","source":"https://github.com/obra/superpowers.git","sourcePath":"skills/receiving-code-review","importRef":"commit:7e516434f2a30114300efc9247db32fb37daa5f9","license":"MIT-Jesse-Vincent"},
+    {"name":"setup-conventions-aware-engineering","owner":"original","source":"self","sourcePath":"skills/setup-conventions-aware-engineering","importRef":"initial","license":"MIT-Mario-Brito"},
+    {"name":"tdd","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/tdd","importRef":"folder:0a727bd358b855cbcc1c35cfff21ef31f9ffb8de","license":"MIT-Matt-Pocock"},
+    {"name":"thermo-nuclear-code-quality-review","owner":"forked","source":"cursor-public/cursor-team-kit","sourcePath":"skills/thermo-nuclear-code-quality-review","importRef":"commit:51a96e0dd838404da19ba83dc70aa21eef71f868","license":"MIT-Cursor"},
+    {"name":"to-spec","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/to-spec","importRef":"folder:bf698b96b5d8798d110d9872e32b9310728555b0","license":"MIT-Matt-Pocock"},
+    {"name":"to-tickets","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/to-tickets","importRef":"folder:80c1bedbdaa72a4abd524055013accb4fe0ea8c4","license":"MIT-Matt-Pocock"},
+    {"name":"triage","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/triage","importRef":"folder:de4f182c30876a2460ca307e2f601b9b892527e5","license":"MIT-Matt-Pocock"},
+    {"name":"unslop","owner":"forked","source":"https://github.com/cursor/plugins.git","sourcePath":"pstack/skills/unslop","importRef":"folder:6161508c5c7959b156ff0e4e10b510863b51f9cc","license":"MIT-Lauren-Tan"},
+    {"name":"verification-before-completion","owner":"forked","source":"https://github.com/obra/superpowers.git","sourcePath":"skills/verification-before-completion","importRef":"commit:7e516434f2a30114300efc9247db32fb37daa5f9","license":"MIT-Jesse-Vincent"},
+    {"name":"visual-companion","owner":"original","source":"self","sourcePath":"skills/visual-companion","importRef":"initial","license":"MIT-Mario-Brito"},
+    {"name":"wayfinder","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/wayfinder","importRef":"folder:33ed747fb30668c0e7b61698af5268c25c0d75cb","license":"MIT-Matt-Pocock"},
+    {"name":"write-a-skill","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/productivity/write-a-skill","importRef":"folder:2f252b35aa238879afc5a230ac30343708dee0b3","license":"MIT-Matt-Pocock"},
+    {"name":"zoom-out","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/zoom-out","importRef":"folder:6ecebabdea814d12888f56a611da7bf182b5fb26","license":"MIT-Matt-Pocock"}
+  ]
+}

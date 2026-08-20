@@ -1,0 +1,23 @@
+{
+  "name": "@marioandbri/engineering-skills",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Canonical cross-harness engineering skills for Mario's workflow",
+  "keywords": [
+    "agent-skills",
+    "pi-package"
+  ],
+  "license": "MIT",
+  "packageManager": "bun@1.3.14",
+  "scripts": {
+    "check": "bun run scripts/validate.ts",
+    "test": "bun test",
+    "verify": "fish install/verify.fish"
+  },
+  "pi": {
+    "skills": [
+      "./skills"
+    ]
+  }
+}
