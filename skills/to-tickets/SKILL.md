@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Break a plan, spec, or conversation into a set of **tickets** — tracer-bullet vertical slices, each declaring the tickets that **block** it.
 
-Issue tracker and triage vocabulary should come from project documentation. Run `/skill:setup-conventions-aware-engineering` when missing routing creates ambiguity.
+Issue tracker and triage vocabulary should come from project documentation. Load `setup-conventions-aware-engineering` when missing routing creates ambiguity.
 
 ## Process
 

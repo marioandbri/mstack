@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 This skill takes the current conversation context and codebase understanding and produces a spec (you may know this document as a PRD). Do NOT interview the user — just synthesize what you already know.
 
-Issue tracker and triage vocabulary should come from project documentation. Run `/skill:setup-conventions-aware-engineering` when missing routing creates ambiguity.
+Issue tracker and triage vocabulary should come from project documentation. Load `setup-conventions-aware-engineering` when missing routing creates ambiguity.
 
 ## Process
 

@@ -27,7 +27,7 @@ Search in order:
 3. matching spec under documented project locations;
 4. ask user. If no spec exists, skip Spec axis and report that.
 
-If tracker guidance is missing and needed, use documentation fallback. Recommend `/skill:setup-conventions-aware-engineering` only when ambiguity blocks review.
+If tracker guidance is missing and needed, use documentation fallback. Recommend loading `setup-conventions-aware-engineering` only when ambiguity blocks review.
 
 ## 3. Load governing context
 

@@ -79,6 +79,10 @@ CLI implementations remain external dependencies. Skill ownership here controls 
 
 These originated in Mario's local workflow and have no external update stream.
 
+## Cross-harness normalization
+
+Internal skill references use skill names instead of Pi-specific slash commands. Delegation instructions refer to harness-available mechanisms rather than one tool API.
+
 ## Update policy
 
 1. Fetch upstream skill and license.

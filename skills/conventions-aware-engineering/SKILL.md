@@ -33,4 +33,4 @@ Generated files inherit rules from generator source and artifact owner. Do not t
 
 ## Fallback
 
-If documentation map is absent, inspect agent instructions, conventions, ADRs, context, contributing guides, and package-local docs. Continue when authority is clear. Recommend `/skill:setup-conventions-aware-engineering` only when missing routing creates real ambiguity. Never create placeholder context, ADR, convention, or runbook files.
+If documentation map is absent, inspect agent instructions, conventions, ADRs, context, contributing guides, and package-local docs. Continue when authority is clear. Recommend loading `setup-conventions-aware-engineering` only when missing routing creates real ambiguity. Never create placeholder context, ADR, convention, or runbook files.

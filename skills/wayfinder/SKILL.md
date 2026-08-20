@@ -22,7 +22,7 @@ The map is a single issue on this repo's issue tracker, labelled `wayfinder:map`
 
 The map is an **index**, not a store. It lists the decisions made and points at the tickets that hold their detail; a decision lives in exactly one place — its ticket — so the map never restates it, only gists it and links.
 
-Tracker documentation defines where map, child tickets, blocking, and frontier queries live. Read its "Wayfinding operations" section. Run `/skill:setup-conventions-aware-engineering` when routing is missing. Default to local markdown only when repository has no configured tracker.
+Tracker documentation defines where map, child tickets, blocking, and frontier queries live. Read its "Wayfinding operations" section. Load `setup-conventions-aware-engineering` when routing is missing. Default to local markdown only when repository has no configured tracker.
 
 ### The map body
 
@@ -75,8 +75,8 @@ The answer isn't part of the body — it's recorded on resolution (see [Work thr
 Every ticket is either **HITL** — human in the loop, worked *with* a human who speaks for themselves — or **AFK**, driven by the agent alone. A HITL ticket only resolves through that live exchange; the agent never stands in for the human's side of it (a grilling agent that answers its own questions has broken this).
 
 - **Research** (AFK): Read documentation, third-party APIs, or local resources to surface a fact a decision waits on. Research directly in the current session, or delegate only when an approved, available research worker exists.
-- **Prototype** (HITL): Raise discussion fidelity with a cheap, rough artifact — outline, stub, low-fi wireframe, or narrow logic spike. Use `/skill:visual-companion` for explicit low-fi visual exploration or `/skill:lavish` for explicit hi-fi review. Link assets from the ticket.
-- **Grilling** (HITL): Conversation through `/skill:grill-with-docs`, one question at a time. Default case.
+- **Prototype** (HITL): Raise discussion fidelity with a cheap, rough artifact — outline, stub, low-fi wireframe, or narrow logic spike. Load `visual-companion` for explicit low-fi visual exploration or `lavish` for explicit hi-fi review. Link assets from the ticket.
+- **Grilling** (HITL): Conversation through `grill-with-docs`, one question at a time. Default case.
 - **Task** (HITL or AFK): Manual work that must happen before a *decision* can be made — nothing to decide, prototype, or research, but the discussion is blocked until it's done. Signing up for a service so its API can be judged, provisioning access, moving data so its shape can be seen. This is the one type that *does* rather than decides — and it earns its place by unblocking a decision, not by delivering the destination. The agent drives it alone where it can (AFK); otherwise it hands the human a precise checklist (HITL). Resolved when the work is done; the answer records what was done and any resulting facts (credentials location, new URLs, row counts) later tickets depend on.
 
 ## Fog of war
@@ -108,7 +108,7 @@ Two modes. Either way, **never resolve more than one ticket per session** — wi
 
 User invokes with a loose idea.
 
-1. **Name the destination.** Run `/skill:grill-with-docs` to pin down what this map is finding its way to — the spec, decision, or change. The destination fixes the scope, so settle it first.
+1. **Name the destination.** Load `grill-with-docs` to pin down what this map is finding its way to — the spec, decision, or change. The destination fixes the scope, so settle it first.
 2. **Map the frontier.** Continue `grill-with-docs` breadth-first: fan out across the whole space rather than deep on one thread, surfacing open decisions and first takeable steps. **If this surfaces no fog** — route is clear and fits one session — stop and ask user to choose `to-spec` or `to-tickets`.
 3. **Create the map** (label `wayfinder:map`): Destination and Notes filled in, Decisions-so-far empty, the fog sketched into **Not yet specified**.
 4. **Create the tickets you can specify now** as child issues of the map — then wire blocking edges in a **second pass** (issues need ids before they can reference each other). Wiring sorts them into the frontier and the blocked; everything you can't yet specify stays in the fog — the **Not yet specified** section.
@@ -121,7 +121,7 @@ User invokes with a map (URL or number). A ticket is **optional** — without on
 
 1. Load the **map** — the low-res view, not every ticket body.
 2. Choose the ticket. If the user named one, use it. Otherwise take the first frontier ticket in order. **Claim it**: assign it to yourself before any work.
-3. Resolve it — **zoom as needed**: fetch full bodies of related or closed tickets on demand; invoke skills named in `## Notes`. If in doubt, use `/skill:grill-with-docs`.
+3. Resolve it — **zoom as needed**: fetch full bodies of related or closed tickets on demand; invoke skills named in `## Notes`. If in doubt, load `grill-with-docs`.
 4. Record the resolution: post the answer as a **resolution comment**, **close** the issue, and **append a context pointer** to the map's Decisions-so-far.
 5. Add newly-surfaced tickets (create-then-wire); graduate any fog the answer has made specifiable, clearing each graduated patch from **Not yet specified** so it lives only as its new ticket. If the answer reveals a ticket — this one or another — sits beyond the destination, **rule it out of scope** rather than resolving it on the route. If the decision invalidates other parts of the map, update or delete those tickets.
 
@@ -129,4 +129,4 @@ The user may run unblocked tickets in parallel, so expect other sessions to be e
 
 ## Delivery handoff
 
-When decision fog clears, state a Shared Understanding and ask user to choose `/skill:to-spec` or `/skill:to-tickets`. Never create an implementation plan or start implementation from Wayfinder without explicit user direction.
+When decision fog clears, state a Shared Understanding and ask user to choose `to-spec` or `to-tickets`. Never create an implementation plan or start implementation from Wayfinder without explicit user direction.

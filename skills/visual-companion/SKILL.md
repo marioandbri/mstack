@@ -11,7 +11,7 @@ Low-fi route for making one visual decision concrete. Deliberately rough: clarif
 ## Boundary
 
 - User must explicitly request or accept an offered low-fi visual aid.
-- Use `/skill:lavish` instead for polished, interactive, annotatable hi-fi review.
+- Load `lavish` instead for polished, interactive, annotatable hi-fi review.
 - Never start a background server or infer a visual request from a plan, report, or comparison.
 
 ## Flow

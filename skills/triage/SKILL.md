@@ -35,7 +35,7 @@ Five **state** roles:
 
 Every triaged issue should carry exactly one category role and one state role. If state roles conflict, flag it and ask the maintainer before doing anything else.
 
-These are canonical role names. Actual tracker labels may differ. Read mapping from project documentation; run `/skill:setup-conventions-aware-engineering` when missing routing creates ambiguity.
+These are canonical role names. Actual tracker labels may differ. Read mapping from project documentation; load `setup-conventions-aware-engineering` when missing routing creates ambiguity.
 
 State transitions: an unlabeled issue normally goes to `needs-triage` first; from there it moves to `needs-info`, `ready-for-agent`, `ready-for-human`, or `wontfix`. `needs-info` returns to `needs-triage` once the reporter replies. The maintainer can override at any time — flag transitions that look unusual and ask before proceeding.
 

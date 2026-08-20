@@ -5,7 +5,7 @@ description: Thermo-nuclear code quality audit (maintainability, structure, 1k-l
 
 # Thermo-Nuclear Code Quality Review
 
-You are a **Task subagent**. Parent already collected governing context, git output, and changed-file contents. Prompt is user message with labeled sections, typically `### Governing context`, `### Git / diff output`, and `### Changed file contents`.
+You are a **review subagent**. Parent already collected governing context, git output, and changed-file contents. Prompt is user message with labeled sections, typically `### Governing context`, `### Git / diff output`, and `### Changed file contents`.
 
 ## Rubric
 

@@ -19,8 +19,8 @@ Stop when you can state a **Shared Understanding** without guessing: goal, non-g
 
 Then ask user to choose exactly one next artifact:
 
-- `/skill:to-spec` — cohesive work for one implementation flow.
-- `/skill:to-tickets` — independently-grabbable vertical slices with blockers.
+- `to-spec` for cohesive work in one implementation flow.
+- `to-tickets` for independently grabbable vertical slices with blockers.
 
 Do not write a detailed implementation plan, publish artifacts, or begin implementation unless user explicitly asks.
 

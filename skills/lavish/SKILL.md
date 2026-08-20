@@ -10,7 +10,7 @@ metadata:
 
 # Lavish Editor
 
-> **Hi-fi route.** Use after user explicitly requests or accepts an offered hi-fi visual review. Use `/skill:visual-companion` for low-fi wireframes, diagrams, and structural choices.
+> **Hi-fi route.** Use after user explicitly requests or accepts an offered hi-fi visual review. Load `visual-companion` for low-fi wireframes, diagrams, and structural choices.
 
 Lavish Editor helps agents turn rich HTML artifacts into collaborative human review surfaces. Whenever you are about to give user a complex response that will be easier to understand via a rich / interactive page, consider using Lavish Editor. First generate an interactive HTML artifact according to user request, then run `bunx lavish-axi@0.1.45 <html-file>` so the user can visually review it, annotate elements or selected text, queue prompts, and send feedback back through `bunx lavish-axi@0.1.45 poll`.
 
