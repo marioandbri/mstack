@@ -69,7 +69,7 @@ Imported skills:
 - `gh-axi`
 - `lavish`
 
-CLI implementations remain external dependencies. Skill ownership here controls invocation and workflow policy, not CLI source.
+CLI implementations remain external dependencies. Skill ownership here controls invocation and workflow policy, not CLI source. `gh-axi` invocation is pinned to `0.1.30` and uses `bunx`.
 
 ## Repository-owned skills
 

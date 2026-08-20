@@ -56,6 +56,22 @@ for skill in $skills
     end
 end
 
+for index in (seq (count $target_ids))
+    set target_root $target_roots[$index]
+    for skill_file in (find -L "$target_root" -type f -name SKILL.md 2>/dev/null)
+        set discovered_name (basename (dirname "$skill_file"))
+        if not contains -- "$discovered_name" $skills
+            continue
+        end
+        set discovered_source (realpath (dirname "$skill_file") 2>/dev/null)
+        set expected_source "$repo_root/skills/$discovered_name"
+        if test "$discovered_source" != "$expected_source"
+            echo "ERROR duplicate $target_ids[$index]/$discovered_name at $skill_file" >&2
+            set errors (math $errors + 1)
+        end
+    end
+end
+
 if test $errors -gt 0
     echo "FAIL checked=$checked errors=$errors" >&2
     exit 1

@@ -74,5 +74,12 @@ describe("cross-harness installer", () => {
     const second = run(setup, home, "--apply");
     expect(second.exitCode).toBe(0);
     expect(second.stdout.toString()).toContain("linked=0 unchanged=96 backed_up=0");
+
+    const duplicate = join(home, ".agents", "skills", "legacy", "skills", "code-review", "SKILL.md");
+    mkdirSync(dirname(duplicate), { recursive: true });
+    writeFileSync(duplicate, "---\nname: code-review\ndescription: Duplicate.\n---\n");
+    const duplicateCheck = run(verify, home);
+    expect(duplicateCheck.exitCode).toBe(1);
+    expect(duplicateCheck.stderr.toString()).toContain("ERROR duplicate agents/code-review");
   });
 });
