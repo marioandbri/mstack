@@ -65,7 +65,7 @@ describe("cross-harness installer", () => {
 
     const check = run(verify, home);
     expect(check.exitCode).toBe(0);
-    expect(check.stdout.toString()).toContain("PASS checked=96 canonical skill links");
+    expect(check.stdout.toString()).toContain("PASS checked=100 canonical skill links");
 
     const installed = join(home, ".pi", "agent", "skills", "code-review");
     expect(lstatSync(installed).isSymbolicLink()).toBeTrue();
@@ -73,7 +73,7 @@ describe("cross-harness installer", () => {
 
     const second = run(setup, home, "--apply");
     expect(second.exitCode).toBe(0);
-    expect(second.stdout.toString()).toContain("linked=0 unchanged=96 backed_up=0");
+    expect(second.stdout.toString()).toContain("linked=0 unchanged=100 backed_up=0");
 
     const duplicate = join(home, ".agents", "skills", "legacy", "skills", "code-review", "SKILL.md");
     mkdirSync(dirname(duplicate), { recursive: true });

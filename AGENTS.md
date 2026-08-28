@@ -31,6 +31,6 @@ When installer changes, also run tests against temporary HOME and confirm dry-ru
 
 ### Ownership
 
-- Repository owns 24 workflow skills listed in `skills.json`.
+- Repository owns 25 workflow skills listed in `skills.json`.
 - Specialized frontend, browser, and package-provided skills remain external.
 - Imported skills update through deliberate review, never automatic replacement.

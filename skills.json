@@ -13,6 +13,7 @@
     {"name":"implement","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/implement","importRef":"folder:f07d230f645fc9ac390cf13a450bbff12ad791a3","license":"MIT-Matt-Pocock"},
     {"name":"improve-codebase-architecture","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/improve-codebase-architecture","importRef":"folder:3ad8fa787b3b9b622d1f5a3d0afc27812ac782fa","license":"MIT-Matt-Pocock"},
     {"name":"lavish","owner":"forked","source":"https://github.com/kunchenguid/lavish-axi.git","sourcePath":"skills/lavish","importRef":"folder:a941a09d44e77022a7e6f3842f7d2d95ccf71fbc","license":"MIT-Kun-Chen"},
+    {"name":"mobile-next-android-testing","owner":"original","source":"self","sourcePath":"skills/mobile-next-android-testing","importRef":"initial","license":"MIT-Mario-Brito"},
     {"name":"receiving-code-review","owner":"forked","source":"https://github.com/obra/superpowers.git","sourcePath":"skills/receiving-code-review","importRef":"commit:7e516434f2a30114300efc9247db32fb37daa5f9","license":"MIT-Jesse-Vincent"},
     {"name":"setup-conventions-aware-engineering","owner":"original","source":"self","sourcePath":"skills/setup-conventions-aware-engineering","importRef":"initial","license":"MIT-Mario-Brito"},
     {"name":"tdd","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/tdd","importRef":"folder:0a727bd358b855cbcc1c35cfff21ef31f9ffb8de","license":"MIT-Matt-Pocock"},
