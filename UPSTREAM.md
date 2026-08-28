@@ -26,7 +26,7 @@ Imported skills:
 
 Local divergence:
 
-- `code-review` loads routed conventions and supports explicit thermo structural axis.
+- `code-review` loads routed conventions, supports explicit thermo structural axis, and adds the immutable `candidate.v1` request branch without changing fixed-point mode.
 - `improve-codebase-architecture` respects project conventions, ADR authority, and project vocabulary.
 - tracker-facing skills use `setup-conventions-aware-engineering` instead of old setup command.
 
