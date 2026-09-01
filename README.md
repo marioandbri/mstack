@@ -43,13 +43,13 @@ Recommended for using skills without maintaining repository checkout. Repository
 List available skills without installing:
 
 ```fish
-bunx -y skills@1.5.23 add git@github.com:marioandbri/mstack.git --list
+bunx skills add git@github.com:marioandbri/mstack.git --list
 ```
 
 Install one skill globally and let CLI prompt for target agents:
 
 ```fish
-bunx -y skills@1.5.23 add git@github.com:marioandbri/mstack.git \
+bunx skills add git@github.com:marioandbri/mstack.git \
   --skill setup-conventions-aware-engineering \
   --global
 ```
@@ -57,7 +57,7 @@ bunx -y skills@1.5.23 add git@github.com:marioandbri/mstack.git \
 Install one skill globally for Pi without prompts:
 
 ```fish
-bunx -y skills@1.5.23 add git@github.com:marioandbri/mstack.git \
+bunx skills add git@github.com:marioandbri/mstack.git \
   --skill setup-conventions-aware-engineering \
   --agent pi \
   --global \
@@ -67,7 +67,7 @@ bunx -y skills@1.5.23 add git@github.com:marioandbri/mstack.git \
 Install every skill for every agent supported by CLI:
 
 ```fish
-bunx -y skills@1.5.23 add git@github.com:marioandbri/mstack.git \
+bunx skills add git@github.com:marioandbri/mstack.git \
   --global \
   --all
 ```
