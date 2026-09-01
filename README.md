@@ -2,7 +2,7 @@
 
 Canonical repository for Mario's cross-harness engineering workflow.
 
-Source files live here. Installed skill directories are symlinks and must not become independent copies.
+Canonical source files live here. Installation method controls whether agent targets use links or managed copies.
 
 ## Supported harnesses
 
@@ -13,7 +13,7 @@ Source files live here. Installed skill directories are symlinks and must not be
 | Codex | `~/.codex/skills/<name>` |
 | Pi | `~/.pi/agent/skills/<name>` |
 
-Each target resolves to `skills/<name>` in this repository. `~/.agents/skills` remains common cross-tool source, while explicit harness links make installation testable and independent of implicit discovery changes.
+Skills CLI supports these harnesses directly. Clone-based installation links each target to `skills/<name>` in checkout and uses `~/.agents/skills` as common cross-tool source.
 
 ## Workflow
 
@@ -32,21 +32,65 @@ govern project docs
 
 `skills.json` is managed-skill manifest and provenance index.
 
-## Install
+## Installation
 
-Inspect planned changes:
+Choose one method. Do not combine Skills CLI and clone-based installation for same skill names on same machine; both manage target paths and ownership metadata.
+
+### Skills CLI
+
+Recommended for using skills without maintaining repository checkout. Repository is private, so Git and GitHub access must already work through SSH, credential helper, or authenticated GitHub CLI.
+
+List available skills without installing:
 
 ```fish
+bunx -y skills@1.5.23 add git@github.com:marioandbri/mstack.git --list
+```
+
+Install one skill globally and let CLI prompt for target agents:
+
+```fish
+bunx -y skills@1.5.23 add git@github.com:marioandbri/mstack.git \
+  --skill setup-conventions-aware-engineering \
+  --global
+```
+
+Install one skill globally for Pi without prompts:
+
+```fish
+bunx -y skills@1.5.23 add git@github.com:marioandbri/mstack.git \
+  --skill setup-conventions-aware-engineering \
+  --agent pi \
+  --global \
+  --yes
+```
+
+Install every skill for every agent supported by CLI:
+
+```fish
+bunx -y skills@1.5.23 add git@github.com:marioandbri/mstack.git \
+  --global \
+  --all
+```
+
+Omit `--global` for project-local installation. Use `--copy` only when target agent cannot follow symlinks. Review skills before installation; they run with agent permissions.
+
+### Cloned repository
+
+Use this method when developing skills or keeping checkout as canonical local source.
+
+```fish
+git clone git@github.com:marioandbri/mstack.git
+cd mstack
 fish install/setup.fish
 ```
 
-Apply after reviewing output:
+`fish install/setup.fish` runs in dry-run mode. Apply after reviewing plan:
 
 ```fish
 fish install/setup.fish --apply
 ```
 
-Conflicting files, directories, and symlinks move under:
+Installer requires Fish and `jq`. Conflicting files, directories, and symlinks move under:
 
 ```text
 ~/.engineering-skills-backups/<timestamp>/
