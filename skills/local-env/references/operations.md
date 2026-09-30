@@ -35,6 +35,27 @@ Resolve backend origins with `portless get` before starting dependent services. 
 
 Shared servers are expected on local `3306` and `5432`; check actual published bindings. An existing Docker container with only `3306/tcp` in `docker ps` is not evidence that host port `3306` is published. Do not repair Docker/network settings or create a replacement container automatically.
 
+### Shared SQL server startup
+
+The user has identified existing shared containers `postgres` for PostgreSQL on `5432` and `mysql` for MySQL 8 on `3306`. These names are discovery hints, not proof of identity or ownership. Do not persist short container IDs as permanent identities; a replacement container needs fresh verification.
+
+1. Identify which engine the task actually needs. If no SQL is needed, do not start either container. If Docker daemon is unavailable, report it; do not launch/reconfigure Docker Desktop automatically.
+2. Inspect only the necessary named container, including stopped containers. Use a narrow format that excludes environment variables and secrets:
+
+   ```fish
+   # Choose only the container required by the task.
+   docker inspect --format '{{.Id}} {{.Name}} {{.Config.Image}} {{.State.Status}} {{json .HostConfig.PortBindings}}' postgres
+   # Alternative when the task needs MySQL:
+   docker inspect --format '{{.Id}} {{.Name}} {{.Config.Image}} {{.State.Status}} {{json .HostConfig.PortBindings}}' mysql
+   ```
+
+3. Verify container name, expected engine/image, existing published host port, and approved Docker context. Resolve the full ID from this inspection. A missing or ambiguous container, mismatched engine, or missing expected binding is a blocker; do not create/recreate it or modify its ports, volumes, credentials, network, or restart policy.
+4. For an existing stopped container in `exited` or `created` state, starting it is authorized when that engine is needed. Run `docker start <verified-id>` using the actual full ID, not the illustrative placeholder. Start only the needed container. Reuse one that is already running; wait with a bounded timeout for one already starting/restarting. Do not automatically restart a running or unhealthy server, unpause a paused container, or repair a dead/removing container.
+5. Verify running status and available Docker healthcheck, then perform an authenticated read-only SQL readiness check with authorized project/management connection settings. Docker `running` or an open TCP port alone is not SQL readiness. If readiness fails, report sanitized diagnostics and missing credentials/permissions; do not restart or reset the shared server as recovery.
+6. Report whether the container was started or reused. Starting it never grants ownership. Leave it running after task success, failure, or cleanup; never stop it to restore its earlier stopped state. Helper remains metadata-only and does not execute Docker commands.
+
+Use SQL clients through loopback even if an existing binding listens elsewhere. The user-provided MySQL configuration publishes `3306` on all host interfaces, whereas PostgreSQL publishes `5432` on loopback. Startup permission covers these existing shared configurations, not new or widened exposure. Report non-loopback bindings as a security concern; do not silently change firewall/network configuration. An unfamiliar exposure or changed configuration requires clarification before startup.
+
 Discover authorized credential sources from project docs and local configuration. Never infer admin users from image defaults. Use supported secret files, protected client configuration, or scoped environment injection; no secrets in command arguments, state, reports, or shell tracing. If CREATE/DROP grants are unavailable, report the exact required grant and intended server/database without printing credentials.
 
 ### Existing

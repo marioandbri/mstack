@@ -243,6 +243,8 @@ test("local-env documents required guardrails, helper limitations, and isolation
   expect(skill.split("\n").length).toBeLessThanOrEqual(100);
   for (const required of ["existing", "disposable", "portless doctor", "portless get", "PORTLESS_URL", "process", "0.15.6", "credentials"]) expect(skill).toContain(required);
   for (const required of ["PORTLESS_SYNC_HOSTS=0", "IF NOT EXISTS", "shadow", "borrowed consumer", "two simultaneous workspaces", "HTTP-only fixtures do not satisfy SQL isolation"]) expect(operations).toContain(required);
+  for (const required of ["docker start <verified-id>", "never restart a running/unhealthy server", "Shared SQL containers stay running even if this run started them"]) expect(skill).toContain(required);
+  for (const required of ["Shared SQL server startup", "docker inspect --format", "postgres", "mysql", "Start only the needed container", "authenticated read-only SQL readiness check", "Starting it never grants ownership", "never stop it to restore its earlier stopped state", "publishes `3306` on all host interfaces", "missing expected binding is a blocker"]) expect(operations).toContain(required);
   expect(state).toContain("does NOT authorize DROP");
   expect(state).toContain("never steal stale-looking locks");
 });

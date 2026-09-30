@@ -38,4 +38,5 @@ When installer changes, also run tests against temporary HOME and confirm dry-ru
 ### Local environments
 
 - `local-env` owns environment-operation guidance and metadata-only helpers. Helpers never start/stop services or execute SQL; cleanup requires freshly verified ownership and no active consumers.
+- Shared SQL containers identified by the user are `postgres` on `5432` and `mysql` with MySQL 8 on `3306`. When a task needs a stopped instance, verify current identity/image/bindings and start only that existing container. It remains shared and must stay running after cleanup. No automatic restart, recreation, or network/volume changes. The authorized MySQL binding uses all host interfaces; clients still connect through loopback and reports flag that exposure.
 - Portless CLI baseline is `0.15.6` on Node.js `24+`. HTTP isolation E2E is opt-in via `env LOCAL_ENV_HTTP_E2E=1 bun test test/local-env-http.e2e.test.ts` and requires an already healthy loopback proxy. It does not establish SQL isolation acceptance.
