@@ -127,6 +127,18 @@ pi --no-skills --skill ./skills/code-review --list-models __validation__
 
 Normal installation uses symlinks. Do not also run `pi install` for this repository, because Pi already discovers installed links and duplicate names would depend on discovery order.
 
+## Local environment skill
+
+`local-env` guides application launch and integration/E2E environments through Portless `0.15.6`, reusing shared SQL servers with `existing` or `disposable` databases. Bundled helper records private metadata and checks ownership eligibility; it never executes SQL or starts/stops application services.
+
+[Skill instructions](skills/local-env/SKILL.md) describe configuration inspection, effective-target checks, reuse, and owned-resource cleanup. Run opt-in HTTP isolation test only with an already healthy loopback proxy:
+
+```fish
+env LOCAL_ENV_HTTP_E2E=1 bun test test/local-env-http.e2e.test.ts
+```
+
+This checks two real application workspaces and independent process cleanup. Full SQL isolation acceptance additionally requires an authorized project connection, migrations/fixtures, and actual disposable databases. Do not substitute metadata tests for that acceptance.
+
 ## Updating a skill
 
 1. Change canonical copy under `skills/`.

@@ -74,6 +74,8 @@ CLI implementations remain external dependencies. Skill ownership here controls 
 ## Repository-owned skills
 
 - `conventions-aware-engineering`
+- `local-env`
+- `mobile-next-android-testing`
 - `setup-conventions-aware-engineering`
 - `visual-companion`
 

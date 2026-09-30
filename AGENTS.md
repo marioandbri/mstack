@@ -31,6 +31,11 @@ When installer changes, also run tests against temporary HOME and confirm dry-ru
 
 ### Ownership
 
-- Repository owns 25 workflow skills listed in `skills.json`.
+- `skills.json` is the authoritative list of repository-owned workflow skills.
 - Specialized frontend, browser, and package-provided skills remain external.
 - Imported skills update through deliberate review, never automatic replacement.
+
+### Local environments
+
+- `local-env` owns environment-operation guidance and metadata-only helpers. Helpers never start/stop services or execute SQL; cleanup requires freshly verified ownership and no active consumers.
+- Portless CLI baseline is `0.15.6` on Node.js `24+`. HTTP isolation E2E is opt-in via `env LOCAL_ENV_HTTP_E2E=1 bun test test/local-env-http.e2e.test.ts` and requires an already healthy loopback proxy. It does not establish SQL isolation acceptance.
