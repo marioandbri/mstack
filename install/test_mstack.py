@@ -116,6 +116,13 @@ class InstallerTests(unittest.TestCase):
         self.assertIn('Frozen code-review.', (self.home/'.codex/skills/code-review/SKILL.md').read_text())
         self.assertEqual(self.run_cli('verify').returncode,0)
 
+    def test_backup_parent_and_generation_are_private(self):
+        receipt = self.apply()
+        for directory in (self.state, self.state/'backups', self.state/'receipts',
+                          self.state/'backups'/receipt['generation']):
+            self.assertEqual(directory.stat().st_mode & 0o777, 0o700, directory.name)
+        self.assertEqual((self.state/'current.json').stat().st_mode & 0o777, 0o600)
+
     def test_shared_configuration_keeps_unowned_values_and_toml_comments(self):
         self.apply()
         text=(self.home/'.codex/config.toml').read_text()

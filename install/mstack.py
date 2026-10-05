@@ -251,6 +251,7 @@ def setup(repo, ref, roots, state, apply=False):
             print('RESULT unchanged; installation is already verified')
             return previous
         bundle_sha = install_bundle(state, metadata, files)
+        private_directory(state / 'backups')
         generation = uuid.uuid4().hex
         backup_root = state / 'backups' / generation
         private_directory(backup_root)
