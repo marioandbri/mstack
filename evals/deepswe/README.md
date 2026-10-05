@@ -37,7 +37,7 @@ uv run --locked bench.py --state-dir state-chatgpt prepare \
   --model gpt-6.1-sol \
   --reasoning high \
   --tasks 1 \
-  --timeout 1800
+  --timeout 10800
 ```
 
 Preparation needs no model calls and can finish before login. It resolves skill symlinks into copies, records the dataset commit and hashes, and replaces image tags with their downloaded content digests in the local task copy. It records the original task hashes so this image pin is explicit. Both profiles use that same copy.
@@ -54,11 +54,11 @@ uv run --locked bench.py --state-dir state-chatgpt report
 uv run --locked pier view state-chatgpt/jobs
 ```
 
-Concurrency is one, with one attempt per profile and no automatic retries. Each agent has at most 30 minutes. Container preparation and verification add to that time. This timeout is not a token or spending cap. ChatGPT usage draws on the signed-in account's allowance.
+Concurrency is one, with one attempt per profile and no automatic retries. The selected task declares a 3-hour agent budget, which is also the preparation default. Use `--timeout` for an explicit override, and report that override separately from the task budget. Container preparation and verification add to that time. This timeout is not a token or spending cap. ChatGPT usage draws on the signed-in account's allowance.
 
-`comparison.csv` reports each planned task's status, reward, agent time, tokens and API-equivalent estimated cost when Pier supplies it. `summary.json` keeps pass, fail, timeout, infrastructure error, missing and unscored counts separate. Missing measurements remain blank. An API-equivalent cost is not a ChatGPT bill.
+`comparison.csv` reports each planned task's status, reward, patch delivery and size, new tests passed/total, existing tests preserved/total, agent time, tokens and API-equivalent estimated cost when Pier supplies it. New tests measure the requested behavior; passing existing tests alone does not demonstrate an implementation. Empty or missing patches are separated from nonempty submissions, and partial new-test progress does not change the official binary reward. `summary.json` keeps pass, fail, timeout, infrastructure error, missing and unscored counts separate. Missing measurements remain blank. An API-equivalent cost is not a ChatGPT bill.
 
-The same task authorization permits disposable local commits in both profiles because DeepSWE extracts committed changes for grading. It prohibits pushing and inspecting hidden verifier inputs. Evaluation files and reference solutions remain on the host; only runtime instructions and skills are uploaded to the agent.
+The same task authorization permits disposable local commits in both profiles because DeepSWE extracts committed changes for grading. Both agents receive the same elapsed-time budget and deadline, plus explicit authorization for progress checkpoints while broader verification is pending. A checkpoint never claims completion; timeouts remain visible as failures. It prohibits pushing and inspecting hidden verifier inputs. Evaluation files and reference solutions remain on the host; only runtime instructions and skills are uploaded to the agent.
 
 One task checks the integration and establishes a preliminary local baseline. It does not establish that one profile is reliably better or reproduce an official full-benchmark score. Capture the baseline before changing global instructions. Compare instruction candidates and skill changes in separate experiments. Laya routing requires its own later experiment.
 
@@ -74,3 +74,9 @@ Tests cover A/B equivalence, result classification, OAuth permissions and format
 ## First local pilot
 
 See [the local pilot report](reports/pilot-local.md). Both profiles timed out with reward 0 under the 30-minute budget. Their raw state is ignored by Git. The execution source is retained in that state under `execution-code/`; the task-name reporting fix was applied only after A/B finished. New experiments must use a fresh state with the current runner hashes.
+
+## Reference after the empty-submission pilot
+
+Use a new state such as `state-reference-v2` with the same task, model, reasoning, instructions and 26-skill content, a 10800-second budget, and delivery contract v2. Run A then B once. The budget and contract differ from the first pilot, so this is a new paired baseline rather than a direct attribution of improvement over the 30-minute runs. Tests and collection rules remain unchanged.
+
+Preparation automatically archives execution files and records their hashes, native task budgets and delivery-contract version. Each agent log records its exact runtime deadline and contract hash. Do not edit execution files or evaluation inputs while either profile is running.

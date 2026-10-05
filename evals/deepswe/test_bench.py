@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 import bench
 from auth_state import auth_lock, digest, persist_refresh, validate_auth
-from mstack_codex import MstackCodex
+from mstack_codex import MstackCodex, delivery_contract
 from pier.agents.installed.codex import Codex
 from pier.models.job.config import JobConfig
 
@@ -136,6 +136,28 @@ class ProfileTests(unittest.TestCase):
             self.assertTrue(all(r['input_tokens'] == '' for r in rows))
 
 
+    def test_report_distinguishes_empty_delivery_from_failed_solution(self):
+        with tempfile.TemporaryDirectory() as name, patch.object(bench, 'STATE', Path(name)):
+            state = Path(name)
+            (state/'manifest.json').write_text(json.dumps({'tasks':['fixture']}))
+            for profile, payload, passed in [('A', b'', 0), ('B', b'diff --git a/code b/code\n', 2)]:
+                trial = state/'jobs'/profile/'trial'
+                (trial/'artifacts').mkdir(parents=True)
+                (trial/'artifacts/model.patch').write_bytes(payload)
+                (trial/'result.json').write_text(json.dumps({
+                    'task_name':'fixture',
+                    'exception_info':{'exception_type':'AgentTimeoutError'},
+                    'verifier_result':{'rewards':{'reward':0,'f2p_total':4,'f2p_passed':passed,
+                                                 'p2p_total':100,'p2p_passed':100}},
+                }))
+            bench.report(None)
+            import csv
+            with (state/'comparison.csv').open() as handle: rows=list(csv.DictReader(handle))
+            self.assertEqual([r['delivery'] for r in rows], ['empty','nonempty'])
+            self.assertEqual([r['new_tests_passed'] for r in rows], ['0','2'])
+            self.assertTrue(all(r['status']=='timeout' for r in rows))
+            self.assertTrue(all(r['reward']=='0' for r in rows))
+
     def test_report_matches_the_pier_task_name_from_frozen_metadata(self):
         with tempfile.TemporaryDirectory() as name, patch.object(bench, 'STATE', Path(name)):
             state = Path(name)
@@ -173,6 +195,17 @@ class AdapterTests(unittest.IsolatedAsyncioTestCase):
         self.agent = MstackCodex(logs_dir=self.root / 'logs', model_name='gpt-6.1-sol',
                                  agents_md=str(agents), benchmark_auth=str(self.auth), version='0.159.0')
 
+    def test_delivery_contract_has_exact_budget_and_honest_checkpoints(self):
+        from datetime import datetime, timezone
+        start = datetime(2026, 10, 5, 0, 0, tzinfo=timezone.utc)
+        text = delivery_contract(10800, start)
+        self.assertIn('2026-10-05T03:00:00+00:00', text)
+        self.assertIn('committed changes only', text)
+        self.assertIn('does not claim the solution is complete or tested', text)
+        self.assertIn('timeout remains a benchmark failure', text)
+        for budget in (0, -1, True, 1.5):
+            with self.assertRaises(ValueError): delivery_contract(budget, start)
+
     def test_node_runtime_is_pinned(self):
         commands = '\n'.join(step.run for step in self.agent.install_spec().steps)
         self.assertIn('nvm install 24.12.0', commands)
@@ -189,6 +222,9 @@ class AdapterTests(unittest.IsolatedAsyncioTestCase):
             credential(destination, 'renewed')
         environment = SimpleNamespace(download_file=download)
         async def upstream_run(agent, instruction, environment, context):
+            self.assertTrue(instruction.startswith('fixture task'))
+            self.assertIn('Agent budget: 1800 seconds', instruction)
+            self.assertIn('checkpoint commit', instruction)
             await agent.exec_as_agent(environment, command='rm -rf /tmp/codex-secrets "$CODEX_HOME"')
         async def upstream_exec(*args, **kwargs):
             return None
@@ -196,6 +232,9 @@ class AdapterTests(unittest.IsolatedAsyncioTestCase):
             await self.agent.run('fixture task', environment, None)
         self.assertEqual(json.loads(self.auth.read_text())['tokens']['access_token'], 'renewed')
         self.assertEqual(list(self.root.glob('.oauth-refresh-*')), [])
+        audit=json.loads((self.root/'logs/mstack-delivery.json').read_text())
+        self.assertEqual(audit['version'], 2)
+        self.assertEqual(audit['budget_seconds'], 1800)
 
     async def test_lost_refresh_causes_failure(self):
         async def download(*args):

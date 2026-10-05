@@ -1,6 +1,6 @@
 # DeepSWE local pilot: unchanged instructions and managed skills
 
-Both profiles timed out under the 30-minute agent budget and received reward 0. Neither produced a committed patch. This establishes a preliminary local baseline and verifies the integration; it does not establish a quality difference between profiles.
+Both profiles timed out under the 30-minute agent budget and received reward 0. Neither produced a committed patch. The task collects `git diff <base> HEAD`, so uncommitted agent work was excluded and the verifier received an empty submission. The dataset task declares a 10800-second agent budget; the pilot explicitly overrode it to 1800 seconds. This establishes a preliminary local baseline and verifies the integration; it does not establish a quality difference between profiles.
 
 | Measurement | A: global instructions | B: instructions + 26 skills |
 |---|---:|---:|

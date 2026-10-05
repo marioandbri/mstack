@@ -48,6 +48,8 @@ fish install/verify.fish
 - Freeze instructions, skill content, dataset commit, task image digests, runtime versions and reasoning before A/B runs. Infrastructure errors and missing results are separate from verifier failures.
 - An isolated Docker configuration must retain local CLI plugin directories for Compose without inheriting registry credentials or credential helpers. Preflight and execution must use the same runtime environment.
 - The first comparison is unchanged global instructions versus the same instructions with repository-managed skills. Capture this baseline before instruction candidates or routing changes.
+- Check the task-native agent budget and submission collection contract before a run. Record budget overrides explicitly. Commit-only collection needs identical checkpoint authorization in both profiles; checkpoints may be unfinished and must not claim verification.
+- Report empty/missing submissions separately from evaluated code. Keep new-test success separate from existing-test preservation; a combined partial score can be dominated by unchanged passing tests. Preserve official reward and timeout status.
 
 ### Versioned installation
 

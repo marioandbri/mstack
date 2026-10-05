@@ -49,6 +49,7 @@ def make_config(manifest: dict, profile: str) -> dict:
     kwargs = {
         'version': manifest['codex_version'],
         'reasoning_effort': manifest['reasoning'],
+        'budget_seconds': manifest['agent_timeout_sec'],
         'agents_md': str(STATE / 'snapshot/AGENTS.md'),
         'benchmark_auth': manifest['auth_json'],
         'config_toml': 'cli_auth_credentials_store = "file"\n[features]\nresponses_websockets = false\nresponses_websockets_v2 = false\n',
@@ -150,6 +151,7 @@ def prepare(args) -> None:
         if len(eligible) < args.tasks:
             raise ValueError(f'Only {len(eligible)} compatible tasks found')
         selected = random.Random(args.seed).sample(eligible, args.tasks)
+        native_budgets = {name: tomllib.loads((tasks_root/name/'task.toml').read_text()).get('agent', {}).get('timeout_sec') for name in selected}
         original_task_hashes = {name: tree_hashes(tasks_root / name) for name in selected}
         images = {}
         for name in selected:
@@ -194,6 +196,8 @@ def prepare(args) -> None:
             'model': args.model,
             'reasoning': args.reasoning,
             'agent_timeout_sec': args.timeout,
+            'task_native_agent_timeout_sec': native_budgets,
+            'delivery_contract_version': 2,
             'tasks': selected,
             'selection_seed': args.seed,
             'task_resources': {name: details[name] for name in selected},
@@ -213,6 +217,11 @@ def prepare(args) -> None:
             config = make_config(manifest, profile)
             JobConfig.model_validate(config)
             write_json(STATE / f'{profile}.json', config)
+        execution = STATE / 'execution-code'
+        execution.mkdir()
+        for filename in ('bench.py', 'mstack_codex.py', 'auth_state.py', 'uv.lock', 'pyproject.toml', '.python-version'):
+            shutil.copyfile(ROOT/filename, execution/filename)
+        manifest['execution_code_hashes'] = tree_hashes(execution)
         write_json(STATE / 'manifest.json', manifest)
         (STATE / 'tasks.txt').write_text('\n'.join(selected) + '\n')
     except BaseException:
@@ -227,6 +236,8 @@ def prepare(args) -> None:
 
 
 def verify_frozen(manifest: dict) -> None:
+    if manifest.get('execution_code_hashes') and tree_hashes(STATE/'execution-code') != manifest['execution_code_hashes']:
+        raise ValueError('Archived execution source changed')
     if manifest.get('docker_config_sha256') and sha(STATE / 'docker-config/config.json') != manifest['docker_config_sha256']:
         raise ValueError('Docker runtime configuration changed')
     if manifest.get('python_version') and platform.python_version() != manifest['python_version']:
@@ -299,6 +310,7 @@ def report(_args) -> None:
                 task_names[declared] = name
     for profile in ('A', 'B'):
         results = {}
+        trials = {}
         for file in sorted((STATE / 'jobs' / profile).glob('*/result.json')):
             result = json.loads(file.read_text())
             name = task_names.get(result.get('task_name'))
@@ -307,6 +319,7 @@ def report(_args) -> None:
             if name in results:
                 raise ValueError(f'Multiple trials for {profile}/{name}; inspect manually')
             results[name] = result
+            trials[name] = file.parent
         for name in manifest['tasks']:
             result = results.get(name, {})
             reward = (result.get('verifier_result') or {}).get('rewards') or {}
@@ -316,9 +329,18 @@ def report(_args) -> None:
             status = ('missing' if not result else 'timeout' if error == 'AgentTimeoutError'
                       else 'error' if error else 'pass' if value == 1
                       else 'fail' if value == 0 else 'unscored')
+            trial = trials.get(name)
+            patch = trial / 'artifacts/model.patch' if trial else None
+            patch_bytes = patch.stat().st_size if patch and patch.is_file() else None
+            delivery = 'missing' if patch_bytes is None else 'nonempty' if patch_bytes else 'empty'
             rows.append({
                 'profile': profile, 'task': name, 'status': status,
                 'reward': value, 'error': error,
+                'delivery': delivery, 'patch_bytes': patch_bytes,
+                'new_tests_passed': reward.get('f2p_passed'),
+                'new_tests_total': reward.get('f2p_total'),
+                'existing_tests_passed': reward.get('p2p_passed'),
+                'existing_tests_total': reward.get('p2p_total'),
                 'agent_seconds': duration(result.get('agent_execution') or {}),
                 'input_tokens': usage.get('n_input_tokens'),
                 'cached_input_tokens': usage.get('n_cache_tokens'),
@@ -345,6 +367,9 @@ def report(_args) -> None:
         passed = sum(r['status'] == 'pass' for r in group)
         invalid = sum(r['status'] in {'error', 'missing', 'unscored'} for r in group)
         print(f'{profile}: {passed}/{len(group)} planned tasks passed; {invalid} errors/missing/unscored.')
+        for row in group:
+            counts = f"{row['new_tests_passed']}/{row['new_tests_total']}" if row['new_tests_total'] is not None else 'not measured'
+            print(f"  {row['task']}: delivery={row['delivery']}; new tests={counts}; reward={row['reward']}")
     print(f'CSV: {out}')
     print('Missing metrics stay blank, not zero. Cost is an estimate from Pier, not an invoice.')
     print('Inspect errors before comparing. Agent timeouts remain visible as failures.')
@@ -401,7 +426,7 @@ def main() -> None:
     p.add_argument('--codex-version', help='Defaults to the version from local codex --version')
     p.add_argument('--tasks', type=int, default=1)
     p.add_argument('--seed', type=int, default=42)
-    p.add_argument('--timeout', type=int, default=1800, help='Agent seconds per task; both profiles')
+    p.add_argument('--timeout', type=int, default=10800, help='Agent seconds per task; both profiles; initial task native budget is 10800')
     p.set_defaults(func=prepare)
     p = commands.add_parser('run', help='Run one profile; does not overwrite or resume jobs')
     p.add_argument('profile', choices=['A', 'B'])
