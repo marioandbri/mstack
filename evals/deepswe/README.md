@@ -54,6 +54,8 @@ uv run --locked bench.py --state-dir state-chatgpt report
 uv run --locked pier view state-chatgpt/jobs
 ```
 
+On macOS, keep the MacBook lid open throughout the run. Doctor and run reject a closed lid. Each run holds a process-scoped idle-sleep assertion and releases it on success or failure; no global power settings are changed. This prevents idle sleep, but closing the lid can still suspend the machine. A sleep or network interruption must be disclosed before comparing elapsed times.
+
 Concurrency is one, with one attempt per profile and no automatic retries. The selected task declares a 3-hour agent budget, which is also the preparation default. Use `--timeout` for an explicit override, and report that override separately from the task budget. Container preparation and verification add to that time. This timeout is not a token or spending cap. ChatGPT usage draws on the signed-in account's allowance.
 
 `comparison.csv` reports each planned task's status, reward, patch delivery and size, new tests passed/total, existing tests preserved/total, agent time, tokens and API-equivalent estimated cost when Pier supplies it. New tests measure the requested behavior; passing existing tests alone does not demonstrate an implementation. Empty or missing patches are separated from nonempty submissions, and partial new-test progress does not change the official binary reward. `summary.json` keeps pass, fail, timeout, infrastructure error, missing and unscored counts separate. Missing measurements remain blank. An API-equivalent cost is not a ChatGPT bill.
@@ -80,3 +82,5 @@ See [the local pilot report](reports/pilot-local.md). Both profiles timed out wi
 Use a new state such as `state-reference-v2` with the same task, model, reasoning, instructions and 26-skill content, a 10800-second budget, and delivery contract v2. Run A then B once. The budget and contract differ from the first pilot, so this is a new paired baseline rather than a direct attribution of improvement over the 30-minute runs. Tests and collection rules remain unchanged.
 
 Preparation automatically archives execution files and records their hashes, native task budgets and delivery-contract version. Each agent log records its exact runtime deadline and contract hash. Do not edit execution files or evaluation inputs while either profile is running.
+
+The completed corrected reference is documented in [reference-local.md](reports/reference-local.md). Its frozen runner predates the idle-sleep guard. Preserve that state and use `env PYTHONDONTWRITEBYTECODE=1` and its `execution-code/bench.py` with an absolute `--state-dir` for historical doctor/report commands. Prepare a fresh state for runs using the current runner.

@@ -49,6 +49,7 @@ fish install/verify.fish
 - An isolated Docker configuration must retain local CLI plugin directories for Compose without inheriting registry credentials or credential helpers. Preflight and execution must use the same runtime environment.
 - The first comparison is unchanged global instructions versus the same instructions with repository-managed skills. Capture this baseline before instruction candidates or routing changes.
 - Check the task-native agent budget and submission collection contract before a run. Record budget overrides explicitly. Commit-only collection needs identical checkpoint authorization in both profiles; checkpoints may be unfinished and must not claim verification.
+- Keep the MacBook lid open during evaluations. A process-scoped idle-sleep assertion cannot prevent clamshell sleep; disclose sleep and reconnection incidents before comparing time. Use `PYTHONDONTWRITEBYTECODE=1` when executing frozen archives so verification does not create new files.
 - Report empty/missing submissions separately from evaluated code. Keep new-test success separate from existing-test preservation; a combined partial score can be dominated by unchanged passing tests. Preserve official reward and timeout status.
 
 ### Versioned installation

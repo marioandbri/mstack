@@ -18,6 +18,7 @@ import shutil
 import subprocess
 import sys
 import tomllib
+from contextlib import contextmanager
 from auth_state import DEFAULT_HOME, auth_lock, validate_auth
 from datetime import datetime, timezone
 from pathlib import Path
@@ -269,6 +270,39 @@ def runtime_env(manifest: dict) -> dict:
     return env
 
 
+
+def check_host_ready() -> None:
+    if sys.platform == 'darwin':
+        state = capture('/usr/sbin/ioreg', '-r', '-k', 'AppleClamshellState', '-d', '4')
+        if re.search(r'"AppleClamshellState" = Yes', state):
+            raise ValueError('Keep the MacBook lid open for benchmarks. Idle-sleep protection '
+                             'cannot prevent closing the lid from suspending the machine.')
+
+
+@contextmanager
+def keep_host_awake():
+    check_host_ready()
+    if sys.platform != 'darwin':
+        yield
+        return
+    helper = subprocess.Popen(['/usr/bin/caffeinate', '-i', '-w', str(os.getpid())],
+                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    try:
+        if helper.poll() is not None:
+            raise ValueError('macOS idle-sleep guard failed to start')
+        yield
+    finally:
+        if helper.poll() is None:
+            helper.terminate()
+            try:
+                helper.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                helper.kill()
+                helper.wait(timeout=5)
+        else:
+            helper.wait()
+
+
 def run_profile(args) -> None:
     manifest = json.loads((STATE / 'manifest.json').read_text())
     verify_frozen(manifest)
@@ -283,7 +317,7 @@ def run_profile(args) -> None:
     if (STATE / 'jobs' / args.profile).exists():
         raise ValueError(f'Profile {args.profile} already has a job. Existing results are not overwritten.')
     env = runtime_env(manifest)
-    with auth_lock(auth):
+    with keep_host_awake(), auth_lock(auth):
         subprocess.run([sys.executable, '-m', 'pier.cli.main', 'run', '-c', str(config_path)],
                        cwd=ROOT, env=env, check=True)
 
@@ -393,6 +427,7 @@ def login(args) -> None:
 
 
 def doctor(_args) -> None:
+    check_host_ready()
     manifest = json.loads((STATE / 'manifest.json').read_text())
     verify_frozen(manifest)
     validate_auth(Path(manifest['auth_json']))

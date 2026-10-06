@@ -66,6 +66,79 @@ class AuthTests(unittest.TestCase):
                     self.fail('second lock acquired')
 
 
+class HostAwakeTests(unittest.TestCase):
+    def test_closed_lid_is_rejected_before_starting_helper(self):
+        with patch.object(bench.sys, 'platform', 'darwin'), \
+             patch.object(bench, 'capture', return_value='"AppleClamshellState" = Yes'), \
+             patch.object(bench.subprocess, 'Popen') as launch:
+            with self.assertRaisesRegex(ValueError, 'lid open'):
+                with bench.keep_host_awake():
+                    self.fail('benchmark started with closed lid')
+            launch.assert_not_called()
+
+    def test_linux_needs_no_macos_helper(self):
+        with patch.object(bench.sys, 'platform', 'linux'), \
+             patch.object(bench.subprocess, 'Popen') as launch:
+            with bench.keep_host_awake():
+                pass
+            launch.assert_not_called()
+
+    def test_helper_is_released_after_success_and_failure(self):
+        for fail in (False, True):
+            with self.subTest(fail=fail), \
+                 patch.object(bench.sys, 'platform', 'darwin'), \
+                 patch.object(bench, 'capture', return_value='"AppleClamshellState" = No'), \
+                 patch.object(bench.subprocess, 'Popen') as launch:
+                helper=launch.return_value
+                helper.poll.return_value=None
+                try:
+                    with bench.keep_host_awake():
+                        if fail:
+                            raise RuntimeError('benchmark failed')
+                except RuntimeError:
+                    self.assertTrue(fail)
+                helper.terminate.assert_called_once()
+                helper.wait.assert_called_once_with(timeout=5)
+                self.assertEqual(launch.call_args.args[0],
+                                 ['/usr/bin/caffeinate', '-i', '-w', str(os.getpid())])
+
+    def test_failed_helper_prevents_benchmark(self):
+        with patch.object(bench.sys, 'platform', 'darwin'), \
+             patch.object(bench, 'capture', return_value='"AppleClamshellState" = No'), \
+             patch.object(bench.subprocess, 'Popen') as launch:
+            launch.return_value.poll.return_value=1
+            with self.assertRaisesRegex(ValueError, 'sleep guard'):
+                with bench.keep_host_awake():
+                    self.fail('benchmark started without sleep guard')
+
+    @unittest.skipUnless(bench.sys.platform == 'darwin', 'macOS assertion integration')
+    def test_real_idle_sleep_assertion_lifetime(self):
+        import re
+        import subprocess
+        import time
+        real_launch=subprocess.Popen
+        helpers=[]
+        def launch(command, *args, **kwargs):
+            process=real_launch(command, *args, **kwargs)
+            if command[0]=='/usr/bin/caffeinate':
+                helpers.append(process)
+            return process
+        with patch.object(bench, 'capture', return_value='"AppleClamshellState" = No'), \
+             patch.object(bench.subprocess, 'Popen', side_effect=launch):
+            with bench.keep_host_awake():
+                helper=helpers[0]
+                deadline=time.monotonic()+3
+                while True:
+                    assertions=subprocess.check_output(['/usr/bin/pmset', '-g', 'assertions'], text=True)
+                    if re.search(rf'pid\s+{helper.pid}\(caffeinate\).*PreventUserIdleSystemSleep', assertions):
+                        break
+                    if time.monotonic()>=deadline:
+                        self.fail('idle sleep assertion was not acquired')
+                    time.sleep(0.05)
+                self.assertIsNone(helper.poll())
+        self.assertIsNotNone(helpers[0].poll())
+
+
 class ProfileTests(unittest.TestCase):
     def test_a_b_only_differ_in_skills(self):
         manifest = dict(codex_version='0.159.0', reasoning='high', auth_json='/private/benchmark/auth.json',
