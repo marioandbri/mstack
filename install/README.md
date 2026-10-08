@@ -32,6 +32,21 @@ Only these application keys belong to mstack:
 
 Credentials, trusted projects, MCP configuration, packages, extensions and other settings stay in their existing files. Credentials and raw configuration backups never belong in Git. The state directory and backups are private to the user.
 
+## Preserve an edited global instruction file
+
+If the active global was deliberately edited, review its difference from the last installed version and commit its exact accepted contents to `instructions/global/AGENTS.md`. Do not discard those edits to make verification pass.
+
+```fish
+uv run --locked --project install python install/mstack.py reconcile-instructions --ref <commit>
+uv run --locked --project install python install/mstack.py reconcile-instructions --ref <commit> --apply
+fish install/setup.fish --ref <commit>
+fish install/setup.fish --ref <commit> --apply
+```
+
+Reconciliation accepts only an exact match to the selected committed global. It verifies all other managed files, configuration, snapshot integrity and ownership. It leaves active files and the snapshot pointer unchanged, saves a private backup, and creates a new receipt preserving the old receipt. Uncommitted content or unrelated drift still stops the operation.
+
+This receipt is a rollback checkpoint. A later installation can roll back to it while retaining the accepted global edits. Automatic rollback stops at that checkpoint instead of discarding those edits to restore an older instruction version. Older snapshots and receipts remain available for a deliberate, reviewed restoration.
+
 ## Candidate snapshots for evaluation
 
 ```fish

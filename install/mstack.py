@@ -1,6 +1,7 @@
 """Install commit snapshots, merge owned settings, and undo installations safely."""
 from __future__ import annotations
 import argparse
+import copy
 import os
 from pathlib import Path
 import re
@@ -176,6 +177,8 @@ def restore_action(action):
 
 
 def undo(state, journal, allow_partial=False, dry_run=False):
+    if journal.get("reconciled_instructions"):
+        raise InstallError("Rollback stops at an instruction reconciliation checkpoint; select a reviewed source explicitly")
     # Validate everything before the first rollback mutation.
     for action in journal['actions']:
         actual = observe(action)
@@ -294,6 +297,62 @@ def setup(repo, ref, roots, state, apply=False):
         return receipt
 
 
+def reconcile_instructions(repo, ref, roots, state, apply=False):
+    if (state / 'journal.json').exists():
+        raise InstallError('An unfinished operation exists; use recover --apply')
+    previous = current_receipt(state)
+    if not previous or previous['roots'] != roots:
+        raise InstallError('A matching managed installation is required')
+    metadata, files = source(repo, ref)
+    target = str(target_path(roots, 'agents/AGENTS.md'))
+    proposed = next((a for a in actions_for(metadata, files, roots, state)
+                     if a['target'] == target and a['method'] == 'copy'
+                     and a['source'] == 'instructions/global/AGENTS.md'), None)
+    accepted = copy.deepcopy(previous)
+    action = next((a for a in accepted['actions'] if a['target'] == target
+                   and a['method'] == 'copy'), None)
+    if not proposed or not action or observe(action) != proposed['after']:
+        raise InstallError('Local instructions must exactly match the selected committed source')
+    unchanged = action['after'] == proposed['after']
+    old_signature = action['after']
+    action['after'] = proposed['after']
+    # Permit only this exact, committed instruction copy; verify every other guard.
+    verify_receipt(state, accepted)
+    print(f'MODE {"apply" if apply else "dry-run"}; reconcile instructions; source={metadata["commit"]}')
+    if unchanged:
+        print('RESULT unchanged; instruction baseline is already verified')
+        return previous
+    if not apply:
+        print(f'PLAN preserve {target}; sha256={proposed["after"]["sha256"]}')
+        print('RESULT dry-run; no files changed; rollback will stop at this checkpoint')
+        return None
+    with lock(state):
+        if current_receipt(state) != previous or (state / 'journal.json').exists():
+            raise InstallError('Installation state changed; run reconciliation again')
+        verify_receipt(state, accepted)
+        generation = uuid.uuid4().hex
+        backup_root = state / 'backups' / generation
+        private_directory(backup_root.parent)
+        private_directory(backup_root)
+        backup = backup_root / 'AGENTS.md'
+        copy_backup(Path(target), backup)
+        if digest(backup.read_bytes()) != proposed['after']['sha256']:
+            raise InstallError('Local instructions changed during reconciliation')
+        accepted['generation'] = generation
+        accepted['reconciled_instructions'] = {
+            'source_commit': metadata['commit'], 'target': target,
+            'previous_generation': previous['generation'],
+            'previous_receipt_sha256': digest(encoded(previous)),
+            'previous_signature': old_signature, 'accepted_signature': proposed['after'],
+            'backup': str(backup), 'rollback_boundary': True}
+        verify_receipt(state, accepted)
+        private_directory(state / 'receipts')
+        atomic_file(state / 'receipts' / (generation + '.json'), encoded(accepted))
+        atomic_file(state / 'current.json', encoded(accepted))
+        print(f'RESULT reconciled; active files unchanged; backup={backup}; rollback checkpoint={generation}')
+        return accepted
+
+
 def resolve_locations(args):
     explicit_home = args.home is not None
     home = Path(args.home or Path.home()).expanduser().resolve(strict=True)
@@ -321,7 +380,7 @@ def resolve_locations(args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
-    for command in ('setup', 'snapshot', 'verify', 'status', 'rollback', 'recover'):
+    for command in ('setup', 'snapshot', 'verify', 'status', 'rollback', 'recover', 'reconcile-instructions'):
         p = commands.add_parser(command)
         p.add_argument('--home')
         p.add_argument('--repo', default=str(ROOT))
@@ -336,6 +395,8 @@ def main():
         roots, state = resolve_locations(args)
         if args.command == 'setup':
             setup(Path(args.repo).resolve(strict=True), args.ref, roots, state, args.apply)
+        elif args.command == 'reconcile-instructions':
+            reconcile_instructions(Path(args.repo).resolve(strict=True), args.ref, roots, state, args.apply)
         elif args.command == 'snapshot':
             if (state / 'journal.json').exists():
                 raise InstallError('An unfinished operation exists; use recover --apply')

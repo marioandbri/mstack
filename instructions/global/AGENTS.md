@@ -67,6 +67,12 @@ These are common instructions for all agents across all projects and scenarios.
 
 - Noninteractive zsh sessions may omit `~/.bun/bin` even when fish resolves its globally installed CLIs. Before declaring a tool missing, check fish and that directory. Portless requires Node 24+; use an already installed compatible Node through a process-local PATH override and verify `portless doctor`, without changing the user's global Node selection.
 
+### Storage and worktree cleanup
+
+- A request to review storage or closed worktrees is not permission to delete them. Present the concrete deletion list, including paths, sizes, and reasons, and obtain Mario's explicit confirmation before deleting worktrees or caches.
+- A merged branch or settled agent thread does not establish that its worktree is unused. Check live process working directories before removal, verify clean tracked/untracked state and retained commits, and preserve ignored local configuration, databases, uploads, and evidence in verified private backups. Keep worktrees with active processes, unresolved changes, or unreviewed submodules.
+- On APFS, directory sizes from `du` can overstate recoverable space because clones and hard links share blocks. Report actual recovery from before/after filesystem free-space measurements. Docker volumes marked reclaimable may contain databases; distinguish them from disposable build caches.
+
 ### Conventions-aware engineering
 
 - Use `/skill:setup-conventions-aware-engineering` for manual repository documentation setup. It configures agent routing, `docs/agents/documentation-map.md`, domain/tracker guidance, and confirmed convention scopes without creating empty placeholders.
@@ -90,3 +96,12 @@ These are common instructions for all agents across all projects and scenarios.
 - Verify the nested `exec_command` `session_id` and an exact live process count of one before telling the user monitoring is active. Persist and resume that inner session with `write_stdin`; an outer `functions.exec` cell ID is only a temporary wrapper wait handle. A timeout means resume the same inner session, not start another poll.
 - A Lavish listener must remain running while the session is open. It may mark itself completed only after **Send & End**, an explicit user stop, or a verified non-overlapping handoff to a new owner with its own live inner `session_id`.
 - Custom controls labelled **Enviar/Send** must call `queuePrompt()` followed by `sendQueuedPrompts()`. Queue-only controls must be labelled **Encolar/Queue** and show that a separate Send action is still required.
+
+### T3 Code remote-access diagnostics
+
+- For unattended MacBook access, distinguish idle sleep from lid-triggered `Clamshell Sleep` in `pmset -g log`. AC `sleep 0` prevents idle sleep but does not establish that closing the lid keeps the host running. A sleeping host cannot provide continuous T3 Connect or Tailscale access; verify recovery separately after wake. Screen lock, logout, and system sleep are separate states. A brief Touch ID press locks the screen on supported Macs; correlate subsequent sleep events rather than attributing them to the button or physical lid movement without a controlled reproduction.
+
+- T3 Connect can learn direct LAN and Tailscale routes. A successful connection on the same Wi-Fi does not prove that the managed relay route works. Confirm the active route on mobile. Official guide: https://github.com/pingdotgg/t3code/blob/main/docs/user/remote-access.md
+- `t3 connect status` reports saved CLI authorization and desired exposure, not live reachability. A desktop-linked environment can report missing CLI authorization while its managed tunnel runs. Check desktop Connections, the server listener, the T3-owned cloudflared process, its `/ready` and `/config` endpoints, and matching local/public environment descriptors.
+- Verify Tailscale with `tailscale status --json` and `tailscale serve status`; a saved T3 desktop preference alone does not prove that Tailscale HTTPS is active. Both devices need connected Tailscale clients in the same tailnet.
+- Cloudflare can return HTTP 403 with error 1010 for particular User-Agent signatures while allowing browser and curl requests. Distinguish this filtering from tunnel failure and from the phone's exact error; preserve a Cloudflare Ray ID without credentials when reporting it.

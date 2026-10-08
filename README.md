@@ -147,6 +147,12 @@ This checks two real application workspaces and independent process cleanup. Ful
 
 Never run bulk upstream skill updates against managed names. Review upstream changes and port them deliberately.
 
+## Reflect and observation capture
+
+`capture-observations` records findings during active work; `reflect` reviews them when explicitly requested. Both are managed together because capture uses Reflect's shared classification, record contract and observation schema. Their procedures match the evaluated persistence candidate; the earlier copies under `docs/agent-maintenance/candidates/` retain that evaluation state and are not the maintained source.
+
+Maintain the installed sources under `skills/capture-observations/` and `skills/reflect/`. [Persistence layout](docs/agent-maintenance/persistence.md) explains the inbox, decisions, proposals and evidence. Capturing and saving a proposal do not activate instruction changes. Automatic capture is an agent behavior during a session, not a background listener or guaranteed monitoring of every chat.
+
 ## External skills
 
 Framework, browser, frontend-design, and package-provided skills remain externally managed. They are not copied here. Pi package filters should exclude duplicate names owned by this repository.
