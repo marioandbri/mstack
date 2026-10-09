@@ -61,15 +61,25 @@ No known local divergence at import.
 
 Sources:
 
+- <https://github.com/kunchenguid/chrome-devtools-axi>
 - <https://github.com/kunchenguid/gh-axi>
 - <https://github.com/kunchenguid/lavish-axi>
 
 Imported skills:
 
+- `chrome-devtools-axi`
 - `gh-axi`
 - `lavish`
 
 CLI implementations remain external dependencies. Skill ownership here controls invocation and workflow policy, not CLI source. `gh-axi` invocation is pinned to `0.1.30` and uses `bunx`.
+
+Chrome local divergence:
+
+- Reviewed skill and MIT license at commit `06688b18adf5c0855fca6ed4efe2dbd0ad0e2ec6`. The notice matches `licenses/MIT-Kun-Chen.txt`.
+- Replaces unpinned upstream npx invocations with installed AXI `0.1.35` and MCP `1.9.0`; CLI implementations are not imported or upgraded.
+- Moves Mario's headless, session, tab, profile and process ownership requirements into a mandatory skill reference. The active global remains unchanged until the consolidated instruction proposal is reviewed and deployed.
+- Narrows discovery to real browser work, respecting explicit tool choices, with normal automatic selection enabled. Normalizes upstream author metadata and omits the nonstandard `user-invocable` field; Codex invocation policy is declared in `agents/openai.yaml`. Cross-harness selection still requires behavioral validation.
+- Existing externally installed source came from folder hash `624f2f8c26da9f9ac6bca30136fb3b54f53e60a2` in the local upstream installer lock. This candidate uses the reviewed commit above instead of claiming that folder hash identifies it.
 
 ## Repository-owned skills
 

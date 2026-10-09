@@ -4,6 +4,7 @@
   "skills": [
     {"name":"capture-observations","owner":"original","source":"self","sourcePath":"skills/capture-observations","importRef":"reflect-persistence-2026-10-08","license":"MIT-Mario-Brito"},
     {"name":"caveman","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/productivity/caveman","importRef":"folder:17972a1bdbf5909b9dbdc435ad348f0bf45f8664","license":"MIT-Matt-Pocock"},
+    {"name":"chrome-devtools-axi","owner":"forked","source":"https://github.com/kunchenguid/chrome-devtools-axi.git","sourcePath":"skills/chrome-devtools-axi","importRef":"commit:06688b18adf5c0855fca6ed4efe2dbd0ad0e2ec6","license":"MIT-Kun-Chen"},
     {"name":"code-review","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/code-review","importRef":"folder:d8e341cee7980127dddda05159bedf25dc853615","license":"MIT-Matt-Pocock"},
     {"name":"conventions-aware-engineering","owner":"original","source":"self","sourcePath":"skills/conventions-aware-engineering","importRef":"initial","license":"MIT-Mario-Brito"},
     {"name":"diagnose","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/diagnose","importRef":"folder:43d464d0e9d1049b9d525975c0f7367ab7e01a5f","license":"MIT-Matt-Pocock"},

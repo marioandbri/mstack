@@ -32,7 +32,7 @@ fish install/verify.fish
 ### Ownership
 
 - `skills.json` is the authoritative list of repository-owned workflow skills.
-- Specialized frontend, browser, and package-provided skills remain external.
+- `chrome-devtools-axi` is managed here. Other specialized frontend and package-provided skills remain external unless deliberately imported.
 - Imported skills update through deliberate review, never automatic replacement.
 
 ### Local environments
