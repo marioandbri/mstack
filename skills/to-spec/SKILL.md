@@ -14,7 +14,9 @@ Issue tracker and triage vocabulary should come from project documentation. Load
 
 2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
 
-Check with the user that these seams match their expectations.
+Reuse test boundaries already agreed in the interview or resource. Ask only about a material testing expectation not yet resolved; do not request the same approval again.
+
+Preserve the interview scope, exclusions, constraints, decisions, acceptance and relevant references. Do not infer a missing material decision or silently change it.
 
 3. Write the spec using the template below and present it as a draft. Do **not** publish or apply labels yet. After explicit user approval, publish it to the project issue tracker and apply the `ready-for-agent` triage label.
 

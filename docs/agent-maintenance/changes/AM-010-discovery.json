@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "harness": "codex-cli 0.160.0",
+  "method": "skills/list",
+  "fixture": "/var/folders/8p/6b63cqyx2g1f09v45g3js_sr0000gn/T/agents-discovery-v1q2r44j",
+  "expected": [
+    "repository-workflow",
+    "chrome-devtools-axi",
+    "grill-with-docs",
+    "implement",
+    "tdd",
+    "diagnose",
+    "to-spec",
+    "to-tickets",
+    "caveman",
+    "unslop",
+    "lavish",
+    "visual-companion",
+    "local-env",
+    "conventions-aware-engineering",
+    "code-review",
+    "verification-before-completion"
+  ],
+  "candidates": [
+    {
+      "name": "caveman",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/caveman/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "chrome-devtools-axi",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/chrome-devtools-axi/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "code-review",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/code-review/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "conventions-aware-engineering",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/conventions-aware-engineering/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "diagnose",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/diagnose/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "grill-with-docs",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/grill-with-docs/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "implement",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/implement/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "lavish",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/lavish/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "local-env",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/local-env/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "repository-workflow",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/repository-workflow/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "tdd",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/tdd/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "to-spec",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/to-spec/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "to-tickets",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/to-tickets/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "unslop",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/unslop/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "verification-before-completion",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/verification-before-completion/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    },
+    {
+      "name": "visual-companion",
+      "path": "/Users/mario.brito/personal/mstack-chrome-skill/skills/visual-companion/SKILL.md",
+      "enabled": true,
+      "scope": "repo"
+    }
+  ],
+  "missing": [],
+  "candidateErrors": [],
+  "modelRuns": 0,
+  "limit": "Catalog discovery only. This CLI response does not expose invocation policy. No selection, procedural behavior, active install or other harness acceptance was tested."
+}

@@ -21,7 +21,7 @@ Select a reviewed commit with `--ref <commit>`. Setup defaults to dry-run and re
 
 A first installation replaces the old checkout links with links through `~/.local/share/mstack/active/skills/<name>`. The active pointer switches to a readonly commit snapshot. External skill names and Pi packages remain under their current owners.
 
-Global instructions are a managed, writable copy at `~/.agents/AGENTS.md`; Codex and Pi refer to that file. Claude keeps its small wrapper. This preserves the existing global-memory workflow. A later local edit is detectable drift: installation and rollback stop before overwriting it. Reconcile the local content deliberately with the source and last installed version before updating; neither operation automatically merges global instructions.
+Global instructions are a managed, writable copy at `~/.agents/AGENTS.md`; Codex and Pi refer to that file. Claude keeps its small wrapper. Pending observations stay in maintenance records until their destination and integration are reviewed. A later local edit is detectable drift: installation and rollback stop before overwriting it. Reconcile the local content deliberately with the source and last installed version before updating; neither operation automatically merges global instructions.
 
 Only these application keys belong to mstack:
 

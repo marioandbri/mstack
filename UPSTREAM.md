@@ -87,6 +87,7 @@ Chrome local divergence:
 - `reflect`
 - `conventions-aware-engineering`
 - `local-env`
+- `repository-workflow`
 - `mobile-next-android-testing`
 - `setup-conventions-aware-engineering`
 - `visual-companion`
@@ -96,6 +97,14 @@ These originated in Mario's local workflow and have no external update stream.
 ## Cross-harness normalization
 
 Internal skill references use skill names instead of Pi-specific slash commands. Delegation instructions refer to harness-available mechanisms rather than one tool API.
+
+## Agent-maintenance candidate changes
+
+- grill-with-docs separates interview completion from route selection; direct execution after an interview requires the user's request.
+- implement preserves explicit invocation and artifact execution. The original repository-workflow skill coordinates the broader worktree-to-PR lifecycle and calls existing specialists.
+- tdd and diagnose reuse approved test boundaries and retain functional smoke/regression evidence. diagnose holds scoped environment facts, not new Pi/Bitbucket/T3 skills.
+- to-spec and to-tickets preserve the interview's decisions and exclusions without repeating resolved testing approvals.
+- caveman requires explicit mode requests and respects the requested duration. unslop adjusts natural writing to the purpose. lavish discovery and body both require requested or accepted hi-fi review. Lavish and visual-companion Codex policy mirrors their existing explicit-only frontmatter.
 
 ## Update policy
 

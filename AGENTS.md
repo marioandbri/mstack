@@ -55,8 +55,8 @@ fish install/verify.fish
 ### Versioned installation
 
 - `mstack.json` owns installation entries and keys; `skills.json` remains the only managed-skill inventory.
-- `instructions/global/AGENTS.md` preserves the captured global instructions. Repository `AGENTS.md` is a separate maintenance entry point.
-- Installed skills refer to readonly commit snapshots under `~/.local/share/mstack`; global instructions are a writable managed copy for the existing memory workflow. Detect local drift before updates or rollback rather than silently overwriting it.
+- `instructions/global/AGENTS.md` owns the proposed global instructions; saved review baselines preserve earlier versions. Repository `AGENTS.md` is a separate maintenance entry point.
+- Installed skills refer to readonly commit snapshots under `~/.local/share/mstack`; global instructions are a writable managed copy, with reviewed changes deployed through the installer. Detect local drift before updates or rollback rather than silently overwriting it.
 - Codex owns only the declared model and reasoning defaults; Pi owns provider, model and thinking defaults. Preserve private settings, packages, extensions and credentials.
 - `install/mstack_source.py` owns Git snapshots, `mstack_config.py` owned-key merges, `mstack_fs.py` private/atomic storage and `mstack.py` the transaction and CLI. TOML Kit is pinned in the installer lockfile to preserve shared TOML formatting.
 - Candidate snapshots can be prepared without activation. Keep raw evaluation state and credentials outside Git; preserve execution-source hashes when reporting code changes after a run.

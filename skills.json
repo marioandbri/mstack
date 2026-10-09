@@ -19,6 +19,7 @@
     {"name":"mobile-next-android-testing","owner":"original","source":"self","sourcePath":"skills/mobile-next-android-testing","importRef":"initial","license":"MIT-Mario-Brito"},
     {"name":"receiving-code-review","owner":"forked","source":"https://github.com/obra/superpowers.git","sourcePath":"skills/receiving-code-review","importRef":"commit:7e516434f2a30114300efc9247db32fb37daa5f9","license":"MIT-Jesse-Vincent"},
     {"name":"reflect","owner":"original","source":"self","sourcePath":"skills/reflect","importRef":"reflect-persistence-2026-10-08","license":"MIT-Mario-Brito"},
+    {"name":"repository-workflow","owner":"original","source":"self","sourcePath":"skills/repository-workflow","importRef":"agent-maintenance-2026-10-09","license":"MIT-Mario-Brito"},
     {"name":"setup-conventions-aware-engineering","owner":"original","source":"self","sourcePath":"skills/setup-conventions-aware-engineering","importRef":"initial","license":"MIT-Mario-Brito"},
     {"name":"tdd","owner":"forked","source":"https://github.com/mattpocock/skills.git","sourcePath":"skills/engineering/tdd","importRef":"folder:0a727bd358b855cbcc1c35cfff21ef31f9ffb8de","license":"MIT-Matt-Pocock"},
     {"name":"thermo-nuclear-code-quality-review","owner":"forked","source":"cursor-public/cursor-team-kit","sourcePath":"skills/thermo-nuclear-code-quality-review","importRef":"commit:51a96e0dd838404da19ba83dc70aa21eef71f868","license":"MIT-Cursor"},

@@ -1,13 +1,17 @@
 ---
 name: diagnose
-description: Disciplined diagnosis loop for hard bugs and performance regressions. Reproduce → minimise → hypothesise → instrument → fix → regression-test. Use when user says "diagnose this" / "debug this", reports a bug, says something is broken/throwing/failing, or describes a performance regression.
+description: Diagnose reported bugs, errors, broken behavior and performance regressions. Build a faithful reproduction, identify the cause and verify a durable regression test before claiming a fix. Applies to simple and hard bugs; skip feature-only implementation and explanations without a reported failure.
 ---
 
 # Diagnose
 
-A discipline for hard bugs. Skip phases only when explicitly justified.
+Use a faithful reproduction for reported bugs. Scale the diagnosis to the evidence; justify omitted phases rather than limiting this skill to hard bugs.
 
 When exploring the codebase, use the project's domain glossary to get a clear mental model of the relevant modules, and check ADRs in the area you're touching.
+
+For Pi MCP, Bitbucket permission/API failures or T3 remote-access failures, read
+only the relevant section of [environment diagnostics](references/environment-diagnostics.md).
+These are scoped diagnostic facts and historical hypotheses, not universal fixes.
 
 ## Phase 1 — Build a feedback loop
 
@@ -15,7 +19,12 @@ When exploring the codebase, use the project's domain glossary to get a clear me
 
 Spend disproportionate effort here. **Be aggressive. Be creative. Refuse to give up.**
 
-### Ways to construct one — try them in roughly this order
+Choose the lowest test level that preserves the triggering state and causal
+interactions. Unit or integration tests are valid when faithful; use E2E when the
+problem depends on the complete user path. A narrower test that loses the trigger
+is not a substitute. Capture the original scenario before minimising it.
+
+### Ways to construct one
 
 1. **Failing test** at whatever seam reaches the bug — unit, integration, e2e.
 2. **Curl / HTTP script** against a running dev server.
@@ -28,7 +37,7 @@ Spend disproportionate effort here. **Be aggressive. Be creative. Refuse to give
 9. **Differential loop.** Run the same input through old-version vs new-version (or two configs) and diff outputs.
 10. **HITL bash script.** Last resort. If a human must click, drive _them_ with `scripts/hitl-loop.template.sh` so the loop is still structured. Captured output feeds back to you.
 
-Build the right feedback loop, and the bug is 90% fixed.
+Choose a loop that exercises the reported failure; the loop supplies evidence for the later diagnosis.
 
 ### Iterate on the loop itself
 
@@ -103,6 +112,25 @@ If a correct seam exists:
 3. Apply the fix.
 4. Watch it pass.
 5. Re-run the Phase 1 feedback loop against the original (un-minimised) scenario.
+
+### Regression acceptance
+
+Use or extend an existing test when appropriate. Before claiming a fix, establish:
+
+1. The test fails on the defective version for the symptom the user reported,
+   rather than a setup error or invented expectation.
+2. It preserves the user's triggering actions, state, data and interactions.
+   It may tolerate internal refactoring; do not mock away the failure mechanism.
+3. The same test and expectation pass after the fix, and the original scenario
+   no longer produces that failure.
+4. The regression remains in the normal suite, is repeatable and can detect
+   reintroduction of the covered behavior. State the limits of its coverage.
+
+Keep test expectations independent of the fix. Retain evidence of the failing and
+passing version, execution and outcome using the project's existing runner.
+If no faithful seam or reproduction is available, record what is missing and
+use the existing evidence-request protocol; a shallow passing test cannot justify
+calling the bug fixed. Use local-env when services or test databases are required.
 
 ## Phase 6 — Cleanup + post-mortem
 

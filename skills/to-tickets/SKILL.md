@@ -16,6 +16,8 @@ Issue tracker and triage vocabulary should come from project documentation. Load
 
 Work from whatever is already in the conversation context. If the user passes a reference (a spec path, an issue number or URL) as an argument, fetch it and read its full body and comments.
 
+Preserve agreed scope, exclusions, decisions, constraints, acceptance and references from the interview or resource. Give each ticket enough context to execute without repeating discovery; reference shared decisions where appropriate. Do not silently expand scope.
+
 ### 2. Explore the codebase (optional)
 
 If you have not already explored the codebase, do so to understand the current state of the code. Ticket titles and descriptions should use the project's domain glossary vocabulary, and respect ADRs in the area you're touching.
@@ -74,6 +76,8 @@ Do NOT close or modify any parent issue.
 
 **Blocked by:** the numbers/titles of the tickets that gate this one, or "None — can start immediately".
 
+**Decisions and boundaries:** agreed constraints, exclusions, test boundaries and relevant references for this slice.
+
 **Status:** ready-for-agent
 
 - [ ] Acceptance criterion 1
@@ -90,6 +94,10 @@ A reference to the parent issue on the tracker (if the source was an existing is
 ## What to build
 
 The end-to-end behaviour this ticket makes work, from the user's perspective — not layer-by-layer implementation.
+
+## Decisions and boundaries
+
+Preserve the agreed constraints, exclusions, test boundaries and relevant references for this slice.
 
 ## Acceptance criteria
 

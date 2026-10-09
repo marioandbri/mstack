@@ -13,7 +13,7 @@ Versioned source for Mario's global instructions, managed engineering skills, sa
 | Codex | `~/.codex/skills/<name>` |
 | Pi | `~/.pi/agent/skills/<name>` |
 
-The managed installer links skills to a readonly commit snapshot. Development edits do not change the active installation. Global instructions remain a managed copy so the existing memory workflow stays writable; the verifier detects local drift.
+The managed installer links skills to a readonly commit snapshot. Development edits do not change the active installation. Global instructions remain a managed writable copy; the verifier detects local drift. Pending observations belong in maintenance records, not direct edits to active instructions.
 
 ## Workflow
 
@@ -164,3 +164,12 @@ Original repository work is MIT licensed. Imported skills retain upstream MIT no
 ## Evaluations
 
 [DeepSWE with Codex and Pier](evals/deepswe/README.md) prepares fixed A/B profiles and uses a separate ChatGPT login. The [first local pilot](evals/deepswe/reports/pilot-local.md) records both timeouts and consumption; it validates integration rather than proving a quality difference. Instruction candidates, skill changes and Laya routing are separate later experiments.
+
+## Repository delivery candidate
+
+[repository-workflow](skills/repository-workflow/SKILL.md) coordinates owned
+worktrees, environment readiness, commits, evidence, PR preparation and closure
+after Mario merges in the remote. It reuses existing implementation, test,
+environment and review skills. It does not create a background merge monitor.
+The [AGENTS proposal review](docs/agent-maintenance/changes/AM-010-classification.md)
+records destinations and verification limits.

@@ -1,5 +1,10 @@
 # Operations
 
+If a noninteractive shell cannot find a tool, check fish resolution and ~/.bun/bin
+before declaring it absent. Use an already installed compatible Node through a
+process-local PATH override. Keep the user's global Node selection unchanged.
+
+
 ## Project inspection
 
 Follow applicable agent instructions and project conventions first. With `devenv.nix`, use the project's devenv workflow rather than bypassing it. Non-JavaScript applications still use their own runtime; Portless does not require replacing it.
