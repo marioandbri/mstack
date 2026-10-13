@@ -1,14 +1,19 @@
 {
   "docs/agent-maintenance/evaluations/2026-10-13-laya/sources.json": "1e8290b7c1450d916f23725ede9059de1479032a7c9862a9c9a069dc2e4405e6",
   "docs/agent-maintenance/evaluations/2026-10-13-laya/binary-results.json": "f26eff1b966c96975c126bfbfc6805c1479f2b813a96fb21d4b20f3a349c9075",
-  "docs/agent-maintenance/evaluations/2026-10-13-laya/report.md": "cae3404a8ab2851129995e8f0ae10e7866b4e105bb7f4a3a89a18b244b3ad07d",
+  "docs/agent-maintenance/evaluations/2026-10-13-laya/report.md": "0c9fd7d2a5b7240a5040dad5848813c03a8ff276edf563fe4b540843c75072df",
   "docs/agent-maintenance/evaluations/2026-10-13-laya/results.json": "dc645f85e7262d6e4e0c909b997a62a4427a53cd6d78d0d89c7751af2703045d",
+  "docs/agent-maintenance/evaluations/2026-10-13-laya/context-report.md": "e092a300ad0ed5bdf6bb7017c6c582fa6edfb82d5ab3c3c4689782d96e0f95c7",
   "docs/agent-maintenance/evaluations/2026-10-13-laya/questions.json": "a512aa65d48cd684e8758181836d3e6141ec55c344a520f513fb7e78d2a909f6",
   "docs/agent-maintenance/evaluations/2026-10-13-laya/binary-development.json": "99dca8913992d42db65da605bbd7d24d54339df3f22d8a5d768aa7468d7b6e2c",
   "docs/agent-maintenance/evaluations/2026-10-13-laya/cases.json": "008a260637c0b9a93c06f7ad3a3785e6f0669c42cf52aecc850b296b3a295394",
   "docs/agent-maintenance/evaluations/2026-10-13-laya/manifest.json": "e863b1002477382d7ecee096c20cca5a9c7aedba2faac2fbc0fea4de0aa2bc15",
   "docs/agent-maintenance/evaluations/2026-10-13-laya/verification.json": "203e3726063b713cc6e0f3fbe7522c72f7b5022965874521609abf807692a589",
+  "docs/agent-maintenance/evaluations/2026-10-13-laya/context-verification.json": "bf1ba7dd85db9e6ea59d86b395ac784f38f09d73820ff0fd49985cdaba07bb01",
+  "docs/agent-maintenance/evaluations/2026-10-13-laya/context-results.json": "7474ec3fecceb94222a64231b7e959ae338943643b2af57f057776b7e245e80b",
+  "docs/agent-maintenance/evaluations/2026-10-13-laya/context-protocol.json": "8b9adca04256ce9ef4e0c4d29ccbeb11c9a0f3d2fe107163923ad8a18ab7bf3d",
   "docs/agent-maintenance/evaluations/2026-10-13-laya/freeze.json": "e6ce0058d509619bd6622c341706ece397936356fe65c1f4a7690a8ba6821492",
-  "docs/agent-maintenance/changes/AM-014-maintenance-discovery.md": "88a2ba5c39bf3d951f71fac2545c79a9ad4a73f279c5b3150abbd0a8080abfd2",
+  "docs/agent-maintenance/evaluations/2026-10-13-laya/routing-preset.json": "ad8a64c8bd03f88d8c589178951ed3e1b24709cfddff97d328e6ec5328fe6a67",
+  "docs/agent-maintenance/changes/AM-014-maintenance-discovery.md": "19b83953b26da88026f181388603a123cae1b8a6844611b83229ccd84b33e9ef",
   "docs/agent-maintenance/inbox/OBS-MAINTENANCE-SCOPE-001.json": "4b6ef1b52ecd46fc697ae8abd08a1b68c336771c35187609e88c33659b08dcc5"
 }

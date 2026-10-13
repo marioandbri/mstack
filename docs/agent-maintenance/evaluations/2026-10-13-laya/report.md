@@ -2,6 +2,8 @@
 
 Fecha: 2026-10-13. Estado: exploración terminada, sin integración. Mario autorizó usar el playground y una comparación aislada. Se ejecutaron 48 solicitudes locales, sin reintentos ni llamadas a modelos alojados. Esta muestra no demuestra una mejora frente al clasificador actual de Reflect.
 
+El [seguimiento sobre Model routing y contexto](context-report.md) agrega 13 solicitudes posteriores. Acota esta conclusión a las configuraciones probadas, sin descartar otras formulaciones o entradas de Laya.
+
 ## Resultado
 
 La clasificación amplia no es suficientemente fiable en esta muestra para dirigir la auditoría. Las preguntas binarias ofrecen una pista para preferencias y procedimientos, pero fallan en los positivos de fallos y restricciones. Recomiendo mantener el adaptador como experimento opcional y avanzar con la auditoría sin depender de Laya.

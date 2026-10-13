@@ -1,0 +1,171 @@
+{
+  "preset": {
+    "name": "Model routing preset",
+    "questions": {
+      "difficulty": {
+        "type": "score",
+        "instructions": "How hard is `request` for a language model?",
+        "criteria": [
+          "trivial: a lookup or one-liner",
+          "easy: short answer, no reasoning",
+          "moderate: several steps",
+          "hard: long multi-step reasoning or specialist knowledge"
+        ]
+      },
+      "domain": {
+        "type": "choice",
+        "instructions": "What domain does `request` belong to?",
+        "criteria": {
+          "code": "software engineering, programming, refactoring, architecture, debugging",
+          "math_or_logic": "mathematics, logic puzzles, proofs, complex calculation",
+          "writing": "creative writing, essays, emails, blog posts, copywriting",
+          "factual_lookup": "facts, definitions, trivia, history",
+          "data_analysis": "statistics, SQL, data manipulation, metrics",
+          "chitchat": "casual conversation, greetings, small talk"
+        }
+      },
+      "needs_tools": {
+        "type": "noul",
+        "instructions": "Does answering `request` require external tools, search or private data?"
+      },
+      "is_sensitive": {
+        "type": "noul",
+        "instructions": "Does `request` involve money, legal, medical or safety consequences?"
+      }
+    },
+    "state": {
+      "request": "Refactor this service to use dependency injection and add unit tests for the payment module."
+    }
+  },
+  "request": {
+    "state": {
+      "request": "Refactor this service to use dependency injection and add unit tests for the payment module."
+    },
+    "questions": {
+      "difficulty": {
+        "type": "score",
+        "instructions": "How hard is `request` for a language model?",
+        "criteria": [
+          "trivial: a lookup or one-liner",
+          "easy: short answer, no reasoning",
+          "moderate: several steps",
+          "hard: long multi-step reasoning or specialist knowledge"
+        ]
+      },
+      "domain": {
+        "type": "choice",
+        "instructions": "What domain does `request` belong to?",
+        "criteria": {
+          "code": "software engineering, programming, refactoring, architecture, debugging",
+          "math_or_logic": "mathematics, logic puzzles, proofs, complex calculation",
+          "writing": "creative writing, essays, emails, blog posts, copywriting",
+          "factual_lookup": "facts, definitions, trivia, history",
+          "data_analysis": "statistics, SQL, data manipulation, metrics",
+          "chitchat": "casual conversation, greetings, small talk"
+        }
+      },
+      "needs_tools": {
+        "type": "noul",
+        "instructions": "Does answering `request` require external tools, search or private data?"
+      },
+      "is_sensitive": {
+        "type": "noul",
+        "instructions": "Does `request` involve money, legal, medical or safety consequences?"
+      }
+    },
+    "model": null,
+    "lang": null
+  },
+  "responses": [
+    {
+      "answers": {
+        "difficulty": {
+          "action": {
+            "act_probability": 1
+          },
+          "answer_confidence": 0.7888,
+          "confidence": 0.5074,
+          "legend": {
+            "0": "trivial: a lookup or one-liner",
+            "1": "easy: short answer, no reasoning",
+            "2": "moderate: several steps",
+            "3": "hard: long multi-step reasoning or specialist knowledge"
+          },
+          "probabilities": {
+            "0": 0.0084,
+            "1": 0.0723,
+            "2": 0.7888,
+            "3": 0.1305
+          },
+          "score": 2.0414,
+          "type": "score"
+        },
+        "domain": {
+          "action": {
+            "act_probability": 1
+          },
+          "answer_confidence": 0.9778,
+          "choice": "code",
+          "confidence": 0.9268,
+          "probabilities": {
+            "chitchat": 0.0023,
+            "code": 0.9778,
+            "data_analysis": 0.0017,
+            "factual_lookup": 0.0011,
+            "math_or_logic": 0.0025,
+            "writing": 0.0146
+          },
+          "type": "choice"
+        },
+        "is_sensitive": {
+          "action": {
+            "act_probability": 1
+          },
+          "answer_confidence": 0.8805,
+          "confidence": 0.8805,
+          "noul": 0.1195,
+          "type": "noul"
+        },
+        "needs_tools": {
+          "action": {
+            "act_probability": 1
+          },
+          "answer_confidence": 0.9114,
+          "confidence": 0.9114,
+          "noul": 0.0886,
+          "type": "noul"
+        }
+      },
+      "device": "mps",
+      "latency_ms": 15689.5,
+      "model": "laya-rl-agent",
+      "routing": {
+        "detection": {
+          "diacritic_rate": 0,
+          "is_english": true,
+          "language": "en",
+          "language_undecided": false,
+          "mixed_segment": null,
+          "non_latin_fraction": 0,
+          "script": "latin",
+          "script_profile": {
+            "latin": 1
+          }
+        },
+        "model": "english",
+        "reason": "English Latin text",
+        "repo": "convaiinnovations/laya",
+        "workflow": null
+      },
+      "usage": {
+        "input_tokens": 332,
+        "output_tokens": 0,
+        "state_tokens": 22,
+        "state_tokens_dropped": 0,
+        "truncated": false,
+        "truncated_questions": []
+      }
+    }
+  ],
+  "transport": "Playground preset selected, Run button clicked once, live response captured from laya:response event. Preset request retrieved again from server to retain question and option order."
+}

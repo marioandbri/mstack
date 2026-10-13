@@ -48,6 +48,8 @@ La persistencia debe crear originales sin sobrescribir, usar escritura atómica 
 
 El [ensayo local](../evaluations/2026-10-13-laya/report.md) probó clasificación de observaciones y de fragmentos, además de preguntas binarias. La clasificación amplia falló en contenido mixto y restricciones. Dos positivos de fallos no se detectaron ni siquiera con la pregunta binaria.
 
+El [seguimiento solicitado por Mario](../evaluations/2026-10-13-laya/context-report.md) probó Model routing y seis pares con y sin contexto adicional. La entrada y formulación cambian algunas respuestas; el contexto genérico no mejoró el total en esos pares. La evidencia caracteriza estas configuraciones, no un límite general del modelo. Contexto específico y preguntas por atributo siguen siendo variantes por investigar.
+
 Recomendación: proveedor opcional y experimental, fuera del flujo activo. Preferencias y pasos operativos merecen una prueba con ejemplos nuevos. No usarlo ahora para descartar hallazgos, elegir cambios de instrucciones, certificar fallos o decidir permisos. Si no aporta una mejora medible, el sistema conserva el procedimiento actual y prescinde del adaptador.
 
 El adaptador, si se justifica, recibirá texto breve, idioma explícito y una versión de preguntas. Devolverá etiqueta o abstención, probabilidades originales, modelo, parámetros y duración. Las referencias, IDs y comparaciones numéricas las resuelve el código. La ruta seguirá funcionando con el servicio apagado. No convertir el playground en una dependencia permanente por su disponibilidad actual.
