@@ -1,5 +1,9 @@
 # Mantenimiento de agentes
 
+## Estado actual: instalado
+
+[AM-013](changes/AM-013-installation.md) registra la aceptación e instalación de AM-011. Commit activo `3b2789839c27ed90709c88758761ab59f1ebd1ff`, 30 skills y 126 destinos verificados; planificación posterior sin cambios. La evaluación acotada está completa. Los apartados siguientes conservan el historial previo a la instalación. Pendiente: terminar mantenimiento y evaluación de Reflect, y merge remoto de la entrega.
+
 ## Propuesta actual
 
 [AM-011: global revisado](changes/AM-011-editorial-result.md) contiene la versión editorial aprobada. [AM-010](changes/AM-010-global-agents.md) conserva la baseline, decisiones y destinos de las skills. Cobertura: 15 secciones revisadas; promotion=none. Comprobaciones estructurales y descubrimiento local completados; la evaluación acotada de selección y comportamiento está registrada en AM-012, con un caso inconcluso.
