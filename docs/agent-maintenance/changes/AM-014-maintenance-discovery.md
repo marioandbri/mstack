@@ -1,6 +1,8 @@
 # AM-014: mantenimiento del sistema de agentes
 
-Estado: descubrimiento y propuesta de componentes, con exploración local ejecutada. No es una spec aprobada ni una instalación. Continúa el sistema completo pedido por Mario: auditoría proactiva, captura, revisión, evaluación y promoción. Reflect coordina la revisión con el usuario. Laya es una hipótesis de apoyo al clasificador.
+Estado: descubrimiento y propuesta de componentes, con exploración local ejecutada. No es una spec aprobada ni una instalación. Continúa el sistema completo pedido por Mario: auditoría proactiva, captura, revisión, evaluación y promoción. Reflect coordina la revisión con el usuario.
+
+Actualización de alcance del 13 de octubre de 2026: Mario descartó Laya por ahora. Sus secciones de exploración y comparación, incluida la entrega 4 original, se conservan como antecedentes y quedan diferidas. No autorizan más experimentos ni un adaptador. El procedimiento actual del agente sigue siendo el proveedor de clasificación. La [auditoría inicial y las entregas vigentes](AM-014-inventory-audit.md) concretan la continuación del sistema sin Laya.
 
 ## Decisiones conservadas
 

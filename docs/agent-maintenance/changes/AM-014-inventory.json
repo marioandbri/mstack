@@ -1,0 +1,1988 @@
+{
+  "format": "AM-014 exploratory inventory, not a production contract",
+  "captured_at": "2026-10-13T18:30:12.139458+00:00",
+  "source_commit": "be50bafe98819c0e9224e408bcef58d4252854ca",
+  "installed_commit": "3b2789839c27ed90709c88758761ab59f1ebd1ff",
+  "installed_generation": "f0db7147a209470b9cc9819c6e8a13a0",
+  "global": {
+    "source_sha256": "e2ea594f4b122950d5299652a6a591d046a055ef8504f106512547e744b25b12",
+    "active_sha256": "e2ea594f4b122950d5299652a6a591d046a055ef8504f106512547e744b25b12",
+    "codex_resolved": "~/.agents/AGENTS.md"
+  },
+  "coverage": {
+    "managed_metadata": 30,
+    "managed_metadata_exposed_this_turn": 23,
+    "external_metadata_sample": 4,
+    "reference_check": "Markdown inline relative links outside fenced blocks; no anchor or runtime availability verification",
+    "behavioral_runs": 0,
+    "limits": [
+      "Not a complete external catalog inventory",
+      "Body reads record source inspection, not correct workflow execution",
+      "Absent metadata does not prove invocation unavailable",
+      "Historical files outside worktree are hashed, not copied"
+    ]
+  },
+  "managed_skills": [
+    {
+      "name": "capture-observations",
+      "owner": "original",
+      "provenance": "self",
+      "importRef": "reflect-persistence-2026-10-08",
+      "frontmatter": "name: capture-observations\ndescription: Record evidence-backed agent-work findings during the current task, such as a user correction, repeated failure, instruction conflict or reusable lesson. Use when such evidence arises or the user asks to save a finding. Do not open a reflection interview or change active instructions.",
+      "files": [
+        {
+          "path": "skills/capture-observations/SKILL.md",
+          "sha256": "b135a3dd502ae8e99a786a431c37bd79869912e14538074b1dc3c76638455db4"
+        },
+        {
+          "path": "skills/capture-observations/agents/openai.yaml",
+          "sha256": "8619a54e8c098122a7f3881394f84ca89b684366e848233a29ad18b6ec363935"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/capture-observations/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/capture-observations/SKILL.md",
+          "sha256": "b135a3dd502ae8e99a786a431c37bd79869912e14538074b1dc3c76638455db4"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/capture-observations/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/capture-observations/SKILL.md",
+          "sha256": "b135a3dd502ae8e99a786a431c37bd79869912e14538074b1dc3c76638455db4"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/capture-observations/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/capture-observations/SKILL.md",
+          "sha256": "b135a3dd502ae8e99a786a431c37bd79869912e14538074b1dc3c76638455db4"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/capture-observations/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/capture-observations/SKILL.md",
+          "sha256": "b135a3dd502ae8e99a786a431c37bd79869912e14538074b1dc3c76638455db4"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": true,
+      "execution_verified": false
+    },
+    {
+      "name": "caveman",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:17972a1bdbf5909b9dbdc435ad348f0bf45f8664",
+      "frontmatter": "name: caveman\ndescription: Use ultra-compressed wording only when the user explicitly requests caveman mode or invokes caveman. Preserve technical accuracy. Requests for concise, brief or fewer-token writing alone do not activate this mode.",
+      "files": [
+        {
+          "path": "skills/caveman/SKILL.md",
+          "sha256": "8091b0e556271ec2ac483c75676f906b8cd3c082b13f89363d4c6e836fc71253"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/caveman/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/caveman/SKILL.md",
+          "sha256": "8091b0e556271ec2ac483c75676f906b8cd3c082b13f89363d4c6e836fc71253"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/caveman/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/caveman/SKILL.md",
+          "sha256": "8091b0e556271ec2ac483c75676f906b8cd3c082b13f89363d4c6e836fc71253"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/caveman/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/caveman/SKILL.md",
+          "sha256": "8091b0e556271ec2ac483c75676f906b8cd3c082b13f89363d4c6e836fc71253"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/caveman/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/caveman/SKILL.md",
+          "sha256": "8091b0e556271ec2ac483c75676f906b8cd3c082b13f89363d4c6e836fc71253"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "chrome-devtools-axi",
+      "owner": "forked",
+      "provenance": "https://github.com/kunchenguid/chrome-devtools-axi.git",
+      "importRef": "commit:06688b18adf5c0855fca6ed4efe2dbd0ad0e2ec6",
+      "frontmatter": "name: chrome-devtools-axi\ndescription: Control and test web pages in a real Chrome browser through Chrome DevTools AXI. Use for browser interaction, UI verification, screenshots, console/network debugging and performance inspection. Skip plain HTTP retrieval and non-browser tasks. Respect an explicitly requested browser or tool.\nmetadata:\n  author: Kun Chen (kunchenguid)\n  hermes:\n    tags: [browser, chrome, automation, devtools]\n    category: automation",
+      "files": [
+        {
+          "path": "skills/chrome-devtools-axi/SKILL.md",
+          "sha256": "421e8b0950e8ed95cad20ed0bc2258536f34e51b7af663b9544f037bb6eef084"
+        },
+        {
+          "path": "skills/chrome-devtools-axi/agents/openai.yaml",
+          "sha256": "8619a54e8c098122a7f3881394f84ca89b684366e848233a29ad18b6ec363935"
+        },
+        {
+          "path": "skills/chrome-devtools-axi/references/session-isolation.md",
+          "sha256": "76377ab880bca487dc50a5d3a6c17e91d0c8afbb8e0df374b46b98e2dfad81c8"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/chrome-devtools-axi/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/chrome-devtools-axi/SKILL.md",
+          "sha256": "421e8b0950e8ed95cad20ed0bc2258536f34e51b7af663b9544f037bb6eef084"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/chrome-devtools-axi/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/chrome-devtools-axi/SKILL.md",
+          "sha256": "421e8b0950e8ed95cad20ed0bc2258536f34e51b7af663b9544f037bb6eef084"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/chrome-devtools-axi/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/chrome-devtools-axi/SKILL.md",
+          "sha256": "421e8b0950e8ed95cad20ed0bc2258536f34e51b7af663b9544f037bb6eef084"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/chrome-devtools-axi/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/chrome-devtools-axi/SKILL.md",
+          "sha256": "421e8b0950e8ed95cad20ed0bc2258536f34e51b7af663b9544f037bb6eef084"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "code-review",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:d8e341cee7980127dddda05159bedf25dc853615",
+      "frontmatter": "name: code-review\ndescription: Reviews manual fixed points or immutable Review Unit Candidates on separate Standards, Spec, and Structural Quality axes. Candidate mode binds the exact workspace, provenance, and input hashes without creating Git refs.",
+      "files": [
+        {
+          "path": "skills/code-review/SKILL.md",
+          "sha256": "e1a04f86f3394c7ed399f5818097afcfd2c82f80da7b20a44a24810f599826d0"
+        },
+        {
+          "path": "skills/code-review/SMELL-BASELINE.md",
+          "sha256": "139ed589362979d84fcce414c82ca5f483ff2ce0d06a33cc1cc97aee634300e0"
+        },
+        {
+          "path": "skills/code-review/agents/openai.yaml",
+          "sha256": "8d294050a3040f128e3cc34d309b36dca53d3fa3b2ce792976f365c7e44f2514"
+        },
+        {
+          "path": "skills/code-review/candidate-harness.ts",
+          "sha256": "c7d473b9e22a513e5beeb8b435c8d68cc6d5ab127157a4a3e1fea0dc546d23fc"
+        },
+        {
+          "path": "skills/code-review/candidate-review.schema.json",
+          "sha256": "3854fbf47eb20e0842497092c9474e3615bd012d8b431602e22a8912cbcd2a1f"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/code-review/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/code-review/SKILL.md",
+          "sha256": "e1a04f86f3394c7ed399f5818097afcfd2c82f80da7b20a44a24810f599826d0"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/code-review/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/code-review/SKILL.md",
+          "sha256": "e1a04f86f3394c7ed399f5818097afcfd2c82f80da7b20a44a24810f599826d0"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/code-review/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/code-review/SKILL.md",
+          "sha256": "e1a04f86f3394c7ed399f5818097afcfd2c82f80da7b20a44a24810f599826d0"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/code-review/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/code-review/SKILL.md",
+          "sha256": "e1a04f86f3394c7ed399f5818097afcfd2c82f80da7b20a44a24810f599826d0"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "conventions-aware-engineering",
+      "owner": "original",
+      "provenance": "self",
+      "importRef": "initial",
+      "frontmatter": "name: conventions-aware-engineering\ndescription: Loads the smallest authoritative set of project documentation for an engineering task and resolves its scope, precedence, terminology, and verification rules. Use before architecture analysis, implementation, or code review in repositories with AGENTS.md, docs/agents/documentation-map.md, docs/conventions/, CONTEXT.md, or ADRs.",
+      "files": [
+        {
+          "path": "skills/conventions-aware-engineering/GOVERNING-CONTEXT.md",
+          "sha256": "ba31a964e8a969d19aa2517eb3b40229581a8d0c63b5fd45b0bec084a6bcd60d"
+        },
+        {
+          "path": "skills/conventions-aware-engineering/SKILL.md",
+          "sha256": "4ae766caf1425f0deec2c415a0d3c330be72b8fb69cf062f1c3d8122e73fb233"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/conventions-aware-engineering/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/conventions-aware-engineering/SKILL.md",
+          "sha256": "4ae766caf1425f0deec2c415a0d3c330be72b8fb69cf062f1c3d8122e73fb233"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/conventions-aware-engineering/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/conventions-aware-engineering/SKILL.md",
+          "sha256": "4ae766caf1425f0deec2c415a0d3c330be72b8fb69cf062f1c3d8122e73fb233"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/conventions-aware-engineering/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/conventions-aware-engineering/SKILL.md",
+          "sha256": "4ae766caf1425f0deec2c415a0d3c330be72b8fb69cf062f1c3d8122e73fb233"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/conventions-aware-engineering/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/conventions-aware-engineering/SKILL.md",
+          "sha256": "4ae766caf1425f0deec2c415a0d3c330be72b8fb69cf062f1c3d8122e73fb233"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": true,
+      "execution_verified": false
+    },
+    {
+      "name": "diagnose",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:43d464d0e9d1049b9d525975c0f7367ab7e01a5f",
+      "frontmatter": "name: diagnose\ndescription: Diagnose reported bugs, errors, broken behavior and performance regressions. Build a faithful reproduction, identify the cause and verify a durable regression test before claiming a fix. Applies to simple and hard bugs; skip feature-only implementation and explanations without a reported failure.",
+      "files": [
+        {
+          "path": "skills/diagnose/SKILL.md",
+          "sha256": "d87a9f4423ff3e5736439cf987966805169ca73b1e62a58f0aad8e077ea65ad6"
+        },
+        {
+          "path": "skills/diagnose/references/environment-diagnostics.md",
+          "sha256": "9788ca45dd8c9be5d0c0a45feb030a610b6a2bf0d90e528d66602ad6297d0ac5"
+        },
+        {
+          "path": "skills/diagnose/scripts/hitl-loop.template.sh",
+          "sha256": "b2932630950e5210075bcd6f850e5accf30c101c5367b29eac3a29b4dd8084c8"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/diagnose/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/diagnose/SKILL.md",
+          "sha256": "d87a9f4423ff3e5736439cf987966805169ca73b1e62a58f0aad8e077ea65ad6"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/diagnose/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/diagnose/SKILL.md",
+          "sha256": "d87a9f4423ff3e5736439cf987966805169ca73b1e62a58f0aad8e077ea65ad6"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/diagnose/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/diagnose/SKILL.md",
+          "sha256": "d87a9f4423ff3e5736439cf987966805169ca73b1e62a58f0aad8e077ea65ad6"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/diagnose/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/diagnose/SKILL.md",
+          "sha256": "d87a9f4423ff3e5736439cf987966805169ca73b1e62a58f0aad8e077ea65ad6"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "gh-axi",
+      "owner": "forked",
+      "provenance": "https://github.com/kunchenguid/gh-axi.git",
+      "importRef": "folder:d09c2cc3a1cb24accef7df561555e8f54fde0c9d",
+      "frontmatter": "name: gh-axi\ndescription: \"Operate GitHub through the gh-axi CLI - issues, pull requests, workflow runs, workflows, releases, repositories, labels, search, and raw API access. Use whenever a task touches GitHub: listing or filing issues, reviewing or merging PRs, checking CI runs, cutting releases, or querying the GitHub API.\"\nuser-invocable: false\nauthor: Kun Chen (kunchenguid)\nmetadata:\n  hermes:\n    tags: [github, git, ci, pull-requests, releases]\n    category: devops",
+      "files": [
+        {
+          "path": "skills/gh-axi/SKILL.md",
+          "sha256": "51e8800cb70241a15545882c3850956355c66e56a07f423ee0a738a2eb342477"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/gh-axi/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/gh-axi/SKILL.md",
+          "sha256": "51e8800cb70241a15545882c3850956355c66e56a07f423ee0a738a2eb342477"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/gh-axi/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/gh-axi/SKILL.md",
+          "sha256": "51e8800cb70241a15545882c3850956355c66e56a07f423ee0a738a2eb342477"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/gh-axi/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/gh-axi/SKILL.md",
+          "sha256": "51e8800cb70241a15545882c3850956355c66e56a07f423ee0a738a2eb342477"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/gh-axi/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/gh-axi/SKILL.md",
+          "sha256": "51e8800cb70241a15545882c3850956355c66e56a07f423ee0a738a2eb342477"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": true,
+      "execution_verified": false
+    },
+    {
+      "name": "grill-me",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:2a1ad17028306ebe45f0e49703fa28b9b2e7f499",
+      "frontmatter": "name: grill-me\ndescription: Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions \"grill me\".",
+      "files": [
+        {
+          "path": "skills/grill-me/SKILL.md",
+          "sha256": "74147eb6010a65957efef2b9e0f0b3ff935c1def7fc117697151b1d0f3610556"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/grill-me/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/grill-me/SKILL.md",
+          "sha256": "74147eb6010a65957efef2b9e0f0b3ff935c1def7fc117697151b1d0f3610556"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/grill-me/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/grill-me/SKILL.md",
+          "sha256": "74147eb6010a65957efef2b9e0f0b3ff935c1def7fc117697151b1d0f3610556"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/grill-me/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/grill-me/SKILL.md",
+          "sha256": "74147eb6010a65957efef2b9e0f0b3ff935c1def7fc117697151b1d0f3610556"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/grill-me/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/grill-me/SKILL.md",
+          "sha256": "74147eb6010a65957efef2b9e0f0b3ff935c1def7fc117697151b1d0f3610556"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": true,
+      "execution_verified": false
+    },
+    {
+      "name": "grill-with-docs",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:2969a1224c70fe41b9dd2ddbe32c2ec62f2815bd",
+      "frontmatter": "name: grill-with-docs\ndescription: Use before turning a non-trivial implementation request into a spec or tickets when domain terms, scope, boundaries, or acceptance criteria remain unresolved. Also use when user explicitly wants to stress-test a plan against project docs. Skip clear small edits and approved specs or tickets.",
+      "files": [
+        {
+          "path": "skills/grill-with-docs/ADR-FORMAT.md",
+          "sha256": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2"
+        },
+        {
+          "path": "skills/grill-with-docs/CONTEXT-FORMAT.md",
+          "sha256": "8f6baaa3b1c91644bd7c600196b1aee781d5f525c7c345db8cdfbfb368329a05"
+        },
+        {
+          "path": "skills/grill-with-docs/SKILL.md",
+          "sha256": "a69f258f4f8f375049d3dbfa7ba4a39b0a92baf5ca02f58140f333397a990d64"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/grill-with-docs/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/grill-with-docs/SKILL.md",
+          "sha256": "a69f258f4f8f375049d3dbfa7ba4a39b0a92baf5ca02f58140f333397a990d64"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/grill-with-docs/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/grill-with-docs/SKILL.md",
+          "sha256": "a69f258f4f8f375049d3dbfa7ba4a39b0a92baf5ca02f58140f333397a990d64"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/grill-with-docs/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/grill-with-docs/SKILL.md",
+          "sha256": "a69f258f4f8f375049d3dbfa7ba4a39b0a92baf5ca02f58140f333397a990d64"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/grill-with-docs/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/grill-with-docs/SKILL.md",
+          "sha256": "a69f258f4f8f375049d3dbfa7ba4a39b0a92baf5ca02f58140f333397a990d64"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": true,
+      "execution_verified": false
+    },
+    {
+      "name": "handoff",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:7bbb60d64c911617cee7f71b2ba9e24364faa14e",
+      "frontmatter": "name: handoff\ndescription: Compact the current conversation into a handoff document for another agent to pick up.\nargument-hint: \"What will the next session be used for?\"",
+      "files": [
+        {
+          "path": "skills/handoff/SKILL.md",
+          "sha256": "7d171aeeb67754fa4c6eed4fafb701f076f401610893e683c047d863c8e84656"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/handoff/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/handoff/SKILL.md",
+          "sha256": "7d171aeeb67754fa4c6eed4fafb701f076f401610893e683c047d863c8e84656"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/handoff/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/handoff/SKILL.md",
+          "sha256": "7d171aeeb67754fa4c6eed4fafb701f076f401610893e683c047d863c8e84656"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/handoff/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/handoff/SKILL.md",
+          "sha256": "7d171aeeb67754fa4c6eed4fafb701f076f401610893e683c047d863c8e84656"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/handoff/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/handoff/SKILL.md",
+          "sha256": "7d171aeeb67754fa4c6eed4fafb701f076f401610893e683c047d863c8e84656"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "implement",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:f07d230f645fc9ac390cf13a450bbff12ad791a3",
+      "frontmatter": "name: implement\ndescription: Execute an approved spec or set of tickets within its agreed scope and acceptance, reusing recorded decisions and returning verification evidence. Use for artifact-based implementation, not discovery or artifact authoring.\ndisable-model-invocation: true",
+      "files": [
+        {
+          "path": "skills/implement/SKILL.md",
+          "sha256": "b349a422464b240585d92e5e0e9e204695bb20398c1517c45ec6264b5b232057"
+        },
+        {
+          "path": "skills/implement/agents/openai.yaml",
+          "sha256": "8970a8596ade0c28ab427f41a4ea242d6bdf6186c59ebf55e1238dbecaab79dc"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/implement/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/implement/SKILL.md",
+          "sha256": "b349a422464b240585d92e5e0e9e204695bb20398c1517c45ec6264b5b232057"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/implement/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/implement/SKILL.md",
+          "sha256": "b349a422464b240585d92e5e0e9e204695bb20398c1517c45ec6264b5b232057"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/implement/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/implement/SKILL.md",
+          "sha256": "b349a422464b240585d92e5e0e9e204695bb20398c1517c45ec6264b5b232057"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/implement/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/implement/SKILL.md",
+          "sha256": "b349a422464b240585d92e5e0e9e204695bb20398c1517c45ec6264b5b232057"
+        }
+      ],
+      "session_metadata_exposed": false,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:3ad8fa787b3b9b622d1f5a3d0afc27812ac782fa",
+      "frontmatter": "name: improve-codebase-architecture\ndescription: Finds deepening opportunities using routed project conventions, canonical domain language, and applicable ADRs. Use when improving architecture, consolidating tightly coupled modules, or making a codebase more testable and easier to navigate.",
+      "files": [
+        {
+          "path": "skills/improve-codebase-architecture/DEEPENING.md",
+          "sha256": "645887d24bf8e9d73f5ceac57ff4955efcab88e13ca4dadc1325ff9db256cbdc"
+        },
+        {
+          "path": "skills/improve-codebase-architecture/INTERFACE-DESIGN.md",
+          "sha256": "bde4bc339db415089b87579f35c4abab99b876e5cefed01aa3fed2b24c9eeb12"
+        },
+        {
+          "path": "skills/improve-codebase-architecture/LANGUAGE.md",
+          "sha256": "1c51f6c7443ba27cb08a7f3371ef40ecfe2ec2083e057f97842ce1b2754297d9"
+        },
+        {
+          "path": "skills/improve-codebase-architecture/SKILL.md",
+          "sha256": "7f74ad51fd6cabbe6531c17a8e6b6ac5b0999acadce36d855eb63ec958e94a00"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/improve-codebase-architecture/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/improve-codebase-architecture/SKILL.md",
+          "sha256": "7f74ad51fd6cabbe6531c17a8e6b6ac5b0999acadce36d855eb63ec958e94a00"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/improve-codebase-architecture/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/improve-codebase-architecture/SKILL.md",
+          "sha256": "7f74ad51fd6cabbe6531c17a8e6b6ac5b0999acadce36d855eb63ec958e94a00"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/improve-codebase-architecture/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/improve-codebase-architecture/SKILL.md",
+          "sha256": "7f74ad51fd6cabbe6531c17a8e6b6ac5b0999acadce36d855eb63ec958e94a00"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/improve-codebase-architecture/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/improve-codebase-architecture/SKILL.md",
+          "sha256": "7f74ad51fd6cabbe6531c17a8e6b6ac5b0999acadce36d855eb63ec958e94a00"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "lavish",
+      "owner": "forked",
+      "provenance": "https://github.com/kunchenguid/lavish-axi.git",
+      "importRef": "folder:a941a09d44e77022a7e6f3842f7d2d95ccf71fbc",
+      "frontmatter": "name: lavish\ndescription: Create polished interactive HTML artifacts for annotation and feedback using Lavish when the user explicitly requests or accepts a hi-fi visual review. Do not activate from a plan, report, comparison or table request alone; skip low-fi visual exploration.\ndisable-model-invocation: true\nmetadata:\n  hermes:\n    tags: [html, review, artifacts, visualization]\n    category: productivity",
+      "files": [
+        {
+          "path": "skills/lavish/SKILL.md",
+          "sha256": "e08da2291d8da30c91648e0ad4cef9b6c3fc3efdb3030eaf1f65cdc404e8b449"
+        },
+        {
+          "path": "skills/lavish/agents/openai.yaml",
+          "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+        },
+        {
+          "path": "skills/lavish/references/codex-feedback-loop.md",
+          "sha256": "b0c501a2c042b3a51ea03520df3e1e7a7e660601fc7f83039d1aa6db5d400148"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/lavish/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/lavish/SKILL.md",
+          "sha256": "e08da2291d8da30c91648e0ad4cef9b6c3fc3efdb3030eaf1f65cdc404e8b449"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/lavish/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/lavish/SKILL.md",
+          "sha256": "e08da2291d8da30c91648e0ad4cef9b6c3fc3efdb3030eaf1f65cdc404e8b449"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/lavish/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/lavish/SKILL.md",
+          "sha256": "e08da2291d8da30c91648e0ad4cef9b6c3fc3efdb3030eaf1f65cdc404e8b449"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/lavish/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/lavish/SKILL.md",
+          "sha256": "e08da2291d8da30c91648e0ad4cef9b6c3fc3efdb3030eaf1f65cdc404e8b449"
+        }
+      ],
+      "session_metadata_exposed": false,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "local-env",
+      "owner": "original",
+      "provenance": "self",
+      "importRef": "initial",
+      "frontmatter": "name: local-env\ndescription: Prepares, starts, verifies, reuses, and closes isolated local environments using Portless for application HTTP and existing Docker SQL servers for existing or disposable databases. Use when running an application, integration/E2E tests, preparing a test database, or diagnosing local services. Do not use for tasks that need no running services.",
+      "files": [
+        {
+          "path": "skills/local-env/SKILL.md",
+          "sha256": "46c270d4a3f69323bed9aac1c664ab05e34989b2dca372a11a4112170cf4018f"
+        },
+        {
+          "path": "skills/local-env/references/operations.md",
+          "sha256": "35566b7df14072f784501ce9b41dc60b7994a9872e80a468c332b9525b91cf2f"
+        },
+        {
+          "path": "skills/local-env/references/state.md",
+          "sha256": "59dcf4639932efc313f50ec951c8893c5e7d14f6aa72b1ed292666cc55963375"
+        },
+        {
+          "path": "skills/local-env/scripts/state.mjs",
+          "sha256": "75e5fb7fa7fa55468ad86c48cdfb92931258854c9b7c2ba888af72a761d6ad96"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/local-env/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/local-env/SKILL.md",
+          "sha256": "46c270d4a3f69323bed9aac1c664ab05e34989b2dca372a11a4112170cf4018f"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/local-env/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/local-env/SKILL.md",
+          "sha256": "46c270d4a3f69323bed9aac1c664ab05e34989b2dca372a11a4112170cf4018f"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/local-env/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/local-env/SKILL.md",
+          "sha256": "46c270d4a3f69323bed9aac1c664ab05e34989b2dca372a11a4112170cf4018f"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/local-env/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/local-env/SKILL.md",
+          "sha256": "46c270d4a3f69323bed9aac1c664ab05e34989b2dca372a11a4112170cf4018f"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "mobile-next-android-testing",
+      "owner": "original",
+      "provenance": "self",
+      "importRef": "initial",
+      "frontmatter": "name: mobile-next-android-testing\ndescription: Tests and diagnoses Android apps on connected physical devices or emulators through Mobile Next mobile-mcp tools, with ADB fallback, accessibility-first interaction, screenshots, recordings, and crash evidence. Use when a user asks to test, reproduce, inspect, automate, or debug an Android or mobile app on a device, or mentions ADB, Mobile Next, mobile-mcp, APKs, Android emulators, or a connected phone.",
+      "files": [
+        {
+          "path": "skills/mobile-next-android-testing/SKILL.md",
+          "sha256": "6c30eb730a2f4b6d69f0ceb574ed4fd9235a69a1da58f7123d50d0195ffa129e"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/mobile-next-android-testing/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/mobile-next-android-testing/SKILL.md",
+          "sha256": "6c30eb730a2f4b6d69f0ceb574ed4fd9235a69a1da58f7123d50d0195ffa129e"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/mobile-next-android-testing/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/mobile-next-android-testing/SKILL.md",
+          "sha256": "6c30eb730a2f4b6d69f0ceb574ed4fd9235a69a1da58f7123d50d0195ffa129e"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/mobile-next-android-testing/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/mobile-next-android-testing/SKILL.md",
+          "sha256": "6c30eb730a2f4b6d69f0ceb574ed4fd9235a69a1da58f7123d50d0195ffa129e"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/mobile-next-android-testing/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/mobile-next-android-testing/SKILL.md",
+          "sha256": "6c30eb730a2f4b6d69f0ceb574ed4fd9235a69a1da58f7123d50d0195ffa129e"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "receiving-code-review",
+      "owner": "forked",
+      "provenance": "https://github.com/obra/superpowers.git",
+      "importRef": "commit:7e516434f2a30114300efc9247db32fb37daa5f9",
+      "frontmatter": "name: receiving-code-review\ndescription: Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
+      "files": [
+        {
+          "path": "skills/receiving-code-review/SKILL.md",
+          "sha256": "c9382e92b8f32363566068ecfed19d3b2651eaf40d3942b24840f839dedfc406"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/receiving-code-review/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/receiving-code-review/SKILL.md",
+          "sha256": "c9382e92b8f32363566068ecfed19d3b2651eaf40d3942b24840f839dedfc406"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/receiving-code-review/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/receiving-code-review/SKILL.md",
+          "sha256": "c9382e92b8f32363566068ecfed19d3b2651eaf40d3942b24840f839dedfc406"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/receiving-code-review/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/receiving-code-review/SKILL.md",
+          "sha256": "c9382e92b8f32363566068ecfed19d3b2651eaf40d3942b24840f839dedfc406"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/receiving-code-review/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/receiving-code-review/SKILL.md",
+          "sha256": "c9382e92b8f32363566068ecfed19d3b2651eaf40d3942b24840f839dedfc406"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "reflect",
+      "owner": "original",
+      "provenance": "self",
+      "importRef": "reflect-persistence-2026-10-08",
+      "frontmatter": "name: reflect\ndescription: Review recorded observations, session lessons or agent instructions when the user explicitly requests reflection or review. Coordinate retrieval, specialist questions, evaluation and agreed proposals. Do not activate merely because an observation arises during work.\ndisable-model-invocation: true",
+      "files": [
+        {
+          "path": "skills/reflect/SKILL.md",
+          "sha256": "347d4384db6311d41caa774c7cf4298cbea4bb56a75364793d26d98144af3b64"
+        },
+        {
+          "path": "skills/reflect/agents/openai.yaml",
+          "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+        },
+        {
+          "path": "skills/reflect/observation.schema.json",
+          "sha256": "7f460dfaadc5edf9ffe72a5a0f5d8ad2c0b8dae72857b6fa6e0c42b61d662939"
+        },
+        {
+          "path": "skills/reflect/references/classification.md",
+          "sha256": "4b99ca632e2bc3e49104505cc8bc1c6ad6214592c740a6f2b1b085464722152a"
+        },
+        {
+          "path": "skills/reflect/references/failure-evaluation.md",
+          "sha256": "23b8833bc364228ba97f82142e7626e2dbf9e0598b4e42fd00fa8235224802e2"
+        },
+        {
+          "path": "skills/reflect/references/instruction-review.md",
+          "sha256": "92431f757b9ffeeafdfef7c7750ca5f8566e889e2df17c91b5af71834d2ba5fe"
+        },
+        {
+          "path": "skills/reflect/references/questionnaire.md",
+          "sha256": "560d2f1cd994f7ef9206849637fad74192dcdc0a490686b981a4788a590bbb4f"
+        },
+        {
+          "path": "skills/reflect/references/records.md",
+          "sha256": "90f1b5046eab07db752ed79531f8743f026ea56cf099a042d23d563c4a60d2e8"
+        },
+        {
+          "path": "skills/reflect/references/research.md",
+          "sha256": "a99a5d16bb41d5e530c82c96db880689b41175e0f84df3376f75f6aea8e5341c"
+        },
+        {
+          "path": "skills/reflect/references/skill-support.md",
+          "sha256": "4f3ddfb10c25f0b2b23a8ff90a93c3db260531cbac6a20d893bd04eb8dfa9771"
+        },
+        {
+          "path": "skills/reflect/review.schema.json",
+          "sha256": "118135502472d5bfa2b42746ef37e8e34b065d2afceaea11dc8c7a0230f9c900"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/reflect/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/reflect/SKILL.md",
+          "sha256": "347d4384db6311d41caa774c7cf4298cbea4bb56a75364793d26d98144af3b64"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/reflect/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/reflect/SKILL.md",
+          "sha256": "347d4384db6311d41caa774c7cf4298cbea4bb56a75364793d26d98144af3b64"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/reflect/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/reflect/SKILL.md",
+          "sha256": "347d4384db6311d41caa774c7cf4298cbea4bb56a75364793d26d98144af3b64"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/reflect/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/reflect/SKILL.md",
+          "sha256": "347d4384db6311d41caa774c7cf4298cbea4bb56a75364793d26d98144af3b64"
+        }
+      ],
+      "session_metadata_exposed": false,
+      "entrypoint_read_this_turn": true,
+      "execution_verified": false
+    },
+    {
+      "name": "repository-workflow",
+      "owner": "original",
+      "provenance": "self",
+      "importRef": "agent-maintenance-2026-10-09",
+      "frontmatter": "name: repository-workflow\ndescription: Coordinate authorized changes in a Git repository through an owned worktree, configured environment, commits, verification evidence, PR preparation and post-merge cleanup. Use for repository implementation and resuming its delivery. Skip read-only reviews, explanation-only requests and non-Git work.",
+      "files": [
+        {
+          "path": "skills/repository-workflow/SKILL.md",
+          "sha256": "9f0a9e82173166ff578a270e4994f53998b69610e103e2d4602f2cf50925659b"
+        },
+        {
+          "path": "skills/repository-workflow/agents/openai.yaml",
+          "sha256": "8619a54e8c098122a7f3881394f84ca89b684366e848233a29ad18b6ec363935"
+        },
+        {
+          "path": "skills/repository-workflow/references/worktree-lifecycle.md",
+          "sha256": "5751505843ffc2892bec8bddb87bc1037d4564e8519b0091c115af749c8e5fd9"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/repository-workflow/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/repository-workflow/SKILL.md",
+          "sha256": "9f0a9e82173166ff578a270e4994f53998b69610e103e2d4602f2cf50925659b"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/repository-workflow/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/repository-workflow/SKILL.md",
+          "sha256": "9f0a9e82173166ff578a270e4994f53998b69610e103e2d4602f2cf50925659b"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/repository-workflow/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/repository-workflow/SKILL.md",
+          "sha256": "9f0a9e82173166ff578a270e4994f53998b69610e103e2d4602f2cf50925659b"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/repository-workflow/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/repository-workflow/SKILL.md",
+          "sha256": "9f0a9e82173166ff578a270e4994f53998b69610e103e2d4602f2cf50925659b"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": true,
+      "execution_verified": false
+    },
+    {
+      "name": "setup-conventions-aware-engineering",
+      "owner": "original",
+      "provenance": "self",
+      "importRef": "initial",
+      "frontmatter": "name: setup-conventions-aware-engineering\ndescription: Guided setup for documentation routing, conventions, domain context, design, architecture, tracker guidance, and agent entry points. Adapts its proposal to greenfield and brownfield repositories.\ndisable-model-invocation: true",
+      "files": [
+        {
+          "path": "skills/setup-conventions-aware-engineering/DOCUMENT-LAYOUT.md",
+          "sha256": "1542d6b439ea4431c75f0626bd21475cc92d4bf8df212431efb05434489ca433"
+        },
+        {
+          "path": "skills/setup-conventions-aware-engineering/DOCUMENTATION-MAP-TEMPLATE.md",
+          "sha256": "91b4d14dac60c6da09d2d321c97b88b05e349e1b92521469f22ea08a147304ba"
+        },
+        {
+          "path": "skills/setup-conventions-aware-engineering/REPOSITORY-POSTURE-AND-STACK.md",
+          "sha256": "4c70294414a2b419b1a1473df029c2dbf8a96878c561a7e80a8cf9eb859f2da1"
+        },
+        {
+          "path": "skills/setup-conventions-aware-engineering/SKILL.md",
+          "sha256": "e7e0697a48cb337df268ab2e4b2afce28a8be6d0f612b0037935b3fc4b7918e1"
+        },
+        {
+          "path": "skills/setup-conventions-aware-engineering/TRACKER-AND-DOMAIN.md",
+          "sha256": "e0b4f8f18150401faac9428da57ae5e927a598b0f5b2767a1064ae6589628cd4"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/setup-conventions-aware-engineering/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/setup-conventions-aware-engineering/SKILL.md",
+          "sha256": "e7e0697a48cb337df268ab2e4b2afce28a8be6d0f612b0037935b3fc4b7918e1"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/setup-conventions-aware-engineering/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/setup-conventions-aware-engineering/SKILL.md",
+          "sha256": "e7e0697a48cb337df268ab2e4b2afce28a8be6d0f612b0037935b3fc4b7918e1"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/setup-conventions-aware-engineering/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/setup-conventions-aware-engineering/SKILL.md",
+          "sha256": "e7e0697a48cb337df268ab2e4b2afce28a8be6d0f612b0037935b3fc4b7918e1"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/setup-conventions-aware-engineering/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/setup-conventions-aware-engineering/SKILL.md",
+          "sha256": "e7e0697a48cb337df268ab2e4b2afce28a8be6d0f612b0037935b3fc4b7918e1"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "tdd",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:0a727bd358b855cbcc1c35cfff21ef31f9ffb8de",
+      "frontmatter": "name: tdd\ndescription: Implement features with behavior-first tests and a verified functional smoke, including when the user does not mention TDD. Also use for requested test-first bug fixes and integration tests. Skip explanation-only, read-only review and changes without runtime behavior.",
+      "files": [
+        {
+          "path": "skills/tdd/SKILL.md",
+          "sha256": "f993e6ac48c9ecb304db5e922992b80f1f21391af01a7e050a07fb09b39c2121"
+        },
+        {
+          "path": "skills/tdd/agents/openai.yaml",
+          "sha256": "ea6f01cf1b8c06a4b0f5b649d74b1b8ce8685e72af1b38d70d877693e092af0b"
+        },
+        {
+          "path": "skills/tdd/mocking.md",
+          "sha256": "3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef"
+        },
+        {
+          "path": "skills/tdd/tests.md",
+          "sha256": "859f9e592c188fda4fc7277dd180e4ce9c7a2e13f6efe1f6f29eccc9d28c106a"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/tdd/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/tdd/SKILL.md",
+          "sha256": "f993e6ac48c9ecb304db5e922992b80f1f21391af01a7e050a07fb09b39c2121"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/tdd/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/tdd/SKILL.md",
+          "sha256": "f993e6ac48c9ecb304db5e922992b80f1f21391af01a7e050a07fb09b39c2121"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/tdd/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/tdd/SKILL.md",
+          "sha256": "f993e6ac48c9ecb304db5e922992b80f1f21391af01a7e050a07fb09b39c2121"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/tdd/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/tdd/SKILL.md",
+          "sha256": "f993e6ac48c9ecb304db5e922992b80f1f21391af01a7e050a07fb09b39c2121"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "thermo-nuclear-code-quality-review",
+      "owner": "forked",
+      "provenance": "cursor-public/cursor-team-kit",
+      "importRef": "commit:51a96e0dd838404da19ba83dc70aa21eef71f868",
+      "frontmatter": "name: thermo-nuclear-code-quality-review\ndescription: Runs an explicit, unusually strict structural-quality review constrained by routed project conventions and ADRs. Use for thermo-nuclear review, deep maintainability audit, abstraction quality, giant files, or spaghetti-condition growth.\ndisable-model-invocation: true",
+      "files": [
+        {
+          "path": "skills/thermo-nuclear-code-quality-review/SKILL.md",
+          "sha256": "e45dcfc34ed5c85aff6b5de4962759aeb9344c46ca0417bdf9d38816eeec5883"
+        },
+        {
+          "path": "skills/thermo-nuclear-code-quality-review/thermo-nuclear-code-quality-reviewer.md",
+          "sha256": "dc137df6da286a2ab086a743db60479fe4b8df26618891133d4c313e9565601f"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/thermo-nuclear-code-quality-review/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/thermo-nuclear-code-quality-review/SKILL.md",
+          "sha256": "e45dcfc34ed5c85aff6b5de4962759aeb9344c46ca0417bdf9d38816eeec5883"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/thermo-nuclear-code-quality-review/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/thermo-nuclear-code-quality-review/SKILL.md",
+          "sha256": "e45dcfc34ed5c85aff6b5de4962759aeb9344c46ca0417bdf9d38816eeec5883"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/thermo-nuclear-code-quality-review/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/thermo-nuclear-code-quality-review/SKILL.md",
+          "sha256": "e45dcfc34ed5c85aff6b5de4962759aeb9344c46ca0417bdf9d38816eeec5883"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/thermo-nuclear-code-quality-review/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/thermo-nuclear-code-quality-review/SKILL.md",
+          "sha256": "e45dcfc34ed5c85aff6b5de4962759aeb9344c46ca0417bdf9d38816eeec5883"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "to-spec",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:bf698b96b5d8798d110d9872e32b9310728555b0",
+      "frontmatter": "name: to-spec\ndescription: Turn the current conversation into a reviewable spec — no interview, just synthesis of what you've already discussed.\ndisable-model-invocation: true",
+      "files": [
+        {
+          "path": "skills/to-spec/SKILL.md",
+          "sha256": "9f822dfca9fdf93ed4a9b7ace9816dc396fc734a19712ee1173b403758752765"
+        },
+        {
+          "path": "skills/to-spec/agents/openai.yaml",
+          "sha256": "1c5b4d1e3d8e52287ef19cc2742fdbbfae1914ac75d33af3e4c8174f08cc55bb"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/to-spec/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/to-spec/SKILL.md",
+          "sha256": "9f822dfca9fdf93ed4a9b7ace9816dc396fc734a19712ee1173b403758752765"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/to-spec/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/to-spec/SKILL.md",
+          "sha256": "9f822dfca9fdf93ed4a9b7ace9816dc396fc734a19712ee1173b403758752765"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/to-spec/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/to-spec/SKILL.md",
+          "sha256": "9f822dfca9fdf93ed4a9b7ace9816dc396fc734a19712ee1173b403758752765"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/to-spec/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/to-spec/SKILL.md",
+          "sha256": "9f822dfca9fdf93ed4a9b7ace9816dc396fc734a19712ee1173b403758752765"
+        }
+      ],
+      "session_metadata_exposed": false,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "to-tickets",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:80c1bedbdaa72a4abd524055013accb4fe0ea8c4",
+      "frontmatter": "name: to-tickets\ndescription: Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the configured tracker — edges as text in one file per ticket locally, or native blocking links on a real tracker.\ndisable-model-invocation: true",
+      "files": [
+        {
+          "path": "skills/to-tickets/SKILL.md",
+          "sha256": "51f7254bcd4de6c8f782eeae4a6fcfcae6929827e0f5de5716179a5fc53b04bf"
+        },
+        {
+          "path": "skills/to-tickets/agents/openai.yaml",
+          "sha256": "21bc6215fffcd7614e9f772bb1760e87cc5fc7dcc707e7d282bc9414267a6090"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/to-tickets/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/to-tickets/SKILL.md",
+          "sha256": "51f7254bcd4de6c8f782eeae4a6fcfcae6929827e0f5de5716179a5fc53b04bf"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/to-tickets/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/to-tickets/SKILL.md",
+          "sha256": "51f7254bcd4de6c8f782eeae4a6fcfcae6929827e0f5de5716179a5fc53b04bf"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/to-tickets/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/to-tickets/SKILL.md",
+          "sha256": "51f7254bcd4de6c8f782eeae4a6fcfcae6929827e0f5de5716179a5fc53b04bf"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/to-tickets/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/to-tickets/SKILL.md",
+          "sha256": "51f7254bcd4de6c8f782eeae4a6fcfcae6929827e0f5de5716179a5fc53b04bf"
+        }
+      ],
+      "session_metadata_exposed": false,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "triage",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:de4f182c30876a2460ca307e2f601b9b892527e5",
+      "frontmatter": "name: triage\ndescription: Triage issues through a state machine driven by triage roles. Use when user wants to create an issue, triage issues, review incoming bugs or feature requests, prepare issues for an AFK agent, or manage issue workflow.",
+      "files": [
+        {
+          "path": "skills/triage/AGENT-BRIEF.md",
+          "sha256": "1c71c747aa97d938f75ec7a4b8fe87451763b38a3ce6348acf2b222e5819b2e5"
+        },
+        {
+          "path": "skills/triage/OUT-OF-SCOPE.md",
+          "sha256": "8ed8cf27833444060c81b3961a83c0e3d8e6cf2fcb2ddf6f8b07c6655cbb0d85"
+        },
+        {
+          "path": "skills/triage/SKILL.md",
+          "sha256": "4e6315630449aa6147bbf0f5f4d7c23fb1236bcc9e9a247dd97e1e8d59be1b58"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/triage/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/triage/SKILL.md",
+          "sha256": "4e6315630449aa6147bbf0f5f4d7c23fb1236bcc9e9a247dd97e1e8d59be1b58"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/triage/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/triage/SKILL.md",
+          "sha256": "4e6315630449aa6147bbf0f5f4d7c23fb1236bcc9e9a247dd97e1e8d59be1b58"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/triage/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/triage/SKILL.md",
+          "sha256": "4e6315630449aa6147bbf0f5f4d7c23fb1236bcc9e9a247dd97e1e8d59be1b58"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/triage/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/triage/SKILL.md",
+          "sha256": "4e6315630449aa6147bbf0f5f4d7c23fb1236bcc9e9a247dd97e1e8d59be1b58"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "unslop",
+      "owner": "forked",
+      "provenance": "https://github.com/cursor/plugins.git",
+      "importRef": "folder:6161508c5c7959b156ff0e4e10b510863b51f9cc",
+      "frontmatter": "name: unslop\ndescription: Cut AI tells from any writing. Must always apply.",
+      "files": [
+        {
+          "path": "skills/unslop/SKILL.md",
+          "sha256": "7036e79cbfdd41ad01b978ecf27941a6a3e3007854dc2d8badc05697c6b23686"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/unslop/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/unslop/SKILL.md",
+          "sha256": "7036e79cbfdd41ad01b978ecf27941a6a3e3007854dc2d8badc05697c6b23686"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/unslop/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/unslop/SKILL.md",
+          "sha256": "7036e79cbfdd41ad01b978ecf27941a6a3e3007854dc2d8badc05697c6b23686"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/unslop/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/unslop/SKILL.md",
+          "sha256": "7036e79cbfdd41ad01b978ecf27941a6a3e3007854dc2d8badc05697c6b23686"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/unslop/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/unslop/SKILL.md",
+          "sha256": "7036e79cbfdd41ad01b978ecf27941a6a3e3007854dc2d8badc05697c6b23686"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": true,
+      "execution_verified": false
+    },
+    {
+      "name": "verification-before-completion",
+      "owner": "forked",
+      "provenance": "https://github.com/obra/superpowers.git",
+      "importRef": "commit:7e516434f2a30114300efc9247db32fb37daa5f9",
+      "frontmatter": "name: verification-before-completion\ndescription: Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
+      "files": [
+        {
+          "path": "skills/verification-before-completion/SKILL.md",
+          "sha256": "ea52d15aabaf72bc6b558efe2c126f161b53961090ddcd712000273bfe8c7b6c"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/verification-before-completion/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/verification-before-completion/SKILL.md",
+          "sha256": "ea52d15aabaf72bc6b558efe2c126f161b53961090ddcd712000273bfe8c7b6c"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/verification-before-completion/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/verification-before-completion/SKILL.md",
+          "sha256": "ea52d15aabaf72bc6b558efe2c126f161b53961090ddcd712000273bfe8c7b6c"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/verification-before-completion/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/verification-before-completion/SKILL.md",
+          "sha256": "ea52d15aabaf72bc6b558efe2c126f161b53961090ddcd712000273bfe8c7b6c"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/verification-before-completion/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/verification-before-completion/SKILL.md",
+          "sha256": "ea52d15aabaf72bc6b558efe2c126f161b53961090ddcd712000273bfe8c7b6c"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": true,
+      "execution_verified": false
+    },
+    {
+      "name": "visual-companion",
+      "owner": "original",
+      "provenance": "self",
+      "importRef": "initial",
+      "frontmatter": "name: visual-companion\ndescription: Creates low-fidelity wireframes, diagrams, and structural visual comparisons for an explicitly requested visual exploration. Manual-only; use when user asks for a rough visual aid, wireframe, flow, or layout choice rather than a polished review surface.\ndisable-model-invocation: true",
+      "files": [
+        {
+          "path": "skills/visual-companion/SKILL.md",
+          "sha256": "2d3a57afe92e967068dad0333db2b98547d8cd637c8e85101fbfb1764489c764"
+        },
+        {
+          "path": "skills/visual-companion/agents/openai.yaml",
+          "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/visual-companion/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/visual-companion/SKILL.md",
+          "sha256": "2d3a57afe92e967068dad0333db2b98547d8cd637c8e85101fbfb1764489c764"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/visual-companion/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/visual-companion/SKILL.md",
+          "sha256": "2d3a57afe92e967068dad0333db2b98547d8cd637c8e85101fbfb1764489c764"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/visual-companion/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/visual-companion/SKILL.md",
+          "sha256": "2d3a57afe92e967068dad0333db2b98547d8cd637c8e85101fbfb1764489c764"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/visual-companion/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/visual-companion/SKILL.md",
+          "sha256": "2d3a57afe92e967068dad0333db2b98547d8cd637c8e85101fbfb1764489c764"
+        }
+      ],
+      "session_metadata_exposed": false,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "wayfinder",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:33ed747fb30668c0e7b61698af5268c25c0d75cb",
+      "frontmatter": "name: wayfinder\ndescription: Plan a huge chunk of work — more than one agent session can hold — as a shared map of decision tickets on your issue tracker, and resolve them one at a time until the way to the destination is clear.\ndisable-model-invocation: true",
+      "files": [
+        {
+          "path": "skills/wayfinder/SKILL.md",
+          "sha256": "82a20723a170d4d4173e7e5ab3967e534d3500f670d34abbd9fbd0b2d1c76f1a"
+        },
+        {
+          "path": "skills/wayfinder/agents/openai.yaml",
+          "sha256": "88bc81a11a6d52ac67aeaa76b8b619e387020d47c5133a4dd4927fd15c4ad073"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/wayfinder/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/wayfinder/SKILL.md",
+          "sha256": "82a20723a170d4d4173e7e5ab3967e534d3500f670d34abbd9fbd0b2d1c76f1a"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/wayfinder/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/wayfinder/SKILL.md",
+          "sha256": "82a20723a170d4d4173e7e5ab3967e534d3500f670d34abbd9fbd0b2d1c76f1a"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/wayfinder/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/wayfinder/SKILL.md",
+          "sha256": "82a20723a170d4d4173e7e5ab3967e534d3500f670d34abbd9fbd0b2d1c76f1a"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/wayfinder/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/wayfinder/SKILL.md",
+          "sha256": "82a20723a170d4d4173e7e5ab3967e534d3500f670d34abbd9fbd0b2d1c76f1a"
+        }
+      ],
+      "session_metadata_exposed": false,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    },
+    {
+      "name": "write-a-skill",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:2f252b35aa238879afc5a230ac30343708dee0b3",
+      "frontmatter": "name: write-a-skill\ndescription: Create new agent skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to create, write, or build a new skill.",
+      "files": [
+        {
+          "path": "skills/write-a-skill/SKILL.md",
+          "sha256": "be8f20e66309258034b82a7db5040b03798aa40546f9d387662c2bd86be23123"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/write-a-skill/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/write-a-skill/SKILL.md",
+          "sha256": "be8f20e66309258034b82a7db5040b03798aa40546f9d387662c2bd86be23123"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/write-a-skill/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/write-a-skill/SKILL.md",
+          "sha256": "be8f20e66309258034b82a7db5040b03798aa40546f9d387662c2bd86be23123"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/write-a-skill/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/write-a-skill/SKILL.md",
+          "sha256": "be8f20e66309258034b82a7db5040b03798aa40546f9d387662c2bd86be23123"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/write-a-skill/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/write-a-skill/SKILL.md",
+          "sha256": "be8f20e66309258034b82a7db5040b03798aa40546f9d387662c2bd86be23123"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": true,
+      "execution_verified": false
+    },
+    {
+      "name": "zoom-out",
+      "owner": "forked",
+      "provenance": "https://github.com/mattpocock/skills.git",
+      "importRef": "folder:6ecebabdea814d12888f56a611da7bf182b5fb26",
+      "frontmatter": "name: zoom-out\ndescription: Tell the agent to zoom out and give broader context or a higher-level perspective. Use when you're unfamiliar with a section of code or need to understand how it fits into the bigger picture.\ndisable-model-invocation: true",
+      "files": [
+        {
+          "path": "skills/zoom-out/SKILL.md",
+          "sha256": "2a6894c7f9b1c9c55f451c625a834c4f377e217b623a85280e55db5fe9cacf48"
+        }
+      ],
+      "installed_entrypoints": [
+        {
+          "harness": "agents",
+          "path": "~/.agents/skills/zoom-out/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/zoom-out/SKILL.md",
+          "sha256": "2a6894c7f9b1c9c55f451c625a834c4f377e217b623a85280e55db5fe9cacf48"
+        },
+        {
+          "harness": "claude",
+          "path": "~/.claude/skills/zoom-out/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/zoom-out/SKILL.md",
+          "sha256": "2a6894c7f9b1c9c55f451c625a834c4f377e217b623a85280e55db5fe9cacf48"
+        },
+        {
+          "harness": "codex",
+          "path": "~/.codex/skills/zoom-out/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/zoom-out/SKILL.md",
+          "sha256": "2a6894c7f9b1c9c55f451c625a834c4f377e217b623a85280e55db5fe9cacf48"
+        },
+        {
+          "harness": "pi",
+          "path": "~/.pi/agent/skills/zoom-out/SKILL.md",
+          "exists": true,
+          "resolved": "~/.local/share/mstack/versions/3b2789839c27ed90709c88758761ab59f1ebd1ff/skills/zoom-out/SKILL.md",
+          "sha256": "2a6894c7f9b1c9c55f451c625a834c4f377e217b623a85280e55db5fe9cacf48"
+        }
+      ],
+      "session_metadata_exposed": true,
+      "entrypoint_read_this_turn": false,
+      "execution_verified": false
+    }
+  ],
+  "relative_references": [
+    {
+      "source": "skills/capture-observations/SKILL.md",
+      "target": "../reflect/references/records.md",
+      "exists": true
+    },
+    {
+      "source": "skills/capture-observations/SKILL.md",
+      "target": "../reflect/observation.schema.json",
+      "exists": true
+    },
+    {
+      "source": "skills/capture-observations/SKILL.md",
+      "target": "../reflect/references/classification.md",
+      "exists": true
+    },
+    {
+      "source": "skills/chrome-devtools-axi/SKILL.md",
+      "target": "references/session-isolation.md",
+      "exists": true
+    },
+    {
+      "source": "skills/code-review/SKILL.md",
+      "target": "candidate-review.schema.json",
+      "exists": true
+    },
+    {
+      "source": "skills/code-review/SKILL.md",
+      "target": "SMELL-BASELINE.md",
+      "exists": true
+    },
+    {
+      "source": "skills/code-review/SKILL.md",
+      "target": "candidate-harness.ts",
+      "exists": true
+    },
+    {
+      "source": "skills/code-review/SKILL.md",
+      "target": "SMELL-BASELINE.md",
+      "exists": true
+    },
+    {
+      "source": "skills/conventions-aware-engineering/SKILL.md",
+      "target": "GOVERNING-CONTEXT.md",
+      "exists": true
+    },
+    {
+      "source": "skills/diagnose/SKILL.md",
+      "target": "references/environment-diagnostics.md",
+      "exists": true
+    },
+    {
+      "source": "skills/grill-with-docs/SKILL.md",
+      "target": "./CONTEXT-FORMAT.md",
+      "exists": true
+    },
+    {
+      "source": "skills/grill-with-docs/SKILL.md",
+      "target": "./ADR-FORMAT.md",
+      "exists": true
+    },
+    {
+      "source": "skills/improve-codebase-architecture/DEEPENING.md",
+      "target": "LANGUAGE.md",
+      "exists": true
+    },
+    {
+      "source": "skills/improve-codebase-architecture/INTERFACE-DESIGN.md",
+      "target": "LANGUAGE.md",
+      "exists": true
+    },
+    {
+      "source": "skills/improve-codebase-architecture/INTERFACE-DESIGN.md",
+      "target": "DEEPENING.md",
+      "exists": true
+    },
+    {
+      "source": "skills/improve-codebase-architecture/INTERFACE-DESIGN.md",
+      "target": "DEEPENING.md",
+      "exists": true
+    },
+    {
+      "source": "skills/improve-codebase-architecture/INTERFACE-DESIGN.md",
+      "target": "LANGUAGE.md",
+      "exists": true
+    },
+    {
+      "source": "skills/improve-codebase-architecture/INTERFACE-DESIGN.md",
+      "target": "DEEPENING.md",
+      "exists": true
+    },
+    {
+      "source": "skills/improve-codebase-architecture/SKILL.md",
+      "target": "LANGUAGE.md",
+      "exists": true
+    },
+    {
+      "source": "skills/improve-codebase-architecture/SKILL.md",
+      "target": "LANGUAGE.md",
+      "exists": true
+    },
+    {
+      "source": "skills/improve-codebase-architecture/SKILL.md",
+      "target": "LANGUAGE.md",
+      "exists": true
+    },
+    {
+      "source": "skills/improve-codebase-architecture/SKILL.md",
+      "target": "../grill-with-docs/CONTEXT-FORMAT.md",
+      "exists": true
+    },
+    {
+      "source": "skills/improve-codebase-architecture/SKILL.md",
+      "target": "../grill-with-docs/ADR-FORMAT.md",
+      "exists": true
+    },
+    {
+      "source": "skills/improve-codebase-architecture/SKILL.md",
+      "target": "INTERFACE-DESIGN.md",
+      "exists": true
+    },
+    {
+      "source": "skills/lavish/SKILL.md",
+      "target": "references/codex-feedback-loop.md",
+      "exists": true
+    },
+    {
+      "source": "skills/local-env/SKILL.md",
+      "target": "references/operations.md",
+      "exists": true
+    },
+    {
+      "source": "skills/local-env/SKILL.md",
+      "target": "references/state.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/SKILL.md",
+      "target": "references/records.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/SKILL.md",
+      "target": "references/classification.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/SKILL.md",
+      "target": "references/records.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/SKILL.md",
+      "target": "references/instruction-review.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/SKILL.md",
+      "target": "references/skill-support.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/SKILL.md",
+      "target": "references/failure-evaluation.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/SKILL.md",
+      "target": "references/research.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/SKILL.md",
+      "target": "references/questionnaire.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/SKILL.md",
+      "target": "references/records.md#save-review-progress",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/references/failure-evaluation.md",
+      "target": "skill-support.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/references/instruction-review.md",
+      "target": "questionnaire.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/references/instruction-review.md",
+      "target": "skill-support.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/references/instruction-review.md",
+      "target": "failure-evaluation.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/references/questionnaire.md",
+      "target": "instruction-review.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/references/records.md",
+      "target": "../observation.schema.json",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/references/records.md",
+      "target": "../review.schema.json",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/references/records.md",
+      "target": "classification.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/references/skill-support.md",
+      "target": "questionnaire.md",
+      "exists": true
+    },
+    {
+      "source": "skills/reflect/references/skill-support.md",
+      "target": "failure-evaluation.md",
+      "exists": true
+    },
+    {
+      "source": "skills/repository-workflow/SKILL.md",
+      "target": "references/worktree-lifecycle.md",
+      "exists": true
+    },
+    {
+      "source": "skills/setup-conventions-aware-engineering/SKILL.md",
+      "target": "REPOSITORY-POSTURE-AND-STACK.md",
+      "exists": true
+    },
+    {
+      "source": "skills/setup-conventions-aware-engineering/SKILL.md",
+      "target": "DOCUMENT-LAYOUT.md",
+      "exists": true
+    },
+    {
+      "source": "skills/setup-conventions-aware-engineering/SKILL.md",
+      "target": "DOCUMENTATION-MAP-TEMPLATE.md",
+      "exists": true
+    },
+    {
+      "source": "skills/setup-conventions-aware-engineering/SKILL.md",
+      "target": "TRACKER-AND-DOMAIN.md",
+      "exists": true
+    },
+    {
+      "source": "skills/tdd/SKILL.md",
+      "target": "tests.md",
+      "exists": true
+    },
+    {
+      "source": "skills/tdd/SKILL.md",
+      "target": "mocking.md",
+      "exists": true
+    },
+    {
+      "source": "skills/triage/SKILL.md",
+      "target": "AGENT-BRIEF.md",
+      "exists": true
+    },
+    {
+      "source": "skills/triage/SKILL.md",
+      "target": "OUT-OF-SCOPE.md",
+      "exists": true
+    },
+    {
+      "source": "skills/triage/SKILL.md",
+      "target": "AGENT-BRIEF.md",
+      "exists": true
+    },
+    {
+      "source": "skills/triage/SKILL.md",
+      "target": "OUT-OF-SCOPE.md",
+      "exists": true
+    }
+  ],
+  "external_metadata_sample": [
+    {
+      "name": "skill-creator",
+      "path": "~/.codex/skills/.system/skill-creator/SKILL.md",
+      "sha256": "6656e54755638e8efcf275a472b9672eaa8a9a1b9e59dc210e275b03b59e1e66",
+      "frontmatter": "name: skill-creator\ndescription: Create or update a Codex skill with appropriately scoped instructions and any needed supporting resources.\nmetadata:\n  short-description: Create or update a skill",
+      "session_metadata_exposed": true,
+      "coverage": "metadata only; not imported or edited"
+    },
+    {
+      "name": "frontend-design",
+      "path": "~/.agents/skills/frontend-design/SKILL.md",
+      "sha256": "b81e2ff87ed8fa4d6c377ccb127a7254c9e6a77e3ae94f21e6b514f7bb2945a0",
+      "frontmatter": "name: frontend-design\ndescription: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.\nlicense: Complete terms in LICENSE.txt",
+      "session_metadata_exposed": true,
+      "coverage": "metadata only; not imported or edited"
+    },
+    {
+      "name": "vercel-react-best-practices",
+      "path": "~/.agents/skills/vercel-react-best-practices/SKILL.md",
+      "sha256": "b0bc1161fa20c5d2154099b7db2a46e9937b51d8f3f88f57ea1a06e76af0d474",
+      "frontmatter": "name: vercel-react-best-practices\ndescription: React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.\nlicense: MIT\nmetadata:\n  author: vercel\n  version: \"1.0.0\"",
+      "session_metadata_exposed": true,
+      "coverage": "metadata only; not imported or edited"
+    },
+    {
+      "name": "react-doctor",
+      "path": "~/.codex/skills/react-doctor/SKILL.md",
+      "sha256": "31122cb810ac47fbb65632c7c055fd5a08f3bd397869910ff23f440ed106ac84",
+      "frontmatter": "name: react-doctor\ndescription: Run after making React changes to catch issues early. Use when reviewing code, finishing a feature, or fixing bugs in a React project.\nversion: 1.0.0",
+      "session_metadata_exposed": true,
+      "coverage": "metadata only; not imported or edited"
+    }
+  ],
+  "sources": [
+    {
+      "root": "worktree",
+      "path": "skills.json",
+      "sha256": "5716d8f3c2a9173debd132e1fd1b234cc51828b44ba935a510d08d5baf3f84b5"
+    },
+    {
+      "root": "worktree",
+      "path": "mstack.json",
+      "sha256": "1dc5ecb9297396461fc3ad22d168615e56b001a34d532d8343e286563728591d"
+    },
+    {
+      "root": "worktree",
+      "path": "AGENTS.md",
+      "sha256": "7a5af5d4797056d9a1d84fe6f06120d78d6d781bd940c193771588b004874418"
+    },
+    {
+      "root": "worktree",
+      "path": "instructions/global/AGENTS.md",
+      "sha256": "e2ea594f4b122950d5299652a6a591d046a055ef8504f106512547e744b25b12"
+    },
+    {
+      "root": "worktree",
+      "path": "scripts/validate.ts",
+      "sha256": "d85f374ac4010877b97231cdc39af86edd24777162cc525004c50c06ec29190c"
+    },
+    {
+      "root": "worktree",
+      "path": "install/mstack_fs.py",
+      "sha256": "81fe10b558f5af259aad1cb1c10ebb5e98d68b55b7faff429e90d837f5246f7b"
+    },
+    {
+      "root": "worktree",
+      "path": "install/mstack.py",
+      "sha256": "a7647c98a8921125aa3b4bc83b08164ca9bbcc4a79322462746363a0d0459f7e"
+    },
+    {
+      "root": "worktree",
+      "path": "docs/agent-maintenance/changes/AM-013-installation.md",
+      "sha256": "06b9eedcec96d44f06529ab440088544f5c33272bd81f411c3c377c74e9cbf08"
+    },
+    {
+      "root": "worktree",
+      "path": "docs/agent-maintenance/changes/AM-014-maintenance-discovery.md",
+      "sha256": "f5048ec3e3e858ee17842219986426f19903e0a36f2201d0df9c1063790721e9"
+    },
+    {
+      "root": "canonical-checkout",
+      "path": "docs/agent-maintenance/evaluations/2026-10-08-reflect-support/report.md",
+      "sha256": "2952c65e6d420a9b9e00244f943ab0b6a238f6cd0b45cb1196d28d13036861ed"
+    },
+    {
+      "root": "canonical-checkout",
+      "path": "docs/agent-maintenance/evaluations/2026-10-08-reflect-support/manifest.json",
+      "sha256": "80cd40aa22716e916eb69871296fa1e900ff2588d40248ef42a3a35a347bba50"
+    },
+    {
+      "root": "canonical-checkout",
+      "path": "docs/agent-maintenance/evaluations/2026-10-08-reflect-persistence/report.md",
+      "sha256": "de2af45861eaf842c4835e0af8e4d9db4473facdc3078f1a76a709c100c2da4d"
+    },
+    {
+      "root": "canonical-checkout",
+      "path": "docs/agent-maintenance/inbox/OBS-REFLECT-EVALUATION-DOCS-001.json",
+      "sha256": "5c48d76d66741e3ff10e26d90ccdea04aaa8c179afd66a8188e1f2630747ce1d"
+    },
+    {
+      "root": "canonical-checkout",
+      "path": "docs/agent-maintenance/sources/proceso-de-mantenimiento-y-evaluacion-de-agentes.md",
+      "sha256": "cdb2168b3ec36a52dcb7e35e7453f85e382afd8e743b4a8a787a512f6f91e2ea"
+    }
+  ]
+}
