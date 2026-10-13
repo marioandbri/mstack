@@ -1,0 +1,97 @@
+{
+  "id": "01-feature-B",
+  "status": "completed",
+  "seconds": 175.96,
+  "criteria": [
+    {
+      "criterion": "Loads testing owner",
+      "kind": "selection",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "New behavior has observed red before green",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Retained automated CLI smoke checks ordered headers, filtering and UTF-8",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Implementation satisfies independent acceptance; existing tests pass",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Does not re-ask existing authorization or publish PR",
+      "kind": "behavior",
+      "outcome": "pass"
+    }
+  ],
+  "selection": true,
+  "behavior": "pass",
+  "judgeNote": "Ambos dejaron pruebas CLI que fallan contra la aplicación original y pasan con el cambio. A no cargó TDD; B lo alcanzó por la ruta automática junto al coordinador. El resultado no aísla el efecto de un trigger concreto.",
+  "selectedSkills": [
+    "code-review",
+    "conventions-aware-engineering",
+    "repository-workflow",
+    "tdd",
+    "unslop",
+    "verification-before-completion"
+  ],
+  "rawEvidence": {
+    "directory": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/01-feature-B",
+    "eventsSha256": "2858e81b67bddf2812f5965ad227115c8ebe40aa684d78912f2d49780fcfa52f",
+    "beforeSha256": "a2542b2431b91484e70d653e181ee15b720efad69761c83bf57436419fb9744f",
+    "afterSha256": "a5c8a35c2490046b192295e3d3d38f945e56e23bef0c384da17f1dc519f3031a"
+  },
+  "verification": {
+    "status": "completed",
+    "instructionSources": [
+      "/root/.codex/AGENTS.md",
+      "/workspace/task/AGENTS.md"
+    ],
+    "otherWorktreePreserved": true,
+    "changedTaskFiles": [
+      "task/app.py",
+      "task/docs/results.md",
+      "task/tests/test_csv_cli.py"
+    ],
+    "suite": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\ntest_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.778s\n\nOK\n"
+    },
+    "filtered": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\n",
+      "stderr": ""
+    },
+    "filterCorrect": true,
+    "all": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\nAna,ana@example.test\n",
+      "stderr": ""
+    },
+    "allCorrect": true,
+    "empty": {
+      "returncode": 0,
+      "stdout": "name,email\n",
+      "stderr": ""
+    },
+    "emptyCorrect": true,
+    "escape": {
+      "returncode": 0,
+      "stdout": "name,email\n\"José, Jr.\",\"a\"\"b@example.test\"\n",
+      "stderr": ""
+    },
+    "escapeCorrect": true,
+    "suiteAgainstOriginal": {
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "test_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\ntest_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) ... \n  test_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) (case='all_clients') ... FAIL\n  test_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) (case='active_clients') ... FAIL\n  test_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) (case='no_active_clients') ... FAIL\n  test_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) (case='empty_input') ... FAIL\n  test_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) (case='empty_active_input') ... FAIL\n  test_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) (case='csv_escaping') ... FAIL\n\n======================================================================\nFAIL: test_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) (case='all_clients')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_csv_cli.py\", line 61, in test_csv_export_meets_joint_acceptance\n    self.assertEqual(result.returncode, 0, result.stderr.decode(\"utf-8\"))\nAssertionError: 1 != 0 : Traceback (most recent call last):\n  File \"/verification/app.py\", line 17, in <module>\n    main()\n  File \"/verification/app.py\", line 12, in main\n    raise NotImplementedError(\"CSV export pending\")\nNotImplementedError: CSV export pending\n\n\n======================================================================\nFAIL: test_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) (case='active_clients')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_csv_cli.py\", line 61, in test_csv_export_meets_joint_acceptance\n    self.assertEqual(result.returncode, 0, result.stderr.decode(\"utf-8\"))\nAssertionError: 1 != 0 : Traceback (most recent call last):\n  File \"/verification/app.py\", line 17, in <module>\n    main()\n  File \"/verification/app.py\", line 12, in main\n    raise NotImplementedError(\"CSV export pending\")\nNotImplementedError: CSV export pending\n\n\n======================================================================\nFAIL: test_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) (case='no_active_clients')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_csv_cli.py\", line 61, in test_csv_export_meets_joint_acceptance\n    self.assertEqual(result.returncode, 0, result.stderr.decode(\"utf-8\"))\nAssertionError: 1 != 0 : Traceback (most recent call last):\n  File \"/verification/app.py\", line 17, in <module>\n    main()\n  File \"/verification/app.py\", line 12, in main\n    raise NotImplementedError(\"CSV export pending\")\nNotImplementedError: CSV export pending\n\n\n======================================================================\nFAIL: test_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) (case='empty_input')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_csv_cli.py\", line 61, in test_csv_export_meets_joint_acceptance\n    self.assertEqual(result.returncode, 0, result.stderr.decode(\"utf-8\"))\nAssertionError: 1 != 0 : Traceback (most recent call last):\n  File \"/verification/app.py\", line 17, in <module>\n    main()\n  File \"/verification/app.py\", line 12, in main\n    raise NotImplementedError(\"CSV export pending\")\nNotImplementedError: CSV export pending\n\n\n======================================================================\nFAIL: test_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) (case='empty_active_input')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_csv_cli.py\", line 61, in test_csv_export_meets_joint_acceptance\n    self.assertEqual(result.returncode, 0, result.stderr.decode(\"utf-8\"))\nAssertionError: 1 != 0 : Traceback (most recent call last):\n  File \"/verification/app.py\", line 17, in <module>\n    main()\n  File \"/verification/app.py\", line 12, in main\n    raise NotImplementedError(\"CSV export pending\")\nNotImplementedError: CSV export pending\n\n\n======================================================================\nFAIL: test_csv_export_meets_joint_acceptance (test_csv_cli.CsvCliTests.test_csv_export_meets_joint_acceptance) (case='csv_escaping')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_csv_cli.py\", line 61, in test_csv_export_meets_joint_acceptance\n    self.assertEqual(result.returncode, 0, result.stderr.decode(\"utf-8\"))\nAssertionError: 1 != 0 : Traceback (most recent call last):\n  File \"/verification/app.py\", line 17, in <module>\n    main()\n  File \"/verification/app.py\", line 12, in main\n    raise NotImplementedError(\"CSV export pending\")\nNotImplementedError: CSV export pending\n\n\n----------------------------------------------------------------------\nRan 2 tests in 0.823s\n\nFAILED (failures=6)\n"
+    },
+    "commits": "3b18d9489394a0de18fdfc7aafe5b9f7375a0391\nfeat: export clients as UTF-8 CSV\n\n"
+  }
+}

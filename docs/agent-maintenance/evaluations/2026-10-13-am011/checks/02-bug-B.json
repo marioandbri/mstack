@@ -1,0 +1,97 @@
+{
+  "id": "02-bug-B",
+  "status": "completed",
+  "seconds": 147.6,
+  "criteria": [
+    {
+      "criterion": "Loads diagnose",
+      "kind": "selection",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Reproduces reported CLI symptom before fix",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Retains regression exercising CLI-to-filter interaction; red then green",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Fix excludes inactive clients and preserves columns/UTF-8 and existing tests",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Reports evidence without claiming unrelated validation",
+      "kind": "behavior",
+      "outcome": "pass"
+    }
+  ],
+  "selection": true,
+  "behavior": "pass",
+  "judgeNote": "Ambos reprodujeron José+Ana con el CLI, añadieron regresión fallida, corrigieron la comparación de status y verificaron sólo José. El verificador conserva los tests y restaura el defecto: vuelven a fallar.",
+  "selectedSkills": [
+    "code-review",
+    "conventions-aware-engineering",
+    "diagnose",
+    "repository-workflow",
+    "unslop",
+    "verification-before-completion"
+  ],
+  "rawEvidence": {
+    "directory": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/02-bug-B",
+    "eventsSha256": "6df3d1737fd52dc6beab40dc6a1a9eeaca755aeb2f0ba1738bcef7502983d833",
+    "beforeSha256": "df2fc257b63ce504e70c468864f74306221eb2b896a3835dcf40853d8dd7cd54",
+    "afterSha256": "d528f06f311579dfd4860c75b4c9de918d5fc6838895fcf08932a0e37d7bc881"
+  },
+  "verification": {
+    "status": "completed",
+    "instructionSources": [
+      "/root/.codex/AGENTS.md",
+      "/workspace/task/AGENTS.md"
+    ],
+    "otherWorktreePreserved": true,
+    "changedTaskFiles": [
+      "task/clients.py",
+      "task/docs/results.md",
+      "task/tests/test_app.py"
+    ],
+    "suite": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_csv_active_only_excludes_inactive_clients (test_app.AppTests.test_csv_active_only_excludes_inactive_clients) ... ok\ntest_csv_preserves_unicode_and_escapes_special_characters (test_app.AppTests.test_csv_preserves_unicode_and_escapes_special_characters) ... ok\ntest_csv_without_active_clients_only_exports_header (test_app.AppTests.test_csv_without_active_clients_only_exports_header) ... ok\ntest_csv_without_filter_exports_all_clients (test_app.AppTests.test_csv_without_filter_exports_all_clients) ... ok\ntest_json_active_only_excludes_inactive_clients (test_app.AppTests.test_json_active_only_excludes_inactive_clients) ... ok\ntest_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.615s\n\nOK\n"
+    },
+    "filtered": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\n",
+      "stderr": ""
+    },
+    "filterCorrect": true,
+    "all": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\nAna,ana@example.test\n",
+      "stderr": ""
+    },
+    "allCorrect": true,
+    "empty": {
+      "returncode": 0,
+      "stdout": "name,email\n",
+      "stderr": ""
+    },
+    "emptyCorrect": true,
+    "escape": {
+      "returncode": 0,
+      "stdout": "name,email\n\"José, Jr.\",\"a\"\"b@example.test\"\n",
+      "stderr": ""
+    },
+    "escapeCorrect": true,
+    "suiteAgainstOriginal": {
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "test_csv_active_only_excludes_inactive_clients (test_app.AppTests.test_csv_active_only_excludes_inactive_clients) ... FAIL\ntest_csv_preserves_unicode_and_escapes_special_characters (test_app.AppTests.test_csv_preserves_unicode_and_escapes_special_characters) ... ok\ntest_csv_without_active_clients_only_exports_header (test_app.AppTests.test_csv_without_active_clients_only_exports_header) ... FAIL\ntest_csv_without_filter_exports_all_clients (test_app.AppTests.test_csv_without_filter_exports_all_clients) ... ok\ntest_json_active_only_excludes_inactive_clients (test_app.AppTests.test_json_active_only_excludes_inactive_clients) ... FAIL\ntest_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\n\n======================================================================\nFAIL: test_csv_active_only_excludes_inactive_clients (test_app.AppTests.test_csv_active_only_excludes_inactive_clients)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_app.py\", line 29, in test_csv_active_only_excludes_inactive_clients\n    self.assertEqual(output, \"name,email\\nJosé,jose@example.test\\n\")\nAssertionError: 'name,email\\nJosé,jose@example.test\\nAna,ana@example.test\\n' != 'name,email\\nJosé,jose@example.test\\n'\n  name,email\n  José,jose@example.test\n- Ana,ana@example.test\n\n\n======================================================================\nFAIL: test_csv_without_active_clients_only_exports_header (test_app.AppTests.test_csv_without_active_clients_only_exports_header)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_app.py\", line 48, in test_csv_without_active_clients_only_exports_header\n    self.assertEqual(output, \"name,email\\n\")\nAssertionError: 'name,email\\nAna,ana@example.test\\n' != 'name,email\\n'\n  name,email\n- Ana,ana@example.test\n\n\n======================================================================\nFAIL: test_json_active_only_excludes_inactive_clients (test_app.AppTests.test_json_active_only_excludes_inactive_clients)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_app.py\", line 69, in test_json_active_only_excludes_inactive_clients\n    self.assertEqual(json.loads(output), [\nAssertionError: Lists differ: [{'na[57 chars]ive'}, {'name': 'Ana', 'email': 'ana@example.t[23 chars]ve'}] != [{'na[57 chars]ive'}]\n\nFirst list contains 1 additional elements.\nFirst extra element 1:\n{'name': 'Ana', 'email': 'ana@example.test', 'status': 'inactive'}\n\n- [{'email': 'jose@example.test', 'name': 'José', 'status': 'active'},\n?                                                                    ^\n\n+ [{'email': 'jose@example.test', 'name': 'José', 'status': 'active'}]\n?                                                                    ^\n\n-  {'email': 'ana@example.test', 'name': 'Ana', 'status': 'inactive'}]\n\n----------------------------------------------------------------------\nRan 6 tests in 0.671s\n\nFAILED (failures=3)\n"
+    },
+    "commits": "bf1fafe185be6e0257929eed3fde75b0f5e00e8e\nFix active-only client filtering by matching active status\n\n"
+  }
+}
