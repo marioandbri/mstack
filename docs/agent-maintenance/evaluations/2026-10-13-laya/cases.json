@@ -1,0 +1,294 @@
+{
+  "kind": "synthetic capability probe, not independently labeled benchmark",
+  "labeler": "current assistant before any predictions",
+  "cases": [
+    {
+      "id": "O01",
+      "task": "observation",
+      "expected": "failure",
+      "language": "es",
+      "state": "El agente editó CHANGELOG.md a mano. El diff confirma el cambio y la instrucción vigente exige usar el generador.",
+      "split": "development"
+    },
+    {
+      "id": "O02",
+      "task": "observation",
+      "expected": "risk",
+      "language": "es",
+      "state": "Dos skills tienen descripciones casi iguales. Podrían competir al seleccionarse; todavía no hemos ejecutado un caso.",
+      "split": "check"
+    },
+    {
+      "id": "O03",
+      "task": "observation",
+      "expected": "preference",
+      "language": "es",
+      "state": "Prefiero que los mensajes de progreso sean breves y que los informes técnicos expliquen la evidencia.",
+      "split": "check"
+    },
+    {
+      "id": "O04",
+      "task": "observation",
+      "expected": "fact",
+      "language": "es",
+      "state": "El manifest declara Bun 1.3.14 y la terminal devuelve esa misma versión.",
+      "split": "check"
+    },
+    {
+      "id": "O05",
+      "task": "observation",
+      "expected": "proposal",
+      "language": "es",
+      "state": "Propongo añadir un auditor que detecte referencias rotas en el catálogo de skills.",
+      "split": "check"
+    },
+    {
+      "id": "O06",
+      "task": "observation",
+      "expected": "mixed",
+      "language": "es",
+      "state": "El agente perdió el registro de decisiones al cerrar la sesión. Prefiero guardarlo antes de cada pregunta.",
+      "split": "development"
+    },
+    {
+      "id": "O07",
+      "task": "observation",
+      "expected": "failure",
+      "language": "en",
+      "state": "The agent asked for the approved specification again. The transcript contains both the approval and the repeated request.",
+      "split": "check"
+    },
+    {
+      "id": "O08",
+      "task": "observation",
+      "expected": "risk",
+      "language": "en",
+      "state": "The installer appears able to overwrite unowned keys. This is a code-reading concern; it has not been reproduced.",
+      "split": "development"
+    },
+    {
+      "id": "O09",
+      "task": "observation",
+      "expected": "preference",
+      "language": "en",
+      "state": "I want rollback evidence included in the delivery report.",
+      "split": "check"
+    },
+    {
+      "id": "O10",
+      "task": "observation",
+      "expected": "fact",
+      "language": "en",
+      "state": "The health endpoint returned version 0.4.6 and device mps.",
+      "split": "check"
+    },
+    {
+      "id": "O11",
+      "task": "observation",
+      "expected": "proposal",
+      "language": "en",
+      "state": "Add a reusable evaluation library covering positive and negative skill-selection cases.",
+      "split": "development"
+    },
+    {
+      "id": "O12",
+      "task": "observation",
+      "expected": "mixed",
+      "language": "en",
+      "state": "The exporter failed to read an artifact. I propose a permission-preserving export step.",
+      "split": "check"
+    },
+    {
+      "id": "O13",
+      "task": "observation",
+      "expected": "failure",
+      "language": "es-en",
+      "state": "El runner terminó, pero export falló con PermissionError. El log adjunto muestra ese error.",
+      "split": "check"
+    },
+    {
+      "id": "O14",
+      "task": "observation",
+      "expected": "risk",
+      "language": "es-en",
+      "state": "El trigger de esta skill podría solaparse con code-review. No hay repro ni run que confirme el problema.",
+      "split": "check"
+    },
+    {
+      "id": "O15",
+      "task": "observation",
+      "expected": "preference",
+      "language": "es-en",
+      "state": "Prefiero un smoke test automatizado y reusable antes de marcar una feature como lista.",
+      "split": "development"
+    },
+    {
+      "id": "O16",
+      "task": "observation",
+      "expected": "fact",
+      "language": "es-en",
+      "state": "El worktree está en research/agent-maintenance-laya; git status reporta working tree clean.",
+      "split": "development"
+    },
+    {
+      "id": "O17",
+      "task": "observation",
+      "expected": "proposal",
+      "language": "es-en",
+      "state": "Podríamos añadir un check para detectar referencias inaccesibles antes del deploy.",
+      "split": "check"
+    },
+    {
+      "id": "O18",
+      "task": "observation",
+      "expected": "mixed",
+      "language": "es-en",
+      "state": "El agente hizo push sin la confirmación requerida. Quiero que el reporte incluya el diff antes de publish.",
+      "split": "check"
+    },
+    {
+      "id": "A01",
+      "task": "audit",
+      "expected": "procedure",
+      "language": "es",
+      "state": "Para iniciar la aplicación, abre el worktree, ejecuta bun run dev y comprueba la respuesta HTTP.",
+      "split": "development"
+    },
+    {
+      "id": "A02",
+      "task": "audit",
+      "expected": "constraint",
+      "language": "es",
+      "state": "Nunca edites manualmente los archivos generados.",
+      "split": "check"
+    },
+    {
+      "id": "A03",
+      "task": "audit",
+      "expected": "fact",
+      "language": "es",
+      "state": "skills.json contiene el inventario de skills gestionadas por este repositorio.",
+      "split": "check"
+    },
+    {
+      "id": "A04",
+      "task": "audit",
+      "expected": "temporary",
+      "language": "es",
+      "state": "La ejecución AM-012 está esperando la respuesta del proveedor desde las 14:30.",
+      "split": "check"
+    },
+    {
+      "id": "A05",
+      "task": "audit",
+      "expected": "preference",
+      "language": "es",
+      "state": "Prefiero respuestas en español y mensajes de progreso concisos.",
+      "split": "check"
+    },
+    {
+      "id": "A06",
+      "task": "audit",
+      "expected": "mixed",
+      "language": "es",
+      "state": "No reinicies servicios compartidos. Para iniciar la aplicación, ejecuta bun run dev desde su worktree.",
+      "split": "development"
+    },
+    {
+      "id": "A07",
+      "task": "audit",
+      "expected": "procedure",
+      "language": "en",
+      "state": "Open the task worktree, run the locked dependency install, then execute the repository checks.",
+      "split": "check"
+    },
+    {
+      "id": "A08",
+      "task": "audit",
+      "expected": "constraint",
+      "language": "en",
+      "state": "Do not publish a candidate before the user approves its implementation.",
+      "split": "development"
+    },
+    {
+      "id": "A09",
+      "task": "audit",
+      "expected": "fact",
+      "language": "en",
+      "state": "The installer stores versioned snapshots under the user's local data directory.",
+      "split": "check"
+    },
+    {
+      "id": "A10",
+      "task": "audit",
+      "expected": "temporary",
+      "language": "en",
+      "state": "The current pull request is a draft and awaits review today.",
+      "split": "check"
+    },
+    {
+      "id": "A11",
+      "task": "audit",
+      "expected": "preference",
+      "language": "en",
+      "state": "I prefer maintained dependencies when they materially simplify the implementation.",
+      "split": "development"
+    },
+    {
+      "id": "A12",
+      "task": "audit",
+      "expected": "mixed",
+      "language": "en",
+      "state": "Use concise progress messages. The current evaluation has two unfinished cases.",
+      "split": "check"
+    },
+    {
+      "id": "A13",
+      "task": "audit",
+      "expected": "procedure",
+      "language": "es-en",
+      "state": "Abre el worktree, corre bun test y revisa el exit code antes de preparar el reporte.",
+      "split": "check"
+    },
+    {
+      "id": "A14",
+      "task": "audit",
+      "expected": "constraint",
+      "language": "es-en",
+      "state": "No hagas force push ni borres worktrees de otros agentes.",
+      "split": "check"
+    },
+    {
+      "id": "A15",
+      "task": "audit",
+      "expected": "fact",
+      "language": "es-en",
+      "state": "El manifest usa skills.json como source of truth del inventario.",
+      "split": "development"
+    },
+    {
+      "id": "A16",
+      "task": "audit",
+      "expected": "temporary",
+      "language": "es-en",
+      "state": "El smoke de esta sesión sigue running; el resultado todavía está pending.",
+      "split": "development"
+    },
+    {
+      "id": "A17",
+      "task": "audit",
+      "expected": "preference",
+      "language": "es-en",
+      "state": "Prefiero un PR description breve con el problema, el cambio y validation.",
+      "split": "check"
+    },
+    {
+      "id": "A18",
+      "task": "audit",
+      "expected": "mixed",
+      "language": "es-en",
+      "state": "El PR actual está en draft. Nunca publiques credenciales en sus logs.",
+      "split": "check"
+    }
+  ]
+}

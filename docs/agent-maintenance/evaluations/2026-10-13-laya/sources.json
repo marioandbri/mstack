@@ -1,0 +1,52 @@
+[
+  {
+    "root": "canonical checkout",
+    "path": "docs/agent-maintenance/sources/proceso-de-mantenimiento-y-evaluacion-de-agentes.md",
+    "sha256": "cdb2168b3ec36a52dcb7e35e7453f85e382afd8e743b4a8a787a512f6f91e2ea"
+  },
+  {
+    "root": "canonical checkout",
+    "path": "docs/agent-maintenance/research-review.md",
+    "sha256": "1424c045d6ef2fdf4fa2c4bc0e7212c7bcb8b5e461c1177c313eacead7be6312"
+  },
+  {
+    "root": "canonical checkout",
+    "path": "docs/agent-maintenance/evaluations/2026-10-08-reflect-support/report.md",
+    "sha256": "2952c65e6d420a9b9e00244f943ab0b6a238f6cd0b45cb1196d28d13036861ed"
+  },
+  {
+    "root": "canonical checkout",
+    "path": "docs/agent-maintenance/evaluations/2026-10-08-reflect-persistence/report.md",
+    "sha256": "de2af45861eaf842c4835e0af8e4d9db4473facdc3078f1a76a709c100c2da4d"
+  },
+  {
+    "root": "canonical checkout",
+    "path": "docs/agent-maintenance/inbox/OBS-REFLECT-EVALUATION-DOCS-001.json",
+    "sha256": "5c48d76d66741e3ff10e26d90ccdea04aaa8c179afd66a8188e1f2630747ce1d"
+  },
+  {
+    "root": "worktree at e2dd80e",
+    "path": "skills/reflect/references/classification.md",
+    "sha256": "4b99ca632e2bc3e49104505cc8bc1c6ad6214592c740a6f2b1b085464722152a"
+  },
+  {
+    "root": "worktree at e2dd80e",
+    "path": "skills/reflect/references/records.md",
+    "sha256": "90f1b5046eab07db752ed79531f8743f026ea56cf099a042d23d563c4a60d2e8"
+  },
+  {
+    "root": "worktree at e2dd80e",
+    "path": "skills/reflect/references/failure-evaluation.md",
+    "sha256": "23b8833bc364228ba97f82142e7626e2dbf9e0598b4e42fd00fa8235224802e2"
+  },
+  {
+    "root": "worktree at e2dd80e",
+    "path": "skills.json",
+    "sha256": "5716d8f3c2a9173debd132e1fd1b234cc51828b44ba935a510d08d5baf3f84b5"
+  },
+  {
+    "root": "worktree at e2dd80e",
+    "path": "scripts/validate.ts",
+    "sha256": "d85f374ac4010877b97231cdc39af86edd24777162cc525004c50c06ec29190c"
+  }
+]

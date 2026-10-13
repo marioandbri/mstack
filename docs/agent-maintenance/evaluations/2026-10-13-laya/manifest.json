@@ -1,0 +1,25 @@
+{
+  "finished_at": "2026-10-13T16:08:08.165373+00:00",
+  "health": {
+    "models": {
+      "english": "ready",
+      "multilingual": "ready",
+      "typed-decisions": "ready"
+    },
+    "version": "0.4.6",
+    "torch": "2.14.1",
+    "device": "mps"
+  },
+  "playground_commit": "5a825ba0472a460830bc937907d43262a87410f8",
+  "cached_repo_ref": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "model_identity_limit": "Cached ref read from disk; running process does not expose checkpoint digest. Not a verified identity of loaded weights.",
+  "source_sha256": {
+    "server.py": "10f97d841fc4916383ad5654e74c73bb212ac4a6fea7e7bea5b2c15dfcbdb758",
+    "laya/router.py": "4758be905a7f0aa420da75364b2b1ec80f28101f7b7ec8df4ca9635ff7e3d742"
+  },
+  "requests": 48,
+  "retries": 0,
+  "hosted_model_calls": 0,
+  "transport": "First case via playground Run button; remaining requests through its API from same browser tab. Serial requests.",
+  "latency_limit": "Server-reported inference latency; first-call and shape warmup effects retained. End-to-end wall time excludes UI tooling. No LLM comparator timing."
+}

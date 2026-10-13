@@ -25,3 +25,9 @@ Terminar mantenimiento/evaluación de Reflect después de la revisión global. O
 Mario autorizó "si, ejecuta el adicional faltante". [Resultado actualizado](evaluations/2026-10-13-am011/report.md): 03-B completado en 131,37 s, mismo modelo/razonamiento y inputs congelados. Ocho pares conductuales: A 8/8, B 8/8; selección A 5/6, B 6/6. Total histórico: 17 intentos, 16 completados y un fallo de proveedor conservado. La autorización adicional está resuelta; no quedan casos de esta tanda pendientes. Sin activación.
 
 Seguimiento de OBS-AGENTS-DIRECT-LEARNING-001: B conservó intactos el AGENTS global temporal y el del proyecto; no creó observaciones. Evidencia favorable acotada a ausencia de promoción directa en este caso, no garantía del flujo completo de captura. No añade otra ocurrencia del fallo original ni cambia su registro bruto.
+
+## AM-014: mantenimiento del sistema y exploración de Laya
+
+[Propuesta de componentes](changes/AM-014-maintenance-discovery.md) y [ensayo local](evaluations/2026-10-13-laya/report.md): 48 solicitudes locales, sin integración ni baseline alojada. La clasificación amplia no justifica adopción en esta muestra. Auditoría del conjunto, registros, runner y promoción siguen siendo el alcance; Laya es opcional. Pendiente concretar las entregas propuestas.
+
+[OBS-MAINTENANCE-SCOPE-001](inbox/OBS-MAINTENANCE-SCOPE-001.json) registra una corrección de alcance en esta sesión. Clasificación provisional: fallo de continuidad del objetivo, una ocurrencia; prioridad por afectar la tarea actual. Sin causa establecida ni propuesta de modificar instrucciones. Búsqueda de duplicados limitada a la bandeja e índice canónicos y al handoff; no se afirma cobertura de otros proyectos.

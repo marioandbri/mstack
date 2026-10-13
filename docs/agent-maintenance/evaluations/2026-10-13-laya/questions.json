@@ -1,0 +1,54 @@
+{
+  "observation": {
+    "v1": {
+      "type": "choice",
+      "instructions": "What kind of statement does this observation contain?",
+      "criteria": {
+        "failure": "A concrete failure is reported as having happened.",
+        "risk": "A possible problem is hypothesized, without an observed failure.",
+        "preference": "A user states how they prefer work or communication to happen.",
+        "fact": "A descriptive technical fact is reported.",
+        "proposal": "A new capability or change is proposed.",
+        "mixed": "Two or more of these kinds are substantively present."
+      }
+    },
+    "v2": {
+      "type": "choice",
+      "instructions": "Classify what the text explicitly says. A hypothetical failure is a risk; two distinct kinds are mixed. Do not decide what action to take.",
+      "criteria": {
+        "failure": "A concrete failure is reported as having happened.",
+        "risk": "A possible problem is hypothesized, without an observed failure.",
+        "preference": "A user states how they prefer work or communication to happen.",
+        "fact": "A descriptive technical fact is reported.",
+        "proposal": "A new capability or change is proposed.",
+        "mixed": "Two or more of these kinds are substantively present."
+      }
+    }
+  },
+  "audit": {
+    "v1": {
+      "type": "choice",
+      "instructions": "What kind of content does this instruction fragment contain?",
+      "criteria": {
+        "procedure": "Steps for carrying out an operation.",
+        "constraint": "A prohibition or mandatory boundary on allowed actions.",
+        "fact": "Descriptive knowledge about a system or project.",
+        "temporary": "The current status of a particular task, run or session.",
+        "preference": "A preference about style or working approach.",
+        "mixed": "Two or more of these kinds are substantively present."
+      }
+    },
+    "v2": {
+      "type": "choice",
+      "instructions": "Classify the text by its meaning: operational steps, action boundary, descriptive knowledge, current task status, preference, or mixed content.",
+      "criteria": {
+        "procedure": "Steps for carrying out an operation.",
+        "constraint": "A prohibition or mandatory boundary on allowed actions.",
+        "fact": "Descriptive knowledge about a system or project.",
+        "temporary": "The current status of a particular task, run or session.",
+        "preference": "A preference about style or working approach.",
+        "mixed": "Two or more of these kinds are substantively present."
+      }
+    }
+  }
+}
