@@ -1,0 +1,96 @@
+{
+  "id": "02-bug-A",
+  "status": "completed",
+  "seconds": 115.84,
+  "criteria": [
+    {
+      "criterion": "Loads diagnose",
+      "kind": "selection",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Reproduces reported CLI symptom before fix",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Retains regression exercising CLI-to-filter interaction; red then green",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Fix excludes inactive clients and preserves columns/UTF-8 and existing tests",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Reports evidence without claiming unrelated validation",
+      "kind": "behavior",
+      "outcome": "pass"
+    }
+  ],
+  "selection": true,
+  "behavior": "pass",
+  "judgeNote": "Ambos reprodujeron José+Ana con el CLI, añadieron regresión fallida, corrigieron la comparación de status y verificaron sólo José. El verificador conserva los tests y restaura el defecto: vuelven a fallar.",
+  "selectedSkills": [
+    "conventions-aware-engineering",
+    "diagnose",
+    "unslop",
+    "verification-before-completion"
+  ],
+  "rawEvidence": {
+    "directory": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/02-bug-A",
+    "eventsSha256": "51288d12e9c89008507d892683eb462da644ddb7a94cf232e17b0e8a938503a1",
+    "beforeSha256": "58234fe4969f7a530daa815287de59ffa924348ebff9c14e68a79d2ea2fe082a",
+    "afterSha256": "74da77d7520923a6776f28e348f82b53ddc270faa6c33fcb508288a9d9dcc528"
+  },
+  "verification": {
+    "status": "completed",
+    "instructionSources": [
+      "/root/.codex/AGENTS.md",
+      "/workspace/task/AGENTS.md"
+    ],
+    "otherWorktreePreserved": true,
+    "changedTaskFiles": [
+      "task/AGENTS.md",
+      "task/clients.py",
+      "task/docs/results.md",
+      "task/tests/test_clients.py"
+    ],
+    "suite": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\ntest_active_only_excludes_inactive_clients (test_clients.ExportCliTests.test_active_only_excludes_inactive_clients) ... ok\ntest_csv_preserves_unicode_and_escapes_special_characters (test_clients.ExportCliTests.test_csv_preserves_unicode_and_escapes_special_characters) ... ok\ntest_no_matching_clients_exports_only_headers (test_clients.ExportCliTests.test_no_matching_clients_exports_only_headers) ... ok\ntest_without_filter_exports_all_clients (test_clients.ExportCliTests.test_without_filter_exports_all_clients) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.679s\n\nOK\n"
+    },
+    "filtered": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\n",
+      "stderr": ""
+    },
+    "filterCorrect": true,
+    "all": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\nAna,ana@example.test\n",
+      "stderr": ""
+    },
+    "allCorrect": true,
+    "empty": {
+      "returncode": 0,
+      "stdout": "name,email\n",
+      "stderr": ""
+    },
+    "emptyCorrect": true,
+    "escape": {
+      "returncode": 0,
+      "stdout": "name,email\n\"José, Jr.\",\"a\"\"b@example.test\"\n",
+      "stderr": ""
+    },
+    "escapeCorrect": true,
+    "suiteAgainstOriginal": {
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "test_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\ntest_active_only_excludes_inactive_clients (test_clients.ExportCliTests.test_active_only_excludes_inactive_clients) ... FAIL\ntest_csv_preserves_unicode_and_escapes_special_characters (test_clients.ExportCliTests.test_csv_preserves_unicode_and_escapes_special_characters) ... ok\ntest_no_matching_clients_exports_only_headers (test_clients.ExportCliTests.test_no_matching_clients_exports_only_headers) ... \n  test_no_matching_clients_exports_only_headers (test_clients.ExportCliTests.test_no_matching_clients_exports_only_headers) (rows=[{'name': 'Ana', 'email': 'ana@example.test', 'status': 'inactive'}]) ... FAIL\ntest_without_filter_exports_all_clients (test_clients.ExportCliTests.test_without_filter_exports_all_clients) ... ok\n\n======================================================================\nFAIL: test_active_only_excludes_inactive_clients (test_clients.ExportCliTests.test_active_only_excludes_inactive_clients)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_clients.py\", line 30, in test_active_only_excludes_inactive_clients\n    self.assertEqual(output, \"name,email\\nJosé,jose@example.test\\n\")\nAssertionError: 'name,email\\nJosé,jose@example.test\\nAna,ana@example.test\\n' != 'name,email\\nJosé,jose@example.test\\n'\n  name,email\n  José,jose@example.test\n- Ana,ana@example.test\n\n\n======================================================================\nFAIL: test_no_matching_clients_exports_only_headers (test_clients.ExportCliTests.test_no_matching_clients_exports_only_headers) (rows=[{'name': 'Ana', 'email': 'ana@example.test', 'status': 'inactive'}])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_clients.py\", line 41, in test_no_matching_clients_exports_only_headers\n    self.assertEqual(self.export(path, active_only=True), \"name,email\\n\")\nAssertionError: 'name,email\\nAna,ana@example.test\\n' != 'name,email\\n'\n  name,email\n- Ana,ana@example.test\n\n\n----------------------------------------------------------------------\nRan 5 tests in 0.719s\n\nFAILED (failures=2)\n"
+    },
+    "commits": ""
+  }
+}

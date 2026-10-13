@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "id": "AM-011-writing-analysis",
+  "phase": "ready-for-proposal",
+  "mode": "instructions",
+  "scope": "Aplicar la revisión editorial aprobada al candidato global, contrastar todas las condiciones acordadas y conservar fuentes, diff y evidencia. Sin despliegue ni nuevas ejecuciones con modelos.",
+  "sources": [
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-010-global-agents.proposed.md",
+      "sha256": "0ac8eb3c9adfc18a7cfc3af3a4802fbbdb967f938a8049ce7709499fbdc6f8c2"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/sources/proceso-de-mantenimiento-y-evaluacion-de-agentes.md",
+      "sha256": "cdb2168b3ec36a52dcb7e35e7453f85e382afd8e743b4a8a787a512f6f91e2ea"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/sources/redaccion-clara-y-precisa-de-skills.md",
+      "sha256": "78799324e1b0468ac93994994fefdd77fe86246c2b2c5c70a32b9c8968d48d9f"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/skills/reflect/references/instruction-review.md",
+      "sha256": "92431f757b9ffeeafdfef7c7750ca5f8566e889e2df17c91b5af71834d2ba5fe"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/skills/reflect/references/skill-support.md",
+      "sha256": "4f3ddfb10c25f0b2b23a8ff90a93c3db260531cbac6a20d893bd04eb8dfa9771"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-011-writing-analysis.md",
+      "sha256": "0334d4789b96b2ce3ae88cbf51a97ed1dde08df098de2d0d2a1ce7afe9fc109f"
+    },
+    {
+      "reference": "Current conversation: approval of editorial and semantic revision, 2026-10-13",
+      "sha256": null
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/changes/AM-011-global-agents.proposed.md",
+      "sha256": "e2ea594f4b122950d5299652a6a591d046a055ef8504f106512547e744b25b12"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/changes/AM-011-editorial-result.md",
+      "sha256": "d97d907703fc490f22a55dd42cbac4cdbc4bc061720a210c26c7e0b93680b574"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/changes/AM-011-verification.md",
+      "sha256": "26cff42b3dbf99084c71f20f1f13bc8628dfea0e2941e4e3117115b6013f1aa0"
+    }
+  ],
+  "coverage": [
+    {
+      "section": "Communication",
+      "status": "reviewed"
+    },
+    {
+      "section": "Engineering quality",
+      "status": "reviewed"
+    },
+    {
+      "section": "Scope and delivery",
+      "status": "reviewed"
+    },
+    {
+      "section": "Environment",
+      "status": "reviewed"
+    },
+    {
+      "section": "Learning and instructions",
+      "status": "reviewed"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "AM-011-01",
+      "basis": "static-risk",
+      "observation": "La condición de consulta abarca cualquier duda, sin distinguir decisiones del usuario de investigación técnica.",
+      "evidence": [
+        {
+          "source": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-010-global-agents.proposed.md Communication L9",
+          "summary": "La condición de consulta abarca cualquier duda, sin distinguir decisiones del usuario de investigación técnica."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Acotar la consulta a requisitos, preferencias o alcance sin resolver; preservar investigación y ejecución dentro de lo aprobado.",
+      "question": "¿Qué dudas requieren la dirección de Mario, frente a las que puede resolver el agente con evidencia?",
+      "decision": {
+        "status": "adjust",
+        "answer": "perfecto, me gusta tu recomendacion. vamos con eso",
+        "scope": "Aprueba aplicar la recomendación editorial y la revisión semántica, preservando decisiones y excepciones anteriores. El diagnóstico de selección ya pertenece a Reflect. Se prepara una nueva versión candidata, sin activación."
+      },
+      "observationIds": []
+    },
+    {
+      "id": "AM-011-02",
+      "basis": "static-risk",
+      "observation": "La conservación de autorizaciones aparece en cuatro lugares.",
+      "evidence": [
+        {
+          "source": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-010-global-agents.proposed.md Engineering quality L18; Scope and delivery L25/L30; Environment L36",
+          "summary": "La conservación de autorizaciones aparece en cuatro lugares."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Unificar el principio y preservar las condiciones y excepciones particulares.",
+      "question": "¿La consolidación mantiene todas las excepciones de autorización ya acordadas?",
+      "decision": {
+        "status": "adjust",
+        "answer": "perfecto, me gusta tu recomendacion. vamos con eso",
+        "scope": "Aprueba aplicar la recomendación editorial y la revisión semántica, preservando decisiones y excepciones anteriores. El diagnóstico de selección ya pertenece a Reflect. Se prepara una nueva versión candidata, sin activación."
+      },
+      "observationIds": []
+    },
+    {
+      "id": "AM-011-03",
+      "basis": "static-risk",
+      "observation": "El global incluye pasos para investigar una skill no seleccionada.",
+      "evidence": [
+        {
+          "source": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-010-global-agents.proposed.md Learning and instructions L43",
+          "summary": "El global incluye pasos para investigar una skill no seleccionada."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Conservar el principio global; dejar el diagnóstico en sus procedimientos existentes.",
+      "question": "¿La versión corta conserva el criterio confirmado de activación propia sin selectores globales?",
+      "decision": {
+        "status": "move",
+        "answer": "perfecto, me gusta tu recomendacion. vamos con eso",
+        "scope": "Aprueba aplicar la recomendación editorial y la revisión semántica, preservando decisiones y excepciones anteriores. El diagnóstico de selección ya pertenece a Reflect. Se prepara una nueva versión candidata, sin activación."
+      },
+      "observationIds": []
+    },
+    {
+      "id": "AM-011-04",
+      "basis": "static-risk",
+      "observation": "El pin y la prohibición de especificaciones abiertas se repiten; la excepción se llama existing.",
+      "evidence": [
+        {
+          "source": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-010-global-agents.proposed.md Engineering quality L21",
+          "summary": "El pin y la prohibición de especificaciones abiertas se repiten; la excepción se llama existing."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Expresar una sola regla de pin con bunx skills como excepción explícita.",
+      "question": "¿La redacción precisa conserva alcance y excepción vigentes?",
+      "decision": {
+        "status": "adjust",
+        "answer": "perfecto, me gusta tu recomendacion. vamos con eso",
+        "scope": "Aprueba aplicar la recomendación editorial y la revisión semántica, preservando decisiones y excepciones anteriores. El diagnóstico de selección ya pertenece a Reflect. Se prepara una nueva versión candidata, sin activación."
+      },
+      "observationIds": []
+    },
+    {
+      "id": "AM-011-05",
+      "basis": "static-risk",
+      "observation": "La explicación final repite la separación de observaciones pendientes; review no identifica al decisor.",
+      "evidence": [
+        {
+          "source": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-010-global-agents.proposed.md Learning and instructions L41",
+          "summary": "La explicación final repite la separación de observaciones pendientes; review no identifica al decisor."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Nombrar la revisión con Mario y conservar evidencia, alcance, destino e integración/descarte.",
+      "question": "¿La nueva redacción refleja la decisión ya acordada sobre revisión humana?",
+      "decision": {
+        "status": "adjust",
+        "answer": "perfecto, me gusta tu recomendacion. vamos con eso",
+        "scope": "Aprueba aplicar la recomendación editorial y la revisión semántica, preservando decisiones y excepciones anteriores. El diagnóstico de selección ya pertenece a Reflect. Se prepara una nueva versión candidata, sin activación."
+      },
+      "observationIds": []
+    },
+    {
+      "id": "AM-011-06",
+      "basis": "static-risk",
+      "observation": "Hay frases densas que admiten simplificación sintáctica, pero contienen preferencias que deben conservarse.",
+      "evidence": [
+        {
+          "source": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-010-global-agents.proposed.md Communication L8; Engineering quality L15/L19",
+          "summary": "Hay frases densas que admiten simplificación sintáctica, pero contienen preferencias que deben conservarse."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Acortar sintaxis sin reemplazar condiciones por consignas genéricas ni caveman.",
+      "question": "¿Cada preferencia y criterio aprobado sigue reconocible en la edición?",
+      "decision": {
+        "status": "adjust",
+        "answer": "perfecto, me gusta tu recomendacion. vamos con eso",
+        "scope": "Aprueba aplicar la recomendación editorial y la revisión semántica, preservando decisiones y excepciones anteriores. El diagnóstico de selección ya pertenece a Reflect. Se prepara una nueva versión candidata, sin activación."
+      },
+      "observationIds": []
+    }
+  ],
+  "promotion": "none"
+}

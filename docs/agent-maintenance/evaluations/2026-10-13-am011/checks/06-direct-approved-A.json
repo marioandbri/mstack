@@ -1,0 +1,58 @@
+{
+  "id": "06-direct-approved-A",
+  "status": "completed",
+  "seconds": 24.33,
+  "criteria": [
+    {
+      "criterion": "Preserves existing direct-work approval without re-interview",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Makes exact requested heading correction",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Does not change application or add needless tests",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Works in owned checkout; leaves other worktree intact",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Reports actual diff/evidence; no PR without acceptance",
+      "kind": "behavior",
+      "outcome": "pass"
+    }
+  ],
+  "selection": null,
+  "behavior": "pass",
+  "judgeNote": "Ambos corrigieron exactamente el encabezado sin reabrir entrevista ni cambiar aplicación o tests. B además guardó commit y estado. Sin PR; worktree ajeno intacto.",
+  "selectedSkills": [
+    "conventions-aware-engineering",
+    "unslop",
+    "verification-before-completion"
+  ],
+  "rawEvidence": {
+    "directory": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/06-direct-approved-A",
+    "eventsSha256": "a8e9768180847a309b73dc11faa980fa9862137cfbab8398e620f7dc5a50556b",
+    "beforeSha256": "659946d5a714c94e980cb45b42755e425495e48778c3adb31052f4923302b1c8",
+    "afterSha256": "69a99d916e403d9af62c838d8e1bc6ba3fca0924d01c43e8d2df8b1e3b935aec"
+  },
+  "verification": {
+    "status": "completed",
+    "instructionSources": [
+      "/root/.codex/AGENTS.md",
+      "/workspace/task/AGENTS.md"
+    ],
+    "otherWorktreePreserved": true,
+    "changedTaskFiles": [
+      "task/README.md"
+    ],
+    "commits": ""
+  }
+}

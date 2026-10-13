@@ -1,8 +1,8 @@
-# Engineering skills
+# mstack
 
-Canonical repository for Mario's cross-harness engineering workflow.
+Versioned source for Mario's global instructions, managed engineering skills, sanitized model defaults, installation and evaluations.
 
-Canonical source files live here. Installation method controls whether agent targets use links or managed copies.
+`AGENTS.md` governs work on this repository; `instructions/global/AGENTS.md` is the global file distributed to other projects. `mstack.json` describes installation and references `skills.json` without duplicating its inventory.
 
 ## Supported harnesses
 
@@ -13,7 +13,7 @@ Canonical source files live here. Installation method controls whether agent tar
 | Codex | `~/.codex/skills/<name>` |
 | Pi | `~/.pi/agent/skills/<name>` |
 
-Skills CLI supports these harnesses directly. Clone-based installation links each target to `skills/<name>` in checkout and uses `~/.agents/skills` as common cross-tool source.
+The managed installer links skills to a readonly commit snapshot. Development edits do not change the active installation. Global instructions remain a managed writable copy; the verifier detects local drift. Pending observations belong in maintenance records, not direct edits to active instructions.
 
 ## Workflow
 
@@ -74,29 +74,27 @@ bunx skills add git@github.com:marioandbri/mstack.git \
 
 Omit `--global` for project-local installation. Use `--copy` only when target agent cannot follow symlinks. Review skills before installation; they run with agent permissions.
 
-### Cloned repository
+### Managed installation from a clone
 
-Use this method when developing skills or keeping checkout as canonical local source.
+Use this method for the complete system. [Installation and rollback](install/README.md) documents ownership, snapshots, custom directories and recovery.
 
 ```fish
 git clone git@github.com:marioandbri/mstack.git
 cd mstack
-fish install/setup.fish
+bun install --frozen-lockfile
+uv sync --locked --project install
+bun run check
+bun test
+fish install/setup.fish --ref HEAD
+fish install/setup.fish --ref HEAD --apply
+fish install/verify.fish
 ```
 
-`fish install/setup.fish` runs in dry-run mode. Apply after reviewing plan:
+The first setup command is a dry-run. Apply the same reviewed commit explicitly. Conflicts are backed up privately under `~/.local/share/mstack/backups/`. The active version lives under `~/.local/share/mstack/versions/<commit>/`. Reapplying a verified version is idempotent.
 
-```fish
-fish install/setup.fish --apply
-```
+Only the declared model defaults are merged into shared Codex and Pi settings; other values are preserved. OAuth, sessions, logs, caches and machine overrides remain outside Git.
 
-Installer requires Fish and `jq`. Conflicting files, directories, and symlinks move under:
-
-```text
-~/.engineering-skills-backups/<timestamp>/
-```
-
-Correct links remain unchanged. Re-running apply mode is idempotent.
+Use `fish install/rollback.fish` to inspect rollback and add `--apply` to perform it. Local edits and damaged backups stop rollback before changes.
 
 ## Verify
 
@@ -115,7 +113,7 @@ fish install/verify.fish
 - relative Markdown links;
 - provenance and license coverage.
 
-`install/verify.fish` checks every harness link against canonical repository.
+`install/verify.fish` checks the active snapshot, managed instructions, all harness links, owned application defaults, duplicate names and upstream ownership conflicts.
 
 ## Pi package
 
@@ -125,7 +123,19 @@ Repository is valid local Pi package through `package.json`:
 pi --no-skills --skill ./skills/code-review --list-models __validation__
 ```
 
-Normal installation uses symlinks. Do not also run `pi install` for this repository, because Pi already discovers installed links and duplicate names would depend on discovery order.
+Managed installation uses snapshot links. Do not also run `pi install` for this repository, because Pi already discovers installed links and duplicate names would depend on discovery order.
+
+## Local environment skill
+
+`local-env` guides application launch and integration/E2E environments through Portless `0.15.6`, reusing shared SQL servers with `existing` or `disposable` databases. Bundled helper records private metadata and checks ownership eligibility; it never executes SQL or starts/stops application services.
+
+[Skill instructions](skills/local-env/SKILL.md) describe configuration inspection, effective-target checks, reuse, and owned-resource cleanup. Run opt-in HTTP isolation test only with an already healthy loopback proxy:
+
+```fish
+env LOCAL_ENV_HTTP_E2E=1 bun test test/local-env-http.e2e.test.ts
+```
+
+This checks two real application workspaces and independent process cleanup. Full SQL isolation acceptance additionally requires an authorized project connection, migrations/fixtures, and actual disposable databases. Do not substitute metadata tests for that acceptance.
 
 ## Updating a skill
 
@@ -133,9 +143,15 @@ Normal installation uses symlinks. Do not also run `pi install` for this reposit
 2. Run checks and relevant behavior tests.
 3. Update `skills.json` provenance when importing upstream changes.
 4. Record meaningful divergence in `UPSTREAM.md`.
-5. Commit repository before using new version across projects.
+5. Commit the candidate, prepare its snapshot, evaluate it and explicitly install that commit before using it across projects.
 
 Never run bulk upstream skill updates against managed names. Review upstream changes and port them deliberately.
+
+## Reflect and observation capture
+
+`capture-observations` records findings during active work; `reflect` reviews them when explicitly requested. Both are managed together because capture uses Reflect's shared classification, record contract and observation schema. Their procedures match the evaluated persistence candidate; the earlier copies under `docs/agent-maintenance/candidates/` retain that evaluation state and are not the maintained source.
+
+Maintain the installed sources under `skills/capture-observations/` and `skills/reflect/`. [Persistence layout](docs/agent-maintenance/persistence.md) explains the inbox, decisions, proposals and evidence. Capturing and saving a proposal do not activate instruction changes. Automatic capture is an agent behavior during a session, not a background listener or guaranteed monitoring of every chat.
 
 ## External skills
 
@@ -144,3 +160,18 @@ Framework, browser, frontend-design, and package-provided skills remain external
 ## Licensing
 
 Original repository work is MIT licensed. Imported skills retain upstream MIT notices. See `THIRD_PARTY_NOTICES.md` and `licenses/`.
+
+## Evaluations
+
+[DeepSWE with Codex and Pier](evals/deepswe/README.md) prepares fixed A/B profiles and uses a separate ChatGPT login. The [first local pilot](evals/deepswe/reports/pilot-local.md) records both timeouts and consumption; it validates integration rather than proving a quality difference. Instruction candidates, skill changes and Laya routing are separate later experiments.
+
+## Repository delivery candidate
+
+[repository-workflow](skills/repository-workflow/SKILL.md) coordinates owned
+worktrees, environment readiness, commits, evidence, PR preparation and closure
+after Mario merges in the remote. It reuses existing implementation, test,
+environment and review skills. It does not create a background merge monitor.
+The [current AGENTS proposal](docs/agent-maintenance/changes/AM-011-editorial-result.md)
+records the editorial revision and verification limits. The
+[destination review](docs/agent-maintenance/changes/AM-010-classification.md) preserves
+the classification and skill ownership decisions.

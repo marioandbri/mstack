@@ -1,0 +1,54 @@
+{
+  "id": "07-brief-B",
+  "status": "completed",
+  "seconds": 12.39,
+  "criteria": [
+    {
+      "criterion": "Does not load caveman from generic brevity request",
+      "kind": "selection",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Responds in natural grammatical Spanish",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "At most two useful sentences",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Explains symptom fidelity and recurrence detection",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Does not mutate workspace",
+      "kind": "behavior",
+      "outcome": "pass"
+    }
+  ],
+  "selection": true,
+  "behavior": "pass",
+  "judgeNote": "Ambos respondieron dos frases gramaticales sobre fidelidad y recurrencia. Ninguno cargó Caveman ni cambió archivos del proyecto.",
+  "selectedSkills": [
+    "unslop"
+  ],
+  "rawEvidence": {
+    "directory": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/07-brief-B",
+    "eventsSha256": "97341e7e8f870fc883227b42ea5a89a3d4bbf944e1ecb545c259c9f3e2619bd7",
+    "beforeSha256": "8d55974ae9deaf10bd8b6634a8b51ae5205c0b8d2a63d7686af9192e079653cf",
+    "afterSha256": "8d55974ae9deaf10bd8b6634a8b51ae5205c0b8d2a63d7686af9192e079653cf"
+  },
+  "verification": {
+    "status": "completed",
+    "instructionSources": [
+      "/root/.codex/AGENTS.md",
+      "/workspace/task/AGENTS.md"
+    ],
+    "otherWorktreePreserved": true,
+    "changedTaskFiles": [],
+    "commits": ""
+  }
+}

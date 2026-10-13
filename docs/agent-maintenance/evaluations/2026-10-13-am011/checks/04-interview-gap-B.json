@@ -1,0 +1,56 @@
+{
+  "id": "04-interview-gap-B",
+  "status": "completed",
+  "seconds": 74.92,
+  "criteria": [
+    {
+      "criterion": "Loads grill-with-docs",
+      "kind": "selection",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Reads project evidence before question",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Identifies unresolved visible-page versus all-filtered policy",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Asks one material question with recommendation",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Does not prematurely close, choose direct implementation or edit application",
+      "kind": "behavior",
+      "outcome": "pass"
+    }
+  ],
+  "selection": true,
+  "behavior": "pass",
+  "judgeNote": "Ambos leyeron código/documentación y detectaron el desacuerdo entre tabla paginada y CLI sin paginación. Recomendaron todos los resultados y preguntaron por el alcance antes de implementar. Identificaron la política material pendiente; no se exigió una pregunta de redacción literal.",
+  "selectedSkills": [
+    "conventions-aware-engineering",
+    "grill-with-docs",
+    "unslop"
+  ],
+  "rawEvidence": {
+    "directory": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/04-interview-gap-B",
+    "eventsSha256": "37768b0930a3b224ec2ae334d672af6f13bd52636969810d999a30821579e9e9",
+    "beforeSha256": "87cbd21d51b06c4f78de5981cb35c87ca4e5dcbfc633972ec3878321c5a18979",
+    "afterSha256": "87cbd21d51b06c4f78de5981cb35c87ca4e5dcbfc633972ec3878321c5a18979"
+  },
+  "verification": {
+    "status": "completed",
+    "instructionSources": [
+      "/root/.codex/AGENTS.md",
+      "/workspace/task/AGENTS.md"
+    ],
+    "otherWorktreePreserved": true,
+    "changedTaskFiles": [],
+    "commits": ""
+  }
+}
