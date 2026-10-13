@@ -71,7 +71,7 @@ El [helper de local-env](../../../skills/local-env/scripts/state.mjs) también i
 
 La comprobación remota mantiene el PR anterior #2 abierto, en borrador y sin merge. Su rama está en `e2dd80e`; main remoto está en `6630d2f`. La investigación propia conserva sus dos commits posteriores y no cambia esa base. Antes de publicar una implementación habrá que preparar su dependencia explícita o actualizarla tras el merge, conservando los commits de investigación. No se añade esta fase silenciosamente al PR anterior.
 
-Falta elegir la ruta de preparación. La recomendación es convertir E1–E5 en tickets locales y comenzar por E1, permitiendo preparar el reproducer de E3 de forma independiente. No quedan preguntas sobre el global aceptado, el descarte de Laya ni la inclusión de auditoría proactiva. Los límites y presupuesto de ejecuciones con modelos se cerrarán para cada experimento concreto; un presupuesto histórico no se reutiliza.
+Mario eligió después preparar una spec, revisarla y sólo entonces dividirla en tickets. El [borrador AM-015](AM-015-agent-maintenance.spec.md) conserva las capacidades, exclusiones y criterios de esta investigación; reemplaza la recomendación de pasar directamente a tickets. No quedan preguntas sobre el global aceptado, el descarte de Laya ni la inclusión de auditoría proactiva. Los límites y presupuesto de ejecuciones con modelos se cerrarán para cada experimento concreto; un presupuesto histórico no se reutiliza.
 
 ## Verificación de este avance
 

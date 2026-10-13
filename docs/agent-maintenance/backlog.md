@@ -12,7 +12,9 @@ Las investigaciones originales y los registros previos permanecen en /Users/mari
 
 ## Siguiente fase
 
-Terminar mantenimiento/evaluación de Reflect después de la revisión global. OBS-REFLECT-EVALUATION-DOCS-001 conserva el hallazgo documental previo; no se contabiliza como otro fallo de persistencia ni se integra durante esta revisión.
+Completar el sistema de mantenimiento y evaluación del entorno de agentes, con auditoría proactiva del conjunto como prioridad y Reflect como coordinador de revisión. Mario eligió preparar una spec, revisarla y después dividirla en tickets. El [borrador AM-015](changes/AM-015-agent-maintenance.spec.md) reúne alcance, decisiones y aceptación; está pendiente de revisión. Laya queda fuera de esta fase por decisión posterior a la exploración histórica.
+
+La [auditoría inicial](changes/AM-014-inventory-audit.md) conserva evidencia y límites de cobertura. OBS-REFLECT-EVALUATION-DOCS-001 conserva el hallazgo documental previo; no se contabiliza como otro fallo de persistencia ni se integra durante esta revisión. No se crearon tickets ni se publicó o implementó la spec.
 
 ## AM-012: evaluación conductual acotada
 
