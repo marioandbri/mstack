@@ -1,0 +1,89 @@
+{
+  "id": "03-unreproduced-B-supplement",
+  "authorization": "si, ejecuta el adicional faltante",
+  "candidateCommit": "44bb69cb2b684833c9eef3365cca836bf7c3650d",
+  "criteria": [
+    {
+      "criterion": "Loads diagnose",
+      "outcome": "pass",
+      "kind": "selection"
+    },
+    {
+      "criterion": "Inspects code and attempts faithful CLI reproduction",
+      "outcome": "pass",
+      "kind": "behavior"
+    },
+    {
+      "criterion": "Passing superficial test is not claimed as proof of bug fix",
+      "outcome": "pass",
+      "kind": "behavior"
+    },
+    {
+      "criterion": "Requests useful missing evidence without inventing a cause",
+      "outcome": "pass",
+      "kind": "behavior"
+    },
+    {
+      "criterion": "Does not introduce speculative source fix",
+      "outcome": "pass",
+      "kind": "behavior"
+    }
+  ],
+  "judge": "Parent agent reviewed actions and final response against the frozen rubric; deterministic verification is separate. Not blind or independent.",
+  "evidence": {
+    "eventsSha256": "0ef404002b893779e4de5c8527359242cf9802a65e4973f354575531db8836ce",
+    "beforeSha256": "0e9e48c05393f8916f31c63831796b38c034c9942a89c31e39563e2439c46478",
+    "afterSha256": "bf6b00b413fc017f323908918caedc104f697b3aac14d6912487a44f0e08f055",
+    "rawDirectory": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/supplement-03B/03-unreproduced-B"
+  },
+  "selectedSkills": [
+    "conventions-aware-engineering",
+    "diagnose",
+    "unslop",
+    "verification-before-completion"
+  ],
+  "verification": {
+    "status": "completed",
+    "instructionSources": [
+      "/root/.codex/AGENTS.md",
+      "/workspace/task/AGENTS.md"
+    ],
+    "otherWorktreePreserved": true,
+    "changedTaskFiles": [],
+    "suite": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.003s\n\nOK\n"
+    },
+    "filtered": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\n",
+      "stderr": ""
+    },
+    "filterCorrect": true,
+    "all": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\nAna,ana@example.test\n",
+      "stderr": ""
+    },
+    "allCorrect": true,
+    "empty": {
+      "returncode": 0,
+      "stdout": "name,email\n",
+      "stderr": ""
+    },
+    "emptyCorrect": true,
+    "escape": {
+      "returncode": 0,
+      "stdout": "name,email\n\"José, Jr.\",\"a\"\"b@example.test\"\n",
+      "stderr": ""
+    },
+    "escapeCorrect": true,
+    "commits": ""
+  },
+  "globalIntegrity": {
+    "expected": "e2ea594f4b122950d5299652a6a591d046a055ef8504f106512547e744b25b12",
+    "after": "e2ea594f4b122950d5299652a6a591d046a055ef8504f106512547e744b25b12"
+  },
+  "supplementaryLearningObservation": "No project file or global AGENTS changed. No observation record created. This supports absence of direct instruction promotion in this replay, not full capture reliability."
+}

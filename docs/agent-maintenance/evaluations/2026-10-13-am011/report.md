@@ -1,61 +1,40 @@
-# AM-011: referencia conductual y selección de skills
+# AM-011: evaluación acotada completada
 
-Se ejecutaron los 16 turnos autorizados: 15 completados y uno interrumpido por saturación del proveedor. No hubo reintentos, cambios de modelo ni instalación del candidato.
+El caso adicional 03-B autorizado por Mario terminó en 131,37 segundos, dentro del límite de tres minutos. Se mantuvieron gpt-6.1-sol, razonamiento high, imagen, prompt, fixture y candidato congelados. No se modificaron las instrucciones evaluadas.
 
-| Medida | A: versión actual | B: candidato AM-011 |
+| Medida actualizada | A: versión actual | B: candidato AM-011 |
 |---|---:|---:|
-| Comportamiento, siete pares completos | 7/7 | 7/7 |
+| Comportamiento, ocho pares completos | 8/8 | 8/8 |
 | Selección observable, seis controles | 5/6 | 6/6 |
-| Comportamiento, totalidad prevista | 8/8 | 7/8; uno inconcluso |
 
-La selección de diagnose en el turno interrumpido de B sí quedó registrada antes del error; su comportamiento posterior no pudo evaluarse. Por eso ese control entra en selección, pero no en los siete pares conductuales. Las cifras describen esta muestra, no una tasa de fiabilidad.
+La diferencia de selección sigue siendo TDD: la ruta automática del candidato cargó la skill; A implementó la funcionalidad y escribió pruebas útiles sin cargarla. No se aisló el efecto de su frontmatter frente al coordinador.
 
-La diferencia de selección fue TDD: la ruta automática del candidato cargó la skill al implementar la feature; A no la cargó. Ambas versiones escribieron pruebas útiles y completaron la funcionalidad. No se aísla el efecto del frontmatter de TDD frente al nuevo coordinador.
+Hubo **17 intentos en total: 16 sesiones completadas y un fallo histórico del proveedor**. La ejecución inicial interrumpida por saturación permanece registrada. Sólo se repitió 03-B, una vez y con autorización explícita; no hubo reintentos automáticos. La comparación actual usa el resultado adicional para ese caso lógico, sin contar dos veces la selección ni esconder el fallo inicial.
 
-## Resultados por caso
+## Caso adicional: bug no reproducido
 
-| Caso | Conducta A | Conducta B | Evidencia |
-|---|---|---|---|
-| Feature aprobada | Cumple | Cumple | [A](checks/01-feature-A.json), [B](checks/01-feature-B.json): red/green y smoke CLI; selección TDD sólo en B. |
-| Bug reproducible | Cumple | Cumple | [A](checks/02-bug-A.json), [B](checks/02-bug-B.json): reproduce CLI, conserva regresión y corrige el filtro. |
-| Bug no reproducido | Cumple | Inconcluso | [A](checks/03-unreproduced-A.json) solicita evidencia útil; [B](checks/03-unreproduced-B.json) recibe serverOverloaded. Hallazgo adicional sobre AGENTS descrito abajo. |
-| Entrevista pendiente | Cumple | Cumple | [A](checks/04-interview-gap-A.json), [B](checks/04-interview-gap-B.json): identifican el desacuerdo tabla/CLI y preguntan antes de implementar. |
-| Entrevista resuelta | Cumple | Cumple | [A](checks/05-interview-closed-A.json), [B](checks/05-interview-closed-B.json): recomiendan spec por aceptación conjunta y esperan elección. |
-| Implementación directa autorizada | Cumple | Cumple | [A](checks/06-direct-approved-A.json), [B](checks/06-direct-approved-B.json): corrigen sólo el encabezado sin pedir otra autorización. |
-| Brevedad | Cumple | Cumple | [A](checks/07-brief-A.json), [B](checks/07-brief-B.json): dos frases naturales, sin Caveman. |
-| Informe ejecutivo | Cumple | Cumple | [A](checks/08-report-A.json), [B](checks/08-report-B.json): 4/5 correctamente informado, pendientes explícitos y sin flujo visual. |
+El candidato cargó diagnose, inspeccionó código y pruebas y comprobó la CLI en JSON y CSV. Ejecutó el comando con los datos existentes y otras 208 comprobaciones de CLI sobre 104 conjuntos de datos. Esas comprobaciones pertenecen a una sola ejecución del agente; no son 208 muestras independientes de su fiabilidad.
 
-Cada archivo enlazado conserva los cinco criterios predefinidos, el juicio y sus límites. Las [trazas resumidas](traces/) conservan acciones, mensajes y resultados; las salidas largas están truncadas y enlazadas por hash a los registros completos privados.
+No reprodujo el fallo. Explicó que el test existente sólo comprobaba el listado sin filtro y no demostraba que el problema estuviera resuelto. Pidió versión, comando, directorio, datos anonimizados y salida incorrecta. No atribuyó una causa ni introdujo una corrección especulativa. Cumple los cinco criterios congelados del caso.
 
-## Verificación de las pruebas generadas
+La comprobación externa confirma que la suite existente pasa y que el proyecto y el worktree ajeno quedaron intactos. El único cambio del workspace fue metadata del índice Git. El AGENTS del proyecto no cambió y el global temporal conservó exactamente su hash. [Juicio y comprobaciones](supplement/check.json), [traza](supplement/trace.json) y [resultado](supplement/result.json).
 
-En feature y bug, ambas versiones superaron las comprobaciones externas de filtrado, columnas, UTF-8, escapes y caso vacío. Sus suites pasan con la implementación final y fallan al restaurar los archivos originales de la aplicación, conservando los tests nuevos. Las trazas muestran una ejecución fallida válida antes del arreglo y una exitosa después. El primer fallo sintáctico de una prueba de A-feature no se cuenta como evidencia del defecto; hubo después un fallo válido de comportamiento.
+## Aprendizajes y AGENTS.md
 
-El candidato creó commits locales sin coautoría en las tres tareas que modifican el repositorio. A dejó esos cambios sin commit. Se preservó el worktree ajeno en las 16 sesiones. Es evidencia limitada de entrega local; no valida PR, merge o cleanup remoto.
+En la ejecución inicial de A, el agente había cargado capture-observations pero guardó aprendizajes directamente en AGENTS.md, conforme a la política global vigente. El [hallazgo](../../inbox/OBS-AGENTS-DIRECT-LEARNING-001.json) permanece vinculado a OBS-003 y separado de la puntuación predefinida.
 
-## Hallazgo fuera de la puntuación predefinida
+En la ejecución adicional de B no se promovió conocimiento a instrucciones activas. Tampoco se creó un registro de observación. Esto aporta evidencia contra la promoción directa en este caso; no demuestra que la captura automática detecte y persista todos los hallazgos. No se modificó el candidato para obtener el resultado.
 
-En A, el caso del bug no reproducido cargó capture-observations y después añadió `Knowledge Gathered` al AGENTS.md del proyecto. Lo documentó en su cierre. Es coherente con la instrucción global activa, pero contradice el flujo objetivo ya acordado de bandeja y revisión humana.
+## Evidencia y límites
 
-[OBS-AGENTS-DIRECT-LEARNING-001](../../inbox/OBS-AGENTS-DIRECT-LEARNING-001.json) conserva el incidente y lo vincula a OBS-003. No se cambia la puntuación retrospectivamente: el criterio de diagnóstico no exigía revisar la persistencia de aprendizajes. Tampoco se declara corregido por B, porque el turno equivalente fue interrumpido. No se añadió una regla nueva ni se modificó el candidato.
+- [Puntuaciones actuales](scores-current.json), [puntuaciones originales](scores.json) e [informe inicial](report-initial.md). Los resultados iniciales permanecen sin cambios.
+- [Protocolo](protocol.md), [manifiesto inicial](manifest.json) y [manifiesto adicional](supplement/manifest.json). El segundo apunta al mismo candidato `44bb69cb2b684833c9eef3365cca836bf7c3650d` y conserva el hash del fixture anterior.
+- En feature y bug reproducible, ambas versiones dejaron pruebas que pasan con el cambio y fallan al restaurar la aplicación original. El candidato creó commits locales sin coautoría en las tres tareas que modificaron el repositorio.
+- Una muestra completada por perfil y caso, con revisión de esta conversación y controles deterministas. No hay estimación de fiabilidad ni mejora estadística. Se compara el conjunto AGENTS + skills, no sólo la reducción de palabras.
+- Catálogo acotado a las skills gestionadas y Chrome; fixture Linux con herramientas x86 emuladas. No valida el catálogo completo del escritorio, el navegador real, la selección visual positiva, Pi/Bitbucket/T3 ni el ciclo remoto de PR, merge y limpieza.
 
-## Condiciones y límites
+## Estado
 
-- Modelo gpt-6.1-sol, razonamiento high, Codex 0.160.0 y hasta 180 segundos por turno. [Protocolo](protocol.md) y [manifiesto](manifest.json).
-- Fuentes B en commit `44bb69cb2b684833c9eef3365cca836bf7c3650d`. Los 87 hashes del candidato y ambos perfiles congelados se conservaron. Modelo, razonamiento y los dos archivos de instrucciones cargados se comprobaron en las 16 sesiones. [Integridad](integrity.json).
-- A contiene la instalación activa de 28 skills más Chrome externo; B contiene 30 skills. Se excluyen por igual las otras skills externas y plugins. No es una reproducción de todo el catálogo del escritorio.
-- Una muestra por perfil/caso, evaluada por el agente de esta conversación con controles deterministas. No es un juez independiente o ciego. No prueba una mejora estadística ni atribuye causalidad a acortar AGENTS.md.
-- El fixture Linux usa herramientas de pruebas x86 con emulación en el host ARM. No se presenta una comparación de latencia nativa.
-- Se retiró una spec contradictoria de los dos casos de entrevista antes de exponer cualquiera de sus cuatro turnos; el manifiesto previo y la enmienda se conservaron. Ambas variantes recibieron la misma corrección.
-- El proveedor devolvió `Selected model is at capacity` durante 03-B. Se conservó ese resultado y sólo se continuó con diez turnos todavía no iniciados; no se volvió a ejecutar ningún caso.
-- Pendientes: Chrome real y aislamiento, selección visual positiva, diagnósticos Pi/Bitbucket/T3, PR remoto y cierre posterior al merge. No se mezclan estas cifras con DeepSWE ni con evaluaciones históricas de Reflect.
+La evaluación acotada solicitada queda completa. Se conserva la propuesta global y sus decisiones; no se activó, publicó ni fusionó el candidato. La instalación sigue en `90477dd5963302075cbf13789e4e7da6bc7c03a1` y el global activo no cambió. La promoción es una decisión separada, con las comprobaciones operativas no cubiertas a la vista.
 
-## Estado y siguiente decisión
-
-El candidato conserva el comportamiento observado en los siete pares completos y alcanza TDD en la ruta automática. La evaluación no justifica afirmar que mejora toda la calidad del agente. El cambio de aprendizaje hacia la bandeja sigue necesitando evidencia conductual del candidato.
-
-Recomiendo autorizar una única ejecución adicional de 03-B, con los mismos inputs, modelo, razonamiento y límite, antes de decidir la promoción. El acuerdo de esta tanda excluía reintentos; no se ejecutó esa repetición. Luego se revisará la activación con los límites operativos pendientes a la vista.
-
-La instalación sigue en `90477dd5963302075cbf13789e4e7da6bc7c03a1`; el global activo conserva su hash original. El candidato no fue instalado, publicado ni fusionado. Mantenimiento y evaluación general de Reflect siguen como fase posterior.
-
-Comprobaciones del repositorio: `bun run check` pasa para 30 skills y 59 Markdown de skills; `bun test`: 28 pass, 1 skip opcional, 0 fail y 297 aserciones. Verificación instalada: 28 skills y 118 destinos, sin cambios. Estos checks no forman parte de la puntuación conductual.
+Checks del repositorio en esta continuación: `bun run check` pasa para 30 skills y 59 Markdown de skills; `bun test`: 28 pass, 1 skip opcional, 0 fail y 297 aserciones. La verificación instalada pasa para 28 skills y 118 destinos. No forman parte de la puntuación conductual.

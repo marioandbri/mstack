@@ -1,0 +1,30 @@
+{
+  "id": "03-unreproduced-B",
+  "case": "03-unreproduced",
+  "profile": "B",
+  "status": "completed",
+  "completion": {
+    "id": "01a13586-7d0a-7872-b0de-bee9dbcd0b21",
+    "items": [
+      {
+        "type": "agentMessage",
+        "id": "msg_08e08acd25e6eca2016ace37640ffc87d29457f496a99e2b51",
+        "text": "No logré reproducir el fallo en el checkout actual, commit `43ffdbe`.\n\nEl test existente pasa, pero llama a `list_clients` sin activar el filtro. Probé `--active-only` desde la CLI en JSON y CSV con los datos disponibles y 104 conjuntos de datos, incluidos casos mixtos, todos inactivos y vacíos. Las 208 ejecuciones adicionales excluyeron los inactivos.\n\nNo modifiqué archivos ni confirmé una causa. Para avanzar hace falta:\n\n- Versión o commit afectado.\n- Comando exacto, directorio de ejecución y archivo de entrada utilizado.\n- Una muestra anonimizada que conserve los valores originales de `status`.\n- Salida incorrecta y cliente que debería haberse excluido.\n\nCon eso podremos construir una reproducción del caso reportado.",
+        "phase": "final_answer",
+        "memoryCitation": null,
+        "delivery": null,
+        "questions": null
+      }
+    ],
+    "itemsView": "summary",
+    "status": "completed",
+    "error": null,
+    "startedAt": 1791899368,
+    "completedAt": 1791899498,
+    "durationMs": 129902
+  },
+  "seconds": 131.37,
+  "changedFiles": [
+    "repo/.git/worktrees/task/index"
+  ]
+}
