@@ -171,5 +171,7 @@ Original repository work is MIT licensed. Imported skills retain upstream MIT no
 worktrees, environment readiness, commits, evidence, PR preparation and closure
 after Mario merges in the remote. It reuses existing implementation, test,
 environment and review skills. It does not create a background merge monitor.
-The [AGENTS proposal review](docs/agent-maintenance/changes/AM-010-classification.md)
-records destinations and verification limits.
+The [current AGENTS proposal](docs/agent-maintenance/changes/AM-011-editorial-result.md)
+records the editorial revision and verification limits. The
+[destination review](docs/agent-maintenance/changes/AM-010-classification.md) preserves
+the classification and skill ownership decisions.

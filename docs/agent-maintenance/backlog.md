@@ -2,7 +2,7 @@
 
 ## Propuesta actual
 
-[AM-010: global y destinos](changes/AM-010-global-agents.md) conserva la revisión completa, decisiones y candidatos. Cobertura: 15 secciones revisadas; promotion=none. Comprobaciones estructurales y descubrimiento local completados; selección y comportamiento pendientes.
+[AM-011: global revisado](changes/AM-011-editorial-result.md) contiene la versión editorial aprobada. [AM-010](changes/AM-010-global-agents.md) conserva la baseline, decisiones y destinos de las skills. Cobertura: 15 secciones revisadas; promotion=none. Comprobaciones estructurales y descubrimiento local completados; selección y comportamiento pendientes.
 
 Las investigaciones originales y los registros previos permanecen en /Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/. Este candidato no reemplaza ni modifica esos recursos ni los sources sincronizados del proyecto ChatGPT.
 
