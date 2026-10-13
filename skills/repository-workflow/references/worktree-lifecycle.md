@@ -15,6 +15,12 @@ separate branch from the intended base. Main is the default PR target only when
 none was specified. Verify that branch exists; do not silently substitute another
 branch or invent main. Resolve an ambiguous remote or incompatible convention.
 
+Check which checkout the harness associates with the task. A command's `workdir`
+or an absolute edit path does not necessarily change the thread's workspace,
+diffs or checkpoints. Record the owned worktree and the harness workspace
+separately when they differ. For T3 Code, read
+[thread and worktree association](t3-worktrees.md).
+
 Use the existing durable task record. If none exists, keep a private task record
 outside the disposable worktree, for example under a task-specific directory in
 the repository's Git common directory. Do not store secrets or publish this state.
