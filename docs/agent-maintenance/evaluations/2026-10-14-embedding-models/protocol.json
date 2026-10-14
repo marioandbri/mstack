@@ -70,6 +70,16 @@
       "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
       "license": "apache-2.0"
     },
+    "gemma300": {
+      "id": "google/embeddinggemma-300m",
+      "dimension": 768,
+      "max_seq_length": 2048,
+      "query_prompt": "task: search result | query: ",
+      "document_prompt": "title: none | text: ",
+      "config_kwargs": {},
+      "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+      "license": "gemma"
+    },
     "e5small": {
       "id": "intfloat/multilingual-e5-small",
       "dimension": 384,
@@ -81,33 +91,12 @@
       "license": "mit"
     }
   },
-  "pending_models": {
-    "gemma300": {
-      "model": {
-        "id": "google/embeddinggemma-300m",
-        "dimension": 768,
-        "max_seq_length": 2048,
-        "query_prompt": "task: search result | query: ",
-        "document_prompt": "title: none | text: ",
-        "config_kwargs": {},
-        "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
-        "license": "gemma"
-      },
-      "status": "not-executed-access-required",
-      "access_check": {
-        "token_available": false,
-        "id": "google/embeddinggemma-300m",
-        "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
-        "access": "not-granted",
-        "error_class": "GatedRepoError",
-        "http_status": 401
-      }
-    }
-  },
+  "pending_models": {},
   "model_order": [
     "minilm",
     "gemma",
     "qwen",
+    "gemma300",
     "e5small"
   ],
   "model_remote_code": false,

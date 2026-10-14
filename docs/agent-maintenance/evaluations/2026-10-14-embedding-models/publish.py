@@ -40,6 +40,7 @@ def main():
     result = {"schemaVersion": 2, "status": "executed-exploratory", "user_approved_labels": False,
               "prior_attempt": read(private / "prior-attempt.json"), "prior_repeat_consistency": read(private / "repeat-consistency.json"),
               "reference_repetition": {}, "pending_models": protocol.get("pending_models", {}),
+              "access_checks": {},
               "fts5": {"summary": summarize(baseline), "queries": baseline}, "models": {}}
     followup = private / "gemma300-followup-access.json"
     if "gemma300" in result["pending_models"] and followup.exists():
@@ -48,6 +49,12 @@ def main():
         assert access["id"] == expected["id"] and access["revision"] == expected["revision"]
         assert access["access"] == "not-granted"
         result["pending_models"]["gemma300"]["latest_access_check"] = access
+    granted_access = private / "gemma300-interactive-access.json"
+    if "gemma300" in protocol["models"] and granted_access.exists():
+        access = read(granted_access)
+        expected = protocol["models"]["gemma300"]
+        assert access["id"] == expected["id"] and access["revision"] == expected["revision"] and access["access"] == "granted"
+        result["access_checks"]["gemma300"] = access
     downloads = read(private / "downloads.json")
     for label in protocol["model_order"]:
         actual = read(private / (label + "-result.json"))
@@ -74,7 +81,8 @@ def main():
                                   "previous_p50_ms": earlier["resources"]["query_p50_ms"], "current_p50_ms": current["resources"]["query_p50_ms"],
                                   "previous_result_sha256": sha(args.previous_private / (label + "-result.json"))}
         result["reference_repetition"] = {"previous_run": args.previous_private.name, "previous_protocol_sha256": sha(args.previous_private / "protocol.json"),
-                                          "previous_execution_sources": previous_protocol["execution_sources"], "runtime_and_corpus_unchanged": True, "models": comparisons}
+                                          "previous_execution_sources": previous_protocol["execution_sources"], "runtime_and_corpus_unchanged": True,
+                                          "previous_pending_models": previous_protocol.get("pending_models", {}), "models": comparisons}
     (HERE / "results.json").write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n")
     table = ["| Modelo o referencia | ES directo @1 / @3 | EN directo @1 / @3 | nDCG @5 | Embedding de consulta p50 / p95, ms | RSS máximo muestreado, GiB |", "|---|---|---|---|---|---|"]
     lexical = result["fts5"]["summary"]
@@ -119,6 +127,8 @@ def main():
         pending_text = "\nGoogle EmbeddingGemma 300M quedó pendiente: Hugging Face exige aceptar sus condiciones y autorizar el acceso con una cuenta. La descarga devolvió 401 y no había sesión local. Se conserva ese resultado separado de las métricas; habilitar el acceso permitirá ejecutarlo con el mismo corpus. [Condiciones y acceso del modelo](https://huggingface.co/google/embeddinggemma-300m)."
         if "latest_access_check" in result["pending_models"].get("gemma300", {}):
             pending_text += " Una comprobación posterior encontró el token en fish interactivo, pero devolvió 403: la cuenta todavía no está en la lista autorizada del modelo."
+    elif "gemma300" in result["access_checks"]:
+        pending_text = "\nEmbeddingGemma 300M completó la prueba tras aceptar Mario las condiciones del modelo y autorizar su cuenta en Hugging Face. Los intentos de acceso anteriores, 401 sin sesión y 403 con cuenta sin autorización, se conservan aparte de la inferencia. La nueva pasada ejecuta los cinco perfiles."
     report = """# Comparación local de embeddings para mantenimiento de agentes
 
 Mario pidió ampliar la comparación con google/embeddinggemma-300m e intfloat/multilingual-e5-small. Se añadieron los perfiles disponibles y se repitieron las referencias anteriores, con las mismas revisiones, dependencias, textos y expectativas congeladas antes de inferencia. FTS5 conserva la referencia léxica.
@@ -163,13 +173,13 @@ Las consultas, IDs esperados y grados completos están en el [corpus congelado d
 
 """ + "\n".join(details) + """
 
-EmbeddingGemma 2 carga sólo texto, con vision_config y audio_config desactivados, y usa los prompts query/document de su configuración. Qwen usa su instrucción query y documento sin prefijo. MiniLM usa texto sin prefijos. E5 usa query: para consultas y passage: para documentos, también en español. El perfil solicitado de Gemma 300M fija task: search result | query: y title: none | text:. Se conserva el texto completo de cada registro como entrada; los nombres, grados, razones del juez y fuentes no se añaden. Los prefijos son constantes del modelo. Todos los vectores ejecutados son float32, finitos y normalizados; cada perfil usa sus dimensiones completas.
+EmbeddingGemma 2 carga sólo texto, con vision_config y audio_config desactivados, y usa los prompts query/document de su configuración. Qwen usa su instrucción query y documento sin prefijo. MiniLM usa texto sin prefijos. E5 usa query: para consultas y passage: para documentos, también en español. Gemma 300M usa task: search result | query: y title: none | text:. Se conserva el texto completo de cada registro como entrada; los nombres, grados, razones del juez y fuentes no se añaden. Los prefijos son constantes del modelo. Todos los vectores ejecutados son float32, finitos y normalizados; cada perfil usa sus dimensiones completas.
 
 Las configuraciones se apoyan en las model cards de [Google 2](https://huggingface.co/google/embeddinggemma-2), [Google 300M](https://huggingface.co/google/embeddinggemma-300m), [Qwen](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B), [MiniLM](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) y [E5](https://huggingface.co/intfloat/multilingual-e5-small). Las revisiones completas y los hashes de archivos fijan lo ejecutado. Los tres checkpoints iniciales declaran Apache 2.0; E5 declara MIT y Gemma 300M declara la licencia Gemma. El entorno de evaluación usa versiones exactas en pyproject.toml y resolución completa en uv.lock; no instala un backend activo.
 
 El [protocolo](protocol.json) conserva los hashes del corpus y de los scripts anteriores a ejecución, versiones, prefijos, ámbito y rúbrica. Los modelos, vectores, bases SQLite, logs y copias de fuentes se conservan fuera de Git en embedding-model-evidence del directorio privado de esta tarea. Hub sólo se usó para descarga; la inferencia se ejecutó offline y no envió textos a un proveedor.
 
-El primer intento histórico completó MiniLM y Qwen, pero Gemma 2 no pudo cargar el procesador por ausencia de Pillow, antes de generar embeddings. El preflight posterior identificó también Torchvision. Se conservan como fallos de infraestructura. Tras añadir Pillow 12.3.0 y Torchvision 0.29.1 se completó run-02. El tokenizer de Gemma 2 exponía un límite centinela indeterminado; se fijó el límite documentado de 8.192 tokens. La tabla actual usa la nueva pasada completa, no el intento fallido. Las referencias reutilizan los mismos pesos descargados, sin segunda descarga; sus tiempos de descarga corresponden a la adquisición inicial. E5 se descargó en esta ampliación.
+El primer intento histórico completó MiniLM y Qwen, pero Gemma 2 no pudo cargar el procesador por ausencia de Pillow, antes de generar embeddings. El preflight posterior identificó también Torchvision. Se conservan como fallos de infraestructura. Tras añadir Pillow 12.3.0 y Torchvision 0.29.1 se completó run-02. El tokenizer de Gemma 2 exponía un límite centinela indeterminado; se fijó el límite documentado de 8.192 tokens. La tabla actual usa la nueva pasada completa, no el intento fallido. Las referencias reutilizan los mismos pesos descargados, sin segunda descarga; sus tiempos de descarga corresponden a la adquisición inicial. Los dos modelos solicitados se descargaron durante esta ampliación.
 
 ## Verificación y límites
 
@@ -195,6 +205,7 @@ Una nueva ejecución usa un directorio nuevo para conservar intentos previos. pu
                 "private_evidence": "task Git common directory: embedding-model-evidence/" + private.name, "models": protocol["models"], "pending_models": result["pending_models"], "independent_verification": independent,
                 "reference_repetition": result["reference_repetition"],
                 "access_followup_sha256": sha(followup) if "latest_access_check" in result["pending_models"].get("gemma300", {}) else None,
+                "granted_access_sha256": sha(granted_access) if result["access_checks"] else None,
                 "prior_attempt": result["prior_attempt"],
                 "hosted_inference_calls": 0, "active_backend_installed": False, "labels_independently_approved": False}
     (HERE / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
