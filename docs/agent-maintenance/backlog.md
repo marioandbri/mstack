@@ -18,6 +18,8 @@ La [auditoría inicial](changes/AM-014-inventory-audit.md) conserva evidencia y 
 
 Durante la revisión, Mario eligió ensayar LanceDB como persistencia embebida. El [informe](evaluations/2026-10-13-lancedb/report.md) registra escrituras concurrentes, captura sin embeddings y consultas. El reintento nativo simultáneo duplicó registros; el adaptador experimental con bloqueo y lectura fresca pasó ese contrato. AM-015 incorpora procedencia y recuperación semántica como propuestas del borrador. Siguen pendientes modelo de embeddings, migración, historial y restauración; sin backend activo ni aprobación integral de la spec.
 
+El 14 de octubre Mario autorizó la [comparación con SQLite y sqlite-vec](evaluations/2026-10-14-sqlite-vector/report.md). Pasaron doce casos, incluidos reintentos paralelos sin duplicados, actualización condicional, interrupción de transacción y publicación atómica del índice vectorial. Se recomienda revisar SQLite como primera opción para los registros; LanceDB conserva una interfaz híbrida integrada. La selección sigue pendiente; vectores fijos no acreditan mejora semántica o de clasificación.
+
 ## AM-012: evaluación conductual acotada
 
 [Informe AM-012](evaluations/2026-10-13-am011/report.md): 16 turnos únicos, 15 completados y uno inconcluso por saturación. En siete pares comparables, A y B cumplen 7/7; selección observable A 5/6, B 6/6. El candidato alcanza TDD automáticamente. No se cambió ni instaló el candidato. Se propone una sola ejecución adicional del caso inconcluso; presupuesto pendiente, sin reintentos automáticos.

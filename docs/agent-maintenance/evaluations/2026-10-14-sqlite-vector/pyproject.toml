@@ -1,0 +1,9 @@
+[project]
+name = "mstack-sqlite-vector-probe"
+version = "0.1.0"
+description = "Isolated SQLite and sqlite-vec storage comparison"
+requires-python = "==3.13.2"
+dependencies = ["sqlite-vec==0.1.9"]
+
+[tool.uv]
+package = false
