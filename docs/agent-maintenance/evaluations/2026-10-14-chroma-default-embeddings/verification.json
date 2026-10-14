@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "repository_check": "PASS 30 skills, 59 Markdown",
+  "tests": {
+    "pass": 28,
+    "skip": 1,
+    "fail": 0,
+    "assertions": 297,
+    "duration_seconds": 15.84,
+    "skip_reason": "Optional Portless HTTP E2E"
+  },
+  "installation": {
+    "status": "PASS",
+    "commit": "25e722daafadb2b39ea597adbc19b41632e48b4a",
+    "skills": 30,
+    "targets": 126
+  },
+  "experiment": {
+    "native": {
+      "pass": 8,
+      "contract-failure": 3,
+      "infrastructure-error": 0,
+      "runner_exitcode": 1
+    },
+    "serialized-owner": {
+      "pass": 10,
+      "contract-failure": 1,
+      "infrastructure-error": 0,
+      "runner_exitcode": 1
+    },
+    "bootstrap": {
+      "automatic_model_download": true,
+      "archive_bytes": 83178821,
+      "embedding_dimensions": 384,
+      "artifact_recovered": true,
+      "original_recorder_error": "DefaultEmbeddingFunction is not JSON serializable",
+      "cold_timing_recovered": false
+    },
+    "retrieval": {
+      "unique_queries": 8,
+      "synthetic_documents": 10,
+      "english": {
+        "hit_at_1": 3,
+        "hit_at_3": 4,
+        "queries": 4
+      },
+      "spanish": {
+        "hit_at_1": 2,
+        "hit_at_3": 4,
+        "queries": 4
+      },
+      "other_project_leaks": 0,
+      "same_ids_in_both_modes": true
+    },
+    "independent_verification": {
+      "status": "PASS",
+      "reopened_databases": 67,
+      "exitcode": 0,
+      "scope": "Source/model/attempt bindings, regenerated real vector samples, original/provenance preservation, retries, revisions, interruption and reproduced bilingual retrieval"
+    },
+    "local_model_executed": true,
+    "hosted_model_calls": 0,
+    "backend_installed": false
+  },
+  "observation": "PASS raw observation schema and saved readback; provisional classification in backlog only",
+  "documents": "PASS syntax, JSON, source bindings, relative links, 48 stories, 29 acceptance criteria and git diff --check",
+  "harness_workspace": {
+    "environment_cwd": "/Users/mario.brito/personal/engineering-skills",
+    "owned_worktree": "/Users/mario.brito/personal/mstack-maintenance-laya",
+    "association_verified": false
+  },
+  "limits": [
+    "Tiny synthetic bilingual smoke; no semantic-quality or performance comparison with SQLite/LanceDB",
+    "Native embedded simultaneous writers remain outside documented process-safe deployment support",
+    "Automatic embedding runs before capture; unavailable embedding is a deliberate injected failure",
+    "Owner control did not test coordinator death with an active SDK child",
+    "No production adoption, migration/history/backup or classification acceptance"
+  ]
+}

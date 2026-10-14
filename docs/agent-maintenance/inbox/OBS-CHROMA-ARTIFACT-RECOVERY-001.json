@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "OBS-CHROMA-ARTIFACT-RECOVERY-001",
+  "status": "inbox",
+  "scope": "mstack: isolated Chroma default-embedding experiment and its artifact collector, 2026-10-14",
+  "basis": "observed-failure",
+  "observation": "El bootstrap descargó el modelo y confirmó captura y consulta, pero su recolector falló al serializar collection.configuration, que contiene una instancia DefaultEmbeddingFunction. La recuperación reabrió el original y usó configuration_json; el intento fallido y sus fuentes se conservaron por separado.",
+  "evidence": [
+    {
+      "source": "../evaluations/2026-10-14-chroma-default-embeddings/bootstrap-attempt.json",
+      "summary": "Registra TypeError tras las operaciones, el hash de la fuente inicial y la recuperación sin otra descarga ni tiempo inventado."
+    },
+    {
+      "source": "../evaluations/2026-10-14-chroma-default-embeddings/bootstrap.json",
+      "summary": "La evidencia recuperada acredita un registro persistido, consulta con query_texts, modelo de hash esperado, vector de 384 dimensiones y configuración JSON de la función por defecto."
+    }
+  ],
+  "suspectedCause": "El recolector usó configuration con objetos runtime en vez de la propiedad pública configuration_json. La caída fue de publicación de evidencia, después de las operaciones SDK."
+}

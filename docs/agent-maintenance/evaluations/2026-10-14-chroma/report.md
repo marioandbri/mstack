@@ -1,5 +1,7 @@
 # Chroma frente a SQLite y LanceDB
 
+Este informe conserva la prueba con embedding_function=None y vectores fijos. El [seguimiento con la función por defecto](../2026-10-14-chroma-default-embeddings/report.md) comprueba después captura automática y búsqueda con embeddings reales. El rechazo de esta configuración no describe la captura normal con el modelo habilitado.
+
 Para el registro de observaciones y decisiones, la comparación sigue favoreciendo SQLite con sqlite-vec. Chroma 1.5.9 recupera los vectores fijos y conserva los reintentos por ID en esta muestra, pero no guarda el original sin embedding cuando la función de embeddings está desactivada. La lectura seguida de update tampoco detecta una revisión concurrente. Un adaptador que serializa el acceso resolvió las revisiones y colisiones ensayadas; la captura sin embedding siguió fallando.
 
 Mario autorizó esta comparación después de las pruebas de LanceDB y SQLite. Se usó Chroma embebido, sin servidor, modelos ni datos reales. La elección definitiva sigue pendiente de revisar AM-015.

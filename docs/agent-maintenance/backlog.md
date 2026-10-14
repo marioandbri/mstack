@@ -22,6 +22,10 @@ El 14 de octubre Mario autorizó la [comparación con SQLite y sqlite-vec](evalu
 
 La [comparación posterior con Chroma 1.5.9](evaluations/2026-10-14-chroma/report.md) conservó reintentos por ID y recuperación con vectores fijos. El acceso serializado detectó revisiones y colisiones, pero la captura sin embedding siguió fallando. La muestra nativa no acredita soporte para varios procesos sobre el mismo directorio local. Se mantiene la recomendación de revisar SQLite primero y la ruta spec, revisión y tickets.
 
+Mario autorizó después el [recorrido por defecto de Chroma](evaluations/2026-10-14-chroma-default-embeddings/report.md). La descarga automática de all-MiniLM-L6-v2, captura de documentos y query_texts funcionaron con vectores reales de 384 dimensiones. Ocho consultas recuperaron un antecedente pertinente entre los tres primeros; acertó primero en 3/4 inglesas y 2/4 españolas. Es una muestra acotada, sin comparación semántica entre bases ni adopción del modelo. El fallo con embedding_function=None pertenece a la configuración anterior.
+
+[OBS-CHROMA-ARTIFACT-RECOVERY-001](inbox/OBS-CHROMA-ARTIFACT-RECOVERY-001.json) conserva el fallo de serialización del recolector después de captura y consulta exitosas. Clasificación provisional por el procedimiento local: fallo del agente en publicación de evidencia, evaluación del recolector antes de añadir instrucciones. Una ocurrencia; búsqueda limitada a esta bandeja e índice. Se relaciona con los límites históricos de recogida de artefactos, pero no se contabiliza como repetición del fallo de exportación anterior ni como fallo de Chroma. Queda en inbox para revisión, sin integración.
+
 ## AM-012: evaluación conductual acotada
 
 [Informe AM-012](evaluations/2026-10-13-am011/report.md): 16 turnos únicos, 15 completados y uno inconcluso por saturación. En siete pares comparables, A y B cumplen 7/7; selección observable A 5/6, B 6/6. El candidato alcanza TDD automáticamente. No se cambió ni instaló el candidato. Se propone una sola ejecución adicional del caso inconcluso; presupuesto pendiente, sin reintentos automáticos.

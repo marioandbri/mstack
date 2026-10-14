@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Tiny predeclared synthetic retrieval smoke, not a model selection benchmark",
+  "records": [
+    {"id":"approval-en","project":"mstack","text":"The assistant repeatedly asked permission to perform an operation that the user had already authorized."},
+    {"id":"tests-en","project":"mstack","text":"A code change was declared complete even though the regression test suite had not been executed."},
+    {"id":"references-en","project":"mstack","text":"A skill linked to a supporting documentation file that did not exist."},
+    {"id":"scope-en","project":"mstack","text":"The agent modified files unrelated to the task requested by the user."},
+    {"id":"approval-es","project":"mstack","text":"El asistente volvió a solicitar permiso para una operación que el usuario ya había autorizado."},
+    {"id":"tests-es","project":"mstack","text":"El agente declaró terminado un cambio de código sin ejecutar las pruebas de regresión."},
+    {"id":"references-es","project":"mstack","text":"Una skill incluía un enlace a un documento de apoyo que no existía."},
+    {"id":"scope-es","project":"mstack","text":"El agente modificó archivos ajenos a la tarea solicitada por el usuario."},
+    {"id":"other-approval","project":"other","text":"The assistant repeatedly asked permission to perform an operation that the user had already authorized."},
+    {"id":"other-tests","project":"other","text":"A code change was declared complete even though the regression test suite had not been executed."}
+  ],
+  "queries": [
+    {"id":"en-approval","language":"en","text":"Why did the assistant ask me to approve the same action twice?","relevant_ids":["approval-en","approval-es"]},
+    {"id":"en-tests","language":"en","text":"It said the change was finished without checking for regressions.","relevant_ids":["tests-en","tests-es"]},
+    {"id":"en-references","language":"en","text":"The instructions sent me to a file that could not be found.","relevant_ids":["references-en","references-es"]},
+    {"id":"en-scope","language":"en","text":"The assistant touched code outside the work I requested.","relevant_ids":["scope-en","scope-es"]},
+    {"id":"es-approval","language":"es","text":"Me pidió otra vez permiso para algo que ya había aprobado.","relevant_ids":["approval-en","approval-es"]},
+    {"id":"es-tests","language":"es","text":"Dio el trabajo por terminado antes de comprobar si rompía algo.","relevant_ids":["tests-en","tests-es"]},
+    {"id":"es-references","language":"es","text":"Intenté abrir el archivo citado en las instrucciones, pero no estaba.","relevant_ids":["references-en","references-es"]},
+    {"id":"es-scope","language":"es","text":"Cambió otras partes del proyecto que nadie le había pedido tocar.","relevant_ids":["scope-en","scope-es"]}
+  ],
+  "rubric": {
+    "k":3,
+    "pass":"Every query retrieves at least one relevant ID among its first three results, with no other-project records",
+    "metrics":["hit_at_1","hit_at_3","recall_at_3_for_two_predeclared_equivalent_language_records"],
+    "limits":"Two records represent the same synthetic theme in different languages. These relevance labels are fixed expectations, not independent real incidents or a classifier evaluation. Report English and Spanish separately."
+  }
+}
