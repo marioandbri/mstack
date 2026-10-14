@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "origin": "current-conversation-user-review",
+  "date": "2026-10-14",
+  "source_session": null,
+  "user_approved_relevance_labels": false,
+  "decisions": [
+    {
+      "id": "D01",
+      "case_id": "V02",
+      "user_comment": "igual debe validar que contexto sea compatible con el trigger",
+      "criterion": "Comprobar instalación, exposición, disponibilidad y compatibilidad de la tarea con el trigger antes de atribuir una omisión de selección.",
+      "disposition": "C19 declara aplicabilidad; C26 prepara un control fuera del trigger. La consulta original V02 sigue sin especificar la tarea."
+    },
+    {
+      "id": "D02",
+      "case_id": "V04",
+      "user_comment": "si ya hay un artefacto (spec, ticket) y se solicito implementacion, las preguntas pueden existir siempre y cuando sean porque alguna parte genera brechas sobre el contexto de dominio, scope drift o no existe documentacion que respalde.",
+      "criterion": "Durante implementación solicitada desde spec o ticket, investigar la evidencia disponible y preguntar por brechas materiales de dominio, desviación de alcance o falta de respaldo documental. La aprobación previa no elimina esas brechas ni obliga a repetir autorizaciones.",
+      "disposition": "C22 conserva requisitos resueltos; C25 prepara una brecha material descubierta después de aprobar la spec."
+    },
+    {
+      "id": "D03",
+      "case_id": "V05",
+      "user_comment": "esto me parece que quedo de la implementacion",
+      "disposition": "Separar V05 como control histórico de cobertura de agentes, fuera de las ambigüedades activas para comparar recuperación. No interpretar este comentario como evidencia de captura implementada o fiable."
+    },
+    {
+      "id": "D04",
+      "case_id": "V06",
+      "user_comment": "esta no me queda claro",
+      "clarification": "Buscar un incidente de GPU excesiva no queda satisfecho por encontrar una prueba de MiniLM. El corpus no contiene ese incidente. Se puede presentar la prueba como contexto separado, sin contar un acierto del incidente.",
+      "disposition": "Aclaración presentada; la política de contexto y las etiquetas siguen propuestas."
+    }
+  ]
+}

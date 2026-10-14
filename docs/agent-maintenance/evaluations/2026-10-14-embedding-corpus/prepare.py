@@ -10,22 +10,26 @@ import shutil
 HERE = Path(__file__).resolve().parent
 REPOSITORY = HERE.parents[3]
 SOURCE_FILES = {
-    "S01": ("worktree", "inbox/OBS-AGENTS-DIRECT-LEARNING-001.json"),
-    "S02": ("canonical", "inbox/OBS-REFLECT-PERSISTENCE-001.json"),
-    "S03": ("canonical", "evaluations/2026-10-08-reflect-support/report.md"),
-    "S04": ("canonical", "inbox/OBS-REFLECT-EVALUATION-DOCS-001.json"),
-    "S05": ("worktree", "inbox/OBS-MAINTENANCE-SCOPE-001.json"),
-    "S06": ("worktree", "inbox/OBS-CHROMA-ARTIFACT-RECOVERY-001.json"),
-    "S07": ("worktree", "evaluations/2026-10-13-am011/report.md"),
-    "S08": ("canonical", "evaluations/2026-10-08-reflect-persistence/report.md"),
-    "S09": ("worktree", "changes/AM-010-global-agents.review.json"),
-    "S10": ("worktree", "changes/AM-011-editorial-result.md"),
-    "S11": ("worktree", "changes/AM-014-inventory-audit.md"),
-    "S12": ("worktree", "changes/AM-013-installation.md"),
-    "S13": ("worktree", "evaluations/2026-10-13-lancedb/report.md"),
-    "S14": ("worktree", "evaluations/2026-10-14-sqlite-vector/report.md"),
-    "S15": ("worktree", "evaluations/2026-10-14-chroma-default-embeddings/report.md"),
-    "S16": ("worktree", "evaluations/2026-10-14-chroma-default-embeddings/verification.json"),
+    "S01": ("worktree", "docs/agent-maintenance/inbox/OBS-AGENTS-DIRECT-LEARNING-001.json"),
+    "S02": ("canonical", "docs/agent-maintenance/inbox/OBS-REFLECT-PERSISTENCE-001.json"),
+    "S03": ("canonical", "docs/agent-maintenance/evaluations/2026-10-08-reflect-support/report.md"),
+    "S04": ("canonical", "docs/agent-maintenance/inbox/OBS-REFLECT-EVALUATION-DOCS-001.json"),
+    "S05": ("worktree", "docs/agent-maintenance/inbox/OBS-MAINTENANCE-SCOPE-001.json"),
+    "S06": ("worktree", "docs/agent-maintenance/inbox/OBS-CHROMA-ARTIFACT-RECOVERY-001.json"),
+    "S07": ("worktree", "docs/agent-maintenance/evaluations/2026-10-13-am011/report.md"),
+    "S08": ("canonical", "docs/agent-maintenance/evaluations/2026-10-08-reflect-persistence/report.md"),
+    "S09": ("worktree", "docs/agent-maintenance/changes/AM-010-global-agents.review.json"),
+    "S10": ("worktree", "docs/agent-maintenance/changes/AM-011-editorial-result.md"),
+    "S11": ("worktree", "docs/agent-maintenance/changes/AM-014-inventory-audit.md"),
+    "S12": ("worktree", "docs/agent-maintenance/changes/AM-013-installation.md"),
+    "S13": ("worktree", "docs/agent-maintenance/evaluations/2026-10-13-lancedb/report.md"),
+    "S14": ("worktree", "docs/agent-maintenance/evaluations/2026-10-14-sqlite-vector/report.md"),
+    "S15": ("worktree", "docs/agent-maintenance/evaluations/2026-10-14-chroma-default-embeddings/report.md"),
+    "S16": ("worktree", "docs/agent-maintenance/evaluations/2026-10-14-chroma-default-embeddings/verification.json"),
+    "S17": ("worktree", "skills/conventions-aware-engineering/SKILL.md"),
+    "S18": ("worktree", "skills/grill-with-docs/SKILL.md"),
+    "S19": ("worktree", "skills/repository-workflow/SKILL.md"),
+    "S20": ("worktree", "docs/agent-maintenance/evaluations/2026-10-14-embedding-corpus/review-feedback.json"),
 }
 
 
@@ -55,9 +59,9 @@ def collect_sources(canonical_root, snapshot_dir):
     sources, paths = {}, {}
     for identity, (origin, relative) in SOURCE_FILES.items():
         root = REPOSITORY if origin == "worktree" else canonical_root
-        path = root / "docs/agent-maintenance" / relative
+        path = root / relative
         assert path.is_file(), path
-        sources[identity] = {"origin": origin, "path": "docs/agent-maintenance/" + relative, "sha256": sha(path)}
+        sources[identity] = {"origin": origin, "path": relative, "sha256": sha(path)}
         paths[identity] = path
         snapshot_dir.mkdir(parents=True, exist_ok=True)
         snapshot = snapshot_dir / (identity + path.suffix)
@@ -87,7 +91,7 @@ def evidence(records, paths):
 
 def build_labels(records, queries):
     record_ids = {row["id"] for row in records}
-    assert len(record_ids) == len(records) == 30
+    assert len(record_ids) == len(records)
     output = []
     for case in queries["cases"]:
         direct, context, negatives = (set(case[key]) for key in ("direct", "context", "hard_negatives"))
@@ -98,6 +102,11 @@ def build_labels(records, queries):
         filters = case.get("filters", queries["default_filters"])
         eligible = [row["id"] for row in records if filters["project"] == "mstack"]
         assert direct | context | negatives <= set(eligible)
+        workflow = case.get("workflow_expectation")
+        if workflow:
+            assert workflow["label"] in queries["workflow_label_definitions"]
+            assert workflow["execution_status"] == "not-executed"
+            assert all(row["kind"] == "prepared-scenario" for row in records if row["id"] in direct)
         for language in ("es", "en"):
             output.append({
                 "id": case["id"] + "-" + language, "case_id": case["id"], "language": language,
@@ -107,24 +116,29 @@ def build_labels(records, queries):
                 "candidate_ids": eligible,
                 "grades": {identity: 2 if identity in direct else 1 if identity in context else 0 for identity in eligible},
                 "expected_no_match": no_match, "absence_reason": case.get("absence_reason"), "rationale": case["rationale"],
+                **({"workflow_expectation": workflow} if workflow else {}),
             })
-    pending = []
+    pending, excluded = [], []
     for case in queries["review_cases"]:
         assert set(case["proposal"]["direct"] + case["proposal"]["context"]) <= record_ids
-        pending.append({"id": case["id"] + "-es", "case_id": case["id"], "language": "es", "text": case["query"],
-                        "filters": queries["default_filters"], "judgment_status": "needs-decision", "user_approved": False,
+        target = excluded if case.get("role") == "historical-coverage-control" else pending
+        target.append({"id": case["id"] + "-es", "case_id": case["id"], "language": "es", "text": case["query"],
+                        "filters": queries["default_filters"], "judgment_status": "out-of-scope" if target is excluded else "needs-decision", "user_approved": False,
                         "grades": None, "include_in_scoring": False, "proposed_ids": case["proposal"],
-                        "question": case["question"], "recommendation": case["recommendation"], "ambiguity": case["ambiguity"]})
-    identities = [row["id"] for row in output + pending]
-    assert len(identities) == len(set(identities)) == 42
+                        "question": case["question"], "recommendation": case["recommendation"], "ambiguity": case["ambiguity"],
+                        "role": case.get("role", "retrieval-ambiguity"), "decision_status": case.get("decision_status", "needs-review"),
+                        "review_feedback": case.get("review_feedback")})
+    identities = [row["id"] for row in output + pending + excluded]
+    assert len(identities) == len(set(identities)) == 2 * len(queries["cases"]) + len(queries["review_cases"])
     return {"schemaVersion": 1, "status": "proposed", "user_approved": False, "frozen_for_execution": False,
             "grading": {"2": "Directly answers the explicit retrieval intent", "1": "Useful context, without satisfying the direct target", "0": "Does not answer this query in this bounded corpus"},
-            "direct_hit_requires_grade": 2, "queries": output, "held_out_for_review": pending}
+            "workflow_label_definitions": queries["workflow_label_definitions"],
+            "direct_hit_requires_grade": 2, "queries": output, "held_out_for_review": pending, "excluded_from_comparison": excluded}
 
 
 def render_review(records, queries):
     kinds = {"incident": "Incidente", "audit-finding": "Hallazgo documental", "evaluation-result": "Resultado de evaluación",
-             "review-decision": "Decisión de Mario", "review-result": "Revisión editorial", "installation-result": "Instalación histórica", "storage-probe": "Prueba sintética de base"}
+             "review-decision": "Decisión de Mario", "review-result": "Revisión editorial", "installation-result": "Instalación histórica", "storage-probe": "Prueba sintética de base", "prepared-scenario": "Escenario sin ejecutar"}
     catalog = ["| ID | Antecedente | Tipo | Fuente |", "|---|---|---|---|"]
     for row in records:
         catalog.append(f"| {row['id']} | {row['title']} | {kinds[row['kind']]} | {row['source']} |")
@@ -132,14 +146,23 @@ def render_review(records, queries):
     for case in queries["cases"]:
         fields = [", ".join(case[key]) or "Ninguno" for key in ("direct", "context", "hard_negatives")]
         cases.append(f"| {case['id']} | {case['es']} | {fields[0]} | {fields[1]} | {fields[2]} |")
-    review = ["| Caso | Consulta ambigua | Propuesta para revisar | Decisión pendiente |", "|---|---|---|---|"]
+    review = ["| Caso | Consulta ambigua | Propuesta para revisar | Información o decisión pendiente |", "|---|---|---|---|"]
+    historical = []
     for case in queries["review_cases"]:
-        review.append(f"| {case['id']} | {case['query']} | {case['recommendation']} | {case['question']} |")
-    result = """# Ejemplos y etiquetas para comparar recuperación en Reflect
+        if case.get("role") == "historical-coverage-control":
+            historical.append(f"{case['id']} es un control histórico de cobertura, excluido de las ambigüedades activas y de puntuación.")
+        else:
+            review.append(f"| {case['id']} | {case['query']} | {case['recommendation']} | {case['question']} |")
+    workflow = ["| Caso | Etiqueta de comportamiento propuesta | Criterio esperado si se ejecuta |", "|---|---|---|"]
+    for case in queries["cases"]:
+        if expectation := case.get("workflow_expectation"):
+            label = expectation["label"]
+            workflow.append(f"| {case['id']} | {label} | {queries['workflow_label_definitions'][label]} |")
+    result = f"""# Ejemplos y etiquetas para comparar recuperación en Reflect
 
-Preparé 30 antecedentes a partir de 16 fuentes existentes del mantenimiento de mstack. Hay 18 intenciones de consulta con variantes en español e inglés, 36 consultas propuestas, y seis casos ambiguos separados. Los datos y etiquetas son un borrador para revisión. No se ejecutaron modelos ni se congeló un benchmark.
+El conjunto reúne {len(records)} registros trazables a {len(SOURCE_FILES)} fuentes del mantenimiento de mstack. Hay {len(queries['cases'])} intenciones de consulta con variantes en español e inglés, {2 * len(queries['cases'])} consultas propuestas, cinco casos ambiguos separados y un control histórico fuera de la comparación. Los datos y etiquetas son un borrador para revisión. No se ejecutaron modelos ni se congeló un benchmark.
 
-Los antecedentes mezclan cinco registros de incidente, nueve decisiones de Mario, cuatro hallazgos documentales, siete resultados de evaluación, una revisión editorial, un cierre histórico de instalación y tres pruebas sintéticas de almacenamiento. Tres de los cinco incidentes proceden de evaluaciones con fixtures; los otros dos son una corrección de esta conversación y un fallo del recolector local. No son 30 fricciones independientes de uso cotidiano.
+Los 30 antecedentes históricos mezclan cinco registros de incidente, nueve decisiones de Mario, cuatro hallazgos documentales, siete resultados de evaluación, una revisión editorial, un cierre histórico de instalación y tres pruebas sintéticas de almacenamiento. Tres de los cinco incidentes proceden de evaluaciones con fixtures; los otros dos son una corrección de esta conversación y un fallo del recolector local. Se añaden tres escenarios pedidos por Mario sobre convenciones, entrevista y worktree, todavía sin ejecutar. Sus fuentes son procedimientos y criterios de esta revisión, sin trazas de incidentes. No son 33 fricciones independientes de uso cotidiano.
 
 ## Cómo leer las etiquetas
 
@@ -157,7 +180,7 @@ Los [antecedentes](records.json), [consultas y razones](queries.json) y [etiquet
 
 """ + "\n".join(catalog) + """
 
-Las fuentes S02, S03, S04 y S08 sólo están en el checkout canónico de investigación y se leyeron sin modificarlas. Las otras proceden del worktree propio. Se preservaron copias congeladas privadas de las 16 fuentes; el paquete público contiene los extractos mínimos para comprobar las etiquetas sin copiar directorios históricos completos.
+Las fuentes S02, S03, S04 y S08 sólo están en el checkout canónico de investigación y se leyeron sin modificarlas. Las otras proceden del worktree propio. Se preservaron copias congeladas privadas de las 20 fuentes; el paquete público contiene los extractos mínimos para comprobar las etiquetas sin copiar directorios históricos completos. S20 conserva los [comentarios de Mario en esta revisión](review-feedback.json), sin convertirlos en instrucciones activas ni en aprobación de todas las etiquetas.
 
 ## Consultas con etiquetas propuestas
 
@@ -169,11 +192,25 @@ Para la intención explícita, los demás antecedentes elegibles se proponen con
 
 C16 tiene cero candidatos por filtro de proyecto. Se informará aparte de C17 y C18, que mantienen candidatos pero no tienen un incidente relevante. Estos últimos permiten medir asociaciones incorrectas o abstención; un KNN que siempre devuelve vecinos necesita distinguir candidato de antecedente confirmado.
 
+## Omisiones de procedimiento y controles
+
+R31, R32 y R33 contienen los escenarios solicitados. C19 a C26 preparan omisiones y controles cercanos. Las etiquetas siguientes describen el comportamiento esperado en una futura ejecución. Se conservan fuera del texto del embedding y no sustituyen los grados de relevancia de recuperación.
+
+""" + "\n".join(workflow) + """
+
+El control C20 conserva una falta de selección de la skill, aunque demuestra consulta efectiva de convenciones. C26 omite la selección porque la tarea no encaja con su trigger. C22 evita repetir una entrevista con requisitos cerrados y documentación suficiente. C25 permite preguntar por una brecha material nueva después de investigar, aun con spec aprobada e implementación solicitada. C24 permite reutilizar el worktree propio preparado. Una tarea de sólo lectura tampoco exige crear un worktree para cambios.
+
+Para registrar una omisión real hay que comprobar que la tarea encaja con el trigger, el procedimiento estaba disponible y se omitió en la traza del trabajo. Una traza incompleta deja la clasificación indeterminada. Las fuentes S17, S18 y S19 prueban procedimientos y S20 conserva criterios de revisión; no demuestran que ocurrieran estas omisiones. La recuperación semántica puede encontrar el escenario, pero no prueba por sí sola un fallo ni decide corregir instrucciones.
+
 ## Casos que necesitan revisión
 
 """ + "\n".join(review) + """
 
-Los seis casos conservan grades=null e include_in_scoring=false en labels.json. La propuesta no fija causas ni permisos por similitud. V03 y V04 deberían dividirse por fase o situación si se quiere una expectativa única.
+Los cinco casos conservan grades=null e include_in_scoring=false en labels.json. Los criterios de V02 y V04 se aclararon con Mario, pero sus consultas originales siguen sin describir el contexto suficiente para una etiqueta única. C19/C26 y C22/C25 preparan los contrastes explícitos. V03 aún requiere distinguir fases.
+
+""" + "\n".join(historical) + """ V05 también conserva grades=null e include_in_scoring=false, en excluded_from_comparison. No se ha aportado evidencia nueva de captura completa.
+
+V06 pregunta por un incidente de consumo excesivo de GPU. R29 sólo describe una prueba de MiniLM; R21 describe una edición de instrucciones. Ninguno confirma ese incidente. La respuesta propuesta indica ausencia en este corpus; falta revisar si se muestra alguno como contexto separado o se omite.
 
 ## Comprobaciones antes de comparar modelos
 
@@ -185,7 +222,7 @@ V05 impide convertir una puntuación histórica en prueba de captura completa. R
 
 ## Reproducción y verificación
 
-records.json y queries.json son entradas curadas. prepare.py genera fuentes, extractos, etiquetas, este documento y manifest.json. Los generados se actualizan mediante ese script, sin editarlos manualmente. Las fuentes congeladas completas permanecen fuera de Git, en mstack-tasks/maintenance-laya/embedding-corpus-evidence/draft-01/sources bajo el Git common directory canónico.
+records.json y queries.json son entradas curadas. prepare.py genera fuentes, extractos, etiquetas, este documento y manifest.json. Los generados se actualizan mediante ese script, sin editarlos manualmente. Las fuentes congeladas completas permanecen fuera de Git, en mstack-tasks/maintenance-laya/embedding-corpus-evidence/draft-02/sources bajo el Git common directory canónico. Se conserva la versión anterior en draft-01.
 
 Con uv 0.10.11 y el entorno Python 3.13.2 ya bloqueado, desde esta carpeta:
 
@@ -214,20 +251,25 @@ def main():
                            "limits": "Full source hashes bind reviewed files, not inaccessible underlying sessions; source_session stays unknown when not exposed"})
     write("labels.json", labels)
     render_review(records, queries)
-    write("manifest.json", {"schemaVersion": 1, "status": "prepared-not-executed", "source_commit": "f3a2989d63c8364cc0898b4247ca939e6edb9037",
-                            "authorization": "Mario requested examples, labels and cases to review; this does not authorize new model executions",
+    write("manifest.json", {"schemaVersion": 1, "status": "prepared-not-executed", "source_commit": "38f88a622100f2bd7302642de9602aa41646a315",
+                            "authorization": "Mario requested examples, labels and cases to review, then conventions/interview/worktree omissions; this does not authorize new model executions",
                             "runtime": {"python": platform.python_version(), "external_dependencies": 0},
-                            "inputs": {name: sha(HERE / name) for name in ("records.json", "queries.json", "prepare.py", "verify.py")},
+                            "inputs": {name: sha(HERE / name) for name in ("records.json", "queries.json", "review-feedback.json", "prepare.py", "verify.py")},
                             "outputs": {name: sha(HERE / name) for name in ("sources.json", "labels.json", "review.md")},
                             "counts": {"records": len(records), "source_files": len(sources), "record_kinds": dict(Counter(row["kind"] for row in records)),
-                                       "source_episodes": len({row["episode"] for row in records}), "base_query_intents": len(queries["cases"]),
+                                       "unexecuted_scenarios": sum(row["kind"] == "prepared-scenario" for row in records),
+                                       "source_episodes": len({row["episode"] for row in records}),
+                                       "historical_source_episodes": len({row["episode"] for row in records if row["kind"] != "prepared-scenario"}),
+                                       "base_query_intents": len(queries["cases"]),
                                        "proposed_queries": len(labels["queries"]), "languages": dict(Counter(row["language"] for row in labels["queries"])),
-                                       "no_match_queries": sum(row["expected_no_match"] for row in labels["queries"]), "held_out_queries": len(labels["held_out_for_review"])},
+                                       "no_match_queries": sum(row["expected_no_match"] for row in labels["queries"]), "held_out_queries": len(labels["held_out_for_review"]),
+                                       "excluded_historical_queries": len(labels["excluded_from_comparison"])},
                             "new_embedding_calls": 0, "new_hosted_model_calls": 0, "user_approved_labels": False,
                             "limits": ["Only mstack maintenance sources; source diversity and incident count are limited", "Authored queries and translations, not natural query logs",
-                                       "Provisional relevance judgments by the preparing agent, not an independent judge", "Six unresolved cases have no scoring grades",
+                                       "Provisional relevance judgments by the preparing agent, not an independent judge", "Five unresolved cases and one excluded historical control have no scoring grades",
+                                       "Three user-requested workflow scenarios use procedures and review feedback; no execution trace or observed incident",
                                        "Related records, follow-ups and language variants are not independent incident recurrences", "No model selection, benchmark winner or production adoption"]})
-    print(json.dumps({"records": len(records), "proposed_queries": len(labels["queries"]), "held_out": len(labels["held_out_for_review"]), "sources": len(sources), "embedding_calls": 0}))
+    print(json.dumps({"records": len(records), "proposed_queries": len(labels["queries"]), "held_out": len(labels["held_out_for_review"]), "excluded_historical": len(labels["excluded_from_comparison"]), "sources": len(sources), "embedding_calls": 0}))
 
 
 if __name__ == "__main__":

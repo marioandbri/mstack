@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "repository_check": "PASS 30 skills, 59 Markdown",
+  "repository_check": "PASS 30 skills, 59 Markdown files",
   "tests": {
     "pass": 28,
     "skip": 1,
     "fail": 0,
     "assertions": 297,
-    "duration_seconds": 19.59,
+    "duration_seconds": 16.69,
     "skip_reason": "Optional Portless HTTP E2E"
   },
   "installation": {
@@ -17,24 +17,29 @@
   },
   "corpus": {
     "status": "prepared-not-executed",
-    "records": 30,
-    "source_files": 16,
-    "source_episode_groups": 25,
-    "proposed_queries": 36,
-    "base_intents": 18,
+    "records": 33,
+    "historical_records": 30,
+    "unexecuted_workflow_scenarios": 3,
+    "workflow_expectations": 8,
+    "source_files": 20,
+    "source_episode_groups": 26,
+    "historical_source_episode_groups": 25,
+    "proposed_queries": 52,
+    "base_intents": 26,
     "query_languages": {
-      "es": 18,
-      "en": 18
+      "es": 26,
+      "en": 26
     },
     "record_text_language": "Spanish with technical names; English queries test cross-language retrieval",
     "no_match_queries": 6,
-    "cases_held_out": 6,
-    "independent_verification": "PASS source hashes/quotes/JSON pointers, ID references, bilingual judgments, distinct scope and semantic absence, six ungraded review cases",
+    "cases_held_out": 5,
+    "excluded_historical_controls": 1,
+    "independent_verification": "PASS 33 sourced records, 20 frozen sources/quotes/pointers, 52 bilingual proposed judgments, 3 unexecuted workflow scenarios, 8 distinct behavior expectations, 6 no-match queries, 5 ungraded review cases and 1 excluded historical control; no embeddings executed. Relevance and behavioral expectations remain provisional.",
     "new_embedding_calls": 0,
     "new_hosted_model_calls": 0,
     "user_approved_labels": false
   },
-  "documents": "PASS Python syntax, JSON, relative links, git diff --check, 48 stories and 29 acceptance criteria",
+  "documents": "PASS regeneration identity, preservation of 30 historical records/18 original intents/16 source hashes, Python syntax, JSON, relative links, git diff --check, 48 stories and 29 acceptance criteria",
   "harness_workspace": {
     "environment_cwd": "/Users/mario.brito/personal/engineering-skills",
     "owned_worktree": "/Users/mario.brito/personal/mstack-maintenance-laya",
@@ -43,7 +48,8 @@
   "limits": [
     "Structural/source checks cannot establish semantic relevance; labels remain provisional",
     "Small single-project corpus with authored paraphrases and translations",
-    "Fixtures, decisions and follow-up results are marked; not 30 independent production incidents",
+    "Three new workflow scenarios have procedural/review sources, not execution traces",
+    "Feedback clarifies criteria; it does not approve every relevance label or prove capture implementation",
     "No embedding/model comparison or production adoption in this task"
   ]
 }

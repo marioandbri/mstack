@@ -80,6 +80,26 @@
       "origin": "worktree",
       "path": "docs/agent-maintenance/evaluations/2026-10-14-chroma-default-embeddings/verification.json",
       "sha256": "1b8b6cd07b0d38169e8b6cef4b0a719fac24a48d579bea2ec51e338f01dd91bd"
+    },
+    "S17": {
+      "origin": "worktree",
+      "path": "skills/conventions-aware-engineering/SKILL.md",
+      "sha256": "4ae766caf1425f0deec2c415a0d3c330be72b8fb69cf062f1c3d8122e73fb233"
+    },
+    "S18": {
+      "origin": "worktree",
+      "path": "skills/grill-with-docs/SKILL.md",
+      "sha256": "a69f258f4f8f375049d3dbfa7ba4a39b0a92baf5ca02f58140f333397a990d64"
+    },
+    "S19": {
+      "origin": "worktree",
+      "path": "skills/repository-workflow/SKILL.md",
+      "sha256": "9f0a9e82173166ff578a270e4994f53998b69610e103e2d4602f2cf50925659b"
+    },
+    "S20": {
+      "origin": "worktree",
+      "path": "docs/agent-maintenance/evaluations/2026-10-14-embedding-corpus/review-feedback.json",
+      "sha256": "45de9d66c032b3324cc721d6aeadbb94bee3fdd2be73008d9855d695fada978a"
     }
   },
   "evidence": [
@@ -369,6 +389,90 @@
         "exact_quote": "No se aisló el efecto de su frontmatter frente al coordinador."
       },
       "excerpt": "No se aisló el efecto de su frontmatter frente al coordinador."
+    },
+    {
+      "record_id": "R31",
+      "source_id": "S17",
+      "location": {
+        "exact_quote": "Use before architecture analysis, implementation, or code review in repositories with AGENTS.md, docs/agents/documentation-map.md, docs/conventions/, CONTEXT.md, or ADRs."
+      },
+      "excerpt": "Use before architecture analysis, implementation, or code review in repositories with AGENTS.md, docs/agents/documentation-map.md, docs/conventions/, CONTEXT.md, or ADRs."
+    },
+    {
+      "record_id": "R31",
+      "source_id": "S17",
+      "location": {
+        "exact_quote": "Find repository root and read every applicable `AGENTS.md` or equivalent instruction file from root to working directory."
+      },
+      "excerpt": "Find repository root and read every applicable `AGENTS.md` or equivalent instruction file from root to working directory."
+    },
+    {
+      "record_id": "R31",
+      "source_id": "S20",
+      "location": {
+        "json_pointer": "/decisions/0"
+      },
+      "excerpt": {
+        "id": "D01",
+        "case_id": "V02",
+        "user_comment": "igual debe validar que contexto sea compatible con el trigger",
+        "criterion": "Comprobar instalación, exposición, disponibilidad y compatibilidad de la tarea con el trigger antes de atribuir una omisión de selección.",
+        "disposition": "C19 declara aplicabilidad; C26 prepara un control fuera del trigger. La consulta original V02 sigue sin especificar la tarea."
+      }
+    },
+    {
+      "record_id": "R32",
+      "source_id": "S18",
+      "location": {
+        "exact_quote": "Use before turning a non-trivial implementation request into a spec or tickets when domain terms, scope, boundaries, or acceptance criteria remain unresolved."
+      },
+      "excerpt": "Use before turning a non-trivial implementation request into a spec or tickets when domain terms, scope, boundaries, or acceptance criteria remain unresolved."
+    },
+    {
+      "record_id": "R32",
+      "source_id": "S18",
+      "location": {
+        "exact_quote": "Skip clear small edits and approved specs or tickets."
+      },
+      "excerpt": "Skip clear small edits and approved specs or tickets."
+    },
+    {
+      "record_id": "R32",
+      "source_id": "S18",
+      "location": {
+        "exact_quote": "If a question can be answered by exploring the codebase, explore the codebase instead."
+      },
+      "excerpt": "If a question can be answered by exploring the codebase, explore the codebase instead."
+    },
+    {
+      "record_id": "R32",
+      "source_id": "S20",
+      "location": {
+        "json_pointer": "/decisions/1"
+      },
+      "excerpt": {
+        "id": "D02",
+        "case_id": "V04",
+        "user_comment": "si ya hay un artefacto (spec, ticket) y se solicito implementacion, las preguntas pueden existir siempre y cuando sean porque alguna parte genera brechas sobre el contexto de dominio, scope drift o no existe documentacion que respalde.",
+        "criterion": "Durante implementación solicitada desde spec o ticket, investigar la evidencia disponible y preguntar por brechas materiales de dominio, desviación de alcance o falta de respaldo documental. La aprobación previa no elimina esas brechas ni obliga a repetir autorizaciones.",
+        "disposition": "C22 conserva requisitos resueltos; C25 prepara una brecha material descubierta después de aprobar la spec."
+      }
+    },
+    {
+      "record_id": "R33",
+      "source_id": "S19",
+      "location": {
+        "exact_quote": "Prepare or reuse an owned worktree and task branch with the required setup."
+      },
+      "excerpt": "Prepare or reuse an owned worktree and task branch with the required setup."
+    },
+    {
+      "record_id": "R33",
+      "source_id": "S19",
+      "location": {
+        "exact_quote": "Skip read-only reviews, explanation-only requests and non-Git work."
+      },
+      "excerpt": "Skip read-only reviews, explanation-only requests and non-Git work."
     }
   ],
   "roots": {

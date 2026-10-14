@@ -1,26 +1,27 @@
 {
   "schemaVersion": 1,
   "status": "prepared-not-executed",
-  "source_commit": "f3a2989d63c8364cc0898b4247ca939e6edb9037",
-  "authorization": "Mario requested examples, labels and cases to review; this does not authorize new model executions",
+  "source_commit": "38f88a622100f2bd7302642de9602aa41646a315",
+  "authorization": "Mario requested examples, labels and cases to review, then conventions/interview/worktree omissions; this does not authorize new model executions",
   "runtime": {
     "python": "3.13.2",
     "external_dependencies": 0
   },
   "inputs": {
-    "records.json": "f6cbd212988e62731fd2bba60e61ba2d97e2f216e3d105fb79568d6511750c88",
-    "queries.json": "0d2bc60cca0e184d5aaef5146b72ded60145e52157c4e0a61d32e1d0e606fe46",
-    "prepare.py": "4b54d274557b0f1b82104efd724d82e03e69d2e3f4075a220205eb76075ce008",
-    "verify.py": "8bbfeb5037a3ac82769a3afe6b4df198b3d4c66939fc193d0997068bd713f947"
+    "records.json": "8ae8a751e9382227007b0b3b6b68b1947291afcc087292aa32db54221200f16b",
+    "queries.json": "b046add8e1e27e0690d451e5a4c1ba2585a32f61569863706ee8d50f2f8e1010",
+    "review-feedback.json": "45de9d66c032b3324cc721d6aeadbb94bee3fdd2be73008d9855d695fada978a",
+    "prepare.py": "1d033e92841ac3cd84a1c0b9a7d03fe5ebfc891b93979cada33ecd932d26e0e1",
+    "verify.py": "c0558c7a08ea45a289b698ff49251b341a0d12241013075cb69dc1208d427f48"
   },
   "outputs": {
-    "sources.json": "76127e972ffae8d7a0cb6320f822e1cc3b58f8526c5e0ffefa4b93f44ddacfbc",
-    "labels.json": "ffd615dced551a43d37226a8e73d848e54f23ec11b408b342f07c66490a52781",
-    "review.md": "d97b87bae6b9bcf312a78261df809c12afeb5f27c038fec915c83043a4c1c12d"
+    "sources.json": "ae487a115e7b58e214557450b8e9889329dbb927d3c397904a2ed3c8bd4785ec",
+    "labels.json": "764e5712edaeb6438c4d21dda8be053985dbc7753b047ab3e649e53628521bda",
+    "review.md": "3eae123f9b084b232518061db0d4403b298dde17005c6f1dc94d951a99e79169"
   },
   "counts": {
-    "records": 30,
-    "source_files": 16,
+    "records": 33,
+    "source_files": 20,
     "record_kinds": {
       "incident": 5,
       "audit-finding": 4,
@@ -28,17 +29,21 @@
       "review-decision": 9,
       "review-result": 1,
       "installation-result": 1,
-      "storage-probe": 3
+      "storage-probe": 3,
+      "prepared-scenario": 3
     },
-    "source_episodes": 25,
-    "base_query_intents": 18,
-    "proposed_queries": 36,
+    "unexecuted_scenarios": 3,
+    "source_episodes": 26,
+    "historical_source_episodes": 25,
+    "base_query_intents": 26,
+    "proposed_queries": 52,
     "languages": {
-      "es": 18,
-      "en": 18
+      "es": 26,
+      "en": 26
     },
     "no_match_queries": 6,
-    "held_out_queries": 6
+    "held_out_queries": 5,
+    "excluded_historical_queries": 1
   },
   "new_embedding_calls": 0,
   "new_hosted_model_calls": 0,
@@ -47,7 +52,8 @@
     "Only mstack maintenance sources; source diversity and incident count are limited",
     "Authored queries and translations, not natural query logs",
     "Provisional relevance judgments by the preparing agent, not an independent judge",
-    "Six unresolved cases have no scoring grades",
+    "Five unresolved cases and one excluded historical control have no scoring grades",
+    "Three user-requested workflow scenarios use procedures and review feedback; no execution trace or observed incident",
     "Related records, follow-ups and language variants are not independent incident recurrences",
     "No model selection, benchmark winner or production adoption"
   ]

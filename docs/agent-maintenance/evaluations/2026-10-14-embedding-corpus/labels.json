@@ -8,6 +8,16 @@
     "1": "Useful context, without satisfying the direct target",
     "0": "Does not answer this query in this bounded corpus"
   },
+  "workflow_label_definitions": {
+    "conventions-skill-and-context-omitted": "La traza completa del escenario muestra que se omitieron tanto la skill aplicable como sus documentos rectores antes de cambiar el repositorio.",
+    "conventions-context-loaded-without-skill": "La selección de la skill falta, pero la traza confirma carga y resolución de los documentos rectores. No se etiqueta como omisión de convenciones ni se supone un resultado incorrecto.",
+    "material-gaps-left-unresolved": "Quedaban decisiones materiales al preparar tickets; no se resolvieron mediante investigación ni entrevista.",
+    "interview-not-required": "La spec aprobada ya cierra los requisitos materiales; continuar sin repetir entrevista respeta el encargo.",
+    "material-clarification-after-approved-artifact": "La implementación solicitada desde un artefacto aprobado descubre una brecha material de dominio, desviación de alcance o falta de respaldo documental. Tras investigar, preguntar por la decisión pendiente es válido.",
+    "conventions-skill-not-applicable": "La tarea no encaja con el trigger de la skill. Su disponibilidad no obliga a seleccionarla para una explicación general fuera de un repositorio.",
+    "owned-worktree-not-prepared": "Se hicieron cambios del repositorio en un checkout compartido, sin worktree propio preparado o reutilizado.",
+    "existing-owned-worktree-reused": "Se verificó y reutilizó un worktree propio configurado. No crear otro no constituye omisión."
+  },
   "direct_hit_requires_grade": 2,
   "queries": [
     {
@@ -62,7 +72,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 2,
@@ -94,7 +107,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -152,7 +168,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 2,
@@ -184,7 +203,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -241,7 +263,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -273,7 +298,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -330,7 +358,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -362,7 +393,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -419,7 +453,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -451,7 +488,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -508,7 +548,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -540,7 +583,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -597,7 +643,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -629,7 +678,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -686,7 +738,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -718,7 +773,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -775,7 +833,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -807,7 +868,10 @@
         "R27": 0,
         "R28": 1,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -864,7 +928,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -896,7 +963,10 @@
         "R27": 0,
         "R28": 1,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -954,7 +1024,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -986,7 +1059,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -1044,7 +1120,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -1076,7 +1155,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -1134,7 +1216,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -1166,7 +1251,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -1224,7 +1312,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -1256,7 +1347,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -1313,7 +1407,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -1345,7 +1442,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -1402,7 +1502,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -1434,7 +1537,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -1492,7 +1598,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -1524,7 +1633,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -1582,7 +1694,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -1614,7 +1729,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -1671,7 +1789,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -1703,7 +1824,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -1760,7 +1884,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -1792,7 +1919,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -1849,7 +1979,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -1881,7 +2014,10 @@
         "R27": 1,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -1938,7 +2074,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -1970,7 +2109,10 @@
         "R27": 1,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -2027,7 +2169,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -2059,7 +2204,10 @@
         "R27": 1,
         "R28": 2,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -2116,7 +2264,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -2148,7 +2299,10 @@
         "R27": 1,
         "R28": 2,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -2205,7 +2359,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -2237,7 +2394,10 @@
         "R27": 0,
         "R28": 1,
         "R29": 2,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -2294,7 +2454,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -2326,7 +2489,10 @@
         "R27": 0,
         "R28": 1,
         "R29": 2,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -2383,7 +2549,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -2415,7 +2584,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -2472,7 +2644,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -2504,7 +2679,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -2561,7 +2739,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -2593,7 +2774,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -2650,7 +2834,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -2682,7 +2869,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": false,
       "absence_reason": null,
@@ -2776,7 +2966,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -2808,7 +3001,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": true,
       "absence_reason": "no-relevant-incident-in-this-corpus",
@@ -2862,7 +3058,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -2894,7 +3093,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": true,
       "absence_reason": "no-relevant-incident-in-this-corpus",
@@ -2947,7 +3149,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -2979,7 +3184,10 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": true,
       "absence_reason": "no-relevant-incident-in-this-corpus",
@@ -3032,7 +3240,10 @@
         "R27",
         "R28",
         "R29",
-        "R30"
+        "R30",
+        "R31",
+        "R32",
+        "R33"
       ],
       "grades": {
         "R01": 0,
@@ -3064,11 +3275,1610 @@
         "R27": 0,
         "R28": 0,
         "R29": 0,
-        "R30": 0
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 0
       },
       "expected_no_match": true,
       "absence_reason": "no-relevant-incident-in-this-corpus",
       "rationale": "La palabra CSV aparece en un control de selección, no en un fallo de facturación. No hay evidencia de ese incidente en este corpus."
+    },
+    {
+      "id": "C19-es",
+      "case_id": "C19",
+      "language": "es",
+      "text": "Busca el escenario preparado donde el agente empieza a modificar el repositorio sin usar la skill disponible para cargar convenciones ni leer AGENTS y documentación aplicable.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R31"
+      ],
+      "context_ids": [
+        "R22",
+        "R13"
+      ],
+      "hard_negative_ids": [
+        "R32",
+        "R33"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 1,
+        "R14": 0,
+        "R15": 0,
+        "R16": 0,
+        "R17": 0,
+        "R18": 0,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 1,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 2,
+        "R32": 0,
+        "R33": 0
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "R31 prepara esta omisión con documentos y skill disponibles. R22 separa exposición y carga; R13 conserva el propietario de la selección. Se busca un escenario, no un incidente confirmado ni una causa inferida por similitud.",
+      "workflow_expectation": {
+        "label": "conventions-skill-and-context-omitted",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C19-en",
+      "case_id": "C19",
+      "language": "en",
+      "text": "Find the prepared scenario where an agent starts modifying a repository without using the available conventions skill or reading AGENTS and applicable documentation.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R31"
+      ],
+      "context_ids": [
+        "R22",
+        "R13"
+      ],
+      "hard_negative_ids": [
+        "R32",
+        "R33"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 1,
+        "R14": 0,
+        "R15": 0,
+        "R16": 0,
+        "R17": 0,
+        "R18": 0,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 1,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 2,
+        "R32": 0,
+        "R33": 0
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "R31 prepara esta omisión con documentos y skill disponibles. R22 separa exposición y carga; R13 conserva el propietario de la selección. Se busca un escenario, no un incidente confirmado ni una causa inferida por similitud.",
+      "workflow_expectation": {
+        "label": "conventions-skill-and-context-omitted",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C20-es",
+      "case_id": "C20",
+      "language": "es",
+      "text": "Busca el control preparado que no abre la skill de convenciones, pero sí lee AGENTS y los documentos rectores y resuelve las reglas aplicables antes de editar.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R31"
+      ],
+      "context_ids": [
+        "R22",
+        "R30"
+      ],
+      "hard_negative_ids": [
+        "R32",
+        "R33"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 0,
+        "R14": 0,
+        "R15": 0,
+        "R16": 0,
+        "R17": 0,
+        "R18": 0,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 1,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 1,
+        "R31": 2,
+        "R32": 0,
+        "R33": 0
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "El control de R31 separa ausencia de selección y cumplimiento demostrado. La selección sigue faltando, pero no se convierte en ausencia de consulta ni en fallo del resultado. R22 y R30 fundamentan la separación de esas comprobaciones.",
+      "workflow_expectation": {
+        "label": "conventions-context-loaded-without-skill",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C20-en",
+      "case_id": "C20",
+      "language": "en",
+      "text": "Find the prepared control that does not open the conventions skill but does read AGENTS and governing documents and resolves the applicable rules before editing.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R31"
+      ],
+      "context_ids": [
+        "R22",
+        "R30"
+      ],
+      "hard_negative_ids": [
+        "R32",
+        "R33"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 0,
+        "R14": 0,
+        "R15": 0,
+        "R16": 0,
+        "R17": 0,
+        "R18": 0,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 1,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 1,
+        "R31": 2,
+        "R32": 0,
+        "R33": 0
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "El control de R31 separa ausencia de selección y cumplimiento demostrado. La selección sigue faltando, pero no se convierte en ausencia de consulta ni en fallo del resultado. R22 y R30 fundamentan la separación de esas comprobaciones.",
+      "workflow_expectation": {
+        "label": "conventions-context-loaded-without-skill",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C21-es",
+      "case_id": "C21",
+      "language": "es",
+      "text": "Busca el escenario preparado donde una petición no trivial deja alcance y aceptación abiertos y el agente redacta tickets sin investigar ni hacer entrevista para cerrar esas brechas.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R32"
+      ],
+      "context_ids": [
+        "R15",
+        "R14"
+      ],
+      "hard_negative_ids": [
+        "R31",
+        "R33"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 0,
+        "R14": 1,
+        "R15": 1,
+        "R16": 0,
+        "R17": 0,
+        "R18": 0,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 0,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 0,
+        "R32": 2,
+        "R33": 0
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "La omisión es llegar al artefacto con incertidumbre material pendiente. R32 prepara el escenario y R15 aporta la decisión sobre cierre y ruta. La ausencia de preguntas por sí sola no demuestra esta omisión.",
+      "workflow_expectation": {
+        "label": "material-gaps-left-unresolved",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C21-en",
+      "case_id": "C21",
+      "language": "en",
+      "text": "Find the prepared scenario where a non-trivial request leaves scope and acceptance unresolved and the agent writes tickets without investigating or interviewing to close those gaps.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R32"
+      ],
+      "context_ids": [
+        "R15",
+        "R14"
+      ],
+      "hard_negative_ids": [
+        "R31",
+        "R33"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 0,
+        "R14": 1,
+        "R15": 1,
+        "R16": 0,
+        "R17": 0,
+        "R18": 0,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 0,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 0,
+        "R32": 2,
+        "R33": 0
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "La omisión es llegar al artefacto con incertidumbre material pendiente. R32 prepara el escenario y R15 aporta la decisión sobre cierre y ruta. La ausencia de preguntas por sí sola no demuestra esta omisión.",
+      "workflow_expectation": {
+        "label": "material-gaps-left-unresolved",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C22-es",
+      "case_id": "C22",
+      "language": "es",
+      "text": "Busca el control preparado donde el agente continúa desde una spec aprobada con requisitos cerrados, documentación suficiente y sin desviación de alcance, y no repite una entrevista innecesaria.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R32"
+      ],
+      "context_ids": [
+        "R15",
+        "R14"
+      ],
+      "hard_negative_ids": [
+        "R31",
+        "R33"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 0,
+        "R14": 1,
+        "R15": 1,
+        "R16": 0,
+        "R17": 0,
+        "R18": 0,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 0,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 0,
+        "R32": 2,
+        "R33": 0
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "R32 conserva el control de spec aprobada sin brechas nuevas. La falta de preguntas es válida porque no quedan decisiones materiales. Tener un artefacto por sí solo no justifica omitir una pregunta necesaria: C25 prepara ese contraste.",
+      "workflow_expectation": {
+        "label": "interview-not-required",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C22-en",
+      "case_id": "C22",
+      "language": "en",
+      "text": "Find the prepared control where the agent continues from an approved spec with resolved requirements, sufficient documentation and no scope drift, without repeating an unnecessary interview.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R32"
+      ],
+      "context_ids": [
+        "R15",
+        "R14"
+      ],
+      "hard_negative_ids": [
+        "R31",
+        "R33"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 0,
+        "R14": 1,
+        "R15": 1,
+        "R16": 0,
+        "R17": 0,
+        "R18": 0,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 0,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 0,
+        "R32": 2,
+        "R33": 0
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "R32 conserva el control de spec aprobada sin brechas nuevas. La falta de preguntas es válida porque no quedan decisiones materiales. Tener un artefacto por sí solo no justifica omitir una pregunta necesaria: C25 prepara ese contraste.",
+      "workflow_expectation": {
+        "label": "interview-not-required",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C23-es",
+      "case_id": "C23",
+      "language": "es",
+      "text": "Busca el escenario preparado donde se hacen cambios en el checkout compartido sin preparar ni reutilizar un worktree propio configurado.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R33"
+      ],
+      "context_ids": [
+        "R18"
+      ],
+      "hard_negative_ids": [
+        "R31",
+        "R32"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 0,
+        "R14": 0,
+        "R15": 0,
+        "R16": 0,
+        "R17": 0,
+        "R18": 1,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 0,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 2
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "R33 define la ausencia de aislamiento y preparación. R18 conserva el acuerdo de entrega. Ni faltar entrevista ni omitir documentos implica por sí solo que se editó un checkout compartido.",
+      "workflow_expectation": {
+        "label": "owned-worktree-not-prepared",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C23-en",
+      "case_id": "C23",
+      "language": "en",
+      "text": "Find the prepared scenario where changes are made in a shared checkout without preparing or reusing a configured owned worktree.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R33"
+      ],
+      "context_ids": [
+        "R18"
+      ],
+      "hard_negative_ids": [
+        "R31",
+        "R32"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 0,
+        "R14": 0,
+        "R15": 0,
+        "R16": 0,
+        "R17": 0,
+        "R18": 1,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 0,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 2
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "R33 define la ausencia de aislamiento y preparación. R18 conserva el acuerdo de entrega. Ni faltar entrevista ni omitir documentos implica por sí solo que se editó un checkout compartido.",
+      "workflow_expectation": {
+        "label": "owned-worktree-not-prepared",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C24-es",
+      "case_id": "C24",
+      "language": "es",
+      "text": "Busca el control preparado donde se verifica y reutiliza un worktree propio ya configurado al reanudar, sin crear otro worktree.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R33"
+      ],
+      "context_ids": [
+        "R18"
+      ],
+      "hard_negative_ids": [
+        "R31",
+        "R32"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 0,
+        "R14": 0,
+        "R15": 0,
+        "R16": 0,
+        "R17": 0,
+        "R18": 1,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 0,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 2
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "R33 permite preparar o reutilizar. R18 aporta el acuerdo previo. La expectativa comprueba propiedad y configuración efectiva; la falta de git worktree add no constituye una omisión.",
+      "workflow_expectation": {
+        "label": "existing-owned-worktree-reused",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C24-en",
+      "case_id": "C24",
+      "language": "en",
+      "text": "Find the prepared control where an already configured owned worktree is verified and reused on resumption, without creating another worktree.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R33"
+      ],
+      "context_ids": [
+        "R18"
+      ],
+      "hard_negative_ids": [
+        "R31",
+        "R32"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 0,
+        "R14": 0,
+        "R15": 0,
+        "R16": 0,
+        "R17": 0,
+        "R18": 1,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 0,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 0,
+        "R32": 0,
+        "R33": 2
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "R33 permite preparar o reutilizar. R18 aporta el acuerdo previo. La expectativa comprueba propiedad y configuración efectiva; la falta de git worktree add no constituye una omisión.",
+      "workflow_expectation": {
+        "label": "existing-owned-worktree-reused",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C25-es",
+      "case_id": "C25",
+      "language": "es",
+      "text": "Busca el control preparado donde se pidió implementar una spec aprobada, pero aparece una brecha de dominio sin respaldo en los documentos y el agente pregunta por la decisión pendiente tras investigar.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R32"
+      ],
+      "context_ids": [
+        "R15",
+        "R14"
+      ],
+      "hard_negative_ids": [
+        "R31",
+        "R33"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 0,
+        "R14": 1,
+        "R15": 1,
+        "R16": 0,
+        "R17": 0,
+        "R18": 0,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 0,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 0,
+        "R32": 2,
+        "R33": 0
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "El criterio D02 de Mario permite cerrar una nueva brecha material durante implementación desde un artefacto. R32 incluye ese control. La pregunta responde a la brecha; no repite aprobación ni reabre requisitos ya resueltos.",
+      "workflow_expectation": {
+        "label": "material-clarification-after-approved-artifact",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C25-en",
+      "case_id": "C25",
+      "language": "en",
+      "text": "Find the prepared control where implementation of an approved spec was requested, but an undocumented domain gap appears and the agent asks about the pending decision after investigating.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R32"
+      ],
+      "context_ids": [
+        "R15",
+        "R14"
+      ],
+      "hard_negative_ids": [
+        "R31",
+        "R33"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 0,
+        "R14": 1,
+        "R15": 1,
+        "R16": 0,
+        "R17": 0,
+        "R18": 0,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 0,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 0,
+        "R32": 2,
+        "R33": 0
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "El criterio D02 de Mario permite cerrar una nueva brecha material durante implementación desde un artefacto. R32 incluye ese control. La pregunta responde a la brecha; no repite aprobación ni reabre requisitos ya resueltos.",
+      "workflow_expectation": {
+        "label": "material-clarification-after-approved-artifact",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C26-es",
+      "case_id": "C26",
+      "language": "es",
+      "text": "Busca el control preparado donde se explica qué es una convención de código, fuera de un repositorio y sin análisis de arquitectura, implementación ni revisión, y no se selecciona la skill de carga de convenciones.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R31"
+      ],
+      "context_ids": [
+        "R22",
+        "R13"
+      ],
+      "hard_negative_ids": [
+        "R32",
+        "R33"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 1,
+        "R14": 0,
+        "R15": 0,
+        "R16": 0,
+        "R17": 0,
+        "R18": 0,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 1,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 2,
+        "R32": 0,
+        "R33": 0
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "El criterio D01 de Mario exige compatibilidad con el trigger. R31 prepara la explicación general fuera del ámbito del trigger como control válido. Estar disponible no obliga a seleccionar la skill para esa tarea.",
+      "workflow_expectation": {
+        "label": "conventions-skill-not-applicable",
+        "execution_status": "not-executed"
+      }
+    },
+    {
+      "id": "C26-en",
+      "case_id": "C26",
+      "language": "en",
+      "text": "Find the prepared control where the agent explains what a code convention is, outside a repository and without architecture analysis, implementation or code review, and does not select the conventions-loading skill.",
+      "intent": "workflow-scenario-lookup",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "proposed",
+      "user_approved": false,
+      "direct_ids": [
+        "R31"
+      ],
+      "context_ids": [
+        "R22",
+        "R13"
+      ],
+      "hard_negative_ids": [
+        "R32",
+        "R33"
+      ],
+      "candidate_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R33"
+      ],
+      "grades": {
+        "R01": 0,
+        "R02": 0,
+        "R03": 0,
+        "R04": 0,
+        "R05": 0,
+        "R06": 0,
+        "R07": 0,
+        "R08": 0,
+        "R09": 0,
+        "R10": 0,
+        "R11": 0,
+        "R12": 0,
+        "R13": 1,
+        "R14": 0,
+        "R15": 0,
+        "R16": 0,
+        "R17": 0,
+        "R18": 0,
+        "R19": 0,
+        "R20": 0,
+        "R21": 0,
+        "R22": 1,
+        "R23": 0,
+        "R24": 0,
+        "R25": 0,
+        "R26": 0,
+        "R27": 0,
+        "R28": 0,
+        "R29": 0,
+        "R30": 0,
+        "R31": 2,
+        "R32": 0,
+        "R33": 0
+      },
+      "expected_no_match": false,
+      "absence_reason": null,
+      "rationale": "El criterio D01 de Mario exige compatibilidad con el trigger. R31 prepara la explicación general fuera del ámbito del trigger como control válido. Estar disponible no obliga a seleccionar la skill para esa tarea.",
+      "workflow_expectation": {
+        "label": "conventions-skill-not-applicable",
+        "execution_status": "not-executed"
+      }
     }
   ],
   "held_out_for_review": [
@@ -3095,7 +4905,10 @@
       },
       "question": "¿Buscamos primero el fallo de continuidad, la corrección evaluada o el criterio de preservar autorizaciones?",
       "recommendation": "Priorizar R02 como incidente y presentar R08 y R14 como contexto con funciones distintas. No asumir la causa de una nueva fricción por similitud.",
-      "ambiguity": "La consulta no dice si faltó el registro, si falló la lectura o si se repitió una autorización."
+      "ambiguity": "La consulta no dice si faltó el registro, si falló la lectura o si se repitió una autorización.",
+      "role": "retrieval-ambiguity",
+      "decision_status": "needs-review",
+      "review_feedback": null
     },
     {
       "id": "V02-es",
@@ -3115,12 +4928,16 @@
         ],
         "context": [
           "R13",
-          "R11"
+          "R11",
+          "R31"
         ]
       },
-      "question": "¿Se debe priorizar evidencia de catálogo/carga o la decisión sobre corregir triggers?",
-      "recommendation": "Priorizar R22 y conservar R13/R11 como contexto. Instalación, exposición y selección deben seguir distinguidas.",
-      "ambiguity": "No apareció puede significar ausencia del catálogo o ausencia de ejecución, con diagnósticos diferentes."
+      "question": "¿Qué tarea y contexto tenía la sesión, encajaban con el trigger y qué evidencia hay de exposición y carga?",
+      "recommendation": "Comprobar catálogo, disponibilidad, exposición, compatibilidad del contexto con el trigger y selección. R22 aporta la distinción de evidencias; R31 prepara los controles de aplicabilidad. No atribuir una omisión a una skill que no aplicaba.",
+      "ambiguity": "El criterio de Mario está aclarado, pero la consulta no identifica la tarea ni qué significa no apareció. C19 y C26 declaran contextos distintos.",
+      "role": "retrieval-ambiguity",
+      "decision_status": "criterion-clarified-query-still-underspecified",
+      "review_feedback": "D01"
     },
     {
       "id": "V03-es",
@@ -3145,7 +4962,10 @@
       },
       "question": "¿Dividimos esta consulta según se refiera al documento en la base o al informe exportado?",
       "recommendation": "Dividirla por fase antes de fijar un único antecedente esperado. C05 y C12 ya muestran las versiones explícitas.",
-      "ambiguity": "R06 confirma el original y pierde el informe; R28 no confirma el original por una excepción inyectada en inferencia. No son duplicados."
+      "ambiguity": "R06 confirma el original y pierde el informe; R28 no confirma el original por una excepción inyectada en inferencia. No son duplicados.",
+      "role": "retrieval-ambiguity",
+      "decision_status": "needs-review",
+      "review_feedback": null
     },
     {
       "id": "V04-es",
@@ -3165,38 +4985,16 @@
           "R15"
         ],
         "context": [
-          "R05"
+          "R05",
+          "R32"
         ]
       },
-      "question": "¿La etiqueta cambia cuando hay autorización conservada frente a requisitos materiales todavía pendientes?",
-      "recommendation": "Separar autorización repetida de requisitos pendientes. Un caso explícito por situación permite medir falsas asociaciones.",
-      "ambiguity": "La consulta no establece si el trabajo ya estaba aprobado ni si falta una decisión del usuario."
-    },
-    {
-      "id": "V05-es",
-      "case_id": "V05",
-      "language": "es",
-      "text": "¿La evaluación más reciente demuestra que la captura automática ya está resuelta?",
-      "filters": {
-        "project": "mstack"
-      },
-      "judgment_status": "needs-decision",
-      "user_approved": false,
-      "grades": null,
-      "include_in_scoring": false,
-      "proposed_ids": {
-        "direct": [
-          "R10"
-        ],
-        "context": [
-          "R01",
-          "R12",
-          "R30"
-        ]
-      },
-      "question": "¿Qué evidencia debe ser directa y qué puntuaciones sólo sirven como contexto?",
-      "recommendation": "Priorizar R10 y el límite de cobertura. El 8/8 de comportamiento no acredita una observación guardada y no se usa como prueba de captura completa.",
-      "ambiguity": "El perfil B no promovió conocimiento, pero tampoco guardó una observación. La puntuación general cubría otros criterios."
+      "question": "¿La pregunta repite una autorización o cierra una brecha material de dominio, desviación de alcance o falta de respaldo documental después de investigar?",
+      "recommendation": "Una spec o ticket aprobado con implementación solicitada permite preguntas para nuevas brechas materiales. Investigar primero lo que responden los documentos. C22 prepara continuar sin brechas y C25 preguntar por una brecha nueva; no repetir autorizaciones conservadas.",
+      "ambiguity": "Mario aclaró el criterio, pero la consulta original no dice qué se preguntó ni si había respaldo documental o una brecha real.",
+      "role": "retrieval-ambiguity",
+      "decision_status": "criterion-clarified-query-still-underspecified",
+      "review_feedback": "D02"
     },
     {
       "id": "V06-es",
@@ -3217,9 +5015,43 @@
           "R21"
         ]
       },
-      "question": "Cuando no hay un incidente pertinente, ¿devolvemos ausencia o también contexto relacionado claramente separado?",
-      "recommendation": "Informar que no hay antecedente del incidente en este corpus. Si se muestran contextos, separarlos de coincidencias y no contarlos como aciertos del incidente.",
-      "ambiguity": "Hay registros sobre límites de evaluación y modelos, pero ninguno demuestra consumo excesivo de GPU. Es una decisión sobre qué utilidad se concede al contexto."
+      "question": "¿Además de indicar ausencia del incidente, resulta útil mostrar la prueba de MiniLM como contexto separado?",
+      "recommendation": "No hay un incidente de GPU excesiva en este corpus. R29 describe una prueba de MiniLM y R21 una edición de instrucciones; ninguno satisface la búsqueda del incidente. Si se muestran, deben figurar como contexto y no contar como aciertos.",
+      "ambiguity": "Encontrar información de modelos no equivale a encontrar el incidente buscado. Falta decidir si ese contexto resulta útil o se omite.",
+      "role": "retrieval-ambiguity",
+      "decision_status": "clarification-presented-awaiting-review",
+      "review_feedback": "D04"
+    }
+  ],
+  "excluded_from_comparison": [
+    {
+      "id": "V05-es",
+      "case_id": "V05",
+      "language": "es",
+      "text": "¿La evaluación más reciente demuestra que la captura automática ya está resuelta?",
+      "filters": {
+        "project": "mstack"
+      },
+      "judgment_status": "out-of-scope",
+      "user_approved": false,
+      "grades": null,
+      "include_in_scoring": false,
+      "proposed_ids": {
+        "direct": [
+          "R10"
+        ],
+        "context": [
+          "R01",
+          "R12",
+          "R30"
+        ]
+      },
+      "question": "Control histórico de cobertura, separado de las ambigüedades activas de recuperación.",
+      "recommendation": "Conservar como control histórico sin puntuar en esta comparación. La puntuación de tareas no demuestra captura completa.",
+      "ambiguity": "No es una brecha actual de elección de embeddings. Tampoco se ha aportado evidencia nueva de que la captura ya esté implementada o resuelta.",
+      "role": "historical-coverage-control",
+      "decision_status": "scope-separated",
+      "review_feedback": "D03"
     }
   ]
 }
