@@ -4,9 +4,19 @@ import tempfile
 import unittest
 
 from ranking import RetrievalIndex, measure
+from run import retrieval_prompts
 
 
 class RetrievalTests(unittest.TestCase):
+    def test_e5_uses_english_retrieval_prefixes_for_spanish_text(self):
+        prompts = retrieval_prompts({"query_prompt": "query: ", "document_prompt": "passage: "}, {})
+        self.assertEqual(prompts["query"] + "No se cargaron las convenciones", "query: No se cargaron las convenciones")
+        self.assertEqual(prompts["document"] + "Faltó preparar un worktree", "passage: Faltó preparar un worktree")
+
+    def test_missing_serialized_model_prompt_cannot_silently_encode_bare_text(self):
+        with self.assertRaises(KeyError):
+            retrieval_prompts({"query_prompt_name": "query", "document_prompt_name": "document"}, {})
+
     def test_context_is_not_a_direct_hit(self):
         grades = {"direct": 2, "context": 1, "other": 0}
         actual = measure(["context", "other", "direct"], grades)

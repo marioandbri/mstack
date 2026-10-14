@@ -1,6 +1,6 @@
 # Comparación local de embeddings para mantenimiento de agentes
 
-Mario pidió probar google/embeddinggemma-2 y Qwen/Qwen3-Embedding-0.6B. Se compararon con all-MiniLM-L6-v2 y FTS5 sobre los mismos textos y expectativas congeladas antes de inferencia.
+Mario pidió ampliar la comparación con google/embeddinggemma-300m e intfloat/multilingual-e5-small. Se añadieron los perfiles disponibles y se repitieron las referencias anteriores, con las mismas revisiones, dependencias, textos y expectativas congeladas antes de inferencia. FTS5 conserva la referencia léxica.
 
 El corpus tiene 33 registros, 26 intenciones y 52 variantes ES/EN. Hay 46 consultas con antecedente directo esperado, 23 por idioma. Las otras seis son controles de ausencia o ámbito. Las cinco consultas ambiguas y V05, control histórico, quedan fuera de puntuación. Los juicios siguen propuestos, sin aprobación independiente. Esta ejecución no es una evaluación de agentes realizando los escenarios.
 
@@ -9,17 +9,25 @@ El corpus tiene 33 registros, 26 intenciones y 52 variantes ES/EN. Hay 46 consul
 | Modelo o referencia | ES directo @1 / @3 | EN directo @1 / @3 | nDCG @5 | Embedding de consulta p50 / p95, ms | RSS máximo muestreado, GiB |
 |---|---|---|---|---|---|
 | FTS5 | 21/23 / 23/23 | 13/23 / 17/23 | 0.733 | No genera embeddings | No medido |
-| sentence-transformers/all-MiniLM-L6-v2 | 14/23 / 18/23 | 13/23 / 16/23 | 0.601 | 19.4 / 41.2 | 0.51 |
-| google/embeddinggemma-2 | 18/23 / 23/23 | 19/23 / 23/23 | 0.834 | 71.7 / 84.1 | 1.25 |
-| Qwen/Qwen3-Embedding-0.6B | 21/23 / 23/23 | 20/23 / 23/23 | 0.876 | 153.4 / 231.9 | 2.52 |
+| sentence-transformers/all-MiniLM-L6-v2 | 14/23 / 18/23 | 13/23 / 16/23 | 0.601 | 6.8 / 7.7 | 0.50 |
+| google/embeddinggemma-2 | 18/23 / 23/23 | 19/23 / 23/23 | 0.834 | 73.3 / 92.2 | 1.28 |
+| Qwen/Qwen3-Embedding-0.6B | 21/23 / 23/23 | 20/23 / 23/23 | 0.876 | 162.0 / 296.3 | 2.20 |
+| intfloat/multilingual-e5-small | 20/23 / 23/23 | 19/23 / 22/23 | 0.823 | 13.4 / 15.7 | 0.98 |
+| google/embeddinggemma-300m | Sin ejecutar | Sin ejecutar | — | — | — |
 
 Un acierto directo requiere grado 2. El grado 1 aporta contexto y no cuenta como acierto directo. nDCG incorpora ambos grados con ganancias 3 y 1. Los porcentajes de idioma usan 23 consultas; las traducciones del mismo caso no son incidentes independientes.
 
-Qwen recuperó primero el antecedente directo en 41/46 consultas, Gemma en 37/46 y MiniLM en 27/46. Qwen obtuvo más primeros resultados directos en esta muestra. Gemma consumió aproximadamente la mitad de RSS y tuvo menor mediana de generación de consulta en esta pasada. Ambos recuperaron todos los directos esperados entre los tres primeros. Son candidatos para ampliar la evaluación, sin adopción de producción.
+sentence-transformers/all-MiniLM-L6-v2: 27/46 primeros directos; google/embeddinggemma-2: 37/46 primeros directos; Qwen/Qwen3-Embedding-0.6B: 41/46 primeros directos; intfloat/multilingual-e5-small: 39/46 primeros directos. El mayor número de primeros directos fue 41/46, obtenido por Qwen/Qwen3-Embedding-0.6B. Las tablas separan calidad de recuperación y recursos. Esta muestra no decide la adopción de un modelo de producción.
+
+Google EmbeddingGemma 300M quedó pendiente: Hugging Face exige aceptar sus condiciones y autorizar el acceso con una cuenta. La descarga devolvió 401 y no había sesión local. Se conserva ese resultado separado de las métricas; habilitar el acceso permitirá ejecutarlo con el mismo corpus. [Condiciones y acceso del modelo](https://huggingface.co/google/embeddinggemma-300m). Una comprobación posterior encontró el token en fish interactivo, pero devolvió 403: la cuenta todavía no está en la lista autorizada del modelo.
 
 El tiempo de consulta de la tabla mide sólo generación local del embedding, con una consulta por llamada después de calentamiento. RSS incluye el proceso Python, bibliotecas y pesos cargados; se muestrea cada 50 ms. Son mediciones de una pasada en Apple M1 Pro de 16 GiB, CPU con cuatro threads y float32. Descarga y carga quedan separadas en results.json. No se midió capacidad de producción ni aceleración GPU.
 
-MiniLM y Qwen conservaron exactamente sus rankings y métricas del intento anterior. La mediana de MiniLM cambió de 6,9 a 19,4 ms y la de Qwen de 139,0 a 153,4 ms entre los intentos. El entorno de dependencias también cambió. No se aisló el efecto de ese cambio ni de la actividad del sistema; los tiempos son referencias de estas pasadas, no un benchmark controlado de latencia.
+La repetición se contrasta con la pasada anterior conservada. Los hashes del corpus y el entorno de ejecución son idénticos; los scripts conservan su procedencia por pasada. No se aisló la actividad del sistema, por lo que los tiempos son referencias de estas pasadas, no un benchmark controlado de latencia.
+
+- sentence-transformers/all-MiniLM-L6-v2: rankings y métricas idénticos respecto a run-02; mediana 19.4 → 6.8 ms.
+- google/embeddinggemma-2: rankings y métricas idénticos respecto a run-02; mediana 71.7 → 73.3 ms.
+- Qwen/Qwen3-Embedding-0.6B: rankings y métricas idénticos respecto a run-02; mediana 153.4 → 162.0 ms.
 
 ## Búsqueda híbrida
 
@@ -30,8 +38,9 @@ FTS5 usa BM25 sobre todos los tokens Unicode de la consulta, unidos con OR, sin 
 | sentence-transformers/all-MiniLM-L6-v2 | 27 / 34 / 35 | 30 / 36 / 41 | 0.601 / 0.690 |
 | google/embeddinggemma-2 | 37 / 46 / 46 | 39 / 45 / 45 | 0.834 / 0.837 |
 | Qwen/Qwen3-Embedding-0.6B | 41 / 46 / 46 | 42 / 44 / 45 | 0.876 / 0.858 |
+| intfloat/multilingual-e5-small | 39 / 45 / 46 | 40 / 43 / 45 | 0.823 / 0.812 |
 
-La combinación de pesos iguales mejora algunos primeros resultados y pierde algunos directos en top 3/top 5 frente a la búsqueda vectorial de Gemma y Qwen. No se ajustaron pesos después de observar las etiquetas; esta prueba no justifica elegir esa combinación como configuración final.
+La combinación puede mejorar primeros resultados y perder directos en top 3/top 5. La tabla registra el efecto en cada perfil. No se ajustaron pesos después de observar las etiquetas; esta prueba no justifica elegir esa combinación como configuración final.
 
 ## Controles sin antecedente
 
@@ -40,6 +49,7 @@ La combinación de pesos iguales mejora algunos primeros resultados y pierde alg
 | sentence-transformers/all-MiniLM-L6-v2 | 4/4 devuelven candidatos | 0.458 a 0.810 | 0/6 resultados de los tres métodos |
 | google/embeddinggemma-2 | 4/4 devuelven candidatos | 0.254 a 0.365 | 0/6 resultados de los tres métodos |
 | Qwen/Qwen3-Embedding-0.6B | 4/4 devuelven candidatos | 0.527 a 0.574 | 0/6 resultados de los tres métodos |
+| intfloat/multilingual-e5-small | 4/4 devuelven candidatos | 0.155 a 0.204 | 0/6 resultados de los tres métodos |
 
 C17 busca exposición de una clave secreta y C18 un fallo de cálculo de IVA. No hay esos incidentes en el corpus. Los vecinos devueltos son candidatos, no confirmaciones. No se fijó un umbral de abstención ni se convierte una distancia en probabilidad calibrada. C16 tiene cero candidatos por proyecto; se informa aparte y no se cuenta como acierto semántico.
 
@@ -80,22 +90,32 @@ C17 busca exposición de una clave secreta y C18 un fallo de cálculo de IVA. No
 | qwen | C10-en | R08 | R25 |
 | qwen | C14-es | R24 | R23 |
 | qwen | C14-en | R24 | R23 |
+| e5small | C03-es | R02 | R08 |
+| e5small | C03-en | R02 | R08 |
+| e5small | C06-en | R17 | R04 |
+| e5small | C08-es | R10 | R16 |
+| e5small | C08-en | R10 | R16 |
+| e5small | C10-es | R04 | R25 |
+| e5small | C10-en | R03 | R25 |
 
 Las consultas, IDs esperados y grados completos están en el [corpus congelado de origen](../2026-10-14-embedding-corpus/review.md) y los rankings en [results.json](results.json). Compartir tema o ser un contexto útil no satisface el objetivo directo de la consulta.
 
 ## Configuración y procedencia
 
-- sentence-transformers/all-MiniLM-L6-v2, revisión 1110a243fdf4706b3f48f1d95db1a4f5529b4d41, 384 dimensiones, 22,713,216 parámetros cargados. Máximo documental 219 tokens; 0 documentos superan el límite nativo 256.
-- google/embeddinggemma-2, revisión 914f7f89142e33e77833254d9c9b90c3cef7303b, 768 dimensiones, 271,002,624 parámetros cargados. Máximo documental 137 tokens; 0 documentos superan el límite nativo 8192.
-- Qwen/Qwen3-Embedding-0.6B, revisión 97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3, 1024 dimensiones, 595,776,512 parámetros cargados. Máximo documental 171 tokens; 0 documentos superan el límite nativo 32768.
+- sentence-transformers/all-MiniLM-L6-v2, revisión 1110a243fdf4706b3f48f1d95db1a4f5529b4d41, licencia apache-2.0, 384 dimensiones, 22,713,216 parámetros cargados. Máximo documental 219 tokens; 0 documentos superan el límite nativo 256.
+- google/embeddinggemma-2, revisión 914f7f89142e33e77833254d9c9b90c3cef7303b, licencia apache-2.0, 768 dimensiones, 271,002,624 parámetros cargados. Máximo documental 137 tokens; 0 documentos superan el límite nativo 8192.
+- Qwen/Qwen3-Embedding-0.6B, revisión 97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3, licencia apache-2.0, 1024 dimensiones, 595,776,512 parámetros cargados. Máximo documental 171 tokens; 0 documentos superan el límite nativo 32768.
+- intfloat/multilingual-e5-small, revisión 614241f622f53c4eeff9890bdc4f31cfecc418b3, licencia mit, 384 dimensiones, 117,653,760 parámetros cargados. Máximo documental 146 tokens; 0 documentos superan el límite nativo 512.
+- google/embeddinggemma-300m, revisión solicitada 57c266a740f537b4dc058e1b0cda161fd15afa75, licencia gemma. Sin inferencia: descarga rechazada con HTTP 401 (GatedRepoError); acceso de Hugging Face pendiente. No se le asignan métricas.
+  Comprobación posterior con token disponible en fish interactivo: HTTP 403. Access to model google/embeddinggemma-300m is restricted and you are not in the authorized list. Visit https://huggingface.co/google/embeddinggemma-300m to ask for access.
 
-EmbeddingGemma 2 carga sólo texto, con vision_config y audio_config desactivados, y usa los prefijos query/document. Qwen usa su instrucción query y documento sin prefijo. MiniLM usa texto sin prefijos. Se conserva el texto completo de cada registro como entrada; los nombres, grados, razones del juez y fuentes no se añaden. Los prefijos son constantes del modelo. Todos los vectores son float32, finitos y normalizados; cada perfil usa sus dimensiones completas.
+EmbeddingGemma 2 carga sólo texto, con vision_config y audio_config desactivados, y usa los prompts query/document de su configuración. Qwen usa su instrucción query y documento sin prefijo. MiniLM usa texto sin prefijos. E5 usa query: para consultas y passage: para documentos, también en español. El perfil solicitado de Gemma 300M fija task: search result | query: y title: none | text:. Se conserva el texto completo de cada registro como entrada; los nombres, grados, razones del juez y fuentes no se añaden. Los prefijos son constantes del modelo. Todos los vectores ejecutados son float32, finitos y normalizados; cada perfil usa sus dimensiones completas.
 
-Se respetaron las configuraciones de las [model cards de Google](https://huggingface.co/google/embeddinggemma-2), [Qwen](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B) y [MiniLM](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2). Las revisiones completas y los hashes de archivos fijan lo ejecutado. Los tres checkpoints declaran Apache 2.0. El entorno de evaluación usa paquetes mantenidos de sus proyectos oficiales, versiones exactas en pyproject.toml y resolución completa en uv.lock; no instala un backend activo.
+Las configuraciones se apoyan en las model cards de [Google 2](https://huggingface.co/google/embeddinggemma-2), [Google 300M](https://huggingface.co/google/embeddinggemma-300m), [Qwen](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B), [MiniLM](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) y [E5](https://huggingface.co/intfloat/multilingual-e5-small). Las revisiones completas y los hashes de archivos fijan lo ejecutado. Los tres checkpoints iniciales declaran Apache 2.0; E5 declara MIT y Gemma 300M declara la licencia Gemma. El entorno de evaluación usa versiones exactas en pyproject.toml y resolución completa en uv.lock; no instala un backend activo.
 
 El [protocolo](protocol.json) conserva los hashes del corpus y de los scripts anteriores a ejecución, versiones, prefijos, ámbito y rúbrica. Los modelos, vectores, bases SQLite, logs y copias de fuentes se conservan fuera de Git en embedding-model-evidence del directorio privado de esta tarea. Hub sólo se usó para descarga; la inferencia se ejecutó offline y no envió textos a un proveedor.
 
-El primer intento completó MiniLM y Qwen, pero Gemma no pudo cargar el procesador por ausencia de Pillow, antes de generar embeddings. El preflight posterior identificó también Torchvision. Se conservan como fallos de infraestructura. Tras añadir Pillow 12.3.0 y Torchvision 0.29.1 al entorno aislado se repitieron todos los perfiles; la tabla usa sólo esa repetición. El tokenizer de Gemma exponía un límite centinela indeterminado; se fijó el límite documentado de 8.192 tokens antes de la repetición. Los pesos y el corpus permanecen idénticos, sin segunda descarga. Los tiempos de descarga corresponden a la adquisición inicial, no a una segunda descarga medida.
+El primer intento histórico completó MiniLM y Qwen, pero Gemma 2 no pudo cargar el procesador por ausencia de Pillow, antes de generar embeddings. El preflight posterior identificó también Torchvision. Se conservan como fallos de infraestructura. Tras añadir Pillow 12.3.0 y Torchvision 0.29.1 se completó run-02. El tokenizer de Gemma 2 exponía un límite centinela indeterminado; se fijó el límite documentado de 8.192 tokens. La tabla actual usa la nueva pasada completa, no el intento fallido. Las referencias reutilizan los mismos pesos descargados, sin segunda descarga; sus tiempos de descarga corresponden a la adquisición inicial. E5 se descargó en esta ampliación.
 
 ## Verificación y límites
 
@@ -105,7 +125,7 @@ El corpus es pequeño, de un proyecto, con consultas redactadas y escenarios agr
 
 ## Reproducción
 
-Con uv 0.10.11 y Python 3.13.2, uv sync --locked prepara el entorno. download.py recibe un directorio privado con metadata pública de las revisiones fijadas; no descarga ni ejecuta código remoto. run.py freeze conserva fuentes y protocolo antes de ejecutar. run.py execute serializa los perfiles con los mismos ajustes de proceso.
+Con uv 0.10.11 y Python 3.13.2, uv sync --locked prepara el entorno. download.py recibe un directorio privado con metadata pública de las revisiones fijadas y --models selecciona las descargas; no ejecuta código remoto. --use-local-auth permite usar una sesión existente que tenga acceso al modelo restringido, sin guardar el token en evidencia. run.py freeze --models selecciona los perfiles disponibles y --pending-models conserva accesos pendientes; congela fuentes y protocolo antes de ejecutar. run.py execute serializa los perfiles con los mismos ajustes de proceso.
 
 ```fish
 env PYTHONDONTWRITEBYTECODE=1 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 HF_HUB_DISABLE_IMPLICIT_TOKEN=1 TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 uv run --locked python run.py execute --private /ruta/privada/congelada
@@ -113,4 +133,4 @@ env PYTHONDONTWRITEBYTECODE=1 uv run --locked python verify.py --private /ruta/p
 env PYTHONDONTWRITEBYTECODE=1 uv run --locked python -m unittest -v test_ranking.py
 ```
 
-Una nueva ejecución usa un directorio nuevo para conservar intentos previos. publish.py genera este informe y results.json desde la evidencia verificada; los generados se actualizan con ese script.
+Una nueva ejecución usa un directorio nuevo para conservar intentos previos. publish.py --private /ruta/privada/congelada --previous-private /ruta/privada/anterior genera este informe y results.json desde la evidencia verificada y contrasta la repetición de las referencias; los generados se actualizan con ese script.

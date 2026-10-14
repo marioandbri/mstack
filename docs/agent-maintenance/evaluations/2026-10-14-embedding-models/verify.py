@@ -8,6 +8,7 @@ import sqlite3
 
 import numpy as np
 import sqlite_vec
+from run import retrieval_prompts
 
 HERE = Path(__file__).resolve().parent
 
@@ -52,12 +53,17 @@ def main():
     assert sum(bool(row["direct_ids"]) for row in queries.values()) == 46
     assert all(row["grades"] is None for row in labels["held_out_for_review"] + labels["excluded_from_comparison"])
     baseline = read(private / "fts5-results.json")
+    downloads = read(private / "downloads.json")
+    assert set(downloads) == set(protocol["models"])
     repeated_sqlite_queries = 0
     for label, expected in protocol["models"].items():
         result = read(private / (label + "-result.json"))
         assert result["status"] == "complete" and result["model"] == expected
         assert result["actual"]["device"] == "cpu" and result["actual"]["dtype"] == "torch.float32"
         assert result["actual"]["max_seq_length"] == expected["max_seq_length"]
+        prompt_file = Path(downloads[label]["local_path"]) / "config_sentence_transformers.json"
+        serialized_prompts = read(prompt_file).get("prompts", {}) if prompt_file.exists() else {}
+        assert result["actual"]["prompts"] == retrieval_prompts(expected, serialized_prompts)
         assert result["resources"]["encoded_documents"] == 33 and result["resources"]["encoded_queries"] == 50
         assert result["resources"]["scope_skipped_queries"] == 2
         assert result["resources"]["warmup_calls"] == 2
@@ -106,11 +112,11 @@ def main():
             assert np.allclose([item[1] for item in repeated], [item["distance"] for item in ranked], atol=1e-7)
             repeated_sqlite_queries += 1
         db.close()
-    for label, model in read(private / "downloads.json").items():
+    for label, model in downloads.items():
         assert model["revision"] == protocol["models"][label]["revision"]
         for artifact in model["artifacts"]:
             assert sha(Path(model["local_path"]) / artifact["path"]) == artifact["sha256"]
-    value = {"status": "PASS", "models": 3, "sqlite_vector_queries_reopened": repeated_sqlite_queries,
+    value = {"status": "PASS", "models": len(protocol["models"]), "sqlite_vector_queries_reopened": repeated_sqlite_queries,
              "finite_normalized_vectors": True, "project_filters": "PASS", "held_out_excluded": True,
              "source_model_artifact_hashes": "PASS", "labels": "provisional; source verification cannot approve semantic judgments"}
     (private / "independent-verification.json").write_text(json.dumps(value, indent=2) + "\n")

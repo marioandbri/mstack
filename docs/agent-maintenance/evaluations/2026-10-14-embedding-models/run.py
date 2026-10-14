@@ -16,6 +16,18 @@ from ranking import RetrievalIndex, measure
 HERE = Path(__file__).resolve().parent
 PACKAGES = ("numpy", "pillow", "psutil", "sentence-transformers", "sqlite-vec", "torch", "torchvision", "transformers")
 SOURCE_FILES = ("run.py", "ranking.py", "download.py", "test_ranking.py", "pyproject.toml", "uv.lock")
+MODEL_PROFILES = {
+    "minilm": {"id": "sentence-transformers/all-MiniLM-L6-v2", "dimension": 384, "max_seq_length": 256,
+               "query_prompt_name": None, "document_prompt_name": None, "config_kwargs": {}},
+    "gemma": {"id": "google/embeddinggemma-2", "dimension": 768, "max_seq_length": 8192,
+              "query_prompt_name": "query", "document_prompt_name": "document", "config_kwargs": {"vision_config": None, "audio_config": None}},
+    "qwen": {"id": "Qwen/Qwen3-Embedding-0.6B", "dimension": 1024, "max_seq_length": 32768,
+             "query_prompt_name": "query", "document_prompt_name": "document", "config_kwargs": {}},
+    "gemma300": {"id": "google/embeddinggemma-300m", "dimension": 768, "max_seq_length": 2048,
+                 "query_prompt": "task: search result | query: ", "document_prompt": "title: none | text: ", "config_kwargs": {}},
+    "e5small": {"id": "intfloat/multilingual-e5-small", "dimension": 384, "max_seq_length": 512,
+                "query_prompt": "query: ", "document_prompt": "passage: ", "config_kwargs": {}},
+}
 
 
 def read(path):
@@ -32,7 +44,27 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def freeze(private, corpus):
+def model_config(private, label):
+    info = read(private / (label + "-model-info.json"))
+    profile = MODEL_PROFILES[label]
+    assert info["id"] == profile["id"]
+    return {**profile, "revision": info["sha"], "license": info["cardData"]["license"]}
+
+
+def retrieval_prompts(config, available):
+    output = {}
+    for role in ("query", "document"):
+        if role + "_prompt" in config:
+            assert role + "_prompt_name" not in config, "Specify a literal or named prompt, not both"
+            output[role] = config[role + "_prompt"]
+        else:
+            name = config[role + "_prompt_name"]
+            output[role] = "" if name is None else available[name]
+    return output
+
+
+def freeze(private, corpus, selected, pending):
+    assert len(selected) == len(set(selected)) and not set(selected) & set(pending)
     frozen = private / "corpus"
     frozen.mkdir()
     for name in ("records.json", "queries.json", "labels.json", "manifest.json", "review-feedback.json"):
@@ -41,17 +73,14 @@ def freeze(private, corpus):
     source.mkdir()
     for name in SOURCE_FILES:
         shutil.copy2(HERE / name, source / name)
-    models = {}
-    for label, dimension, window in (("minilm", 384, 256), ("gemma", 768, 8192), ("qwen", 1024, 32768)):
-        info = read(private / (label + "-model-info.json"))
-        models[label] = {"id": info["id"], "revision": info["sha"], "dimension": dimension, "max_seq_length": window, "license": info["cardData"]["license"],
-                         "query_prompt_name": None if label == "minilm" else "query", "document_prompt_name": None if label == "minilm" else "document",
-                         "config_kwargs": {"vision_config": None, "audio_config": None} if label == "gemma" else {}}
-    protocol = {"schemaVersion": 1, "status": "exploratory-authorized", "authorization": "Mario requested google/embeddinggemma-2 and Qwen/Qwen3-Embedding-0.6B trials; MiniLM retained as reference",
+    models = {label: model_config(private, label) for label in selected}
+    pending_models = {label: {"model": model_config(private, label), "status": "not-executed-access-required",
+                             "access_check": read(private / (label + "-access.json"))} for label in pending}
+    protocol = {"schemaVersion": 2, "status": "exploratory-authorized", "authorization": "Mario requested adding google/embeddinggemma-300m and intfloat/multilingual-e5-small; repeat existing profiles as references",
                 "corpus_commit": "7cba5d9ddb1bdb5b4de7f16464e3bc272850cc03", "corpus_hashes": {item.name: sha(item) for item in frozen.iterdir()},
                 "execution_sources": {name: sha(source / name) for name in SOURCE_FILES}, "runtime": {"python": platform.python_version(), "packages": {name: metadata.version(name) for name in PACKAGES},
                     "sqlite": sqlite3.sqlite_version, "platform": platform.platform(), "device": "cpu", "dtype": "float32", "torch_threads": 4},
-                "models": models, "model_order": list(models), "model_remote_code": False, "hosted_inference": False,
+                "models": models, "pending_models": pending_models, "model_order": list(models), "model_remote_code": False, "hosted_inference": False,
                 "embedding_input": "record.text only, with fixed native retrieval prompts; no titles, IDs, grades, source metadata or judge rationale",
                 "encoding": {"document_batch_size": 4, "query_batch_size": 1, "l2_normalize": True, "output_dimensions": "full native", "sequence_limits": "model-card/default retrieval limits, explicitly bound; actual token counts and truncation recorded",
                              "scope_filter_first": True, "warmup_inputs": 2, "measured_query_passes": 1},
@@ -124,7 +153,7 @@ def worker(private, label):
     load_seconds = time.perf_counter() - start
     model.max_seq_length = config["max_seq_length"]
     assert model.get_embedding_dimension() == config["dimension"]
-    prompts = {role: model.prompts.get(config[role + "_prompt_name"], "") for role in ("query", "document")}
+    prompts = retrieval_prompts(config, model.prompts)
     encode_options = {"normalize_embeddings": True, "convert_to_numpy": True, "show_progress_bar": False}
 
     def encode(texts, role, batch_size):
@@ -198,10 +227,12 @@ def main():
     parser.add_argument("operation", choices=("freeze", "execute", "worker"))
     parser.add_argument("--private", type=Path, required=True)
     parser.add_argument("--corpus", type=Path)
-    parser.add_argument("--model", choices=("minilm", "gemma", "qwen"))
+    parser.add_argument("--model", choices=MODEL_PROFILES)
+    parser.add_argument("--models", nargs="+", choices=MODEL_PROFILES, default=("minilm", "gemma", "qwen"))
+    parser.add_argument("--pending-models", nargs="*", choices=MODEL_PROFILES, default=())
     args = parser.parse_args()
     if args.operation == "freeze":
-        freeze(args.private, args.corpus)
+        freeze(args.private, args.corpus, args.models, args.pending_models)
     elif args.operation == "execute":
         execute(args.private)
     else:

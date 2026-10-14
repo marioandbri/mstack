@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "status": "PASS",
   "repository_check": "PASS 30 skills, 59 Markdown files",
   "tests": {
@@ -7,14 +7,15 @@
     "skip": 1,
     "fail": 0,
     "assertions": 297,
-    "duration_seconds": 18.39,
+    "duration_seconds": 17.45,
     "skip_reason": "Optional Portless HTTP E2E"
   },
   "retrieval_tests": {
+    "chunk_id": "c6b94d",
+    "wall_time_seconds": 1.019245625,
     "exit_code": 0,
-    "pass": 3,
-    "duration_seconds": 0.016,
-    "scope": "worked relevance grades and real SQLite project filters; actual observed latest unittest output"
+    "original_token_count": 204,
+    "output": "test_absent_target_is_not_given_a_success_score (test_ranking.RetrievalTests.test_absent_target_is_not_given_a_success_score) ... ok\ntest_context_is_not_a_direct_hit (test_ranking.RetrievalTests.test_context_is_not_a_direct_hit) ... ok\ntest_e5_uses_english_retrieval_prefixes_for_spanish_text (test_ranking.RetrievalTests.test_e5_uses_english_retrieval_prefixes_for_spanish_text) ... ok\ntest_missing_serialized_model_prompt_cannot_silently_encode_bare_text (test_ranking.RetrievalTests.test_missing_serialized_model_prompt_cannot_silently_encode_bare_text) ... ok\ntest_sqlite_queries_preserve_scope_and_rank_real_vectors (test_ranking.RetrievalTests.test_sqlite_queries_preserve_scope_and_rank_real_vectors) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.009s\n\nOK\n"
   },
   "installation": {
     "status": "PASS",
@@ -24,8 +25,8 @@
   },
   "experiment": {
     "status": "PASS",
-    "models": 3,
-    "sqlite_vector_queries_reopened": 150,
+    "models": 4,
+    "sqlite_vector_queries_reopened": 200,
     "finite_normalized_vectors": true,
     "project_filters": "PASS",
     "held_out_excluded": true,
@@ -33,15 +34,68 @@
     "labels": "provisional; source verification cannot approve semantic judgments"
   },
   "replication": {
-    "minilm": {
-      "rankings_unchanged": true,
-      "prior_p50_ms": 6.881291003082879,
-      "final_p50_ms": 19.372479007870425
+    "previous_run": "run-02",
+    "previous_protocol_sha256": "ad72d6c98a1c3bc6dff780494febe4ee80059da9e3af603969f26f4ab83fc4e5",
+    "previous_execution_sources": {
+      "run.py": "89325f99dbd8849f30fbe5c0bb73a836699d6d2da9373fb4a3d9bf841a37e424",
+      "ranking.py": "94e0d9465147100496c36551c178c0906a27b82f26d6be01f6d3319161a50ce0",
+      "download.py": "760ac87987603ed91c86ea9a41ffde706cda4ebdd735ea6ee864808fde8d0604",
+      "test_ranking.py": "ff69043362e86e0681f7d77c96702f5d6df63c45016f1be205660574a0216518",
+      "pyproject.toml": "c2a205ea7c37cbe22e137ac90663acb7da4acfc4a3125d9cf6cf6358a5f18f37",
+      "uv.lock": "9763e2c0308d7309f5a052a0dd82f1086383f3bbd9fefc371f7cc39b60458ad2"
     },
-    "qwen": {
-      "rankings_unchanged": true,
-      "prior_p50_ms": 138.96014550118707,
-      "final_p50_ms": 153.4324789972743
+    "runtime_and_corpus_unchanged": true,
+    "models": {
+      "minilm": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 19.372479007870425,
+        "current_p50_ms": 6.771500498871319,
+        "previous_result_sha256": "7aa16f03c859cf2f6c2f04ed87528cbcc0cac79aeae11b7881eef0f9cee9352b"
+      },
+      "gemma": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 71.74656249844702,
+        "current_p50_ms": 73.25429199408973,
+        "previous_result_sha256": "d33838de0c48f5c91bc6ba1395b123df6a7e5774ece60f2b6696250b33b231cc"
+      },
+      "qwen": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 153.4324789972743,
+        "current_p50_ms": 162.00279149779817,
+        "previous_result_sha256": "4c05718a27b33250e7739e3ef4bc995a9da9fabf5eb38961ae8c22e4e6724550"
+      }
+    }
+  },
+  "pending_models": {
+    "gemma300": {
+      "model": {
+        "id": "google/embeddinggemma-300m",
+        "dimension": 768,
+        "max_seq_length": 2048,
+        "query_prompt": "task: search result | query: ",
+        "document_prompt": "title: none | text: ",
+        "config_kwargs": {},
+        "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+        "license": "gemma"
+      },
+      "status": "not-executed-access-required",
+      "access_check": {
+        "token_available": false,
+        "id": "google/embeddinggemma-300m",
+        "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+        "access": "not-granted",
+        "error_class": "GatedRepoError",
+        "http_status": 401
+      },
+      "latest_access_check": {
+        "token_available": true,
+        "id": "google/embeddinggemma-300m",
+        "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+        "access": "not-granted",
+        "error_class": "GatedRepoError",
+        "http_status": 403,
+        "reason": "Access to model google/embeddinggemma-300m is restricted and you are not in the authorized list. Visit https://huggingface.co/google/embeddinggemma-300m to ask for access."
+      }
     }
   },
   "documents": "PASS deterministic regeneration, generated output hashes, unchanged frozen corpus, Python syntax, JSON, 48 stories and 29 acceptance criteria, relative links",
@@ -49,7 +103,7 @@
     "status": "retained-infrastructure-error",
     "gemma_corpus_embeddings": 0,
     "cause": "Missing Pillow; subsequent preflight required Torchvision",
-    "final_attempt": "run-02 complete for all models"
+    "final_attempt": "run-03 complete for all available profiles"
   },
   "harness_workspace": {
     "environment_cwd": "/Users/mario.brito/personal/engineering-skills",
@@ -59,7 +113,7 @@
   "limits": [
     "Provisional relevance judgments, not independently approved gold",
     "Small single-project corpus with authored queries and related language variants",
-    "One final CPU pass; observed timing variation between attempts",
+    "One CPU pass; observed timing variation between attempts",
     "No calibrated abstention, classifier or autonomous workflow evaluation",
     "No production model/backend adoption"
   ]

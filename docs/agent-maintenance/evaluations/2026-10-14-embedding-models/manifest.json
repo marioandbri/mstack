@@ -1,67 +1,143 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "status": "executed-exploratory",
-  "protocol_sha256": "ad72d6c98a1c3bc6dff780494febe4ee80059da9e3af603969f26f4ab83fc4e5",
-  "results_sha256": "2277c110c97db59697d520abed159b2a579d98b92604778ef5559763fc7f0f5f",
-  "report_sha256": "3f2ff07bd16d7dcbb9df9281e4b9f98531834a733505ffb80b337270405f149a",
+  "protocol_sha256": "dd6f357d2abf849d19e68c00db5ffd322612184e60808380da0292c30cb76e85",
+  "results_sha256": "62145f10a60f392b5e4001c915fed0cfc2e6598c81cdf75d78f9c99701ec60a4",
+  "report_sha256": "91271c7ae7d7d73ce9313ba7db06502b6ffe1de5f4590c54f2c4b8a45054dc71",
   "publication_sources": {
-    "publish.py": "98c15865259b84a93533e02cd5959cbb6fd219bf39b64a5e73cac2fea44be401",
-    "verify.py": "a1a149b0c2f5357dab481071a29f42ca9ec7a4fbfb7d7be4cf5183681cdd3a83"
+    "publish.py": "63e1daf224a962b3543b93b00a6d321faa3848d227d7284c1b19eba1a3a365e7",
+    "verify.py": "f2730564483c55d7767688ede78005b30461b13c5ce28805189fe7a123535705"
   },
   "execution_sources": {
-    "run.py": "89325f99dbd8849f30fbe5c0bb73a836699d6d2da9373fb4a3d9bf841a37e424",
+    "run.py": "81452c917d8c35a0e807c5f65c89d235d6d857b0d2a2eaefc972edef5759b5a1",
     "ranking.py": "94e0d9465147100496c36551c178c0906a27b82f26d6be01f6d3319161a50ce0",
-    "download.py": "760ac87987603ed91c86ea9a41ffde706cda4ebdd735ea6ee864808fde8d0604",
-    "test_ranking.py": "ff69043362e86e0681f7d77c96702f5d6df63c45016f1be205660574a0216518",
+    "download.py": "d1c6a0c25c7e8ba59bbcf75b429383b11428671a3ce94e30bece5e842b8d7591",
+    "test_ranking.py": "b33d217da6979093fb1170f0d568967a7636f5da7d2d06a022da6689349c9932",
     "pyproject.toml": "c2a205ea7c37cbe22e137ac90663acb7da4acfc4a3125d9cf6cf6358a5f18f37",
     "uv.lock": "9763e2c0308d7309f5a052a0dd82f1086383f3bbd9fefc371f7cc39b60458ad2"
   },
-  "private_evidence": "task Git common directory: embedding-model-evidence/run-02",
+  "private_evidence": "task Git common directory: embedding-model-evidence/run-03",
   "models": {
     "minilm": {
       "id": "sentence-transformers/all-MiniLM-L6-v2",
-      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
       "dimension": 384,
       "max_seq_length": 256,
-      "license": "apache-2.0",
       "query_prompt_name": null,
       "document_prompt_name": null,
-      "config_kwargs": {}
+      "config_kwargs": {},
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "license": "apache-2.0"
     },
     "gemma": {
       "id": "google/embeddinggemma-2",
-      "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
       "dimension": 768,
       "max_seq_length": 8192,
-      "license": "apache-2.0",
       "query_prompt_name": "query",
       "document_prompt_name": "document",
       "config_kwargs": {
         "vision_config": null,
         "audio_config": null
-      }
+      },
+      "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+      "license": "apache-2.0"
     },
     "qwen": {
       "id": "Qwen/Qwen3-Embedding-0.6B",
-      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
       "dimension": 1024,
       "max_seq_length": 32768,
-      "license": "apache-2.0",
       "query_prompt_name": "query",
       "document_prompt_name": "document",
-      "config_kwargs": {}
+      "config_kwargs": {},
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "license": "apache-2.0"
+    },
+    "e5small": {
+      "id": "intfloat/multilingual-e5-small",
+      "dimension": 384,
+      "max_seq_length": 512,
+      "query_prompt": "query: ",
+      "document_prompt": "passage: ",
+      "config_kwargs": {},
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+      "license": "mit"
+    }
+  },
+  "pending_models": {
+    "gemma300": {
+      "model": {
+        "id": "google/embeddinggemma-300m",
+        "dimension": 768,
+        "max_seq_length": 2048,
+        "query_prompt": "task: search result | query: ",
+        "document_prompt": "title: none | text: ",
+        "config_kwargs": {},
+        "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+        "license": "gemma"
+      },
+      "status": "not-executed-access-required",
+      "access_check": {
+        "token_available": false,
+        "id": "google/embeddinggemma-300m",
+        "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+        "access": "not-granted",
+        "error_class": "GatedRepoError",
+        "http_status": 401
+      },
+      "latest_access_check": {
+        "token_available": true,
+        "id": "google/embeddinggemma-300m",
+        "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+        "access": "not-granted",
+        "error_class": "GatedRepoError",
+        "http_status": 403,
+        "reason": "Access to model google/embeddinggemma-300m is restricted and you are not in the authorized list. Visit https://huggingface.co/google/embeddinggemma-300m to ask for access."
+      }
     }
   },
   "independent_verification": {
     "status": "PASS",
-    "models": 3,
-    "sqlite_vector_queries_reopened": 150,
+    "models": 4,
+    "sqlite_vector_queries_reopened": 200,
     "finite_normalized_vectors": true,
     "project_filters": "PASS",
     "held_out_excluded": true,
     "source_model_artifact_hashes": "PASS",
     "labels": "provisional; source verification cannot approve semantic judgments"
   },
+  "reference_repetition": {
+    "previous_run": "run-02",
+    "previous_protocol_sha256": "ad72d6c98a1c3bc6dff780494febe4ee80059da9e3af603969f26f4ab83fc4e5",
+    "previous_execution_sources": {
+      "run.py": "89325f99dbd8849f30fbe5c0bb73a836699d6d2da9373fb4a3d9bf841a37e424",
+      "ranking.py": "94e0d9465147100496c36551c178c0906a27b82f26d6be01f6d3319161a50ce0",
+      "download.py": "760ac87987603ed91c86ea9a41ffde706cda4ebdd735ea6ee864808fde8d0604",
+      "test_ranking.py": "ff69043362e86e0681f7d77c96702f5d6df63c45016f1be205660574a0216518",
+      "pyproject.toml": "c2a205ea7c37cbe22e137ac90663acb7da4acfc4a3125d9cf6cf6358a5f18f37",
+      "uv.lock": "9763e2c0308d7309f5a052a0dd82f1086383f3bbd9fefc371f7cc39b60458ad2"
+    },
+    "runtime_and_corpus_unchanged": true,
+    "models": {
+      "minilm": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 19.372479007870425,
+        "current_p50_ms": 6.771500498871319,
+        "previous_result_sha256": "7aa16f03c859cf2f6c2f04ed87528cbcc0cac79aeae11b7881eef0f9cee9352b"
+      },
+      "gemma": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 71.74656249844702,
+        "current_p50_ms": 73.25429199408973,
+        "previous_result_sha256": "d33838de0c48f5c91bc6ba1395b123df6a7e5774ece60f2b6696250b33b231cc"
+      },
+      "qwen": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 153.4324789972743,
+        "current_p50_ms": 162.00279149779817,
+        "previous_result_sha256": "4c05718a27b33250e7739e3ef4bc995a9da9fabf5eb38961ae8c22e4e6724550"
+      }
+    }
+  },
+  "access_followup_sha256": "01d9fa294f29235f742c3b2efd36d3f6a90084058ede8b22092ca047d29e66ce",
   "prior_attempt": {
     "id": "run-01",
     "status": "partial-infrastructure-failure",
