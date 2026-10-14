@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 1,
+  "sources": {
+    "S01": {
+      "origin": "worktree",
+      "path": "docs/agent-maintenance/inbox/OBS-AGENTS-DIRECT-LEARNING-001.json",
+      "sha256": "7d62e0e689974fdee44ca0f89deb073765d407a5c04d192a4624ab9cd51ac46f"
+    },
+    "S02": {
+      "origin": "canonical",
+      "path": "docs/agent-maintenance/inbox/OBS-REFLECT-PERSISTENCE-001.json",
+      "sha256": "3dec7f10043d6c64d58db8eb7bfb301b2180e39d68064a34fb2f4ae54a8354c6"
+    },
+    "S03": {
+      "origin": "canonical",
+      "path": "docs/agent-maintenance/evaluations/2026-10-08-reflect-support/report.md",
+      "sha256": "2952c65e6d420a9b9e00244f943ab0b6a238f6cd0b45cb1196d28d13036861ed"
+    },
+    "S04": {
+      "origin": "canonical",
+      "path": "docs/agent-maintenance/inbox/OBS-REFLECT-EVALUATION-DOCS-001.json",
+      "sha256": "5c48d76d66741e3ff10e26d90ccdea04aaa8c179afd66a8188e1f2630747ce1d"
+    },
+    "S05": {
+      "origin": "worktree",
+      "path": "docs/agent-maintenance/inbox/OBS-MAINTENANCE-SCOPE-001.json",
+      "sha256": "4b6ef1b52ecd46fc697ae8abd08a1b68c336771c35187609e88c33659b08dcc5"
+    },
+    "S06": {
+      "origin": "worktree",
+      "path": "docs/agent-maintenance/inbox/OBS-CHROMA-ARTIFACT-RECOVERY-001.json",
+      "sha256": "e99f0f1996386c8a5248e596ac099d8e4e2c9862e5ba739330842780f237cba2"
+    },
+    "S07": {
+      "origin": "worktree",
+      "path": "docs/agent-maintenance/evaluations/2026-10-13-am011/report.md",
+      "sha256": "5ef40f27212ac2b6b0b166960bd3d8f380ac5c08efbe2d88afec8f7e88695c0d"
+    },
+    "S08": {
+      "origin": "canonical",
+      "path": "docs/agent-maintenance/evaluations/2026-10-08-reflect-persistence/report.md",
+      "sha256": "de2af45861eaf842c4835e0af8e4d9db4473facdc3078f1a76a709c100c2da4d"
+    },
+    "S09": {
+      "origin": "worktree",
+      "path": "docs/agent-maintenance/changes/AM-010-global-agents.review.json",
+      "sha256": "4a52ee38a0a54545420967fa3445217d2c92e13fcbd486c941ade3660f23cd14"
+    },
+    "S10": {
+      "origin": "worktree",
+      "path": "docs/agent-maintenance/changes/AM-011-editorial-result.md",
+      "sha256": "d97d907703fc490f22a55dd42cbac4cdbc4bc061720a210c26c7e0b93680b574"
+    },
+    "S11": {
+      "origin": "worktree",
+      "path": "docs/agent-maintenance/changes/AM-014-inventory-audit.md",
+      "sha256": "d7f23b00883514ef07a36cc1679e7106fb5d12f13a04755363cb1f9fab8bd18c"
+    },
+    "S12": {
+      "origin": "worktree",
+      "path": "docs/agent-maintenance/changes/AM-013-installation.md",
+      "sha256": "06b9eedcec96d44f06529ab440088544f5c33272bd81f411c3c377c74e9cbf08"
+    },
+    "S13": {
+      "origin": "worktree",
+      "path": "docs/agent-maintenance/evaluations/2026-10-13-lancedb/report.md",
+      "sha256": "9cd796a20d7973519f74e25dec5c9b892581971bfaa5bb341c598751350c78c7"
+    },
+    "S14": {
+      "origin": "worktree",
+      "path": "docs/agent-maintenance/evaluations/2026-10-14-sqlite-vector/report.md",
+      "sha256": "b8a84de7a8e253570589f3a4bb356cb187911b0d89da4345774b5e5e7fbe10a8"
+    },
+    "S15": {
+      "origin": "worktree",
+      "path": "docs/agent-maintenance/evaluations/2026-10-14-chroma-default-embeddings/report.md",
+      "sha256": "efa48392d1301341517cb66ebd81d2fac37649589c26e8abb64eb0940a3c86a3"
+    },
+    "S16": {
+      "origin": "worktree",
+      "path": "docs/agent-maintenance/evaluations/2026-10-14-chroma-default-embeddings/verification.json",
+      "sha256": "1b8b6cd07b0d38169e8b6cef4b0a719fac24a48d579bea2ec51e338f01dd91bd"
+    }
+  },
+  "evidence": [
+    {
+      "record_id": "R01",
+      "source_id": "S01",
+      "location": {
+        "json_pointer": "/observation"
+      },
+      "excerpt": "Al investigar un bug no reproducido, el agente cargó capture-observations pero guardó conocimiento directamente en AGENTS.md del proyecto, sin revisión humana. Es evidencia conductual nueva para la oportunidad OBS-003; el caso B equivalente fue interrumpido por serverOverloaded y no prueba la mitigación."
+    },
+    {
+      "record_id": "R02",
+      "source_id": "S02",
+      "location": {
+        "json_pointer": "/observation"
+      },
+      "excerpt": "En la suite sintética, las etapas 02 y 03 entregan revisión y propuesta sólo en el chat, sin guardar estado. Las etapas 04 y 05 no recuperan decisiones. Un control con estado válido sí retoma y cierra."
+    },
+    {
+      "record_id": "R03",
+      "source_id": "S03",
+      "location": {
+        "exact_quote": "El runner conserva un defecto de recogida que debe corregirse antes de usarlo sin supervisión."
+      },
+      "excerpt": "El runner conserva un defecto de recogida que debe corregirse antes de usarlo sin supervisión."
+    },
+    {
+      "record_id": "R04",
+      "source_id": "S04",
+      "location": {
+        "json_pointer": "/observation"
+      },
+      "excerpt": "Las referencias instaladas describen de forma general el runner de Reflect como pendiente de implementar y los casos conductuales como no ejecutados. Ya existen runners acotados, resultados y una corrección de persistencia evaluada. Sigue pendiente un runner general robusto; el texto no distingue esos estados."
+    },
+    {
+      "record_id": "R05",
+      "source_id": "S05",
+      "location": {
+        "json_pointer": "/observation"
+      },
+      "excerpt": "Al retomar el diseño del sistema completo de mantenimiento, el agente centró su siguiente decisión en integrar Laya con Reflect. Mario tuvo que restituir el alcance amplio y señalar que no entendía esa pregunta."
+    },
+    {
+      "record_id": "R06",
+      "source_id": "S06",
+      "location": {
+        "json_pointer": "/observation"
+      },
+      "excerpt": "El bootstrap descargó el modelo y confirmó captura y consulta, pero su recolector falló al serializar collection.configuration, que contiene una instancia DefaultEmbeddingFunction. La recuperación reabrió el original y usó configuration_json; el intento fallido y sus fuentes se conservaron por separado."
+    },
+    {
+      "record_id": "R07",
+      "source_id": "S07",
+      "location": {
+        "exact_quote": "No reprodujo el fallo."
+      },
+      "excerpt": "No reprodujo el fallo."
+    },
+    {
+      "record_id": "R08",
+      "source_id": "S08",
+      "location": {
+        "exact_quote": "Las cuatro etapas cumplieron sus criterios."
+      },
+      "excerpt": "Las cuatro etapas cumplieron sus criterios."
+    },
+    {
+      "record_id": "R09",
+      "source_id": "S08",
+      "location": {
+        "exact_quote": "No crea ni cambia archivos, responde con una pregunta y explica el límite de reanudación local."
+      },
+      "excerpt": "No crea ni cambia archivos, responde con una pregunta y explica el límite de reanudación local."
+    },
+    {
+      "record_id": "R10",
+      "source_id": "S07",
+      "location": {
+        "exact_quote": "Tampoco se creó un registro de observación."
+      },
+      "excerpt": "Tampoco se creó un registro de observación."
+    },
+    {
+      "record_id": "R11",
+      "source_id": "S03",
+      "location": {
+        "exact_quote": "La mejora observada afecta a selección; las tareas ya daban resultados correctos."
+      },
+      "excerpt": "La mejora observada afecta a selección; las tareas ya daban resultados correctos."
+    },
+    {
+      "record_id": "R12",
+      "source_id": "S09",
+      "location": {
+        "json_pointer": "/opportunities/3/decision/answer"
+      },
+      "excerpt": "Captura automática; reflexión cuando la pida. Las observaciones quedan en bandeja para clasificación e integración o descarte."
+    },
+    {
+      "record_id": "R13",
+      "source_id": "S09",
+      "location": {
+        "json_pointer": "/opportunities/7/decision/answer"
+      },
+      "excerpt": "si una skill no se invoca correctamente hay que trabajar sobre el trigger y la skill en si, no sobre el agents"
+    },
+    {
+      "record_id": "R14",
+      "source_id": "S09",
+      "location": {
+        "json_pointer": "/opportunities/1/decision/answer"
+      },
+      "excerpt": "si apruebo, se debe avanzar sobre el alcance y confirmar cambios de alcance"
+    },
+    {
+      "record_id": "R14",
+      "source_id": "S10",
+      "location": {
+        "exact_quote": "Se investiga evidencia primero y se consultan requisitos/preferencias materiales pendientes."
+      },
+      "excerpt": "Se investiga evidencia primero y se consultan requisitos/preferencias materiales pendientes."
+    },
+    {
+      "record_id": "R15",
+      "source_id": "S09",
+      "location": {
+        "json_pointer": "/opportunities/11/decision/scope"
+      },
+      "excerpt": "Cierre independiente del enrutado; después de entrevista recomendar spec o tickets. Implementación directa sólo por petición del usuario, conservando autorización previa y aceptación clara. Aprobado para propuesta, sin despliegue."
+    },
+    {
+      "record_id": "R16",
+      "source_id": "S09",
+      "location": {
+        "json_pointer": "/opportunities/12/decision/scope"
+      },
+      "excerpt": "Sustituir E2E obligatorio por reproducción fiel, con elección de nivel ubicada en diagnose. Conservar cuatro requisitos de regresión y escenario original. Aprobado para candidato final, sin aplicación activa."
+    },
+    {
+      "record_id": "R16",
+      "source_id": "S09",
+      "location": {
+        "json_pointer": "/opportunities/5/decision/answer"
+      },
+      "excerpt": "Si, lo quiero así, automatizado y conservado una vez estable, aprovechando pruebas existentes. La idea es que pueda servir de evidencia de que lo implementado funciona"
+    },
+    {
+      "record_id": "R17",
+      "source_id": "S09",
+      "location": {
+        "json_pointer": "/opportunities/0/observation"
+      },
+      "excerpt": "Mario aceptó reparar regresiones propias y reportar fallos independientes."
+    },
+    {
+      "record_id": "R18",
+      "source_id": "S09",
+      "location": {
+        "json_pointer": "/opportunities/14/decision/scope"
+      },
+      "excerpt": "Comportamiento solicitado. Worktree como ambiente de trabajo; commits durante ejecución; evidencia; PR tras confirmación a rama indicada o main por defecto; después de merge actualizar main local y limpiar sólo si terminado. Persistencia global del entorno conserva límites AM-010-14. Ubicación pendiente AM-010-16."
+    },
+    {
+      "record_id": "R18",
+      "source_id": "S09",
+      "location": {
+        "json_pointer": "/opportunities/16/decision/scope"
+      },
+      "excerpt": "Mario gestiona el merge del PR en el remoto. El agente no ejecuta ni programa auto-merge; verifica estado remoto antes de actualizar main local y limpiar el worktree propio completado. Aprobado para propuesta, sin operaciones Git actuales."
+    },
+    {
+      "record_id": "R18",
+      "source_id": "S09",
+      "location": {
+        "json_pointer": "/opportunities/17/decision/scope"
+      },
+      "excerpt": "Commits nuevos del flujo sin coautoría. Preferencia confirmada; no autoriza cambiar identidad Git global ni commits previos."
+    },
+    {
+      "record_id": "R19",
+      "source_id": "S09",
+      "location": {
+        "json_pointer": "/opportunities/13/decision/scope"
+      },
+      "excerpt": "Ajustes temporales necesarios dentro del alcance. Persistencia global sólo cuando configurar ese entorno esté autorizado; conservar autorización previa sin preguntar por archivo. Utilidades fuera del alcance a bandeja. Aprobado para propuesta global, no para aplicación activa."
+    },
+    {
+      "record_id": "R20",
+      "source_id": "S09",
+      "location": {
+        "json_pointer": "/opportunities/4/observation"
+      },
+      "excerpt": "Mario eligió escritura breve y natural; caveman sólo explícito."
+    },
+    {
+      "record_id": "R21",
+      "source_id": "S10",
+      "location": {
+        "exact_quote": "No se fijó una cuota de palabras ni se interpreta la reducción como mejora de rendimiento."
+      },
+      "excerpt": "No se fijó una cuota de palabras ni se interpreta la reducción como mejora de rendimiento."
+    },
+    {
+      "record_id": "R22",
+      "source_id": "S11",
+      "location": {
+        "exact_quote": "Confundir instalado con cargado puede atribuir al texto un fallo de descubrimiento."
+      },
+      "excerpt": "Confundir instalado con cargado puede atribuir al texto un fallo de descubrimiento."
+    },
+    {
+      "record_id": "R23",
+      "source_id": "S11",
+      "location": {
+        "exact_quote": "La coincidencia temática no justifica fusionarlos."
+      },
+      "excerpt": "La coincidencia temática no justifica fusionarlos."
+    },
+    {
+      "record_id": "R24",
+      "source_id": "S11",
+      "location": {
+        "exact_quote": "Hay solicitudes potencialmente ambiguas, pero no resultados que demuestren competencia perjudicial."
+      },
+      "excerpt": "Hay solicitudes potencialmente ambiguas, pero no resultados que demuestren competencia perjudicial."
+    },
+    {
+      "record_id": "R25",
+      "source_id": "S12",
+      "location": {
+        "exact_quote": "No se ejecutó ninguna reversión en este cierre."
+      },
+      "excerpt": "No se ejecutó ninguna reversión en este cierre."
+    },
+    {
+      "record_id": "R26",
+      "source_id": "S13",
+      "location": {
+        "exact_quote": "El recorrido nativo de reintento concurrente dejó duplicados; el adaptador experimental con bloqueo local y lectura fresca evitó ese resultado en los diez pares ensayados."
+      },
+      "excerpt": "El recorrido nativo de reintento concurrente dejó duplicados; el adaptador experimental con bloqueo local y lectura fresca evitó ese resultado en los diez pares ensayados."
+    },
+    {
+      "record_id": "R27",
+      "source_id": "S14",
+      "location": {
+        "exact_quote": "Un embedding posterior y su índice se publican dentro de la misma transacción."
+      },
+      "excerpt": "Un embedding posterior y su índice se publican dentro de la misma transacción."
+    },
+    {
+      "record_id": "R28",
+      "source_id": "S15",
+      "location": {
+        "exact_quote": "La captura automática pasa el recorrido de documentos sin embeddings suministrados."
+      },
+      "excerpt": "La captura automática pasa el recorrido de documentos sin embeddings suministrados."
+    },
+    {
+      "record_id": "R29",
+      "source_id": "S16",
+      "location": {
+        "json_pointer": "/experiment/retrieval"
+      },
+      "excerpt": {
+        "unique_queries": 8,
+        "synthetic_documents": 10,
+        "english": {
+          "hit_at_1": 3,
+          "hit_at_3": 4,
+          "queries": 4
+        },
+        "spanish": {
+          "hit_at_1": 2,
+          "hit_at_3": 4,
+          "queries": 4
+        },
+        "other_project_leaks": 0,
+        "same_ids_in_both_modes": true
+      }
+    },
+    {
+      "record_id": "R30",
+      "source_id": "S07",
+      "location": {
+        "exact_quote": "No se aisló el efecto de su frontmatter frente al coordinador."
+      },
+      "excerpt": "No se aisló el efecto de su frontmatter frente al coordinador."
+    }
+  ],
+  "roots": {
+    "worktree": "owned task checkout",
+    "canonical": "read-only historical maintenance sources outside this checkout"
+  },
+  "limits": "Full source hashes bind reviewed files, not inaccessible underlying sessions; source_session stays unknown when not exposed"
+}

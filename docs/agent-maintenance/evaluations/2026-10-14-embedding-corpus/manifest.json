@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "status": "prepared-not-executed",
+  "source_commit": "f3a2989d63c8364cc0898b4247ca939e6edb9037",
+  "authorization": "Mario requested examples, labels and cases to review; this does not authorize new model executions",
+  "runtime": {
+    "python": "3.13.2",
+    "external_dependencies": 0
+  },
+  "inputs": {
+    "records.json": "f6cbd212988e62731fd2bba60e61ba2d97e2f216e3d105fb79568d6511750c88",
+    "queries.json": "0d2bc60cca0e184d5aaef5146b72ded60145e52157c4e0a61d32e1d0e606fe46",
+    "prepare.py": "4b54d274557b0f1b82104efd724d82e03e69d2e3f4075a220205eb76075ce008",
+    "verify.py": "8bbfeb5037a3ac82769a3afe6b4df198b3d4c66939fc193d0997068bd713f947"
+  },
+  "outputs": {
+    "sources.json": "76127e972ffae8d7a0cb6320f822e1cc3b58f8526c5e0ffefa4b93f44ddacfbc",
+    "labels.json": "ffd615dced551a43d37226a8e73d848e54f23ec11b408b342f07c66490a52781",
+    "review.md": "d97b87bae6b9bcf312a78261df809c12afeb5f27c038fec915c83043a4c1c12d"
+  },
+  "counts": {
+    "records": 30,
+    "source_files": 16,
+    "record_kinds": {
+      "incident": 5,
+      "audit-finding": 4,
+      "evaluation-result": 7,
+      "review-decision": 9,
+      "review-result": 1,
+      "installation-result": 1,
+      "storage-probe": 3
+    },
+    "source_episodes": 25,
+    "base_query_intents": 18,
+    "proposed_queries": 36,
+    "languages": {
+      "es": 18,
+      "en": 18
+    },
+    "no_match_queries": 6,
+    "held_out_queries": 6
+  },
+  "new_embedding_calls": 0,
+  "new_hosted_model_calls": 0,
+  "user_approved_labels": false,
+  "limits": [
+    "Only mstack maintenance sources; source diversity and incident count are limited",
+    "Authored queries and translations, not natural query logs",
+    "Provisional relevance judgments by the preparing agent, not an independent judge",
+    "Six unresolved cases have no scoring grades",
+    "Related records, follow-ups and language variants are not independent incident recurrences",
+    "No model selection, benchmark winner or production adoption"
+  ]
+}
