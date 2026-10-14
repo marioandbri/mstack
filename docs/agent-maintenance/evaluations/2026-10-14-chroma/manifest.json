@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "authorization": "Mario: y hacer una comparativa com chromadb?",
+  "source_commit": "f5256e6229a7e124107c78ae60f0389773fa528a",
+  "runtime": {
+    "python": "3.13.2",
+    "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "python_executable_sha256": "b6019173e99ba481ce8a2852ffbf19cdaa9b7352d7e40c92bbd408d47da11b2b",
+    "installed_packages": 84,
+    "chromadb": "1.5.9",
+    "native_binaries": [
+      {
+        "name": "chromadb_rust_bindings/chromadb_rust_bindings.abi3.so",
+        "sha256": "e24fa03b6d0c87827332323706899c5edb92da36cac996bec238eb5c23b5818a"
+      }
+    ],
+    "uv": "0.10.11"
+  },
+  "inputs": {
+    "chroma_probe.py": "9b0e8572b28af2fd4c0c9605e5bea39a161077171d80d7b29671013d99fe5d33",
+    "chroma_actor.py": "8453176259f6adc45aa4f1762e031c158c180dcd89daacb6872d1ce08fe84208",
+    "protocol.json": "08e478a06b18e91837ff333f9e11ce16134ddbc9f00d8609766559d37d566cea",
+    "pyproject.toml": "b415cd7b4661d9181a7b4b3288002d6454d7819c546a13f03693aa9b3bf3e8ab",
+    "uv.lock": "f457be537b51debf6debf3a7438af7ec04316172be569c13cb4b09dcf27ff278",
+    "verify.py": "6feac8fe9b3ccff4e08268147ea58f9435d8a18f951c247613cd7e480a4519c8",
+    "api-surface.json": "64b0912afe9be228ca1e59cbd9538f3802bd215db04e8c18f724d3bbeeba7709"
+  },
+  "comparison_sources": [
+    {
+      "path": "../2026-10-13-lancedb/probe.py",
+      "sha256": "f4351485cbafdbff3c3fe1e17c302765979f3bdc5957f590860c600d285e1710"
+    },
+    {
+      "path": "../2026-10-13-lancedb/results.json",
+      "sha256": "f72990e9f21c388494f25830dae6cb29047281e6ee716ff4a2dae5a4574d76e8"
+    },
+    {
+      "path": "../2026-10-14-sqlite-vector/results.json",
+      "sha256": "d511bde75b4aec6cf96433cd5488e0b7bc24b2ebf15925a9a89d2b02d62b9970"
+    }
+  ],
+  "results_sha256": "0b84d58625e6f1a76c3a805022f2e84eeecd28b4f6518c035af999b1f0cb6e6a",
+  "dependency_review": {
+    "direct_pin": "chromadb==1.5.9",
+    "locked_packages_including_virtual_project": 87,
+    "installed_distributions": 84,
+    "upstream": "https://github.com/chroma-core/chroma/tree/1.5.9",
+    "distribution": "https://pypi.org/project/chromadb/1.5.9/",
+    "wheel": {
+      "url": "https://files.pythonhosted.org/packages/34/4c/adcef1f4e82a2ef69ccd3711d55fc289193d54c4c0ff7a0292a3631db46f/chromadb-1.5.9-cp39-abi3-macosx_11_0_arm64.whl",
+      "hash": "sha256:814b9c95617377f6501e5757d63dfddb554a283a7739c87b9fa573850174e6f3",
+      "size": 21699698,
+      "upload-time": "2026-05-05T05:54:45.078Z"
+    },
+    "license": {
+      "name": "Apache-2.0",
+      "source": "https://raw.githubusercontent.com/chroma-core/chroma/1.5.9/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "scope": "Isolated experimental dependency only; not added to installer or active capture path"
+  },
+  "private_run": "canonical Git common directory, mstack-tasks/maintenance-laya/chroma-evidence/run-01",
+  "model_calls": 0,
+  "active_backend_installed": false,
+  "limits": [
+    "Native concurrent PersistentClient writers sharing one path are unsupported in current documented deployment constraints; passing samples do not establish support",
+    "Serialized owner uses a cooperative OS lock covering initialization through SDK process exit",
+    "Storage fixtures include fixed vectors except the missing-embedding rejection; retrieval excludes the prior null-vector fixture",
+    "Substring filtering is not BM25 or RRF hybrid ranking",
+    "Latest unversioned reference mentions conditional transactions; Collection.conditional is absent in tested 1.5.9",
+    "No semantic/classification quality or controlled performance benchmark",
+    "No known transaction-phase interruption, power-loss, migration/history/backup acceptance"
+  ]
+}

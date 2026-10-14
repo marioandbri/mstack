@@ -20,6 +20,8 @@ Durante la revisión, Mario eligió ensayar LanceDB como persistencia embebida. 
 
 El 14 de octubre Mario autorizó la [comparación con SQLite y sqlite-vec](evaluations/2026-10-14-sqlite-vector/report.md). Pasaron doce casos, incluidos reintentos paralelos sin duplicados, actualización condicional, interrupción de transacción y publicación atómica del índice vectorial. Se recomienda revisar SQLite como primera opción para los registros; LanceDB conserva una interfaz híbrida integrada. La selección sigue pendiente; vectores fijos no acreditan mejora semántica o de clasificación.
 
+La [comparación posterior con Chroma 1.5.9](evaluations/2026-10-14-chroma/report.md) conservó reintentos por ID y recuperación con vectores fijos. El acceso serializado detectó revisiones y colisiones, pero la captura sin embedding siguió fallando. La muestra nativa no acredita soporte para varios procesos sobre el mismo directorio local. Se mantiene la recomendación de revisar SQLite primero y la ruta spec, revisión y tickets.
+
 ## AM-012: evaluación conductual acotada
 
 [Informe AM-012](evaluations/2026-10-13-am011/report.md): 16 turnos únicos, 15 completados y uno inconcluso por saturación. En siete pares comparables, A y B cumplen 7/7; selección observable A 5/6, B 6/6. El candidato alcanza TDD automáticamente. No se cambió ni instaló el candidato. Se propone una sola ejecución adicional del caso inconcluso; presupuesto pendiente, sin reintentos automáticos.

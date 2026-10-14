@@ -1,0 +1,13 @@
+{
+  "chromadb": "1.5.9",
+  "collection_has_conditional": false,
+  "update_signature": "(self, ids: Union[str, List[str]], embeddings: Union[NDArray[Union[numpy.int32, numpy.float32]], List[NDArray[Union[numpy.int32, numpy.float32]]], Sequence[float], Sequence[int], List[Union[Sequence[float], Sequence[int]]], NoneType] = None, metadatas: Union[Mapping[str, Union[str, int, float, bool, chromadb.base_types.SparseVector, List[Union[str, int, float, bool]], NoneType]], List[Mapping[str, Union[str, int, float, bool, chromadb.base_types.SparseVector, List[Union[str, int, float, bool]], NoneType]]], NoneType] = None, documents: Union[str, List[str], NoneType] = None, images: Union[NDArray[Union[numpy.uint64, numpy.int64, numpy.float64]], List[NDArray[Union[numpy.uint64, numpy.int64, numpy.float64]]], NoneType] = None, uris: Union[str, List[str], NoneType] = None) -> None",
+  "add_signature": "(self, ids: Union[str, List[str]], embeddings: Union[NDArray[Union[numpy.int32, numpy.float32]], List[NDArray[Union[numpy.int32, numpy.float32]]], Sequence[float], Sequence[int], List[Union[Sequence[float], Sequence[int]]], NoneType] = None, metadatas: Union[Mapping[str, Union[str, int, float, bool, chromadb.base_types.SparseVector, List[Union[str, int, float, bool]], NoneType]], List[Mapping[str, Union[str, int, float, bool, chromadb.base_types.SparseVector, List[Union[str, int, float, bool]], NoneType]]], NoneType] = None, documents: Union[str, List[str], NoneType] = None, images: Union[NDArray[Union[numpy.uint64, numpy.int64, numpy.float64]], List[NDArray[Union[numpy.uint64, numpy.int64, numpy.float64]]], NoneType] = None, uris: Union[str, List[str], NoneType] = None) -> None",
+  "client_has_close": true,
+  "collection_source_sha256": "ce0f86fd66fab4fb8e5af8c60f300f9be4043e9d65c0b4db5580737692f9ec97",
+  "latest_reference_mentions_conditional": true,
+  "latest_reference_url": "https://docs.trychroma.com/reference/python/collection",
+  "interpretation": "The current unversioned documentation mentions conditional transactions, but the tested 1.5.9 Python Collection class does not expose conditional. Findings apply to this pin.",
+  "concrete_client_class": "chromadb.api.client.Client",
+  "client_close_signature": "(self) -> None"
+}

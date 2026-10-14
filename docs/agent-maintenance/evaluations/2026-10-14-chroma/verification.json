@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "repository_check": "PASS 30 skills, 59 Markdown",
+  "tests": {
+    "pass": 28,
+    "skip": 1,
+    "fail": 0,
+    "assertions": 297,
+    "duration_seconds": 17.95,
+    "skip_reason": "Optional Portless HTTP E2E"
+  },
+  "installation": {
+    "status": "PASS",
+    "commit": "25e722daafadb2b39ea597adbc19b41632e48b4a",
+    "skills": 30,
+    "targets": 126
+  },
+  "experiment": {
+    "native": {
+      "pass": 7,
+      "contract-failure": 3,
+      "infrastructure-error": 0,
+      "runner_exitcode": 1
+    },
+    "serialized-owner": {
+      "pass": 9,
+      "contract-failure": 1,
+      "infrastructure-error": 0,
+      "runner_exitcode": 1
+    },
+    "independent_verification": {
+      "status": "PASS",
+      "reopened_databases": 64,
+      "exitcode": 0,
+      "scope": "Source/results/API bindings, integrity_check, originals/provenance, retries, revision outcomes, interruption and scoped retrieval; expected contract gaps remain failures"
+    },
+    "model_calls": 0,
+    "backend_installed": false
+  },
+  "documents": "PASS Python syntax, JSON, pinned lock URL check, 38 relative links, 48 stories, 29 acceptance criteria and git diff --check",
+  "harness_workspace": {
+    "environment_cwd": "/Users/mario.brito/personal/engineering-skills",
+    "owned_worktree": "/Users/mario.brito/personal/mstack-maintenance-laya",
+    "association_verified": false
+  },
+  "limits": [
+    "No semantic-quality/classification or controlled timing benchmark",
+    "Native concurrent embedded writers are outside documented deployment support",
+    "Owner control did not test coordinator termination with an active SDK child",
+    "Version 1.5.9 lacks conditional API mentioned by the unversioned reference",
+    "No active backend adoption or approved production adapter"
+  ]
+}

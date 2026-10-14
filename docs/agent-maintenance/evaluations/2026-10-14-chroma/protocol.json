@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "authorization": "Mario requested a ChromaDB comparison after the SQLite and LanceDB tests",
+  "runtime": "Python 3.13.2",
+  "dependency": "chromadb==1.5.9",
+  "configuration": {"client":"PersistentClient","embedding_function":null,"anonymized_telemetry":false,"distance":"l2"},
+  "workers": 2,
+  "worker_deadline_seconds": 45,
+  "modes": {
+    "native": "Two independent SDK processes share the same synthetic local path; documentation does not support this as a safe deployment",
+    "serialized-owner": "Parent coordinator holds an OS file lock over each child SDK process's entire lifetime; child exits before lock release. No persistent server. All cooperating writers must use this path."
+  },
+  "cases": [
+    {"id":"capture_without_embedding","expected":"Raw original and provenance can be saved with no vector and no embedding function; rejection is a contract gap, not an infrastructure failure"},
+    {"id":"concurrent_append","repetitions":3,"rows_per_writer":30,"expected":"All 60 observations survive with exact IDs/provenance; these Chroma storage fixtures carry explicit fixed vectors"},
+    {"id":"sequential_retry","attempts":4,"expected":"One stored original after repeated add of the same identity"},
+    {"id":"concurrent_retry","repetitions":10,"expected":"Two simultaneous attempts of the same operation leave one original"},
+    {"id":"conflicting_revision","repetitions":10,"expected":"Two decisions based on revision 0 produce one accepted result and one detectable conflict. Native read-then-update has no atomic revision predicate; compare cooperative owner behavior separately."},
+    {"id":"reader_freshness","expected":"A fresh reader process can retrieve another writer's confirmed record"},
+    {"id":"interrupted_write","repetitions":3,"confirmed_prefix_rows":6,"batch_rows":12000,"kill_delays_seconds":[0.0,0.005,0.02],"expected":"SIGKILL after public batch-start notification preserves confirmed prefix and leaves batch absent or complete; no exact commit-phase injection"},
+    {"id":"retrieval","expected":"Fixed-vector nearest neighbor and document substring filtering honor project scope. Native missing-vector rejection is reported rather than replaced with a dummy vector."},
+    {"id":"identity_conflicts","expected":"Reusing operation or record identity with different immutable content is reported rather than silently treated as success"},
+    {"id":"embedding_failure","expected":"Invalid dimensions do not overwrite a previously stored vector/document; this is not raw-capture-without-embedding acceptance"}
+  ],
+  "comparison_limits": [
+    "Original IDs/text/provenance and repetitions are reused. Except the explicit missing-embedding case, Chroma write fixtures include fixed [1,0,0] vectors because embedded collections may require embeddings; previous append fixtures had null vectors.",
+    "No model, automatic embedding, cloud endpoint or HTTP server",
+    "Native embedded multi-process results cannot override documented unsupported deployment constraints",
+    "Native Chroma document filtering is substring filtering, not FTS5/BM25; no claim of equivalent hybrid ranking",
+    "No public multi-table transaction or exact rollback boundary is assumed",
+    "No controlled timing, semantic-quality or classification benchmark",
+    "A cooperative owner serializes SDK lifetimes, not only add calls"
+  ]
+}
