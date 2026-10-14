@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "status": "executed-exploratory",
+  "protocol_sha256": "ad72d6c98a1c3bc6dff780494febe4ee80059da9e3af603969f26f4ab83fc4e5",
+  "results_sha256": "2277c110c97db59697d520abed159b2a579d98b92604778ef5559763fc7f0f5f",
+  "report_sha256": "3f2ff07bd16d7dcbb9df9281e4b9f98531834a733505ffb80b337270405f149a",
+  "publication_sources": {
+    "publish.py": "98c15865259b84a93533e02cd5959cbb6fd219bf39b64a5e73cac2fea44be401",
+    "verify.py": "a1a149b0c2f5357dab481071a29f42ca9ec7a4fbfb7d7be4cf5183681cdd3a83"
+  },
+  "execution_sources": {
+    "run.py": "89325f99dbd8849f30fbe5c0bb73a836699d6d2da9373fb4a3d9bf841a37e424",
+    "ranking.py": "94e0d9465147100496c36551c178c0906a27b82f26d6be01f6d3319161a50ce0",
+    "download.py": "760ac87987603ed91c86ea9a41ffde706cda4ebdd735ea6ee864808fde8d0604",
+    "test_ranking.py": "ff69043362e86e0681f7d77c96702f5d6df63c45016f1be205660574a0216518",
+    "pyproject.toml": "c2a205ea7c37cbe22e137ac90663acb7da4acfc4a3125d9cf6cf6358a5f18f37",
+    "uv.lock": "9763e2c0308d7309f5a052a0dd82f1086383f3bbd9fefc371f7cc39b60458ad2"
+  },
+  "private_evidence": "task Git common directory: embedding-model-evidence/run-02",
+  "models": {
+    "minilm": {
+      "id": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "dimension": 384,
+      "max_seq_length": 256,
+      "license": "apache-2.0",
+      "query_prompt_name": null,
+      "document_prompt_name": null,
+      "config_kwargs": {}
+    },
+    "gemma": {
+      "id": "google/embeddinggemma-2",
+      "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+      "dimension": 768,
+      "max_seq_length": 8192,
+      "license": "apache-2.0",
+      "query_prompt_name": "query",
+      "document_prompt_name": "document",
+      "config_kwargs": {
+        "vision_config": null,
+        "audio_config": null
+      }
+    },
+    "qwen": {
+      "id": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "dimension": 1024,
+      "max_seq_length": 32768,
+      "license": "apache-2.0",
+      "query_prompt_name": "query",
+      "document_prompt_name": "document",
+      "config_kwargs": {}
+    }
+  },
+  "independent_verification": {
+    "status": "PASS",
+    "models": 3,
+    "sqlite_vector_queries_reopened": 150,
+    "finite_normalized_vectors": true,
+    "project_filters": "PASS",
+    "held_out_excluded": true,
+    "source_model_artifact_hashes": "PASS",
+    "labels": "provisional; source verification cannot approve semantic judgments"
+  },
+  "prior_attempt": {
+    "id": "run-01",
+    "status": "partial-infrastructure-failure",
+    "execution": {
+      "minilm": {
+        "exit_code": 0,
+        "seconds": 10.276127000004635
+      },
+      "gemma": {
+        "exit_code": 1,
+        "seconds": 10.020248540997272
+      },
+      "qwen": {
+        "exit_code": 0,
+        "seconds": 24.38606141600758
+      }
+    },
+    "failure": "EmbeddingGemma2Processor requires PIL even for text-only use; no Gemma embeddings generated in run-01",
+    "change": "Pin Pillow 12.3.0 in the isolated environment; use current dimension API; repeat all profiles",
+    "model_files": "Reuse already verified same model snapshots; no second weight download",
+    "original_source_hashes": {
+      "run.py": "2b1902f683c1e28972f1a5cf2886592bad02cc67ea6ba851f184cc4fd334cd47",
+      "ranking.py": "94e0d9465147100496c36551c178c0906a27b82f26d6be01f6d3319161a50ce0",
+      "download.py": "760ac87987603ed91c86ea9a41ffde706cda4ebdd735ea6ee864808fde8d0604",
+      "test_ranking.py": "ff69043362e86e0681f7d77c96702f5d6df63c45016f1be205660574a0216518",
+      "pyproject.toml": "245ba7233bd115e28e293c445cbd42799f3f4921fcb195c07887a0cc03391162",
+      "uv.lock": "7c159f5d7d5f711cc08e7f4c8da9f726ba0db67fc9daf73d338e8eab3a002a75"
+    },
+    "followup_preflight": {
+      "status": "infrastructure-error",
+      "corpus_inference": false,
+      "error": "EmbeddingGemma2Processor imports torchvision via Gemma4ImageProcessor; Pillow alone does not complete required image extra",
+      "trace": "native transformers/models/gemma4/image_processing_gemma4.py imports torchvision.transforms.v2"
+    },
+    "successful_preflight": {
+      "preflight": "PASS",
+      "shape": [
+        1,
+        768
+      ],
+      "loaded_parameters": 271002624,
+      "generic_embeddings": 1,
+      "corpus_examples": 0,
+      "max_seq_length": 1000000000000000019884624838656,
+      "tokenizer_present": true
+    },
+    "final_correction": "Pillow 12.3.0 and Torchvision 0.29.1 pinned; 8192-token Gemma window explicitly bound after sentinel observed; all three profiles repeated",
+    "final_repetition": "run-02"
+  },
+  "hosted_inference_calls": 0,
+  "active_backend_installed": false,
+  "labels_independently_approved": false
+}
