@@ -16,6 +16,8 @@ Completar el sistema de mantenimiento y evaluación del entorno de agentes, con 
 
 La [auditoría inicial](changes/AM-014-inventory-audit.md) conserva evidencia y límites de cobertura. OBS-REFLECT-EVALUATION-DOCS-001 conserva el hallazgo documental previo; no se contabiliza como otro fallo de persistencia ni se integra durante esta revisión. No se crearon tickets ni se publicó o implementó la spec.
 
+Durante la revisión, Mario eligió ensayar LanceDB como persistencia embebida. El [informe](evaluations/2026-10-13-lancedb/report.md) registra escrituras concurrentes, captura sin embeddings y consultas. El reintento nativo simultáneo duplicó registros; el adaptador experimental con bloqueo y lectura fresca pasó ese contrato. AM-015 incorpora procedencia y recuperación semántica como propuestas del borrador. Siguen pendientes modelo de embeddings, migración, historial y restauración; sin backend activo ni aprobación integral de la spec.
+
 ## AM-012: evaluación conductual acotada
 
 [Informe AM-012](evaluations/2026-10-13-am011/report.md): 16 turnos únicos, 15 completados y uno inconcluso por saturación. En siete pares comparables, A y B cumplen 7/7; selección observable A 5/6, B 6/6. El candidato alcanza TDD automáticamente. No se cambió ni instaló el candidato. Se propone una sola ejecución adicional del caso inconcluso; presupuesto pendiente, sin reintentos automáticos.

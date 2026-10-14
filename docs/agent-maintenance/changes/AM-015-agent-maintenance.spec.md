@@ -64,6 +64,10 @@ El flujo deberá admitir solicitudes naturales como "audita mi entorno", "regist
 42. Como Mario, quiero que el sistema detecte cambios locales antes de aplicar o revertir, para no sobrescribir trabajo posterior.
 43. Como Mario, quiero que los registros contengan sólo evidencia necesaria y saneada, para mantener credenciales y conversaciones ajenas fuera de los artefactos.
 44. Como Mario, quiero revisar esta spec antes de dividirla en tickets, para acordar el sistema completo antes de ordenar su implementación.
+45. Como Mario, quiero identificar el harness, sesión y evento donde ocurrió una observación y dónde se capturó, para recuperar su origen sin confundir ambas sesiones.
+46. Como Mario, quiero recuperar antecedentes mediante filtros, texto y similitud semántica, para encontrar incidentes expresados de formas distintas.
+47. Como Mario, quiero que una observación quede conservada aunque fallen sus embeddings, para no depender de la indexación al registrar evidencia.
+48. Como Mario, quiero una persistencia embebida sin otro servicio permanente, para mantener sencillo el funcionamiento local del sistema.
 
 ## Implementation Decisions
 
@@ -113,6 +117,12 @@ Las siguientes decisiones conservan el alcance discutido y concretan los contrat
 31. La reversión detecta drift, restaura el estado autorizado y verifica contenido, configuración gestionada y comportamiento afectado. No sobrescribe cambios ajenos ni borra evidencia posterior. Un resultado conductual desfavorable produce una recomendación y respeta la autorización de reversión disponible; no concede permiso nuevo por sí solo.
 32. Las preferencias explícitas y hechos confirmados no requieren demostrar una mejora estadística. Las afirmaciones sobre rendimiento o fiabilidad sí deben apoyarse en la evaluación pertinente y declarar sus límites.
 
+### Persistencia y recuperación propuestas durante la revisión
+
+33. LanceDB embebido es el candidato preferido tras la prueba local autorizada. Su adopción completa sigue pendiente de revisar esta spec y verificar los contratos restantes. El adaptador debe coordinar a los escritores y reconocer reintentos mediante una identidad de operación estable. El ensayo encontró duplicados con merge_insert simultáneo; no se asume unicidad por usar esa operación. Las actualizaciones de revisión deben producir un conflicto detectable cuando la versión de origen sea obsoleta.
+34. La procedencia propuesta incluye harness y versión disponible, sesión de origen, evento o turno disponible, sesión de captura, contexto del proyecto y fechas pertinentes. Admite varias fuentes y valores desconocidos. La evidencia mínima saneada sigue siendo recuperable cuando un enlace a la sesión deja de funcionar. Una identidad de sesión no demuestra por sí sola duplicación o recurrencia.
+35. La recuperación semántica propuesta combina metadata, texto y vectores. Los embeddings son datos derivados que conservan identidad y versión del modelo, hash de entrada y estado de indexación. Se generan después de persistir la observación y fuera de la sección de escritura coordinada. Su similitud sólo recupera candidatos para clasificación; no fusiona registros ni concede permisos. El modelo y la calidad de recuperación aún no están elegidos ni validados.
+
 ## Testing Decisions
 
 ### Frontera principal
@@ -151,10 +161,15 @@ Se reutilizarán las fronteras públicas existentes del validador, almacenamient
 | A24 | Introducir drift antes de promover o revertir. | Detecta el conflicto y evita sobrescrituras; conserva la evidencia y distingue operación pendiente de restauración verificada. |
 | A25 | Revisar registros, logs y exportaciones del ciclo. | No contienen credenciales ni material ajeno; los enlaces recuperan la evidencia pertinente y no elevan el nivel de acceso. |
 | A26 | Ejecutar el recorrido integrado en sesiones separadas. | Una oportunidad de auditoría llega a revisión, comparación y promoción/reversión aisladas sin perder decisiones ni pedir de nuevo autorizaciones conservadas. Se puede optar por no cambiar y cerrar sin instalación. |
+| A27 | Capturar un incidente originado en otra sesión y un origen parcialmente desconocido. | Conserva origen y captura por separado, varias fuentes si existen y la evidencia mínima; no inventa identificadores faltantes. |
+| A28 | Buscar antecedentes con filtros, texto y similitud. | Respeta el ámbito y las decisiones previas. Un corpus revisado mide antecedentes relevantes recuperados y asociaciones equivocadas; vectores fijos sólo validan la consulta. |
+| A29 | Reintentar una captura simultáneamente desde dos procesos o reutilizar su identidad con otro contenido. | El adaptador conserva una sola captura para la misma operación y reporta la colisión con evidencia distinta. La indexación pendiente no bloquea su guardado. |
 
 ### Evidencia previa y ejecución
 
 El validador existente ya prueba manifest, metadata y referencias. La suite del instalador usa fuentes Git y HOME temporales, comprueba configuración, rollback y recuperación. El helper de entorno tiene pruebas reales de escritura concurrente y rechazo de revisiones obsoletas. Se aprovecharán esos patrones sin acoplar observaciones al estado del instalador o del entorno.
+
+La prueba local de LanceDB usa el SDK Python 0.40.0 y dos procesos reales. Conservó escrituras distintas, revisiones condicionales y captura sin vector; el reintento nativo concurrente produjo duplicados en diez pares. Un adaptador cooperativo con bloqueo local y lectura fresca dejó una captura por operación en diez pares. Es evidencia para el diseño, no la implementación de los registros definitivos ni una garantía del SDK JavaScript. Sus interrupciones y vectores fijos no cubren corte eléctrico ni calidad de embeddings.
 
 Los ensayos históricos de apoyo y persistencia de Reflect aportan casos de clasificación, revisión, decisiones conservadas y excepción de sólo chat. El seguimiento de persistencia pasó cuatro etapas, pero excluyó el recorrido de exportación defectuosa. Los resultados recuperados de la suite anterior no equivalen a una ejecución limpia. La nueva biblioteca conservará esas distinciones y reutilizará lo disponible, sin recalificar el historial.
 
@@ -185,6 +200,14 @@ Mario eligió preparar esta spec, revisarla y después dividirla en tickets. Esa
 La división prevista conserva cinco áreas de entrega: inventario y auditoría, registros robustos, runner y biblioteca de casos, comparación de intervenciones, y promoción con reversión. Son áreas para organizar después de aprobar el alcance, no tickets ya definidos. La auditoría es la prioridad funcional. Los registros pueden desarrollarse con observaciones existentes, y la reproducción determinista del exportador puede prepararse sin esperar al inventario. Las comparaciones dependen de recogida fiable; el cierre de promoción requiere la evidencia pertinente.
 
 Quedan por concretar durante la preparación de la implementación el empaquetado del inventario y auditoría, el esquema exacto de hallazgos/anotaciones y la interfaz pública que reutilizará el agente. Los parámetros de cada evaluación, incluidos matriz de entornos, casos, modelo, repeticiones, rúbrica y presupuesto, se fijarán antes de ejecutarla. Estos pendientes no autorizan al implementador a cambiar el comportamiento definido aquí.
+
+### Revisión de persistencia y búsqueda
+
+Mario señaló la utilidad de procedencia por harness y sesión, búsqueda semántica y persistencia robusta con agentes en paralelo. Prefirió evitar otro servicio y eligió ensayar LanceDB embebido. El [informe de la prueba](../evaluations/2026-10-13-lancedb/report.md) conserva el resultado nativo desfavorable de reintento y el resultado del adaptador; no se activó un backend de captura.
+
+El contrato actual almacena JSON y propuestas legibles por proyecto. Adoptar LanceDB será una evolución explícita de ese contrato. La implementación deberá conservar lectura o importación de registros existentes, esquemas compatibles, exportación legible y recuperación de decisiones; no puede tratar la base y los archivos como dos fuentes independientes de verdad. Historial, migración, backup/restauración y sincronización de índices siguen pendientes de diseño y verificación. El versionado de tablas de la base no sustituye por sí solo al historial de decisiones del usuario.
+
+La generación de embeddings aún requiere elegir un modelo y evaluar recuperación con observaciones reales saneadas. No se autorizaron llamadas adicionales a modelos por la prueba de almacenamiento. La incorporación de SQLite u otro segundo motor sólo se reconsiderará si un requisito comprobado no queda satisfecho por el candidato embebido.
 
 El tracker y sus etiquetas se resolverán con la documentación del proyecto al preparar la publicación. Esta sesión sólo autoriza el borrador local y su revisión. La implementación posterior conservará la separación de esta fase respecto de la entrega anterior y comprobará su base remota antes de publicar.
 
