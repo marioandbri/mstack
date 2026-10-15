@@ -25,7 +25,7 @@ La frontera inicial es 01, 02 y 03. Para continuar, leer el estado y cierre de c
 
 La auditoría no espera a captura. Reflect no espera a búsqueda semántica ni clasificación completa. La promoción admite preferencias explícitas sin comparación estadística obligatoria.
 
-La implementación de las 14 entregas está en el worktree de esta iniciativa. Los tickets 01–13 tienen cierre y evidencia. El [informe de AM-030](../../docs/agent-maintenance/evaluations/2026-10-15-maintenance-cycle/report.md) registra los 14 turnos autorizados: 11 casos aprobados y tres inconclusos por infraestructura. El ticket 14 conserva abierto el criterio de un recorrido conductual completo sin recuperación manual. Las correcciones pasaron pruebas nativas; no se ejecutó una segunda campaña. La instalación activa sigue estable.
+Los 14 tickets tienen cierre y evidencia. El [informe de AM-030](../../docs/agent-maintenance/evaluations/2026-10-15-maintenance-cycle/report.md) conserva 14 turnos, 11 casos aprobados y tres inconclusos por infraestructura. La [validación dirigida AM-031](../../docs/agent-maintenance/evaluations/2026-10-15-maintenance-followup/report.md) añadió tres intentos posteriores aprobados sin recuperación manual y cerró el criterio restante del 14. Los recibos anteriores siguen intactos. La instalación activa permanece estable; la entrega espera revisión de Mario antes de preparar la PR.
 
 La [configuración del tracker](../../docs/agents/issue-tracker.md) describe las operaciones locales y la [correspondencia de triage](../../docs/agents/triage-labels.md) define los estados.
 

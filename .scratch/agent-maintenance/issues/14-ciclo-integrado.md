@@ -28,8 +28,12 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 - [x] Una comparación pertinente conserva protocolo, trazas y resultado; permite conservar lo actual o cerrar sin instalación.
 - [x] La ruta aceptada de promoción y reversión se ensaya en destinos aislados con verificación conductual, recibos y restauración comprobada.
 - [x] El caso sólo chat no escribe registros; en los demás se preserva el estado reanudable. El informe separa preparado/ejecutado/inconcluso y lista cobertura pendiente por entorno.
-- [ ] Los checks obligatorios y el smoke del recorrido real pasan sin reparación manual de artefactos, sin cambios ajenos y sin convertir ejemplos o traducciones en incidentes independientes.
+- [x] Los checks obligatorios y el smoke del recorrido real pasan sin reparación manual de artefactos, sin cambios ajenos y sin convertir ejemplos o traducciones en incidentes independientes.
 
 [Recorrido mecánico completo](../../../docs/agent-maintenance/changes/AM-029-integrated-cycle.md) por interfaces públicas, procesos y HOME temporales. La [campaña conductual ejecutada](../../../docs/agent-maintenance/evaluations/2026-10-15-maintenance-cycle/report.md) conserva 11 casos aprobados y tres inconclusos por infraestructura. Los artefactos de Reflect acreditan recuperación y respeto de decisiones, pero sus recibos siguen inconclusos. La captura candidata requirió recuperación de exportación; las correcciones posteriores pasaron pruebas nativas y preflight sin modelos.
 
-El último criterio sigue abierto: no hubo una segunda pasada generativa que demuestre el recorrido completo sin recuperación manual. Los 14 intentos autorizados están consumidos, sin reintentos automáticos. Una nueva ejecución necesita su propio protocolo y presupuesto. No queda implementación conocida pendiente de estos defectos; se conserva la limitación de evidencia.
+Mario autorizó después la [validación dirigida AM-031](../../../docs/agent-maintenance/evaluations/2026-10-15-maintenance-followup/report.md), con tres intentos y presupuesto propios. Reanudación, sólo chat y captura pasaron conducta, invariantes, contexto y colección sin recuperación manual. El smoke integrado nativo y los checks obligatorios también pasaron sobre la implementación actual. Los 14 recibos anteriores permanecen intactos; no se afirma haber repetido toda la campaña ni establecido fiabilidad estadística.
+
+**Closed:** 2026-10-15
+
+**Resolution:** completed

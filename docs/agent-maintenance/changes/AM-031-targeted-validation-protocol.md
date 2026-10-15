@@ -4,6 +4,8 @@ Mario autorizó continuar con "procede con eso entonces", después de identifica
 
 La finalidad es comprobar el recorrido normal con el transporte, recolector e imagen corregidos. Se conserva la campaña anterior, incluidos sus tres recibos inconclusos y la recuperación separada. Esta validación incremental no es otra comparación A/B ni una nueva pasada de los 14 casos.
 
+Estado posterior a la ejecución: los tres casos terminaron aprobados con contexto verificado y colección completa, sin recuperación manual. El [informe](../evaluations/2026-10-15-maintenance-followup/report.md) conserva la evidencia y los límites. El ticket 14 queda cerrado con el smoke integrado nativo actual; los recibos de AM-030 permanecen intactos.
+
 ## Fuentes y condiciones
 
 - Implementación df5976e0c38c8d65b89e161b86073e1a277f31f1, que incluye las correcciones 03cc76f. Catálogo e instrucciones se leen del commit, sin activar cambios en el HOME real.

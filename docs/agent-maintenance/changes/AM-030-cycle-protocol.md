@@ -1,6 +1,6 @@
 # AM-030: protocolo conductual del ciclo de mantenimiento
 
-Estado: los 14 turnos autorizados por Mario con «ejecuta la propuesta» terminaron. Se conservaron casos, modelo, entorno, rúbricas y presupuesto aprobados; las fuentes quedaron congeladas antes del primer turno. El [informe y resultados](../evaluations/2026-10-15-maintenance-cycle/report.md) registran 11 casos aprobados y tres inconclusos por infraestructura. La verificación completa del ticket 14 sigue abierta. No hubo reintentos ni presupuesto reutilizado de otra campaña.
+Estado: los 14 turnos autorizados por Mario con «ejecuta la propuesta» terminaron. Se conservaron casos, modelo, entorno, rúbricas y presupuesto aprobados; las fuentes quedaron congeladas antes del primer turno. El [informe y resultados](../evaluations/2026-10-15-maintenance-cycle/report.md) registran 11 casos aprobados y tres inconclusos por infraestructura. El ticket 14 quedó abierto al terminar esta campaña y se cerró después con la [validación dirigida AM-031](../evaluations/2026-10-15-maintenance-followup/report.md). Los recibos originales siguen intactos. No hubo reintentos ni presupuesto reutilizado de otra campaña.
 
 maintenance-laya sólo es el nombre heredado de la carpeta de trabajo y del directorio de tarea. Laya quedó fuera del sistema y de esta campaña. Los agentes de evaluación usan Codex; la persistencia usa SQLite con sqlite-vec y los embeddings usan Gemma 300M.
 
