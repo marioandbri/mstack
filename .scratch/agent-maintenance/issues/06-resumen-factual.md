@@ -21,9 +21,15 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Status:** ready-for-agent
 
-- [ ] Conserva solicitud, alcance, restricciones, acciones observables con autor y orden conocidos, resultados, correcciones y autorizaciones explícitas con sus fuentes.
-- [ ] Registra instrucciones/skills pertinentes y evidencia de disponibilidad o carga sin equiparar documentación consultada después con contexto histórico comprobado.
-- [ ] Separa expectativa respaldada, hechos, hipótesis, contradicciones y datos desconocidos; mantiene extractos mínimos saneados y referencias disponibles.
-- [ ] Conserva observaciones vinculadas, versión, fecha de elaboración, autoría disponible, fuentes, hashes disponibles y completitud.
-- [ ] Si falla el resumen, el original sigue guardado, la reconstrucción queda pendiente y captura vuelve a la tarea sin iniciar Reflect.
-- [ ] En otra sesión con el origen inaccesible se puede revisar la evidencia conservada. Una corrección añade versión sin borrar la anterior, inventar datos ni aumentar la cuenta de incidentes.
+- [x] Conserva solicitud, alcance, restricciones, acciones observables con autor y orden conocidos, resultados, correcciones y autorizaciones explícitas con sus fuentes.
+- [x] Registra instrucciones/skills pertinentes y evidencia de disponibilidad o carga sin equiparar documentación consultada después con contexto histórico comprobado.
+- [x] Separa expectativa respaldada, hechos, hipótesis, contradicciones y datos desconocidos; mantiene extractos mínimos saneados y referencias disponibles.
+- [x] Conserva observaciones vinculadas, versión, fecha de elaboración, autoría disponible, fuentes, hashes disponibles y completitud.
+- [x] Si falla el resumen, el original sigue guardado, la reconstrucción queda pendiente y captura vuelve a la tarea sin iniciar Reflect.
+- [x] En otra sesión con el origen inaccesible se puede revisar la evidencia conservada. Una corrección añade versión sin borrar la anterior, inventar datos ni aumentar la cuenta de incidentes.
+
+**Closed:** 2026-10-15
+
+**Resolution:** completed
+
+[Implementación y límites](../../../docs/agent-maintenance/changes/AM-021-reconstruction-implementation.md).

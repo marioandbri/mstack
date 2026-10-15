@@ -16,7 +16,7 @@ Capture records `status=inbox`, scope, a factual observation, minimal evidence a
 
 Reflection references the original observation IDs and decides among integration candidates, more evidence, deferral or discard. Preserve a minimal disposition record for deduplication and traceability; do not present a discarded item as accepted learning. Integration is a separate authorized action after the selected destination and change are reviewed.
 
-Use [classification](classification.md) after capture and when refreshing a selected opportunity. Store its provisional annotations separately from the raw observation and the user's review decisions. The current observation and review schemas do not have classification fields; do not add incompatible fields to those records. A structured sidecar schema and its persistence adapter remain implementation work. Until available, record provisional classification in the readable backlog with its source IDs and limits. Capture does not make an observation accepted learning.
+Use [factual reconstruction](reconstruction.md) after durable capture, then [classification](classification.md) with a selected record set. Their versioned contracts and adapter keep summaries and annotations separate from the original and user decisions. The existing observation and review schemas remain unchanged. A failure leaves only that derived work pending. Capture does not make an observation accepted learning.
 
 ## Evidence and decisions
 

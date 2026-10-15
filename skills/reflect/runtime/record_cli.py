@@ -41,6 +41,17 @@ def parser():
     save.add_argument("--expected-revision", type=int, required=True)
     save.add_argument("--operation", required=True)
     classification.add_parser("get").add_argument("--id", required=True)
+    summary = commands.add_parser("summary").add_subparsers(dest="action", required=True)
+    prepare_summary = summary.add_parser("prepare")
+    prepare_summary.add_argument("--id", required=True)
+    prepare_summary.add_argument("--evidence")
+    prepare_summary.add_argument("--related", action="append", default=[])
+    save_summary = summary.add_parser("save")
+    save_summary.add_argument("--context", required=True)
+    save_summary.add_argument("--output", required=True)
+    save_summary.add_argument("--expected-revision", type=int, required=True)
+    save_summary.add_argument("--operation", required=True)
+    summary.add_parser("get").add_argument("--id", required=True)
     return result
 
 
@@ -69,6 +80,14 @@ def run(args):
         if args.action == "save":
             return annotations.save(json.loads(Path(args.context).read_text()), json.loads(Path(args.output).read_text()), args.expected_revision, args.operation)
         return annotations.latest(args.id)
+    if args.command == "summary":
+        from summaries import Summaries
+        summaries = Summaries(store)
+        if args.action == "prepare":
+            return summaries.prepare(args.id, json.loads(Path(args.evidence).read_text()) if args.evidence else None, args.related)
+        if args.action == "save":
+            return summaries.save(json.loads(Path(args.context).read_text()), json.loads(Path(args.output).read_text()), args.expected_revision, args.operation)
+        return summaries.latest(args.id)
     raise RecordError("unknown-operation")
 
 

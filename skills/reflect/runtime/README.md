@@ -47,6 +47,12 @@ classification save recibe context, output, expected-revision y operation. outpu
 
 classification get recupera la última anotación y su estado; history con kind annotation conserva todas las versiones. Si falla una nueva clasificación, la anterior sigue disponible y el trabajo queda pendiente. La escritura usa comparación de revisión y comprueba que el contexto no haya cambiado. Un reintento confirmado no altera trabajo posterior. La sugerencia nunca autoriza entrevistas, evaluación o instalación.
 
-## Dependencias fijadas
+## Resumen factual
+
+summary prepare acepta id, evidence opcional y related repetibles. evidence contiene fuentes seleccionadas y extractos mínimos saneados; no hay lectura automática de chats o rutas. El contexto incluye el original, procedencia, versiones y referencias. summary save recibe context, output, expected-revision y operation; output cumple [summary.schema.json](../summary.schema.json), o null registra proveedor ausente. summary get devuelve la última síntesis con su evidencia; history con kind summary conserva las anteriores.
+
+El [procedimiento de reconstrucción](../references/reconstruction.md) distingue origen de elaboración posterior, hechos de hipótesis y contexto histórico de documentación consultada después. Las referencias y lagunas son verificadas estructuralmente; el agente sigue siendo responsable de comprobar verdad y saneamiento. Un fallo conserva el original, deja reconstrucción pendiente y no abre Reflect. Una corrección crea otra versión del mismo incidente.
+
+## Dependencias del runtime
 
 Se reutiliza el [esquema existente](../observation.schema.json) mediante [jsonschema 4.25.1](https://pypi.org/project/jsonschema/4.25.1/), mantenido y con licencia MIT. Evita mantener otro validador parcial. [sqlite-vec 0.1.9](https://pypi.org/project/sqlite-vec/0.1.9/) conserva el plugin ya ensayado para la búsqueda posterior; la captura no carga la extensión. La resolución completa se conserva en uv.lock. No se añaden servicios ni otros backends.
