@@ -3,5 +3,7 @@ node_modules/
 *.log
 
 install/.venv/
+skills/reflect/runtime/.venv/
 __pycache__/
 mstack.local.json
+docs/agent-maintenance/.records/

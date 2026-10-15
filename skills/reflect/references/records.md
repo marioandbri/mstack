@@ -2,7 +2,9 @@
 
 The capture and Reflect entrypoints share this contract and persisted records. Capture reads storage, inbox capture and evidence rules only. Reflect also reads retrieval, decision and review rules. Neither reading this file nor creating a record activates the other entrypoint.
 
-Reuse the repository's maintenance folder. For mstack, captured observations go under `docs/agent-maintenance/inbox/`, one JSON file per observation, created when the first real observation is captured. Keep the discoverable index in `docs/agent-maintenance/backlog.md` and a reflection record under `docs/agent-maintenance/changes/<id>.review.json`, beside its readable summary. Do not create an unused storage hierarchy.
+Reuse the repository's maintenance folder. New captures use the [local record adapter](../runtime/README.md), with an explicit project database under `docs/agent-maintenance/.records/` and a stable project identity. Writers from different worktrees use the same selected database. Keep original JSON bytes and provenance separately; capture does not wait for classification, summaries or vectors. Read back the stored record before claiming persistence. A lost acknowledgement requires checking the operation, not assuming the original was lost.
+
+Existing `docs/agent-maintenance/inbox/` JSON files remain readable. Do not silently migrate, delete or dual-write them; migration is a separate delivery. Keep the discoverable index in `docs/agent-maintenance/backlog.md` and existing reflection records under `docs/agent-maintenance/changes/<id>.review.json`, beside their readable summaries. Create storage only when it is used, never in readonly installed skills.
 
 Use unique identifiers and create new records without overwriting existing files. Before updating an existing observation or index, reread it and preserve other agents' changes. Classification can link records during capture or reflection; two agents capturing simultaneously must not lose an observation. Never modify a readonly installed skill snapshot to store observations.
 

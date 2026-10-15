@@ -21,9 +21,15 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Status:** ready-for-agent
 
-- [ ] Crear y leer una observación conserva evidencia, ámbito y origen/captura separados, incluyendo harness, sesión o evento disponibles y valores desconocidos explícitos.
-- [ ] Procesos reales sincronizados escriben observaciones distintas sin pérdidas. Reintentar la misma operación conserva un solo original.
-- [ ] Reutilizar identidad con evidencia distinta devuelve colisión y no reemplaza contenido. Una revisión obsoleta no sobrescribe un cambio confirmado.
-- [ ] Interrumpir antes o después del commit distingue fallo y guardado durable; no presenta contenido parcial como observación válida.
-- [ ] El productor de captura vuelve a la tarea sin activar Reflect ni evaluaciones; una conversación sobre el diseño de Reflect no inicia revisión.
-- [ ] El recorrido funciona sin clasificador, resumen ni vectores y deja el trabajo derivado pendiente de forma recuperable.
+- [x] Crear y leer una observación conserva evidencia, ámbito y origen/captura separados, incluyendo harness, sesión o evento disponibles y valores desconocidos explícitos.
+- [x] Procesos reales sincronizados escriben observaciones distintas sin pérdidas. Reintentar la misma operación conserva un solo original.
+- [x] Reutilizar identidad con evidencia distinta devuelve colisión y no reemplaza contenido. Una revisión obsoleta no sobrescribe un cambio confirmado.
+- [x] Interrumpir antes o después del commit distingue fallo y guardado durable; no presenta contenido parcial como observación válida.
+- [x] El productor de captura vuelve a la tarea sin activar Reflect ni evaluaciones; una conversación sobre el diseño de Reflect no inicia revisión.
+- [x] El recorrido funciona sin clasificador, resumen ni vectores y deja el trabajo derivado pendiente de forma recuperable.
+
+**Closed:** 2026-10-15
+
+**Resolution:** completed
+
+[Implementación y evidencia](../../../docs/agent-maintenance/changes/AM-017-records-implementation.md). Clasificación, resumen, búsqueda y migración permanecen en sus tickets.
