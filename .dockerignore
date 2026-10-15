@@ -1,0 +1,7 @@
+**
+!skills/
+!skills/reflect/
+!skills/reflect/runtime/
+!skills/reflect/runtime/pyproject.toml
+!skills/reflect/runtime/uv.lock
+!skills/reflect/runtime/Evaluation.Dockerfile

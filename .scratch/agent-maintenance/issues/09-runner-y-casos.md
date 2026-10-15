@@ -22,9 +22,11 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Status:** ready-for-agent
 
-- [ ] Preparar un caso conserva solicitud, situación inicial, conducta esperada, evidencia, entorno, comprobaciones y negativo cercano cuando corresponda.
+- [x] Preparar un caso conserva solicitud, situación inicial, conducta esperada, evidencia, entorno, comprobaciones y negativo cercano cuando corresponda.
 - [ ] Ejecutar un caso autorizado entrega trazas y artefactos ligados a hashes de las entradas y fuentes, con stable aislado del candidato y contexto cargado comprobado.
-- [ ] El guard impide ejecutar sin autorización aplicable o fuera de presupuesto; los reintentos no son automáticos ni ocultan consumo.
-- [ ] Éxito conductual, fallo de conducta, infraestructura, timeout y resultado ausente se representan por separado; los intentos recuperados conservan su origen.
-- [ ] El informe distingue preparado, ejecutado, recuperado, inconcluso y cobertura pendiente sin presentar lo no ejecutado como éxito.
+- [x] El guard impide ejecutar sin autorización aplicable o fuera de presupuesto; los reintentos no son automáticos ni ocultan consumo.
+- [x] Éxito conductual, fallo de conducta, infraestructura, timeout y resultado ausente se representan por separado; los intentos recuperados conservan su origen.
+- [x] El informe distingue preparado, ejecutado, recuperado, inconcluso y cobertura pendiente sin presentar lo no ejecutado como éxito.
 - [ ] El recorrido por la interfaz real termina sin recuperación manual de exportación; no basta con asserts sobre textos de instrucciones.
+
+[Implementación y cobertura pendiente](../../../docs/agent-maintenance/changes/AM-024-runner-implementation.md). El runner y el recorrido mecánico están verificados; la ejecución generativa conserva su presupuesto específico pendiente.

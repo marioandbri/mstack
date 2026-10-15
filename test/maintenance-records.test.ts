@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 
 test("maintenance runtime preserves originals and evaluation artifacts through public operations", () => {
   const runtime = resolve(import.meta.dir, "../skills/reflect/runtime");
-  const extras = process.env.MSTACK_GEMMA_MODEL_PATH ? ["--extra", "embeddings"] : [];
+  const extras = ["--extra", "evaluation", ...(process.env.MSTACK_GEMMA_MODEL_PATH ? ["--extra", "embeddings"] : [])];
   const result = Bun.spawnSync(["uv", "run", "--locked", "--project", runtime, ...extras, "python", "-m", "unittest", "discover", "-s", "test/maintenance_records", "-v"], {
     cwd: resolve(import.meta.dir, ".."),
     env: { ...process.env, PYTHONDONTWRITEBYTECODE: "1", PYTHONPATH: runtime },

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "collector-permissions",
+  "kind": "synthetic-fixture",
+  "incident_id": null,
+  "request": "Mechanical reproduction of the retained collector permission symptom; no model execution.",
+  "initial_state": "New owned workspace with original evidence.",
+  "expected_behavior": [
+    "Export a nested skill file whose mode is 0200 into readable verified bytes.",
+    "Preserve the original evidence and source mode."
+  ],
+  "sources": [
+    {
+      "reference": "docs/agent-maintenance/changes/AM-018-collector-implementation.md",
+      "sha256": "24e81450e5f1d1be338544342eefd3d5f7df972f201ee7d309637e103d45051e"
+    }
+  ],
+  "nearby_negative": null,
+  "fixture": {
+    "evidence.txt": "original evidence\n",
+    ".evaluation/fixture.py": "from pathlib import Path\nimport json\np=Path('.agents/skills/example/SKILL.md');p.parent.mkdir(parents=True,exist_ok=True);p.write_text('# Fixture skill\\n');p.chmod(0o200)\nPath('answer.json').write_text(json.dumps({'export_ready':True}))\n"
+  },
+  "checks": [
+    {
+      "id": "task-result",
+      "kind": "json-equals",
+      "path": "answer.json",
+      "expected": {
+        "export_ready": true
+      }
+    },
+    {
+      "id": "source-evidence",
+      "kind": "unchanged",
+      "path": "evidence.txt"
+    },
+    {
+      "id": "nested-skill",
+      "kind": "exists",
+      "path": ".agents/skills/example/SKILL.md"
+    }
+  ]
+}
