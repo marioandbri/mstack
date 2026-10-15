@@ -61,6 +61,10 @@ El [adaptador de búsqueda](search.md) ofrece ID, texto con FTS5, filtros y cose
 
 El [adaptador de revisiones](reviews.md) conserva el registro público, decisiones separadas por dominio, candidatos y una pregunta activa. Reanuda con originales y evidencia derivada, sin exigir acceso a la sesión de origen. La reconciliación de fuentes reabre sólo las decisiones afectadas; sólo chat no inicializa almacenamiento.
 
-## Dependencias fijadas
+## Evaluaciones
+
+El [runner](evaluation.md) prepara y ejecuta casos con protocolo y presupuesto explícitos, sin iniciar agentes durante la preparación. La [selección](selection.md) mantiene disponibilidad, trigger, lectura y cumplimiento por separado. Su CLI es evaluation_cli.py y usa el extra evaluation; las llamadas generativas necesitan autorización propia.
+
+## Versiones y licencias
 
 Se reutiliza el [esquema existente](../observation.schema.json) mediante [jsonschema 4.25.1](https://pypi.org/project/jsonschema/4.25.1/), mantenido y con licencia MIT. Evita mantener otro validador parcial. [sqlite-vec 0.1.9](https://pypi.org/project/sqlite-vec/0.1.9/) conserva el plugin ya ensayado para la búsqueda posterior; la captura no carga la extensión. La resolución completa se conserva en uv.lock. No se añaden servicios ni otros backends.

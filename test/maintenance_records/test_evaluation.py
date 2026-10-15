@@ -135,6 +135,17 @@ class EvaluationTests(unittest.TestCase):
         self.assertEqual(next(v for v in result["catalog"] if v["name"] == "reflect")["invocation"], "explicit-only")
         self.assertEqual(result["source_files"]["helpers/auth_state.py"], subprocess.check_output(["git", "show", commit + ":evals/deepswe/auth_state.py"], cwd=root).decode())
 
+    def test_task_check_executes_behavior_instead_of_trusting_a_written_success(self):
+        from fixture_evaluation import FixtureProcess
+        value = case(); value["id"] = "functional-check"
+        value["fixture"][".evaluation/fixture.py"] = "from pathlib import Path\nPath('task').mkdir(exist_ok=True)\nPath('task/value.py').write_text('def answer(): return 41\\n')\nPath('answer.json').write_text('{\"answer\":42}')\n"
+        value["checks"] = [{"id": "actual-behavior", "kind": "command", "argv": ["python3", "-c", "from value import answer; assert answer() == 42"], "cwd": "task"}]
+        frozen = self.runner.prepare(value, profile())
+        grant = self.grant(); grant["protocols"] = [frozen["protocol_sha256"]]
+        result = self.runner.execute(frozen["protocol_sha256"], "functional-check", grant, FixtureProcess())
+        self.assertEqual(result["behavioral_status"], "failed")
+        self.assertFalse(result["checks"][0]["passed"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -23,6 +23,10 @@ def main():
     for key in ("case", "repository", "ref", "environment", "profile-id", "model", "reasoning"):
         git.add_argument("--" + key, required=True)
     git.add_argument("--seconds", type=int, required=True)
+    library = commands.add_parser("prepare-workflows")
+    for key in ("repository", "ref", "environment", "profile-id", "model", "reasoning"):
+        library.add_argument("--" + key, required=True)
+    library.add_argument("--seconds", type=int, required=True)
     execute = commands.add_parser("execute")
     for key in ("protocol", "attempt", "grant"):
         execute.add_argument("--" + key, required=True)
@@ -34,15 +38,23 @@ def main():
     for key in ("attempt", "recovery", "termination-evidence"):
         recover.add_argument("--" + key, required=True)
     commands.add_parser("report")
+    assessment = commands.add_parser("assess")
+    for key in ("attempt", "id", "judgment"):
+        assessment.add_argument("--" + key, required=True)
+    commands.add_parser("selection-report")
     args = parser.parse_args()
     runner = Runner(args.root)
     try:
         if args.command == "prepare":
             result = runner.prepare(read(args.case), read(args.profile))
-        elif args.command == "prepare-git":
+        elif args.command in ("prepare-git", "prepare-workflows"):
             from evaluation_source import git_profile
             profile = git_profile(args.repository, args.ref, read(args.environment), identity=args.profile_id, model=args.model, reasoning=args.reasoning, seconds=args.seconds)
-            result = runner.prepare(read(args.case), profile)
+            if args.command == "prepare-workflows":
+                from workflow_cases import workflow_cases
+                result = {"stage": "prepared", "cases": [runner.prepare(case, profile) for case in workflow_cases(profile)], "agent_turns_started": 0}
+            else:
+                result = runner.prepare(read(args.case), profile)
         elif args.command in ("execute", "preflight"):
             if args.command == "preflight" or args.transport == "codex":
                 if not args.auth:
@@ -62,6 +74,12 @@ def main():
                 result = transport.preflight(workspace, protocol)
         elif args.command == "recover":
             result = runner.recover(args.attempt, args.recovery, args.termination_evidence)
+        elif args.command == "assess":
+            from selection import save_assessment
+            result = save_assessment(runner, args.attempt, args.id, read(args.judgment))
+        elif args.command == "selection-report":
+            from selection import assessment_report
+            result = assessment_report(runner)
         else:
             result = runner.report()
         print(json.dumps(result, ensure_ascii=False, allow_nan=False))

@@ -1,5 +1,6 @@
 """Isolated Codex RPC execution with the existing private benchmark OAuth helper."""
 import importlib.util
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -50,6 +51,43 @@ class CodexDocker:
         module.validate_auth(self.auth_path)
         return module
 
+    @staticmethod
+    def _stop_container(docker, child_env, cid_path, token):
+        if not cid_path.exists():
+            return
+        cid = cid_path.read_text().strip()
+        inspected = subprocess.run([*docker, "inspect", cid, "--format", '{{index .Config.Labels "mstack.maintenance.owner"}}'], env=child_env, capture_output=True, text=True)
+        if inspected.returncode == 0:
+            if inspected.stdout.strip() != token:
+                raise EvaluationError("container-ownership-changed")
+            subprocess.run([*docker, "stop", "-t", "2", cid], env=child_env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True, timeout=10)
+        else:
+            present = subprocess.run([*docker, "ps", "-a", "--no-trunc", "--filter", "id=" + cid, "--format", "{{.ID}}"], env=child_env, capture_output=True, text=True)
+            if present.returncode != 0 or present.stdout.strip():
+                raise EvaluationError("container-stop-unverified")
+
+    def check(self, workspace, protocol, check):
+        environment = protocol["profile"]["environment"]
+        docker, child_env = docker_environment(self.root, environment["docker_endpoint"], environment.get("docker_plugin_directories", []))
+        token = uuid.uuid4().hex
+        cid = self.root / (token + ".cid")
+        logs = private_directory(workspace.parent / "checks")
+        path = logs / (check["id"] + ".log")
+        command = [*docker, "run", "--rm", "--cidfile", str(cid), "--label", "mstack.maintenance.owner=" + token,
+                   "--network=none", "--read-only", "--tmpfs", "/tmp:rw,nosuid,nodev", "--cap-drop=ALL", "--security-opt=no-new-privileges", "--memory=2g", "--cpus=2",
+                   "--mount", f"type=bind,src={workspace},dst=/workspace,readonly", "--workdir", "/workspace" + ("/" + check["cwd"] if check["cwd"] != '.' else ''),
+                   environment["image_digest"], *check["argv"]]
+        try:
+            with path.open("xb") as output:
+                path.chmod(0o600)
+                result = subprocess.run(command, env=child_env, stdout=output, stderr=subprocess.STDOUT, timeout=30)
+        finally:
+            self._stop_container(docker, child_env, cid, token)
+        with path.open("rb") as source:
+            sha = hashlib.file_digest(source, "sha256").hexdigest()
+            source.seek(0); excerpt = source.read(4000).decode(errors="replace")
+        return {"passed": result.returncode == 0, "exit_code": result.returncode, "output_sha256": sha, "output_excerpt": excerpt, "executor": "isolated-container-check"}
+
     def run(self, workspace, protocol, seconds):
         return self._run(workspace, protocol, seconds, preflight=False)
 
@@ -79,7 +117,10 @@ class CodexDocker:
             preserved = False
             lifecycle = {"consumers_stopped": True}
             try:
-                return self._execute(workspace, protocol, seconds, home, docker, child_env, preflight, lifecycle)
+                result = self._execute(workspace, protocol, seconds, home, docker, child_env, preflight, lifecycle)
+                if global_text is not None:
+                    result["global_instructions_preserved"] = (home / "AGENTS.md").read_bytes() == global_text.encode()
+                return result
             finally:
                 try:
                     if not lifecycle["consumers_stopped"]:
@@ -115,18 +156,7 @@ class CodexDocker:
         (workspace / ".agents/skills").mkdir(mode=0o700, parents=True, exist_ok=True)
 
         def stop():
-            if not cid_path.exists():
-                return
-            cid = cid_path.read_text().strip()
-            inspected = subprocess.run([*docker, "inspect", cid, "--format", '{{index .Config.Labels "mstack.maintenance.owner"}}'], env=child_env, capture_output=True, text=True)
-            if inspected.returncode == 0:
-                if inspected.stdout.strip() != token:
-                    raise EvaluationError("container-ownership-changed")
-                subprocess.run([*docker, "stop", "-t", "2", cid], env=child_env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True, timeout=10)
-            else:
-                present = subprocess.run([*docker, "ps", "-a", "--no-trunc", "--filter", "id=" + cid, "--format", "{{.ID}}"], env=child_env, capture_output=True, text=True)
-                if present.returncode != 0 or present.stdout.strip():
-                    raise EvaluationError("container-stop-unverified")
+            self._stop_container(docker, child_env, cid_path, token)
 
         rpc, thread_id, turn_id = None, None, None
         deadline = time.monotonic() + seconds

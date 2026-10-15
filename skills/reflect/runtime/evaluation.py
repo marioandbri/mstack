@@ -51,7 +51,7 @@ def private_directory(path):
 
 def validate_case(case, profile):
     required = {"schema_version", "id", "kind", "incident_id", "request", "initial_state", "expected_behavior", "sources", "nearby_negative", "fixture", "checks"}
-    if not isinstance(case, dict) or set(case) - {"explicit_skills", "setup_commands"} != required or case["schema_version"] != 1 or case["kind"] not in ("real-episode", "unexecuted-scenario", "synthetic-fixture", "variant"):
+    if not isinstance(case, dict) or set(case) - {"explicit_skills", "setup_commands", "rubric"} != required or case["schema_version"] != 1 or case["kind"] not in ("real-episode", "unexecuted-scenario", "synthetic-fixture", "variant"):
         raise EvaluationError("invalid-case")
     identifier(case["id"])
     if (any(not isinstance(case[key], str) or not case[key].strip() for key in ("request", "initial_state")) or
@@ -104,9 +104,35 @@ def validate_case(case, profile):
     if not isinstance(case["checks"], list) or not case["checks"]:
         raise EvaluationError("missing-case-checks")
     for check in case["checks"]:
-        if not isinstance(check, dict) or check.get("kind") not in ("json-equals", "exists", "absent", "unchanged") or set(check) != ({"id", "kind", "path", "expected"} if check["kind"] == "json-equals" else {"id", "kind", "path"}):
+        shapes = {"command": {"id", "kind", "argv", "cwd"}, "json-equals": {"id", "kind", "path", "expected"}, "same-as-fixture": {"id", "kind", "path", "fixture_path"}}
+        if not isinstance(check, dict) or check.get("kind") not in ("command", "same-as-fixture", "json-equals", "exists", "absent", "unchanged") or set(check) != shapes.get(check["kind"], {"id", "kind", "path"}):
             raise EvaluationError("invalid-case-check")
-        identifier(check["id"]); safe_path(check["path"])
+        identifier(check["id"])
+        if check["kind"] == "command":
+            if not isinstance(check["argv"], list) or not check["argv"] or any(not isinstance(v, str) or not v or '\x00' in v for v in check["argv"]):
+                raise EvaluationError("invalid-check-command")
+            if check["cwd"] != '.':
+                safe_path(check["cwd"])
+        else:
+            safe_path(check["path"])
+            if check["kind"] == "same-as-fixture" and check["fixture_path"] not in case["fixture"]:
+                raise EvaluationError("unknown-fixture-source")
+    if len({check["id"] for check in case["checks"]}) != len(case["checks"]):
+        raise EvaluationError("duplicate-case-check")
+    if "rubric" in case:
+        rubric = case["rubric"]
+        if not isinstance(rubric, dict) or set(rubric) != {"skills", "criteria", "invariants", "expected_stop"} or rubric["expected_stop"] not in ("completed", "awaiting-user-input"):
+            raise EvaluationError("invalid-semantic-rubric")
+        for key in ("criteria", "invariants"):
+            if not isinstance(rubric[key], dict) or not rubric[key] or any(not isinstance(k, str) or not isinstance(v, str) or not v.strip() for k, v in rubric[key].items()):
+                raise EvaluationError("invalid-semantic-rubric")
+        if not isinstance(rubric["skills"], list):
+            raise EvaluationError("invalid-semantic-rubric")
+        for skill in rubric["skills"]:
+            if (not isinstance(skill, dict) or set(skill) != {"name", "trigger_compatible", "reason", "selection", "criteria"} or skill["name"] not in names or
+                    (skill["trigger_compatible"] is not None and type(skill["trigger_compatible"]) is not bool) or skill["selection"] not in ("required", "forbidden", "optional") or
+                    not isinstance(skill["reason"], str) or not skill["reason"].strip() or not isinstance(skill["criteria"], list) or set(skill["criteria"]) - rubric["criteria"].keys()):
+                raise EvaluationError("invalid-skill-rubric")
 
 
 class Runner:
@@ -148,7 +174,7 @@ class Runner:
             _write_json(destination / "protocol.json", protocol)
         return {"stage": "prepared", "protocol_sha256": sha, "path": str(destination), "case_id": case["id"], "model_calls": 0}
 
-    def load(self, sha):
+    def load(self, sha, *, check_execution=True):
         if not isinstance(sha, str) or not re.fullmatch(r'[0-9a-f]{64}', sha):
             raise EvaluationError("invalid-protocol")
         try:
@@ -157,8 +183,13 @@ class Runner:
             raise EvaluationError("prepared-protocol-unavailable") from None
         if digest(encoded(value)) != sha:
             raise EvaluationError("frozen-input-changed")
-        if value.get("execution_sources") != execution_sources():
+        if check_execution and value.get("execution_sources") != execution_sources():
             raise EvaluationError("execution-source-changed")
+        if not check_execution:
+            for relative, expected in value["execution_sources"].items():
+                path = self.root / "prepared" / sha / "execution" / safe_path(relative)
+                if path.is_symlink() or not path.is_file() or digest(path.read_bytes()) != expected:
+                    raise EvaluationError("frozen-execution-unavailable")
         validate_case(value["case"], value["profile"])
         return value
 
@@ -231,9 +262,16 @@ class Runner:
                 path.chmod(0o600); stream.write(content)
 
     @staticmethod
-    def _grade(workspace, protocol):
+    def _grade(workspace, protocol, transport):
         checks = []
         for check in protocol["case"]["checks"]:
+            if check["kind"] == "command":
+                try:
+                    result = transport.check(workspace, protocol, check)
+                    checks.append({"id": check["id"], **result})
+                except Exception:
+                    checks.append({"id": check["id"], "passed": None, "infrastructure_state": "check-infrastructure-error"})
+                continue
             path = workspace / check["path"]
             passed = False
             try:
@@ -248,6 +286,8 @@ class Runner:
                 elif check["kind"] == "unchanged":
                     original = protocol["case"]["fixture"].get(check["path"])
                     passed = original is not None and path.read_bytes() == original.encode()
+                elif check["kind"] == "same-as-fixture":
+                    passed = path.read_bytes() == protocol["case"]["fixture"][check["fixture_path"]].encode()
             except (OSError, ValueError):
                 pass
             checks.append({"id": check["id"], "passed": passed})
@@ -282,7 +322,8 @@ class Runner:
         result["seconds"] = round(time.monotonic() - start, 3)
         if execution_sources() != protocol["execution_sources"]:
             result["infrastructure_states"].append("execution-source-changed")
-        result["checks"] = self._grade(workspace, protocol)
+        result["checks"] = self._grade(workspace, protocol, transport)
+        result["infrastructure_states"] += [value["infrastructure_state"] for value in result["checks"] if value.get("infrastructure_state")]
         expected_context = "verified-fixture" if protocol["profile"]["kind"] == "fixture" else "verified"
         if result["context"]["state"] != expected_context:
             result["infrastructure_states"].append("loaded-context-unverified")

@@ -24,6 +24,8 @@ Docker usa un endpoint Unix local comprobado y configuración aislada que conser
 
 ## Resultados y recuperación
 
+La [biblioteca de selección](selection.md) añade controles naturales del catálogo y juicios versionados con citas verificables. Prepararla no ejecuta los escenarios.
+
 El recibo separa execution_status, behavioral_status, mechanical_status, colección, límites, tiempo y turnos conocidos. Los checks mecánicos de un agente no aprueban la rúbrica semántica. Timeout, interrupción, contexto no comprobado, trazas parciales y resultado ausente siguen siendo inconclusos o infraestructura. Las solicitudes internas y tokens desconocidos permanecen desconocidos.
 
 El recolector conserva bytes y hashes legibles sin reparación manual en el recorrido normal. report enumera intentos, incluso reservas interrumpidas sin recibo. recover crea otro destino y conserva recovery_of; exige evidencia fresca de que no quedan consumidores y rechaza un intento con lease activo. Nunca sustituye el recibo original ni convierte recuperación en otro ensayo de conducta. Conservar las trazas privadas; publicar sólo extractos mínimos saneados.

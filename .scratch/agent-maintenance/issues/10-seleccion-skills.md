@@ -21,8 +21,10 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Status:** ready-for-agent
 
-- [ ] Cada caso conserva evidencia de si la skill estaba expuesta y disponible, si el contexto satisfacía el trigger, si se seleccionó, si se leyó y qué conducta produjo.
+- [x] Cada caso conserva evidencia de si la skill estaba expuesta y disponible, si el contexto satisfacía el trigger, si se seleccionó, si se leyó y qué conducta produjo.
 - [ ] Solicitudes naturales positivas y negativos cercanos se ejecutan con rúbrica previa; no se atribuye a un trigger una skill ausente del catálogo.
-- [ ] Las capacidades complementarias pueden actuar juntas sin marcarse como competencia por ello.
-- [ ] Una omisión observada genera un caso y una hipótesis con fuente; el análisis textual de solapamiento se informa aparte de la evidencia conductual.
-- [ ] Los resultados se agrupan por entorno comprobado y conservan fallos de infraestructura y cobertura pendiente; no afirman fiabilidad universal entre harnesses.
+- [x] Las capacidades complementarias pueden actuar juntas sin marcarse como competencia por ello.
+- [x] Una omisión observada genera un caso y una hipótesis con fuente; el análisis textual de solapamiento se informa aparte de la evidencia conductual.
+- [x] Los resultados se agrupan por entorno comprobado y conservan fallos de infraestructura y cobertura pendiente; no afirman fiabilidad universal entre harnesses.
+
+[Implementación y cobertura pendiente](../../../docs/agent-maintenance/changes/AM-025-selection-implementation.md). Los ocho escenarios quedan preparados; su ejecución con agentes requiere el presupuesto específico del ciclo.
