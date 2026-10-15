@@ -22,9 +22,11 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Status:** ready-for-agent
 
-- [ ] Un candidato con aceptación y destino definidos se prepara desde un commit; dry-run no modifica el HOME de prueba.
-- [ ] Promover conserva versión previa, recibos, respaldos y configuración no gestionada, con identidad del candidato verificable.
+- [x] Un candidato con aceptación y destino definidos se prepara desde un commit; dry-run no modifica el HOME de prueba.
+- [x] Promover conserva versión previa, recibos, respaldos y configuración no gestionada, con identidad del candidato verificable.
 - [ ] La comprobación posterior ejecuta la conducta afectada mediante el runner autorizado y registra algo más que presencia de archivos.
 - [ ] La reversión en destinos temporales restaura contenido y configuración autorizados y vuelve a comprobar el comportamiento pertinente.
-- [ ] Drift antes de promover o revertir produce conflicto explícito sin sobrescribir trabajo ajeno; la evidencia distingue reversión pendiente de restauración verificada.
-- [ ] El recorrido respeta autorizaciones anteriores conservadas sin pedir de nuevo las ya aplicables ni convertir promoción de prueba en instalación global.
+- [x] Drift antes de promover o revertir produce conflicto explícito sin sobrescribir trabajo ajeno; la evidencia distingue reversión pendiente de restauración verificada.
+- [x] El recorrido respeta autorizaciones anteriores conservadas sin pedir de nuevo las ya aplicables ni convertir promoción de prueba en instalación global.
+
+[Implementación y ensayo mecánico](../../../docs/agent-maintenance/changes/AM-027-delivery-implementation.md). Promoción y rollback pasan con conducta de fixture; las comprobaciones de agente conservan su presupuesto pendiente.

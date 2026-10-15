@@ -71,6 +71,26 @@ def validate_case(case, profile):
         raise EvaluationError("invalid-profile-budget")
     if not isinstance(profile["harness"], dict) or set(profile["harness"]) != {"name", "version"} or any(not isinstance(v, str) or not v for v in profile["harness"].values()):
         raise EvaluationError("invalid-harness")
+    environment = profile["environment"]
+    text_keys = {"image_digest", "codex", "python", "bun", "uv", "git", "node", "platform", "architecture", "sqlite", "docker_endpoint"}
+    if not isinstance(environment, dict) or set(environment) - text_keys - {"docker_plugin_directories", "versions_observed", "freeze_tool", "installation"}:
+        raise EvaluationError("unknown-environment-field")
+    if any(not isinstance(environment[k], str) or not environment[k].strip() for k in text_keys & environment.keys()):
+        raise EvaluationError("invalid-environment-field")
+    for key in ("docker_plugin_directories", "versions_observed"):
+        if key in environment and (not isinstance(environment[key], list) or any(not isinstance(v, str) or not v.strip() for v in environment[key])):
+            raise EvaluationError("invalid-environment-field")
+    if "freeze_tool" in environment:
+        value = environment["freeze_tool"]
+        if (not isinstance(value, dict) or set(value) != {"commit", "files"} or not re.fullmatch(r'[0-9a-f]{40,64}', value["commit"]) or
+                not isinstance(value["files"], dict) or set(value["files"]) != {"install/mstack_source.py", "install/mstack_config.py", "install/mstack_fs.py"} or
+                any(not isinstance(v, str) or not re.fullmatch(r'[0-9a-f]{64}', v) for v in value["files"].values())):
+            raise EvaluationError("invalid-source-freeze-provenance")
+    if "installation" in environment:
+        value = environment["installation"]
+        if (not isinstance(value, dict) or set(value) != {"target_id", "mode", "commit", "generation", "bundle_sha256"} or value["mode"] not in ("isolated", "active") or
+                any(not isinstance(value[k], str) or not re.fullmatch(pattern, value[k]) for k, pattern in (("target_id", r'[0-9a-f]{32}'), ("commit", r'[0-9a-f]{40,64}'), ("generation", r'[0-9a-f]{32}'), ("bundle_sha256", r'[0-9a-f]{64}')))):
+            raise EvaluationError("invalid-installation-provenance")
     if profile["kind"] == "agent" and (not re.fullmatch(r'[0-9a-f]{40,64}', profile["source_commit"] or '') or any(not isinstance(profile[key], str) or not profile[key].strip() for key in ("model", "reasoning")) or not isinstance(profile["environment"], dict) or not re.fullmatch(r'sha256:[0-9a-f]{64}', profile["environment"].get("image_digest", ''))):
         raise EvaluationError("unfrozen-agent-profile")
     for files in (case["fixture"], profile["instructions"], profile["source_files"]):

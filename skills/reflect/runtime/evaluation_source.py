@@ -8,16 +8,17 @@ from evaluation import EvaluationError
 from records import digest
 
 
-def git_profile(repository, commit, environment, *, identity, model, reasoning, seconds):
+def git_profile(repository, commit, environment, *, identity, model, reasoning, seconds, tool_repository=None):
     repository = Path(repository).resolve(strict=True)
-    head = subprocess.check_output(["git", "-C", str(repository), "rev-parse", "HEAD"], stderr=subprocess.PIPE).decode().strip()
+    tools = Path(tool_repository).resolve(strict=True) if tool_repository else repository
+    head = subprocess.check_output(["git", "-C", str(tools), "rev-parse", "HEAD"], stderr=subprocess.PIPE).decode().strip()
     tooling = {}
     for relative in ("install/mstack_source.py", "install/mstack_config.py", "install/mstack_fs.py"):
-        committed = subprocess.check_output(["git", "-C", str(repository), "show", head + ":" + relative], stderr=subprocess.PIPE)
-        if (repository / relative).read_bytes() != committed:
+        committed = subprocess.check_output(["git", "-C", str(tools), "show", head + ":" + relative], stderr=subprocess.PIPE)
+        if (tools / relative).read_bytes() != committed:
             raise EvaluationError("uncommitted-source-freeze-tool")
         tooling[relative] = digest(committed)
-    sys.path.insert(0, str(repository / "install"))
+    sys.path.insert(0, str(tools / "install"))
     try:
         import yaml
         from mstack_source import source

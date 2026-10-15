@@ -34,6 +34,8 @@ Credentials, trusted projects, MCP configuration, packages, extensions and other
 
 ## Preserve an edited global instruction file
 
+For a prepared setup or rollback, `--expected-generation <generation>` binds the operation to the inspected installation; `none` means no current receipt. A different generation is rejected before target writes and checked again under the installer lock. Omitting it preserves the existing CLI contract. Reflect's delivery adapter uses this guard instead of recreating the installation transaction.
+
 If the active global was deliberately edited, review its difference from the last installed version and commit its exact accepted contents to `instructions/global/AGENTS.md`. Do not discard those edits to make verification pass.
 
 ```fish

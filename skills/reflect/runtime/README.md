@@ -67,4 +67,6 @@ El [runner](evaluation.md) prepara y ejecuta casos con protocolo y presupuesto e
 
 ## Versiones y licencias
 
+El [adaptador de entrega](delivery.md) prepara candidatos aceptados, usa el instalador y verifica conductas ligadas al estado realmente instalado. La promoción y la reversión conservan su autorización propia; el modo aislado es el predeterminado.
+
 Se reutiliza el [esquema existente](../observation.schema.json) mediante [jsonschema 4.25.1](https://pypi.org/project/jsonschema/4.25.1/), mantenido y con licencia MIT. Evita mantener otro validador parcial. [sqlite-vec 0.1.9](https://pypi.org/project/sqlite-vec/0.1.9/) conserva el plugin ya ensayado para la búsqueda posterior; la captura no carga la extensión. La resolución completa se conserva en uv.lock. No se añaden servicios ni otros backends.

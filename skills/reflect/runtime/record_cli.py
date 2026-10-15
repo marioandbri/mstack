@@ -88,6 +88,28 @@ def parser():
     compare_result.add_argument("--id", required=True)
     compare_result.add_argument("--result-id", required=True)
     compare_result.add_argument("--assessments", required=True)
+    delivery = commands.add_parser("delivery")
+    for key in ("runner-root", "installer-repository", "source-repository", "home", "control"):
+        delivery.add_argument("--" + key, required=True)
+    delivery.add_argument("--target-mode", choices=("isolated", "active"), default="isolated")
+    delivery_commands = delivery.add_subparsers(dest="action", required=True)
+    delivery_prepare = delivery_commands.add_parser("prepare")
+    for key in ("id", "review-id", "behavior-id", "destination-id", "commit"):
+        delivery_prepare.add_argument("--" + key, required=True)
+    for action in ("get", "reconcile"):
+        delivery_commands.add_parser(action).add_argument("--id", required=True)
+    for action in ("promote", "rollback"):
+        operation = delivery_commands.add_parser(action)
+        operation.add_argument("--id", required=True); operation.add_argument("--grant", required=True)
+    installed = delivery_commands.add_parser("profile")
+    for key in ("id", "environment", "profile-id"):
+        installed.add_argument("--" + key, required=True)
+    installed.add_argument("--kind", choices=("fixture", "agent"), required=True)
+    installed.add_argument("--model"); installed.add_argument("--reasoning"); installed.add_argument("--seconds", type=int, required=True)
+    checked = delivery_commands.add_parser("check")
+    for key in ("id", "attempt", "stage"):
+        checked.add_argument("--" + key, required=True)
+    checked.add_argument("--assessment-id")
     return result
 
 
@@ -165,6 +187,22 @@ def run(args):
         if args.action == "result":
             return comparisons.record_result(args.id, args.result_id, json.loads(Path(args.assessments).read_text()))
         return comparisons.get(args.id)
+    if args.command == "delivery":
+        from delivery import Delivery
+        from evaluation import Runner
+        from reviews import Reviews
+        delivery = Delivery(Reviews(store), Runner(args.runner_root), args.installer_repository, args.source_repository, args.home, args.control, mode=args.target_mode)
+        if args.action == "prepare":
+            return delivery.prepare(args.id, args.review_id, args.behavior_id, args.destination_id, args.commit)
+        if args.action in ("promote", "rollback"):
+            return getattr(delivery, args.action)(args.id, json.loads(Path(args.grant).read_text()))
+        if args.action == "profile":
+            if (args.kind == "agent" and (not args.model or not args.reasoning)) or (args.kind == "fixture" and (args.model or args.reasoning)):
+                raise RecordError("invalid-installed-profile-kind")
+            return delivery.installed_profile(args.id, json.loads(Path(args.environment).read_text()), identity=args.profile_id, model=args.model, reasoning=args.reasoning, seconds=args.seconds)
+        if args.action == "check":
+            return delivery.record_check(args.id, args.attempt, args.stage, args.assessment_id)
+        return delivery.reconcile(args.id) if args.action == "reconcile" else delivery.get(args.id)
     raise RecordError("unknown-operation")
 
 

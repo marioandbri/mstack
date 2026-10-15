@@ -1,6 +1,6 @@
 # Recuperación local
 
-Los originales y las decisiones son durables; FTS5 y los vectores son índices reconstruibles. No hay un servidor ni búsqueda entre proyectos. [El contrato aprobado](../../../docs/agent-maintenance/changes/AM-015-agent-maintenance.spec.md) mantiene clasificación y decisiones fuera del ranking.
+Los originales y las decisiones son durables; FTS5 y los vectores son índices reconstruibles. No hay un servidor ni búsqueda entre proyectos. El contrato aprobado AM-015, en el repositorio canónico, mantiene clasificación y decisiones fuera del ranking.
 
 Desde el CLI de registros, index text crea o reconstruye FTS5; las capturas posteriores lo actualizan en la misma transacción. search con text, scope, state, category y limit devuelve IDs, hashes y texto coincidente. Sin índice textual usa los originales e informa text-fallback. get sigue leyendo por ID, sin modelo ni extensión vectorial. El filtro category sólo usa anotaciones actuales no pendientes.
 
@@ -20,6 +20,6 @@ Si falla el modelo o la extensión, la consulta devuelve texto con el error y l�
 
 ## Evidencia y mantenimiento
 
-La suite normal usa vectores fijos para verificar transacciones, consultas y filtros. El smoke optativo en test_search.py usa los pesos reales y el CLI; activarlo con MSTACK_GEMMA_MODEL_PATH y el extra embeddings. Conserva antes de ejecutar tres registros del corpus exploratorio: un incidente y dos contextos cercanos. Verifica una consulta positiva y mantiene como candidatos los vecinos de una consulta sin antecedente. No ajusta umbrales ni convierte las etiquetas propuestas en gold. El [informe exploratorio](../../../docs/agent-maintenance/evaluations/2026-10-14-embedding-models/report.md) conserva cobertura y asociaciones del corpus completo, sin modificar esos experimentos.
+La suite normal usa vectores fijos para verificar transacciones, consultas y filtros. El smoke optativo en test_search.py usa los pesos reales y el CLI; activarlo con MSTACK_GEMMA_MODEL_PATH y el extra embeddings. Conserva antes de ejecutar tres registros del corpus exploratorio: un incidente y dos contextos cercanos. Verifica una consulta positiva y mantiene como candidatos los vecinos de una consulta sin antecedente. No ajusta umbrales ni convierte las etiquetas propuestas en gold. El informe exploratorio de docs/agent-maintenance/evaluations/2026-10-14-embedding-models en el repositorio canónico conserva cobertura y asociaciones del corpus completo, sin modificar esos experimentos.
 
 Los extras reutilizan versiones ensayadas: Sentence Transformers 6.1.0 y Transformers 5.19.0 (Apache 2.0), PyTorch 2.14.1 y Torchvision 0.29.1 (BSD), NumPy 2.5.4 (BSD) y Pillow 12.3.0 (HPND). Son dependencias mantenidas con soporte documentado del checkpoint; el lock conserva la resolución exacta. El modelo mantiene la licencia Gemma aceptada previamente por Mario. No se distribuyen pesos ni tokens. Los extras son opcionales para que captura y recuperación textual no dependan del stack de inferencia.

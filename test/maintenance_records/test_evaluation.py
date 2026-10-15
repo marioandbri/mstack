@@ -146,6 +146,13 @@ class EvaluationTests(unittest.TestCase):
         self.assertEqual(result["behavioral_status"], "failed")
         self.assertFalse(result["checks"][0]["passed"])
 
+    def test_unselected_environment_configuration_is_rejected_before_persistence(self):
+        config = profile(); config["environment"]["api_key"] = "fixture-secret-do-not-store"
+        runner = Runner(Path(self.temp.name) / "not-created")
+        with self.assertRaisesRegex(EvaluationError, "unknown-environment-field"):
+            runner.prepare(case(), config)
+        self.assertFalse(runner.root.exists())
+
 
 if __name__ == "__main__":
     unittest.main()

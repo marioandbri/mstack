@@ -221,7 +221,16 @@ def undo(state, journal, allow_partial=False, dry_run=False):
     (state / 'journal.json').unlink(missing_ok=True)
 
 
-def setup(repo, ref, roots, state, apply=False):
+def require_generation(receipt, expected):
+    if expected is not None:
+        if expected != 'none' and not re.fullmatch(r'[0-9a-f]{32}', expected):
+            raise InstallError('Invalid expected installation generation')
+        actual = receipt['generation'] if receipt else 'none'
+        if actual != expected:
+            raise InstallError('Installation generation changed; prepare a new plan')
+
+
+def setup(repo, ref, roots, state, apply=False, expected_generation=None):
     if (state / 'journal.json').exists():
         raise InstallError('An unfinished operation exists; use recover --apply')
     metadata, files = source(repo, ref)
@@ -229,6 +238,7 @@ def setup(repo, ref, roots, state, apply=False):
         if (Path(roots[label]) / 'AGENTS.override.md').exists():
             raise InstallError(f'Instruction override shadows the managed file: {label}')
     previous = current_receipt(state)
+    require_generation(previous, expected_generation)
     if previous:
         if previous['roots'] != roots:
             raise InstallError('Configured directories differ from the active installation')
@@ -248,6 +258,7 @@ def setup(repo, ref, roots, state, apply=False):
         # Recheck after acquiring the lock, before allocating or modifying targets.
         if current_receipt(state) != previous or (state / 'journal.json').exists():
             raise InstallError('Installation state changed; run setup again')
+        require_generation(current_receipt(state), expected_generation)
         if previous:
             verify_receipt(state, previous)
         if previous and not changes and not pointer_changed:
@@ -390,11 +401,13 @@ def main():
         for label in ROOT_IDS:
             p.add_argument('--' + label + '-dir')
         p.add_argument('--apply', action='store_true')
+        if command in ('setup', 'rollback'):
+            p.add_argument('--expected-generation')
     args = parser.parse_args()
     try:
         roots, state = resolve_locations(args)
         if args.command == 'setup':
-            setup(Path(args.repo).resolve(strict=True), args.ref, roots, state, args.apply)
+            setup(Path(args.repo).resolve(strict=True), args.ref, roots, state, args.apply, args.expected_generation)
         elif args.command == 'reconcile-instructions':
             reconcile_instructions(Path(args.repo).resolve(strict=True), args.ref, roots, state, args.apply)
         elif args.command == 'snapshot':
@@ -422,6 +435,8 @@ def main():
             journal = checked_record(state, state / 'journal.json') if args.command == 'recover' else current_receipt(state)
             if not journal:
                 raise InstallError('There is no operation to undo')
+            if args.command == 'rollback':
+                require_generation(journal, args.expected_generation)
             if journal['roots'] != roots:
                 raise InstallError('Configured directories differ from the operation being restored')
             if not args.apply:
@@ -433,6 +448,9 @@ def main():
             else:
                 with lock(state):
                     if args.command == 'rollback':
+                        if current_receipt(state) != journal:
+                            raise InstallError('Installation state changed; prepare rollback again')
+                        require_generation(current_receipt(state), args.expected_generation)
                         verify_receipt(state, journal)
                     undo(state, journal, allow_partial=args.command == 'recover')
                 print('RESULT previous owned state restored; unowned configuration preserved')

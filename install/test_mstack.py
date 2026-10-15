@@ -154,6 +154,24 @@ class InstallerTests(unittest.TestCase):
         self.assertIn('Frozen unslop.', (self.home/'.pi/agent/skills/unslop/SKILL.md').read_text())
         self.assertEqual(self.run_cli('verify').returncode,0)
 
+    def test_planned_generation_cannot_overwrite_a_later_installation(self):
+        first = self.apply()
+        self.write('instructions/global/AGENTS.md', 'Second approved fixture.\n')
+        self.commit()
+        result = self.run_cli('setup', '--apply', '--expected-generation', first['generation'])
+        self.assertEqual(result.returncode, 0, result.stderr)
+        second = json.loads((self.state/'current.json').read_text())
+        before = signature(self.home)
+        stale = self.run_cli('setup', '--apply', '--expected-generation', first['generation'])
+        self.assertNotEqual(stale.returncode, 0)
+        self.assertEqual(signature(self.home), before)
+        stale_rollback = self.run_cli('rollback', '--apply', '--expected-generation', first['generation'])
+        self.assertNotEqual(stale_rollback.returncode, 0)
+        self.assertEqual(signature(self.home), before)
+        restored = self.run_cli('rollback', '--apply', '--expected-generation', second['generation'])
+        self.assertEqual(restored.returncode, 0, restored.stderr)
+        self.assertEqual(json.loads((self.state/'current.json').read_text())['generation'], first['generation'])
+
     def test_rollback_preserves_later_unowned_configuration_changes(self):
         self.apply()
         config=self.home/'.pi/agent/settings.json'
