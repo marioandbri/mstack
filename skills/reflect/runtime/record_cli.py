@@ -31,6 +31,16 @@ def parser():
     history = commands.add_parser("history")
     history.add_argument("--id", required=True)
     history.add_argument("--kind", required=True)
+    classification = commands.add_parser("classification").add_subparsers(dest="action", required=True)
+    prepare = classification.add_parser("prepare")
+    prepare.add_argument("--id", required=True)
+    prepare.add_argument("--related", action="append", default=[])
+    save = classification.add_parser("save")
+    save.add_argument("--context", required=True)
+    save.add_argument("--output", required=True, help="JSON output or null when the provider is unavailable")
+    save.add_argument("--expected-revision", type=int, required=True)
+    save.add_argument("--operation", required=True)
+    classification.add_parser("get").add_argument("--id", required=True)
     return result
 
 
@@ -51,6 +61,14 @@ def run(args):
         return store.transition(args.id, args.expected_revision, args.state, json.loads(Path(args.evidence).read_text()), args.operation)
     if args.command == "history":
         return store.history(args.id, args.kind)
+    if args.command == "classification":
+        from annotations import Annotations
+        annotations = Annotations(store)
+        if args.action == "prepare":
+            return annotations.prepare(args.id, args.related)
+        if args.action == "save":
+            return annotations.save(json.loads(Path(args.context).read_text()), json.loads(Path(args.output).read_text()), args.expected_revision, args.operation)
+        return annotations.latest(args.id)
     raise RecordError("unknown-operation")
 
 

@@ -39,6 +39,14 @@ transition requiere id, expected-revision, state, evidence y operation. evidence
 
 SQLite coordina las escrituras con transacciones inmediatas, restricciones, WAL y synchronous FULL. Un lote capture_many es atómico. Al morir un escritor antes del commit no queda una observación parcial; si murió después, el mismo operation permite recuperar el resultado. La espera por un escritor tiene límite de cinco segundos y devuelve un error sin descartar evidencia del llamador.
 
-## Dependencias
+## Clasificación provisional
+
+El mismo CLI admite classification prepare con id y related repetibles. Devuelve evidencia original, procedencia, decisiones previas, fuentes con hashes, categorías permitidas y componentes disponibles. El procedimiento del agente produce la salida de [annotation.schema.json](../annotation.schema.json); Gemma no clasifica.
+
+classification save recibe context, output, expected-revision y operation. output puede contener null si el proveedor no respondió. La validación rechaza fuentes/versiones desconocidas, categorías no permitidas, rutas ajenas y recuentos que duplican el mismo incidente. Una relación necesita fuentes de ambos registros; una recurrencia exige incidentes independientes de ámbito equivalente. Categoría, impacto y recurrencia permanecen separados, sin pesos ni probabilidades inventados.
+
+classification get recupera la última anotación y su estado; history con kind annotation conserva todas las versiones. Si falla una nueva clasificación, la anterior sigue disponible y el trabajo queda pendiente. La escritura usa comparación de revisión y comprueba que el contexto no haya cambiado. Un reintento confirmado no altera trabajo posterior. La sugerencia nunca autoriza entrevistas, evaluación o instalación.
+
+## Dependencias fijadas
 
 Se reutiliza el [esquema existente](../observation.schema.json) mediante [jsonschema 4.25.1](https://pypi.org/project/jsonschema/4.25.1/), mantenido y con licencia MIT. Evita mantener otro validador parcial. [sqlite-vec 0.1.9](https://pypi.org/project/sqlite-vec/0.1.9/) conserva el plugin ya ensayado para la búsqueda posterior; la captura no carga la extensión. La resolución completa se conserva en uv.lock. No se añaden servicios ni otros backends.

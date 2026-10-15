@@ -33,7 +33,7 @@ Category, recurrence and priority are separate outputs. Give recurring findings 
 
 ## Replaceable provider contract
 
-The candidate contract below defines interchange requirements; no executable API or new storage validator is installed by this document.
+The local [runtime](../runtime/README.md) implements the versioned contract in [annotation.schema.json](../annotation.schema.json). The provider is this agent procedure; the adapter validates and stores its output without invoking a model.
 
 Input includes the contract version, observation IDs and evidence, scope, relevant records and source versions, accepted decisions, allowed categories and the available component catalog. Supply only relevant, permitted data to a provider; introducing an external service needs its own configuration and data-access review.
 

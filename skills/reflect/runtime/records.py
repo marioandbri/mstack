@@ -13,6 +13,7 @@ import stat
 
 from jsonschema import Draft202012Validator
 from jsonschema.exceptions import ValidationError
+from derived_work import states
 
 SCHEMA_VERSION = 1
 APPLICATION_ID = 0x4D53544B
@@ -186,8 +187,9 @@ class RecordStore:
 
     def _view(self, db, row):
         kinds = {v[0] for v in db.execute("SELECT DISTINCT kind FROM versions WHERE record_id=?", (row["id"],))}
+        work = states(db, row["id"])
         state = db.execute("SELECT revision,payload FROM versions WHERE kind='state' AND record_id=? ORDER BY revision DESC LIMIT 1", (row["id"],)).fetchone()
-        return {"id": row["id"], "project": self.project, "scope": row["scope"], "observation": json.loads(row["raw"]), "raw_base64": base64.b64encode(row["raw"]).decode(), "raw_sha256": row["raw_sha256"], "provenance": json.loads(row["provenance"]), "captured_at": row["captured_at"], "revision": state["revision"] if state else 0, "state": json.loads(state["payload"])["state"] if state else "inbox", "pending": [label for label, kind in (("classification", "annotation"), ("reconstruction", "summary"), ("indexing", "embedding")) if kind not in kinds]}
+        return {"id": row["id"], "project": self.project, "scope": row["scope"], "observation": json.loads(row["raw"]), "raw_base64": base64.b64encode(row["raw"]).decode(), "raw_sha256": row["raw_sha256"], "provenance": json.loads(row["provenance"]), "captured_at": row["captured_at"], "revision": state["revision"] if state else 0, "state": json.loads(state["payload"])["state"] if state else "inbox", "pending": [label for label, kind in (("classification", "annotation"), ("reconstruction", "summary"), ("indexing", "embedding")) if kind not in kinds or work.get(kind, {}).get("status") == "pending"]}
 
     def get(self, identity):
         with self._connection() as db:

@@ -21,9 +21,15 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Status:** ready-for-agent
 
-- [ ] La llamada incluye evidencia, alcance, fuentes/versiones, registros pertinentes, decisiones aceptadas, categorías permitidas y catálogo disponible.
-- [ ] La salida conserva proveedor/versión, referencias, sugerencia o abstención, razones, límites y relaciones justificadas.
-- [ ] Un proveedor ausente o salida inválida deja el original recuperable con clasificación pendiente; referencias desconocidas y rutas fuera de ámbito se rechazan.
-- [ ] Copias del mismo incidente no aumentan recurrencia. Recurrencias independientes, contextos relacionados y evidencia contradictoria conservan identidades y diferencias.
-- [ ] Categoría, recurrencia y prioridad se presentan por separado; un caso grave único no se oculta y no se inventan probabilidades calibradas ni pesos de severidad.
-- [ ] Reclasificar añade una versión y permite consultar la anterior sin reabrir decisiones aprobadas ni descartar evidencia.
+- [x] La llamada incluye evidencia, alcance, fuentes/versiones, registros pertinentes, decisiones aceptadas, categorías permitidas y catálogo disponible.
+- [x] La salida conserva proveedor/versión, referencias, sugerencia o abstención, razones, límites y relaciones justificadas.
+- [x] Un proveedor ausente o salida inválida deja el original recuperable con clasificación pendiente; referencias desconocidas y rutas fuera de ámbito se rechazan.
+- [x] Copias del mismo incidente no aumentan recurrencia. Recurrencias independientes, contextos relacionados y evidencia contradictoria conservan identidades y diferencias.
+- [x] Categoría, recurrencia y prioridad se presentan por separado; un caso grave único no se oculta y no se inventan probabilidades calibradas ni pesos de severidad.
+- [x] Reclasificar añade una versión y permite consultar la anterior sin reabrir decisiones aprobadas ni descartar evidencia.
+
+**Closed:** 2026-10-15
+
+**Resolution:** completed
+
+[Implementación y verificaciones](../../../docs/agent-maintenance/changes/AM-020-classification-implementation.md).
