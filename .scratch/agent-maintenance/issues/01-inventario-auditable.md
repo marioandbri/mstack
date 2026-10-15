@@ -21,8 +21,14 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Status:** ready-for-agent
 
-- [ ] Una petición sin incidente previo devuelve identidades, propietarios, versiones o hashes disponibles, referencias, cobertura y hallazgos estructurales legibles.
-- [ ] Distingue fuente canónica, copia instalada y metadata expuesta. No convierte ausencia de trazas en prueba de falta de selección, carga, ejecución o uso.
-- [ ] Ejercita referencia rota, instalación diferente, catálogo parcial, fuente inaccesible y configuración desconocida; cada límite queda trazable.
-- [ ] Incluye metadata externa pertinente sin importar ni modificar sus skills y sin inspeccionar credenciales.
-- [ ] Repetir la auditoría no modifica instrucciones, configuración activa ni instalación; el informe conserva el alcance realmente revisado.
+- [x] Una petición sin incidente previo devuelve identidades, propietarios, versiones o hashes disponibles, referencias, cobertura y hallazgos estructurales legibles.
+- [x] Distingue fuente canónica, copia instalada y metadata expuesta. No convierte ausencia de trazas en prueba de falta de selección, carga, ejecución o uso.
+- [x] Ejercita referencia rota, instalación diferente, catálogo parcial, fuente inaccesible y configuración desconocida; cada límite queda trazable.
+- [x] Incluye metadata externa pertinente sin importar ni modificar sus skills y sin inspeccionar credenciales.
+- [x] Repetir la auditoría no modifica instrucciones, configuración activa ni instalación; el informe conserva el alcance realmente revisado.
+
+**Closed:** 2026-10-15
+
+**Resolution:** completed
+
+Implementación y [evidencia de aceptación](../../../docs/agent-maintenance/changes/AM-016-inventory-implementation.md). El análisis semántico corresponde a 04.

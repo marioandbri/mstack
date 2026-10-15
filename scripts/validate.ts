@@ -23,7 +23,7 @@ export type ValidationResult = {
   markdownCount: number;
 };
 
-function frontmatterValue(frontmatter: string, key: string): string {
+export function frontmatterValue(frontmatter: string, key: string): string {
   const lines = frontmatter.split("\n");
   const prefix = `${key}:`;
   const index = lines.findIndex((line) => line.startsWith(prefix));
@@ -52,7 +52,7 @@ function markdownFiles(root: string): string[] {
   return files;
 }
 
-function validateMarkdownLinks(file: string, errors: string[]): void {
+export function validateMarkdownLinks(file: string, errors: string[]): void {
   const text = readFileSync(file, "utf8").replace(/^(```|~~~)[^\n]*\n[\s\S]*?^\1\s*$/gm, "");
   const linkPattern = /\[[^\]]*\]\(([^)]+)\)/g;
   for (const match of text.matchAll(linkPattern)) {
