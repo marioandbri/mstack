@@ -1,6 +1,6 @@
 # AM-015: sistema de mantenimiento y evaluación de agentes
 
-Estado: borrador para revisión con Mario. Ruta elegida: spec, revisión y posterior división en tickets. Esta versión no autoriza implementación, publicación, llamadas de evaluación ni instalación.
+Estado: fuente revisada para los 14 tickets cuya división y bloqueos aprobó Mario. El tracker elegido es local, con un archivo por ticket y un [índice de entregas](../../../.scratch/agent-maintenance/README.md). La implementación, las nuevas evaluaciones y la instalación conservan sus autorizaciones propias.
 
 ## Problem Statement
 
@@ -121,7 +121,7 @@ Las siguientes decisiones conservan el alcance discutido y concretan los contrat
 
 ### Persistencia y recuperación propuestas durante la revisión
 
-33. Los candidatos ensayados son LanceDB embebido, SQLite con sqlite-vec y Chroma embebido. La selección final queda pendiente de revisar la comparación y los contratos restantes. La persistencia debe coordinar a los escritores y reconocer reintentos mediante una identidad de operación estable. El ensayo de LanceDB encontró duplicados con merge_insert simultáneo; no se asume unicidad por usar esa operación. SQLite resolvió ese recorrido con restricciones y transacciones sin un bloqueo externo. Chroma 1.5.9 captura documentos y genera embeddings con su función por defecto; la prueba con esa función desactivada no describe el recorrido normal. La captura automática ocurre después de generar el embedding y no satisface por sí sola el guardado previo del original. La lectura seguida de update necesita coordinación para detectar revisiones obsoletas. La muestra concurrente de Chroma no convierte varios procesos sobre un mismo directorio en un despliegue soportado.
+33. Mario eligió SQLite con sqlite-vec como persistencia local, sin otro servicio permanente. La persistencia debe coordinar a los escritores y reconocer reintentos mediante una identidad de operación estable. Los ensayos anteriores conservan la comparación con LanceDB y Chroma, sin exigir instalar esos backends. El ensayo de LanceDB encontró duplicados con merge_insert simultáneo; SQLite resolvió ese recorrido con restricciones y transacciones sin un bloqueo externo. Chroma 1.5.9 genera embeddings con su función por defecto, pero esa captura ocurre después del embedding y no satisface por sí sola el guardado previo del original. Se conserva la separación entre los originales duraderos y los índices derivados, con compatibilidad para los registros existentes.
 34. La procedencia propuesta incluye harness y versión disponible, sesión de origen, evento o turno disponible, sesión de captura, contexto del proyecto y fechas pertinentes. Admite varias fuentes y valores desconocidos. La evidencia mínima saneada sigue siendo recuperable cuando un enlace a la sesión deja de funcionar. Una identidad de sesión no demuestra por sí sola duplicación o recurrencia.
 35. La recuperación semántica propuesta combina metadata, texto y vectores. Los embeddings son datos derivados que conservan identidad y versión del modelo, hash de entrada y estado de indexación. Se generan después de persistir la observación y fuera de la sección de escritura coordinada. Su similitud sólo recupera candidatos para clasificación; no fusiona registros ni concede permisos. Mario eligió google/embeddinggemma-300m para los embeddings del sistema. La calidad cotidiana y la calibración de abstención siguen pendientes.
 
@@ -153,7 +153,7 @@ El perfil inicial usa la revisión `57c266a740f537b4dc058e1b0cda161fd15afa75`, 7
 
 La aceptación se comprobará desde las operaciones que usa el agente o Mario y sus artefactos persistidos. Un escenario integrado recorrerá auditoría, conservación de una oportunidad, revisión reanudada, evaluación, promoción aislada y reversión. Se comprobarán resultados y decisiones visibles; no el número de funciones, clases o llamadas internas.
 
-Se reutilizarán las fronteras públicas existentes del validador, almacenamiento e instalador. Las pruebas de concurrencia y recuperación usarán procesos y archivos temporales reales. Los fallos del exportador se probarán en la frontera de recogida de artefactos. No se creará una interfaz de producción adicional sólo para facilitar mocks. La división futura en tickets conservará estos recorridos, sin fragmentarlos en pruebas que sólo reflejen la implementación.
+Se reutilizarán las fronteras públicas existentes del validador, almacenamiento e instalador. Las pruebas de concurrencia y recuperación usarán procesos y archivos temporales reales. Los fallos del exportador se probarán en la frontera de recogida de artefactos. No se creará una interfaz de producción adicional sólo para facilitar mocks. Los tickets conservan estos recorridos, sin fragmentarlos en pruebas que sólo reflejen la implementación.
 
 ### Criterios de aceptación
 
@@ -228,19 +228,19 @@ Se mantendrán los checks obligatorios del repositorio con Bun 1.3.14, incluida 
 - Eliminar por antigüedad, longitud o falta de uso observado; deduplicar mediante borrado de originales; convertir probabilidad en permiso o garantía.
 - Reemplazar el instalador, la infraestructura de benchmarks de programación o los workflows de entrega existentes.
 - Automatizar publicaciones, merges, promociones o reversiones fuera de autorizaciones explícitas conservadas.
-- Ejecutar nuevas comparaciones con modelos, instalar candidatos o dividir esta spec en tickets durante su redacción.
+- Ejecutar nuevas comparaciones con modelos o instalar candidatos por la sola preparación de la spec o de sus tickets.
 
 ## Further Notes
 
 ### Orden de trabajo y decisiones pendientes
 
-Mario eligió preparar esta spec, revisarla y después dividirla en tickets. Esa elección reemplaza la recomendación anterior de pasar directamente a tickets. El documento queda como borrador hasta su revisión; no se publica ni recibe etiquetas de ejecución en esta fase.
+Mario eligió preparar esta spec, revisarla y después dividirla en tickets. Tras revisar los modelos de embeddings y el contexto factual para Reflect, solicitó avanzar con to-tickets y aprobó la división en 14 entregas con sus bloqueos. Los tickets locales conservan este alcance. Publicarlos no inicia su implementación.
 
-La división prevista conserva cinco áreas de entrega: inventario y auditoría, registros robustos, runner y biblioteca de casos, comparación de intervenciones, y promoción con reversión. Son áreas para organizar después de aprobar el alcance, no tickets ya definidos. La auditoría es la prioridad funcional. Los registros pueden desarrollarse con observaciones existentes, y la reproducción determinista del exportador puede prepararse sin esperar al inventario. Las comparaciones dependen de recogida fiable; el cierre de promoción requiere la evidencia pertinente.
+La división conserva cinco áreas de entrega: inventario y auditoría, registros robustos, runner y biblioteca de casos, comparación de intervenciones, y promoción con reversión. Cada ticket debe cerrar un recorrido verificable, con dependencias que lo bloqueen realmente. La auditoría es la prioridad funcional. Los registros pueden desarrollarse con observaciones existentes, y la reproducción determinista del exportador puede prepararse sin esperar al inventario. Las comparaciones dependen de recogida fiable; el cierre de promoción requiere la evidencia pertinente o una preferencia explícita aplicable.
 
 Quedan por concretar durante la preparación de la implementación el empaquetado del inventario y auditoría, el esquema exacto de hallazgos/anotaciones y la interfaz pública que reutilizará el agente. Los parámetros de cada evaluación, incluidos matriz de entornos, casos, modelo, repeticiones, rúbrica y presupuesto, se fijarán antes de ejecutarla. Estos pendientes no autorizan al implementador a cambiar el comportamiento definido aquí.
 
-Mario confirmó el resumen factual con extractos y referencias como contexto de reconstrucción para Reflect. Sus contenidos, elaboración, versionado y límites quedan definidos en las decisiones 36–40 y A30–A32. La implementación concretará el esquema y almacenamiento compatibles y las capacidades de acceso de cada harness; conservar el resumen no depende de disponer de lectura completa de sesiones. Esta confirmación resuelve ese contrato del borrador y mantiene la revisión del conjunto antes de dividirlo en tickets.
+Mario confirmó el resumen factual con extractos y referencias como contexto de reconstrucción para Reflect. Sus contenidos, elaboración, versionado y límites quedan definidos en las decisiones 36–40 y A30–A32. La implementación concretará el esquema y almacenamiento compatibles y las capacidades de acceso de cada harness; conservar el resumen no depende de disponer de lectura completa de sesiones. La confirmación de este contrato se conserva al preparar los tickets.
 
 ### Revisión de persistencia y búsqueda
 
@@ -248,13 +248,13 @@ Mario señaló la utilidad de procedencia por harness y sesión, búsqueda semá
 
 El contrato actual almacena JSON y propuestas legibles por proyecto. Adoptar una base embebida será una evolución explícita de ese contrato. La implementación deberá conservar lectura o importación de registros existentes, esquemas compatibles, exportación legible y recuperación de decisiones; no puede tratar la base y los archivos como dos fuentes independientes de verdad. Historial, migración, backup/restauración y sincronización de índices siguen pendientes de diseño y verificación. El versionado de tablas de la base no sustituye por sí solo al historial de decisiones del usuario.
 
-Mario autorizó después una [prueba de SQLite con extensión vectorial](../evaluations/2026-10-14-sqlite-vector/report.md). Esa comparación incorpora SQLite como alternativa al backend LanceDB, sin decidir instalar ambos. Los contratos ensayados favorecen SQLite para registros transaccionales; la selección definitiva permanece pendiente de revisión. Mario eligió EmbeddingGemma 300M tras la comparación de modelos. La adopción conserva la evaluación pendiente con más observaciones independientes y la calibración de abstención. Las primeras pruebas de almacenamiento usaron vectores fijos.
+Mario autorizó después una [prueba de SQLite con extensión vectorial](../evaluations/2026-10-14-sqlite-vector/report.md) y confirmó SQLite con sqlite-vec al pasar a tickets. Es el backend seleccionado; no se instalarán también los backends comparados. Mario eligió EmbeddingGemma 300M tras la comparación de modelos. La adopción conserva la evaluación pendiente con más observaciones independientes y la calibración de abstención. Las primeras pruebas de almacenamiento usaron vectores fijos.
 
-La [comparación con Chroma](../evaluations/2026-10-14-chroma/report.md) añade evidencia para esa revisión. El acceso serializado resolvió parte de sus contratos, pero dejó pendiente guardar originales antes de indexarlos. Se mantiene la recomendación de revisar SQLite primero. Ningún backend nuevo está activo y no se ha aprobado la implementación ni la spec completa.
+La [comparación con Chroma](../evaluations/2026-10-14-chroma/report.md) conserva evidencia de sus contratos. El acceso serializado resolvió parte de ellos, pero dejó pendiente guardar originales antes de indexarlos. La selección posterior de SQLite no activa un backend ni inicia la implementación.
 
 El [seguimiento con la función por defecto de Chroma](../evaluations/2026-10-14-chroma-default-embeddings/report.md) comprueba la descarga y ejecución local autorizadas de all-MiniLM-L6-v2. Corrige el límite de cobertura de la primera configuración y acredita una muestra de búsqueda real, sin elegir ese modelo para producción ni autorizar llamadas a proveedores alojados. El guardado previo, coordinación y calidad habitual en español siguen siendo decisiones pertinentes para la revisión.
 
-El tracker y sus etiquetas se resolverán con la documentación del proyecto al preparar la publicación. Esta sesión sólo autoriza el borrador local y su revisión. La implementación posterior conservará la separación de esta fase respecto de la entrega anterior y comprobará su base remota antes de publicar.
+Al aprobar la división, Mario cambió el destino de GitHub Issues a un tracker local. Cada ticket se guarda por separado bajo `.scratch/agent-maintenance/issues/`, con estado ready-for-agent y bloqueos por número y título. La [configuración del tracker](../../agents/issue-tracker.md) describe sus operaciones. La implementación posterior mantendrá esta fase separada de la entrega anterior y comprobará su base remota antes de publicar cambios de código.
 
 ### Referencias y trazabilidad
 
