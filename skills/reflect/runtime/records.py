@@ -188,6 +188,10 @@ class RecordStore:
     def _view(self, db, row):
         kinds = {v[0] for v in db.execute("SELECT DISTINCT kind FROM versions WHERE record_id=?", (row["id"],))}
         work = states(db, row["id"])
+        if "embedding" in kinds:
+            cache = db.execute("SELECT 1 FROM sqlite_master WHERE name='observation_vectors'").fetchone()
+            if not cache or not db.execute("SELECT 1 FROM observation_vectors WHERE record_id=? AND raw_sha256=?", (row["id"], row["raw_sha256"])).fetchone():
+                kinds.discard("embedding")
         state = db.execute("SELECT revision,payload FROM versions WHERE kind='state' AND record_id=? ORDER BY revision DESC LIMIT 1", (row["id"],)).fetchone()
         return {"id": row["id"], "project": self.project, "scope": row["scope"], "observation": json.loads(row["raw"]), "raw_base64": base64.b64encode(row["raw"]).decode(), "raw_sha256": row["raw_sha256"], "provenance": json.loads(row["provenance"]), "captured_at": row["captured_at"], "revision": state["revision"] if state else 0, "state": json.loads(state["payload"])["state"] if state else "inbox", "pending": [label for label, kind in (("classification", "annotation"), ("reconstruction", "summary"), ("indexing", "embedding")) if kind not in kinds or work.get(kind, {}).get("status") == "pending"]}
 

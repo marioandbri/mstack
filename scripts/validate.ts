@@ -45,6 +45,7 @@ export function frontmatterValue(frontmatter: string, key: string): string {
 function markdownFiles(root: string): string[] {
   const files: string[] = [];
   for (const entry of readdirSync(root, { withFileTypes: true })) {
+    if ([".git", ".venv", "node_modules", "__pycache__"].includes(entry.name)) continue;
     const path = join(root, entry.name);
     if (entry.isDirectory()) files.push(...markdownFiles(path));
     else if (entry.isFile() && entry.name.endsWith(".md")) files.push(path);

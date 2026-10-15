@@ -51,6 +51,16 @@ describe("validateRepository", () => {
     expect(result.errors.some((error) => error.includes("broken link REFERENCE.md"))).toBeTrue();
   });
 
+  test("does not validate dependency Markdown from a local runtime environment", () => {
+    const root = fixture();
+    const dependency = join(root, "skills", "example", "runtime", ".venv", "lib", "package");
+    mkdirSync(dependency, { recursive: true });
+    writeFileSync(join(dependency, "README.md"), "[upstream relative link](upstream-only.md)\n");
+    const result = validateRepository(root);
+    expect(result.errors).toEqual([]);
+    expect(result.markdownCount).toBe(1);
+  });
+
   test("rejects frontmatter name mismatch", () => {
     const root = fixture();
     const path = join(root, "skills", "example", "SKILL.md");

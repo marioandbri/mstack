@@ -23,9 +23,15 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Status:** ready-for-agent
 
-- [ ] Las búsquedas respetan proyecto/ámbito y devuelven IDs, evidencia de coincidencia y límites del índice; no filtran registros de otro proyecto.
-- [ ] Texto y búsqueda directa por ID siguen operativos sin modelo o índice vectorial; los originales nunca dependen de generar embeddings.
-- [ ] La publicación del vector y su metadata es coherente con la revisión del registro; un vector de entrada obsoleta no se presenta como vigente.
-- [ ] Perder o reconstruir el índice no elimina originales ni decisiones. Se puede detectar y reintentar trabajo derivado pendiente.
-- [ ] Un smoke funcional usa embeddings reales del perfil fijado y verifica el recorrido por la interfaz pública. Los vectores fijos prueban consulta y filtrado, no calidad semántica.
-- [ ] El corpus revisado incluye positivos, contexto cercano y ausencia de antecedente. Se informan asociaciones equivocadas y cobertura sin ajustar umbrales en el mismo conjunto ni afirmar abstención calibrada.
+- [x] Las búsquedas respetan proyecto/ámbito y devuelven IDs, evidencia de coincidencia y límites del índice; no filtran registros de otro proyecto.
+- [x] Texto y búsqueda directa por ID siguen operativos sin modelo o índice vectorial; los originales nunca dependen de generar embeddings.
+- [x] La publicación del vector y su metadata es coherente con la revisión del registro; un vector de entrada obsoleta no se presenta como vigente.
+- [x] Perder o reconstruir el índice no elimina originales ni decisiones. Se puede detectar y reintentar trabajo derivado pendiente.
+- [x] Un smoke funcional usa embeddings reales del perfil fijado y verifica el recorrido por la interfaz pública. Los vectores fijos prueban consulta y filtrado, no calidad semántica.
+- [x] El corpus revisado incluye positivos, contexto cercano y ausencia de antecedente. Se informan asociaciones equivocadas y cobertura sin ajustar umbrales en el mismo conjunto ni afirmar abstención calibrada.
+
+**Closed:** 2026-10-15
+
+**Resolution:** completed
+
+[Implementación, smoke real y límites](../../../docs/agent-maintenance/changes/AM-022-search-implementation.md).

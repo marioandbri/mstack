@@ -52,6 +52,19 @@ def parser():
     save_summary.add_argument("--expected-revision", type=int, required=True)
     save_summary.add_argument("--operation", required=True)
     summary.add_parser("get").add_argument("--id", required=True)
+    search = commands.add_parser("search")
+    search.add_argument("--text", required=True)
+    search.add_argument("--scope")
+    search.add_argument("--state")
+    search.add_argument("--category")
+    search.add_argument("--limit", type=int, default=10)
+    search.add_argument("--semantic", action="store_true")
+    search.add_argument("--model-path")
+    indexing = commands.add_parser("index").add_subparsers(dest="action", required=True)
+    indexing.add_parser("status")
+    indexing.add_parser("text")
+    indexing.add_parser("reset-vectors")
+    indexing.add_parser("vectors").add_argument("--model-path", required=True)
     return result
 
 
@@ -88,6 +101,28 @@ def run(args):
         if args.action == "save":
             return summaries.save(json.loads(Path(args.context).read_text()), json.loads(Path(args.output).read_text()), args.expected_revision, args.operation)
         return summaries.latest(args.id)
+    if args.command in ("search", "index"):
+        from search import SearchIndex
+        from embeddings import Gemma
+        index = SearchIndex(store)
+        if args.command == "search":
+            encoder, unavailable = None, None
+            if args.semantic and args.model_path:
+                try:
+                    encoder = Gemma(args.model_path)
+                except RecordError as error:
+                    unavailable = str(error)
+            result = index.search(args.text, scope=args.scope, state=args.state, category=args.category, limit=args.limit, semantic=args.semantic, encoder=encoder)
+            if unavailable:
+                result["semantic_error"] = unavailable
+            return result
+        if args.action == "text":
+            return index.rebuild_text()
+        if args.action == "vectors":
+            return index.index_pending(Gemma(args.model_path))
+        if args.action == "reset-vectors":
+            return index.reset_vectors()
+        return index.status()
     raise RecordError("unknown-operation")
 
 
