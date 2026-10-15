@@ -21,9 +21,15 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Status:** ready-for-agent
 
-- [ ] El agente recupera original, resumen con versión y límites, extractos, antecedentes disponibles y decisiones previas; Mario ve hechos/fuentes, análisis provisional, límites y siguiente paso.
-- [ ] Reanudar tras varios turnos conserva rechazos, aplazamientos y autorizaciones aplicables, con una sola pregunta activa y sin repetir decisiones resueltas.
-- [ ] Comprobar cambios de fuente reabre sólo decisiones afectadas. Distingue versiones históricas disponibles de instrucciones vigentes.
-- [ ] Aprobar conducta con destino pendiente conserva ambos estados; no autoriza instalación ni evalúa modelos automáticamente.
-- [ ] «No aplicar» guarda revisión y propuesta con promoción pendiente. «Sólo en el chat» no escribe registros ni candidatos y declara el límite de reanudación.
-- [ ] Resumen parcial, proveedor ausente o antecedentes sin clasificación no impiden leer el original; la evidencia esencial ausente deja sólo las conclusiones correspondientes pendientes.
+- [x] El agente recupera original, resumen con versión y límites, extractos, antecedentes disponibles y decisiones previas; Mario ve hechos/fuentes, análisis provisional, límites y siguiente paso.
+- [x] Reanudar tras varios turnos conserva rechazos, aplazamientos y autorizaciones aplicables, con una sola pregunta activa y sin repetir decisiones resueltas.
+- [x] Comprobar cambios de fuente reabre sólo decisiones afectadas. Distingue versiones históricas disponibles de instrucciones vigentes.
+- [x] Aprobar conducta con destino pendiente conserva ambos estados; no autoriza instalación ni evalúa modelos automáticamente.
+- [x] «No aplicar» guarda revisión y propuesta con promoción pendiente. «Sólo en el chat» no escribe registros ni candidatos y declara el límite de reanudación.
+- [x] Resumen parcial, proveedor ausente o antecedentes sin clasificación no impiden leer el original; la evidencia esencial ausente deja sólo las conclusiones correspondientes pendientes.
+
+**Closed:** 2026-10-15
+
+**Resolution:** completed
+
+[Implementación y verificaciones](../../../docs/agent-maintenance/changes/AM-023-review-implementation.md).

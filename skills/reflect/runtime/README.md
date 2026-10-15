@@ -57,6 +57,10 @@ El [procedimiento de reconstrucción](../references/reconstruction.md) distingue
 
 El [adaptador de búsqueda](search.md) ofrece ID, texto con FTS5, filtros y coseno mediante sqlite-vec. El modelo local y sus extras son opcionales para capturar y leer originales. El índice informa cobertura y límites; los resultados siguen siendo candidatos, no incidentes confirmados ni decisiones de clasificación.
 
-## Dependencias
+## Reflect entre sesiones
+
+El [adaptador de revisiones](reviews.md) conserva el registro público, decisiones separadas por dominio, candidatos y una pregunta activa. Reanuda con originales y evidencia derivada, sin exigir acceso a la sesión de origen. La reconciliación de fuentes reabre sólo las decisiones afectadas; sólo chat no inicializa almacenamiento.
+
+## Dependencias fijadas
 
 Se reutiliza el [esquema existente](../observation.schema.json) mediante [jsonschema 4.25.1](https://pypi.org/project/jsonschema/4.25.1/), mantenido y con licencia MIT. Evita mantener otro validador parcial. [sqlite-vec 0.1.9](https://pypi.org/project/sqlite-vec/0.1.9/) conserva el plugin ya ensayado para la búsqueda posterior; la captura no carga la extensión. La resolución completa se conserva en uv.lock. No se añaden servicios ni otros backends.

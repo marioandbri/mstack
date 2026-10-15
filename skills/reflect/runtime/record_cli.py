@@ -65,6 +65,20 @@ def parser():
     indexing.add_parser("text")
     indexing.add_parser("reset-vectors")
     indexing.add_parser("vectors").add_argument("--model-path", required=True)
+    review = commands.add_parser("review").add_subparsers(dest="action", required=True)
+    for action in ("get", "history"):
+        review.add_parser(action).add_argument("--id", required=True)
+    save_review = review.add_parser("save")
+    save_review.add_argument("--record", required=True)
+    save_review.add_argument("--options", required=True)
+    save_review.add_argument("--expected-revision", required=True, type=int)
+    save_review.add_argument("--operation", required=True)
+    save_review.add_argument("--chat-only", action="store_true")
+    reconcile = review.add_parser("reconcile")
+    reconcile.add_argument("--id", required=True)
+    reconcile.add_argument("--checks", required=True)
+    reconcile.add_argument("--expected-revision", required=True, type=int)
+    reconcile.add_argument("--operation", required=True)
     return result
 
 
@@ -123,6 +137,14 @@ def run(args):
         if args.action == "reset-vectors":
             return index.reset_vectors()
         return index.status()
+    if args.command == "review":
+        from reviews import Reviews
+        reviews = Reviews(store)
+        if args.action == "save":
+            return reviews.save(json.loads(Path(args.record).read_text()), json.loads(Path(args.options).read_text()), args.expected_revision, args.operation, chat_only=args.chat_only)
+        if args.action == "reconcile":
+            return reviews.reconcile(args.id, json.loads(Path(args.checks).read_text()), args.expected_revision, args.operation)
+        return reviews.get(args.id) if args.action == "get" else reviews.history(args.id)
     raise RecordError("unknown-operation")
 
 
