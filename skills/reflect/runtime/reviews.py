@@ -10,7 +10,7 @@ from jsonschema.exceptions import ValidationError
 from records import RecordError, digest, encoded
 
 VALIDATOR = Draft202012Validator(json.loads((Path(__file__).parent.parent / "review.schema.json").read_text()))
-DOMAINS = {"behavior", "destination", "evaluation", "integration", "disposition"}
+DOMAINS = {"behavior", "destination", "evaluation", "integration", "disposition", "unknown"}
 
 
 class Reviews:
@@ -24,12 +24,18 @@ class Reviews:
             operation_id TEXT NOT NULL UNIQUE, payload TEXT NOT NULL, payload_sha256 TEXT NOT NULL,
             created_at TEXT NOT NULL, PRIMARY KEY(review_id,revision)) STRICT""")
 
-    def context(self, identities):
+    def context(self, identities, *, allow_missing=False):
         from summaries import Summaries
         from annotations import Annotations
         observations, limits = [], []
         for identity in sorted(set(identities)):
-            original = self.records.get(identity)
+            try:
+                original = self.records.get(identity)
+            except RecordError as error:
+                if not allow_missing or str(error) != "not-found":
+                    raise
+                limits.append({"id": identity, "kind": "original", "message": "Legacy reference retained; the original was not supplied. Do not reconstruct it by inference."})
+                continue
             summary = Summaries(self.records).latest(identity)
             annotation = Annotations(self.records).latest(identity)
             observations.append({"original": original, "summary": summary, "classification": annotation, "decisions": self.records.history(identity, "state")})
@@ -91,7 +97,8 @@ class Reviews:
         if chat_only:
             return {"persistence": "chat-only", "record": record, "options": options, "resumption": "No local record or candidate was written; automatic local resumption is unavailable.", "allowed_actions": ["review", "prepare-proposal"]}
         identities = [identity for item in record["opportunities"] for identity in item["observationIds"]]
-        context = self.context(identities)
+        previous = self.history(record["id"])
+        context = self.context(identities, allow_missing=bool(previous and previous[-1]["payload"].get("legacy")))
         if any(value["original"]["scope"] != record["scope"] for value in context["observations"]):
             raise RecordError("review-outside-scope")
         payload = {"schema_version": 1, "project": self.records.project, "record": record, "options": options, "context": context, "source_changes": []}
@@ -132,7 +139,9 @@ class Reviews:
                         raise RecordError("source-reconciliation-required")
                 if not payload["source_changes"]:
                     payload["source_changes"] = old["source_changes"]
-                    body = encoded(payload)
+                if "legacy" in old:
+                    payload["legacy"] = old["legacy"]
+                body = encoded(payload)
             db.execute("INSERT INTO review_versions VALUES(?,?,?,?,?,?)", (identity, expected_revision + 1, operation_id, body.decode(), digest(body), datetime.now(timezone.utc).isoformat()))
         return {"status": "saved", "id": identity, "revision": expected_revision + 1}
 
@@ -160,7 +169,8 @@ class Reviews:
                     plan = json.loads(row["payload"])
                     events = [json.loads(v[0]) for v in db.execute("SELECT payload FROM delivery_events WHERE plan_id=? ORDER BY revision", (row["id"],))]
                     deliveries.append({"id": row["id"], "commit": plan["commit"], "target_mode": plan["target"]["mode"], "events": events})
-        return {**payload, "revision": value["revision"], "sha256": value["sha256"], "historical_context": payload["context"], "context": self.context(identities), "evaluations": evaluations, "deliveries": deliveries, "active_question": {"id": active["id"], "question": active["question"]} if active else None, "allowed_actions": ["review", "prepare-proposal"], "presentation": {"facts": [v["evidence"] for v in payload["record"]["opportunities"]], "provisional_analysis": [v["recommendation"] for v in payload["record"]["opportunities"]], "next_step": active["question"] if active else "Consolidate the retained decisions and proposal; deployment remains separate."}}
+        actions = ["review", "prepare-proposal"] if options["request"] else ["read-evidence"]
+        return {**payload, "revision": value["revision"], "sha256": value["sha256"], "historical_context": payload["context"], "context": self.context(identities, allow_missing=bool(payload.get("legacy"))), "evaluations": evaluations, "deliveries": deliveries, "active_question": {"id": active["id"], "question": active["question"]} if active and options["request"] else None, "allowed_actions": actions, "presentation": {"facts": [v["evidence"] for v in payload["record"]["opportunities"]], "provisional_analysis": [v["recommendation"] for v in payload["record"]["opportunities"]], "next_step": "A new explicit reflection request is required; historical authorization is unknown." if not options["request"] else active["question"] if active else "Consolidate the retained decisions and proposal; deployment remains separate."}}
 
     def reconcile(self, identity, checks, expected_revision, operation_id):
         history = self.history(identity)

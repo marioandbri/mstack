@@ -6,6 +6,8 @@ Reuse the repository's maintenance folder. New captures use the [local record ad
 
 Existing inbox and review JSON files remain readable. Do not silently migrate, delete or dual-write them. New reviews use the [versioned adapter](../runtime/reviews.md), retaining the existing public review schema inside their envelope. Existing reflection files stay under docs/agent-maintenance/changes; readable exports and the maintenance index are views, not another independent source of truth. Create storage only when it is used, never in readonly installed skills.
 
+Use [explicit migration and recovery](../runtime/archives.md) for selected historical files or backups. Import preserves unknown provenance and old answers without inferring current authorization. Restore to a new destination; coordinate writers before selecting it as the common database.
+
 Use unique identifiers and create new records without overwriting existing files. Before updating an existing observation or index, reread it and preserve other agents' changes. Classification can link records during capture or reflection; two agents capturing simultaneously must not lose an observation. Never modify a readonly installed skill snapshot to store observations.
 
 The skill directory contains reusable instructions, [the inbox schema](../observation.schema.json) and [the reflection schema](../review.schema.json). User observations, answers and proposed AGENTS.md files belong in maintenance records, never inside the installed skill.

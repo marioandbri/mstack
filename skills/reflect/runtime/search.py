@@ -40,6 +40,14 @@ class SearchIndex:
             raise RecordError("not-found-in-scope")
         return value
 
+    @staticmethod
+    def _match(value, details):
+        decisions = value["review_decisions"]
+        historical = value["state"] in ("resolved", "discarded") or bool(decisions) and all(v["decision"]["status"] != "pending" for v in decisions)
+        return {"id": value["id"], "scope": value["scope"], "raw_sha256": value["raw_sha256"], "state": value["state"],
+                "review_decisions": decisions, "review_disposition": "historical" if historical else "unresolved",
+                "match": details, "status": "candidate"}
+
     def rebuild_text(self):
         with self.records._transaction() as db:
             db.execute("CREATE VIRTUAL TABLE IF NOT EXISTS observation_fts USING fts5(id UNINDEXED,text,tokenize='unicode61 remove_diacritics 2')")
@@ -132,7 +140,7 @@ class SearchIndex:
                     FROM observation_vectors v JOIN originals o ON o.id=v.record_id
                     WHERE v.profile_sha256=? AND v.raw_sha256=o.raw_sha256
                     AND v.record_id IN (SELECT value FROM json_each(?)) ORDER BY distance,v.record_id LIMIT ?""", (blob, PROFILE_SHA, json.dumps(list(candidates)), limit)))
-        return {"method": "sqlite-vec-cosine", "matches": [{"id": r["id"], "scope": candidates[r["id"]]["scope"], "raw_sha256": candidates[r["id"]]["raw_sha256"], "match": {"distance": r["distance"], "excerpt": candidates[r["id"]]["observation"]["observation"], "generation": json.loads(r["generation"])}, "status": "candidate"} for r in rows], "coverage": self.status(scope)}
+        return {"method": "sqlite-vec-cosine", "matches": [self._match(candidates[r["id"]], {"distance": r["distance"], "excerpt": candidates[r["id"]]["observation"]["observation"], "generation": json.loads(r["generation"])}) for r in rows], "coverage": self.status(scope)}
 
     def search(self, text, *, scope=None, state=None, category=None, limit=10, semantic=False, encoder=None):
         if not isinstance(text, str) or not text.strip() or type(limit) is not int or not 1 <= limit <= 100:
@@ -157,4 +165,4 @@ class SearchIndex:
                 else:
                     fallback = True
                     rows = [{"id": identity, "score": None} for identity, value in candidates.items() if any(term in value["observation"]["observation"].casefold() for term in terms)][:limit]
-        return {"method": "text-fallback" if fallback or semantic_error else "fts5", "semantic_error": semantic_error, "matches": [{"id": row["id"], "scope": candidates[row["id"]]["scope"], "raw_sha256": candidates[row["id"]]["raw_sha256"], "match": {"score": row["score"], "excerpt": candidates[row["id"]]["observation"]["observation"]}, "status": "candidate"} for row in rows], "coverage": self.status(scope)}
+        return {"method": "text-fallback" if fallback or semantic_error else "fts5", "semantic_error": semantic_error, "matches": [self._match(candidates[row["id"]], {"score": row["score"], "excerpt": candidates[row["id"]]["observation"]["observation"]}) for row in rows], "coverage": self.status(scope)}

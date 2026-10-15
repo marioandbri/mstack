@@ -193,7 +193,10 @@ class RecordStore:
             if not cache or not db.execute("SELECT 1 FROM observation_vectors WHERE record_id=? AND raw_sha256=?", (row["id"], row["raw_sha256"])).fetchone():
                 kinds.discard("embedding")
         state = db.execute("SELECT revision,payload FROM versions WHERE kind='state' AND record_id=? ORDER BY revision DESC LIMIT 1", (row["id"],)).fetchone()
-        return {"id": row["id"], "project": self.project, "scope": row["scope"], "observation": json.loads(row["raw"]), "raw_base64": base64.b64encode(row["raw"]).decode(), "raw_sha256": row["raw_sha256"], "provenance": json.loads(row["provenance"]), "captured_at": row["captured_at"], "revision": state["revision"] if state else 0, "state": json.loads(state["payload"])["state"] if state else "inbox", "pending": [label for label, kind in (("classification", "annotation"), ("reconstruction", "summary"), ("indexing", "embedding")) if kind not in kinds or work.get(kind, {}).get("status") == "pending"]}
+        from decision_history import review_decisions
+        decisions = review_decisions(db, row["id"])
+        legacy = [dict(v) for v in db.execute("SELECT kind,source,raw_sha256 FROM legacy_sources WHERE canonical_id=? ORDER BY kind,source", (row["id"],))] if db.execute("SELECT 1 FROM sqlite_master WHERE name='legacy_sources'").fetchone() else []
+        return {"review_decisions": decisions, "legacy_sources": legacy, "id": row["id"], "project": self.project, "scope": row["scope"], "observation": json.loads(row["raw"]), "raw_base64": base64.b64encode(row["raw"]).decode(), "raw_sha256": row["raw_sha256"], "provenance": json.loads(row["provenance"]), "captured_at": row["captured_at"], "revision": state["revision"] if state else 0, "state": json.loads(state["payload"])["state"] if state else "inbox", "pending": [label for label, kind in (("classification", "annotation"), ("reconstruction", "summary"), ("indexing", "embedding")) if kind not in kinds or work.get(kind, {}).get("status") == "pending"]}
 
     def get(self, identity):
         with self._connection() as db:

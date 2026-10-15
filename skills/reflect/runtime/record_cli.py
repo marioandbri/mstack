@@ -110,6 +110,13 @@ def parser():
     for key in ("id", "attempt", "stage"):
         checked.add_argument("--" + key, required=True)
     checked.add_argument("--assessment-id")
+    archive = commands.add_parser("archive").add_subparsers(dest="action", required=True)
+    archive.add_parser("import").add_argument("--manifest", required=True, help="JSON list of {kind, path} historical files; initialize the destination first")
+    archive.add_parser("export").add_argument("--destination", required=True)
+    archive.add_parser("inspect").add_argument("--source", required=True)
+    restore = archive.add_parser("restore")
+    restore.add_argument("--source", required=True); restore.add_argument("--destination", required=True)
+    archive.add_parser("restored-status")
     return result
 
 
@@ -203,6 +210,21 @@ def run(args):
         if args.action == "check":
             return delivery.record_check(args.id, args.attempt, args.stage, args.assessment_id)
         return delivery.reconcile(args.id) if args.action == "reconcile" else delivery.get(args.id)
+    if args.command == "archive":
+        from archives import Archives, import_legacy
+        archive = Archives(store)
+        if args.action == "import":
+            entries = json.loads(Path(args.manifest).read_text())
+            if not isinstance(entries, list) or any(not isinstance(v, dict) or set(v) != {"kind", "path"} for v in entries):
+                raise RecordError("invalid-legacy-manifest")
+            return import_legacy(store, [(v["kind"], v["path"]) for v in entries])
+        if args.action == "export":
+            return archive.export(args.destination)
+        if args.action == "inspect":
+            return archive.inspect(args.source)
+        if args.action == "restore":
+            return archive.restore(args.source, args.destination)
+        return archive.restored_status()
     raise RecordError("unknown-operation")
 
 

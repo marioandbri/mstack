@@ -20,11 +20,13 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Category:** enhancement
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Importar observaciones y revisiones vigentes conserva compatibilidad, originales y fuentes sin crear otra ocurrencia por una copia.
-- [ ] Exportar permite inspeccionar y volver a leer originales, anotaciones versionadas, resúmenes, decisiones y enlaces entre ellos.
-- [ ] Un respaldo consistente bajo escrituras concurrentes puede restaurarse y conservar todas las escrituras confirmadas que declara incluir.
-- [ ] Interrumpir migración o restauración no deja un estado parcial presentado como listo; el diagnóstico y la recuperación son reproducibles.
-- [ ] Tras restaurar, se reconstruyen o marcan pendientes los índices y se recupera la revisión con sus respuestas anteriores.
-- [ ] Probar migraciones y recuperación con directorios/bases temporales reales; preservar evidencia posterior y configuración ajena.
+- [x] Importar observaciones y revisiones vigentes conserva compatibilidad, originales y fuentes sin crear otra ocurrencia por una copia.
+- [x] Exportar permite inspeccionar y volver a leer originales, anotaciones versionadas, resúmenes, decisiones y enlaces entre ellos.
+- [x] Un respaldo consistente bajo escrituras concurrentes puede restaurarse y conservar todas las escrituras confirmadas que declara incluir.
+- [x] Interrumpir migración o restauración no deja un estado parcial presentado como listo; el diagnóstico y la recuperación son reproducibles.
+- [x] Tras restaurar, se reconstruyen o marcan pendientes los índices y se recupera la revisión con sus respuestas anteriores.
+- [x] Probar migraciones y recuperación con directorios/bases temporales reales; preservar evidencia posterior y configuración ajena.
+
+[Evidencia de implementación](../../../docs/agent-maintenance/changes/AM-028-recovery-implementation.md). Los JSON históricos permanecen intactos; la migración se ensayó en una base privada temporal.

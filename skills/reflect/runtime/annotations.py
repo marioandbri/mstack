@@ -40,6 +40,13 @@ class Annotations:
             for decision in self.records.history(value["id"], "state"):
                 decisions.append({"record_id": value["id"], "revision": decision["revision"], **decision["payload"]})
                 sources.append({"id": f'decision:{value["id"]}:{decision["revision"]}', "sha256": decision["sha256"]})
+            from decision_history import review_decisions
+            with self.records._connection() as db:
+                for decision in review_decisions(db, value["id"], history=True):
+                    decisions.append(decision)
+                    source = {"id": f'review:{decision["review_id"]}:{decision["revision"]}', "sha256": decision["sha256"]}
+                    if source not in sources:
+                        sources.append(source)
         for name in component_ids:
             sources.append({"id": "component:" + name, "sha256": available[name]})
         context = {"schema_version": 1, "project": self.records.project, "scope": values[0]["scope"], "primary_id": identity, "related_ids": related_ids, "provider": provider, "records": snapshots, "user_decisions": decisions, "sources": sources, "allowed_categories": categories, "component_ids": component_ids, "retrieval_limits": ["Only explicitly selected records are included; no global absence or recurrence claim.", "Component resources are available, not proven selected or executed by a harness."]}
