@@ -1,6 +1,6 @@
 ---
 name: reflect
-description: Review recorded observations, session lessons or agent instructions when the user explicitly requests reflection or review. Coordinate retrieval, specialist questions, evaluation and agreed proposals. Do not activate merely because an observation arises during work.
+description: Review observations or audit the agent environment when the user explicitly requests reflection or maintenance review. Coordinate scoped evidence, specialist questions, evaluation and proposals. Do not start from a new observation alone.
 disable-model-invocation: true
 ---
 
@@ -14,6 +14,8 @@ Start only from the user's explicit reflection or review request, using the invo
 
 Automatic observation capture belongs to the separate `capture-observations` entrypoint. Both use the same records and classification resources; capture does not invoke this skill. A requested reflection can discover additional observations within its selected scope without broadening automatic collection.
 
+A requested system audit starts with the audit component below and does not require an inbox incident. It returns opportunities before opening any unrequested interviews.
+
 ## Open a requested reflection
 
 1. Resume the record and accepted decisions. Use [record retrieval](references/records.md) for the requested scope, including observations from earlier sessions already in the inbox.
@@ -24,6 +26,7 @@ Automatic observation capture belongs to the separate `capture-observations` ent
 
 | Need | Owner | Result |
 |---|---|---|
+| Audit the requested agent environment | [System audit](references/system-audit.md) | Versioned inventory, prioritized findings, coverage and one selected review handoff. |
 | Structure, group or classify observations | [Classification](references/classification.md) | Provisional category, evidence links, recurrence and priority rationale. |
 | Save, find or resume opportunities | [Records](references/records.md) | Scoped records, existing decisions and retrieval limits. |
 | Review or prepare AGENTS.md | [Instruction review](references/instruction-review.md) | Findings, guided decisions, coverage and agreed candidate. |

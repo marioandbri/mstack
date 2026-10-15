@@ -21,9 +21,15 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Status:** ready-for-agent
 
-- [ ] Cada hallazgo identifica ámbito, fuente y versión, evidencia, observación, posible causa separada, impacto, incertidumbre y razón de prioridad.
-- [ ] Frases parecidas de distinto ámbito y capacidades complementarias no se fusionan por similitud.
-- [ ] Obsolescencia y contradicción citan las fuentes concretas que sustentan la afirmación; falta de uso observado no justifica retirar contenido.
-- [ ] Admite KEEP, REMOVE, MOVE, MERGE, SPLIT, ADD y MECHANIZE con conservación o investigación adicional cuando corresponda, sin cuotas.
-- [ ] Un incidente grave único permanece visible y la auditoría sin hallazgos es una salida válida.
-- [ ] Seleccionar un hallazgo permite pasar evidencia a la revisión existente; no modifica instrucciones activas ni inicia automáticamente una entrevista por cada hallazgo.
+- [x] Cada hallazgo identifica ámbito, fuente y versión, evidencia, observación, posible causa separada, impacto, incertidumbre y razón de prioridad.
+- [x] Frases parecidas de distinto ámbito y capacidades complementarias no se fusionan por similitud.
+- [x] Obsolescencia y contradicción citan las fuentes concretas que sustentan la afirmación; falta de uso observado no justifica retirar contenido.
+- [x] Admite KEEP, REMOVE, MOVE, MERGE, SPLIT, ADD y MECHANIZE con conservación o investigación adicional cuando corresponda, sin cuotas.
+- [x] Un incidente grave único permanece visible y la auditoría sin hallazgos es una salida válida.
+- [x] Seleccionar un hallazgo permite pasar evidencia a la revisión existente; no modifica instrucciones activas ni inicia automáticamente una entrevista por cada hallazgo.
+
+**Closed:** 2026-10-15
+
+**Resolution:** completed
+
+[Implementación, smoke y límites](../../../docs/agent-maintenance/changes/AM-019-audit-implementation.md). El análisis inicial es el procedimiento del agente; estos checks no sustituyen la evaluación conductual del catálogo.

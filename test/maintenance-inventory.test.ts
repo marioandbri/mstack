@@ -76,3 +76,15 @@ test("selected instruction references are checked without treating a source read
   expect(report.findings.some((x: any) => x.kind === "broken-reference" && x.source === "repository-instructions")).toBe(true);
   expect(report.sources.find((x: any) => x.id === "skill:example").reading.state).toBe("unknown");
 });
+
+test("malformed owned defaults cannot export nested private configuration", () => {
+  const f = fixture(); const secret = "private-fixture-value-not-a-model";
+  mkdirSync(join(f.home, ".codex"));
+  writeFileSync(join(f.home, ".codex/config.toml"), `model = { api_key = "${secret}" }\nmodel_reasoning_effort = "high"\n`);
+  writeFileSync(join(f.repo, "mstack.json"), JSON.stringify({ schemaVersion: 1, managed: [{ target: "codex/config.toml", keys: ["model", "model_reasoning_effort"] }] }));
+  const report = run(f.root, { scope: "partial-config", repository: f.repo, home: f.home, configuration: [{ path: "codex/config.toml", format: "toml", keys: ["model", "model_reasoning_effort"] }] });
+  expect(JSON.stringify(report)).not.toContain(secret);
+  expect(report.configuration[0].values).toEqual({ model_reasoning_effort: "high" });
+  expect(report.configuration[0].state).toBe("partial");
+  expect(report.configuration[0].unavailable_keys).toEqual(["model"]);
+});

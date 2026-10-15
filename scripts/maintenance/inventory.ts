@@ -4,14 +4,14 @@ import { isAbsolute, join, relative, resolve, sep } from "node:path";
 import { frontmatterValue, validateMarkdownLinks, validateRepository } from "../validate";
 
 type Evidence = { state: string; evidence?: string };
-type CatalogEntry = { name: string; description?: string; owner?: string };
+type CatalogEntry = { name: string; description?: string; owner?: string; version?: string; source?: string };
 export type InventoryRequest = {
   scope: string;
   repository: string;
   home?: string;
   verify_installation?: boolean;
-  sources?: { id: string; path: string; owner: string }[];
-  environment?: { harness: string; session_id?: string | null; catalog?: CatalogEntry[] };
+  sources?: { id: string; path: string; owner: string; kind?: "instructions" | "document" | "evidence" }[];
+  environment?: { harness: string; harness_version?: string | null; session_id?: string | null; catalog?: CatalogEntry[] };
   external_metadata?: CatalogEntry[];
   configuration?: { path: string; format: "json" | "toml"; keys: string[] }[];
 };
@@ -56,7 +56,7 @@ export function inventory(request: InventoryRequest) {
   catch { limits.push("Installation manifest unavailable; owned configuration keys are unknown."); }
   const configKeys = new Map<string, string[]>();
   for (const entry of installManifest.managed ?? []) if (Array.isArray(entry.keys)) configKeys.set(entry.target, entry.keys);
-  const environment = request.environment ? { harness: request.environment.harness, session_id: request.environment.session_id ?? null, catalog_supplied: request.environment.catalog !== undefined } : null;
+  const environment = request.environment ? { harness: request.environment.harness, harness_version: request.environment.harness_version ?? null, session_id: request.environment.session_id ?? null, catalog_supplied: request.environment.catalog !== undefined } : null;
   const catalog = request.environment?.catalog;
   let validationSafe = true;
   for (const skill of manifest.skills) {
@@ -99,17 +99,19 @@ export function inventory(request: InventoryRequest) {
     });
     sources.push(source);
   }
-  const extra = request.sources ?? [{ id: "repository-instructions", path: join(repo, "AGENTS.md"), owner: "repository" }, { id: "global-instructions", path: join(repo, "instructions/global/AGENTS.md"), owner: "mstack" }];
+  const extra: NonNullable<InventoryRequest["sources"]> = request.sources ?? [{ id: "repository-instructions", path: join(repo, "AGENTS.md"), owner: "repository" }, { id: "global-instructions", path: join(repo, "instructions/global/AGENTS.md"), owner: "mstack" }];
   for (const entry of extra) {
+    const kind = entry.kind ?? "instructions";
+    if (!["instructions", "document", "evidence"].includes(kind)) throw new Error("Invalid selected source kind");
     const path = resolve(repo, entry.path);
     try {
       if (!request.sources) file(path, repo);
-      sources.push({ id: entry.id, kind: "instructions", owner: entry.owner, state: "accessible", sha256: digest(readable(path)), location: inside(repo, path) ? `repo:${relative(repo, path)}` : `selected:${entry.id}`, semantic_review: "not-performed" });
+      sources.push({ id: entry.id, kind, owner: entry.owner, state: "accessible", sha256: digest(readable(path)), location: inside(repo, path) ? `repo:${relative(repo, path)}` : `selected:${entry.id}`, semantic_review: "not-performed" });
       const errors: string[] = [];
       validateMarkdownLinks(path, errors);
       for (const error of errors) finding("broken-reference", entry.id, error.replaceAll(repo, "repo:"));
     }
-    catch { sources.push({ id: entry.id, kind: "instructions", owner: entry.owner, state: "inaccessible", sha256: null }); finding("inaccessible-source", entry.id, "Selected instruction source is unavailable."); }
+    catch { sources.push({ id: entry.id, kind, owner: entry.owner, state: "inaccessible", sha256: null }); finding("inaccessible-source", entry.id, "Selected instruction source is unavailable."); }
   }
   let validation: any = { state: "unavailable" };
   if (validationSafe) {
@@ -123,18 +125,22 @@ export function inventory(request: InventoryRequest) {
     const allowed = configKeys.get(config.path) ?? [];
     const permitted = config.keys.filter(key => allowed.includes(key));
     const unknown_keys = config.keys.filter(key => !allowed.includes(key));
-    const result: any = { path: config.path, values: {}, unknown_keys, state: "unknown" };
+    const result: any = { path: config.path, values: {}, unknown_keys, unavailable_keys: [], state: "unknown" };
     const [root, ...parts] = config.path.split("/");
     if (!request.home || !root || !roots[root] || !permitted.length) return result;
     try {
       const content = readable(join(resolve(request.home), roots[root]!, ...parts)).toString();
       const parsed = config.format === "toml" ? Bun.TOML.parse(content) : JSON.parse(content);
-      for (const key of permitted) if (Object.hasOwn(parsed, key)) result.values[key] = parsed[key];
-      result.state = "inspected-owned-keys";
+      for (const key of permitted) {
+        if (Object.hasOwn(parsed, key) && typeof parsed[key] === "string") result.values[key] = parsed[key];
+        else result.unavailable_keys.push(key);
+      }
+      result.state = result.unavailable_keys.length ? "partial" : "inspected-owned-keys";
+      if (result.unavailable_keys.length) finding("unknown-configuration", config.path, "Some selected defaults are absent or have an unsupported type.");
     } catch { finding("unknown-configuration", config.path, "Requested owned keys could not be read."); }
     return result;
   });
-  if (configuration.some(c => c.state === "unknown" || c.unknown_keys.length)) limits.push("Some configuration is unknown; only declared owned keys were inspected.");
+  if (configuration.some(c => c.state !== "inspected-owned-keys" || c.unknown_keys.length)) limits.push("Some configuration is unknown; only declared owned string defaults were inspected.");
   let installation: any = { state: "not-requested" };
   if (request.verify_installation) {
     if (!request.home) throw new Error("Installation verification requires an explicit home");
@@ -146,5 +152,9 @@ export function inventory(request: InventoryRequest) {
   let commit: string | null = null;
   const git = Bun.spawnSync(["git", "-C", repo, "rev-parse", "HEAD"], { stdout: "pipe", stderr: "pipe" });
   if (git.exitCode === 0) commit = git.stdout.toString().trim();
-  return { schema_version: 1, scope: request.scope, captured_at: new Date().toISOString(), repository_commit: commit, manifest_sha256: digest(readable(join(repo, "skills.json"))), environment, sources, external_metadata: (request.external_metadata ?? []).map(e => ({ name: e.name, description: e.description ?? null, owner: e.owner ?? "external", evidence_type: "supplied-metadata", body_review: "not-performed" })), configuration, installation, validation, findings, coverage: { managed_skills: manifest.skills.length, accessible_skills: sources.filter(s => s.kind === "skill" && s.state === "accessible").length, external_metadata: request.external_metadata?.length ?? 0, semantic_review: "not-performed", selection: "unknown", execution: "unknown", limits: [...limits, "Catalog evidence applies only to the supplied environment.", "Hashes and structural checks do not prove semantic review, selection, reading or execution.", "External metadata is supplied explicitly; no external skill bodies or unrelated sessions were inspected."] } };
+  return { schema_version: 1, scope: request.scope, captured_at: new Date().toISOString(), repository_commit: commit, manifest_sha256: digest(readable(join(repo, "skills.json"))), environment, sources, external_metadata: (request.external_metadata ?? []).map(e => {
+    if (typeof e.name !== "string" || !e.name.trim()) throw new Error("Invalid external metadata identity");
+    const text = (value: unknown) => typeof value === "string" ? value : null;
+    return { name: e.name, description: text(e.description), owner: text(e.owner) ?? "external", version: text(e.version), source: text(e.source), evidence_type: "supplied-metadata", body_review: "not-performed" };
+  }), configuration, installation, validation, findings, coverage: { managed_skills: manifest.skills.length, accessible_skills: sources.filter(s => s.kind === "skill" && s.state === "accessible").length, external_metadata: request.external_metadata?.length ?? 0, semantic_review: "not-performed", selection: "unknown", execution: "unknown", limits: [...limits, "Catalog evidence applies only to the supplied environment.", "Hashes and structural checks do not prove semantic review, selection, reading or execution.", "External metadata is supplied explicitly; no external skill bodies or unrelated sessions were inspected."] } };
 }
