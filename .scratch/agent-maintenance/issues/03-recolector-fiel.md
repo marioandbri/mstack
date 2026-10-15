@@ -22,8 +22,14 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Status:** ready-for-agent
 
-- [ ] Construir una reproducción fiel del fallo de exportación/hashing con artefactos sintéticos y permisos equivalentes a los reportados; demostrar rojo antes y verde después, sin llamadas al modelo ni reparación manual posterior.
-- [ ] Exportar desde entradas representativas conserva intentos, eventos, resultados y hashes legibles sin reparación manual.
-- [ ] Entradas ilegibles, salida parcial, interrupción, timeout y resultado ausente producen estados de infraestructura diferenciados.
-- [ ] La recuperación referencia el intento original sin convertirlo retroactivamente en una ejecución limpia ni eliminar evidencia.
-- [ ] Si no se puede reproducir el defecto histórico, conservar evidencia y brecha explícitas; no declarar una corrección validada a partir de un caso distinto.
+- [x] Construir una reproducción fiel del fallo de exportación/hashing con artefactos sintéticos y permisos equivalentes a los reportados; demostrar rojo antes y verde después, sin llamadas al modelo ni reparación manual posterior.
+- [x] Exportar desde entradas representativas conserva intentos, eventos, resultados y hashes legibles sin reparación manual.
+- [x] Entradas ilegibles, salida parcial, interrupción, timeout y resultado ausente producen estados de infraestructura diferenciados.
+- [x] La recuperación referencia el intento original sin convertirlo retroactivamente en una ejecución limpia ni eliminar evidencia.
+- [x] Si no se puede reproducir el defecto histórico, conservar evidencia y brecha explícitas; no declarar una corrección validada a partir de un caso distinto.
+
+**Closed:** 2026-10-15
+
+**Resolution:** completed
+
+[Reproducción, corrección y límites](../../../docs/agent-maintenance/changes/AM-018-collector-implementation.md). La regresión conserva el síntoma histórico; no establece quién creó sus permisos. El runner de 09 debe reutilizar el recolector.

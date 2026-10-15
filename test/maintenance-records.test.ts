@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test";
 import { resolve } from "node:path";
 
-test("maintenance records preserve originals, concurrency and recovery through public operations", () => {
+test("maintenance runtime preserves originals and evaluation artifacts through public operations", () => {
   const runtime = resolve(import.meta.dir, "../skills/reflect/runtime");
   const result = Bun.spawnSync(["uv", "run", "--locked", "--project", runtime, "python", "-m", "unittest", "discover", "-s", "test/maintenance_records", "-v"], {
     cwd: resolve(import.meta.dir, ".."),

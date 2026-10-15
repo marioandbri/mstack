@@ -22,7 +22,7 @@ Execute within the selected or previously authorized scope. Capture or invocatio
 
 Record model, reasoning, harness version, instructions, skills, fixture and budget. Bind results to the exact candidate and sources tested. Verify the context loaded and hold relevant conditions constant across comparisons.
 
-Use a runner that can measure the case and preserve its traces. The mstack DeepSWE adapter measures coding tasks; a runner for Reflect and skill-selection cases still needs implementation. If no compatible runner is available, return the prepared case and execution gap rather than substituting unrelated benchmark scores. Passing structural checks is a separate result.
+Use a runner that can measure the case and preserve its traces. The mstack DeepSWE adapter measures coding tasks; a runner for Reflect and skill-selection cases still needs implementation. The [owned workspace collector](../runtime/collection.md) now covers the historical unreadable-export symptom with a deterministic regression. It records collection, execution and recovery separately and makes no model calls. Reuse it in the runner; it does not itself prove loaded context or behavior. If no compatible runner is available, return the prepared case and execution gap rather than substituting unrelated benchmark scores. Passing structural checks is a separate result.
 
 ## Interpret the baseline
 
