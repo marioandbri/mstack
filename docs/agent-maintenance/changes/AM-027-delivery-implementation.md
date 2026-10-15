@@ -12,4 +12,4 @@ Los checks obligatorios pasaron: bun run check para 30 skills y 69 Markdown; bun
 
 Standards: sin incumplimientos pendientes. Los grants de fixture no autorizan instalación activa; el modo active requiere el ensayo aislado con agente del mismo commit. Los recibos de entrega se muestran aparte del registro público promotion none. El estado observado tras un acuse perdido conserva autor desconocido.
 
-Spec: instalación, recibos, drift, rollback y conducta mecánica están verificados. Las comprobaciones con agente tras promoción y rollback siguen abiertas para el protocolo presupuestado del ciclo. No se activó el candidato en el HOME real ni se iniciaron turnos generativos.
+Spec: instalación, recibos, drift, rollback y conducta mecánica están verificados. Las comprobaciones de agente después de promover y revertir pasaron en la [campaña posterior autorizada AM-030](../evaluations/2026-10-15-maintenance-cycle/report.md), ligadas a las generaciones realmente instaladas. El ticket 12 queda cerrado. El HOME temporal terminó restaurado y el candidato no se activó en el HOME real.

@@ -24,9 +24,13 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 - [x] Un candidato con aceptación y destino definidos se prepara desde un commit; dry-run no modifica el HOME de prueba.
 - [x] Promover conserva versión previa, recibos, respaldos y configuración no gestionada, con identidad del candidato verificable.
-- [ ] La comprobación posterior ejecuta la conducta afectada mediante el runner autorizado y registra algo más que presencia de archivos.
-- [ ] La reversión en destinos temporales restaura contenido y configuración autorizados y vuelve a comprobar el comportamiento pertinente.
+- [x] La comprobación posterior ejecuta la conducta afectada mediante el runner autorizado y registra algo más que presencia de archivos.
+- [x] La reversión en destinos temporales restaura contenido y configuración autorizados y vuelve a comprobar el comportamiento pertinente.
 - [x] Drift antes de promover o revertir produce conflicto explícito sin sobrescribir trabajo ajeno; la evidencia distingue reversión pendiente de restauración verificada.
 - [x] El recorrido respeta autorizaciones anteriores conservadas sin pedir de nuevo las ya aplicables ni convertir promoción de prueba en instalación global.
 
-[Implementación y ensayo mecánico](../../../docs/agent-maintenance/changes/AM-027-delivery-implementation.md). Promoción y rollback pasan con conducta de fixture; las comprobaciones de agente conservan su presupuesto pendiente.
+**Closed:** 2026-10-15
+
+**Resolution:** completed
+
+[Implementación](../../../docs/agent-maintenance/changes/AM-027-delivery-implementation.md) y [ensayo conductual](../../../docs/agent-maintenance/evaluations/2026-10-15-maintenance-cycle/report.md). Los agentes respondieron con las etiquetas candidata y estable realmente instaladas en el HOME temporal. Ambos resultados están ligados a sus generaciones y registrados como verified. El destino temporal quedó restaurado; el HOME activo permanece estable.

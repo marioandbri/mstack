@@ -12,4 +12,4 @@ Los checks obligatorios pasaron: bun run check, 30 skills y 67 Markdown; bun tes
 
 Standards: se mantienen fuentes, decisiones y límites. Los juicios siguen siendo el procedimiento del agente, sin juez externo ni clasificación Laya. No hay competencia inferida por coactivación de capacidades complementarias.
 
-Spec: parser, rúbricas, controles, check funcional y almacenamiento están implementados. Los ocho protocolos se prepararon contra las skills reales del commit congelado, pero no se ejecutaron turnos de agente. El criterio conductual permanece abierto hasta aprobar y ejecutar el presupuesto del ciclo 10–14; estos tests no demuestran fiabilidad universal.
+Spec: parser, rúbricas, controles, check funcional y almacenamiento están implementados. En la [campaña posterior autorizada AM-030](../evaluations/2026-10-15-maintenance-cycle/report.md), los ocho escenarios pasaron contra el catálogo congelado. Se distingue reutilización con procedimiento incluido de selección automática y se conserva la ambigüedad del trigger de brecha nueva. El ticket 10 queda cerrado; esta muestra no demuestra fiabilidad universal.

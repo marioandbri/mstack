@@ -22,9 +22,13 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 **Status:** ready-for-agent
 
 - [x] Cada caso conserva evidencia de si la skill estaba expuesta y disponible, si el contexto satisfacía el trigger, si se seleccionó, si se leyó y qué conducta produjo.
-- [ ] Solicitudes naturales positivas y negativos cercanos se ejecutan con rúbrica previa; no se atribuye a un trigger una skill ausente del catálogo.
+- [x] Solicitudes naturales positivas y negativos cercanos se ejecutan con rúbrica previa; no se atribuye a un trigger una skill ausente del catálogo.
 - [x] Las capacidades complementarias pueden actuar juntas sin marcarse como competencia por ello.
 - [x] Una omisión observada genera un caso y una hipótesis con fuente; el análisis textual de solapamiento se informa aparte de la evidencia conductual.
 - [x] Los resultados se agrupan por entorno comprobado y conservan fallos de infraestructura y cobertura pendiente; no afirman fiabilidad universal entre harnesses.
 
-[Implementación y cobertura pendiente](../../../docs/agent-maintenance/changes/AM-025-selection-implementation.md). Los ocho escenarios quedan preparados; su ejecución con agentes requiere el presupuesto específico del ciclo.
+**Closed:** 2026-10-15
+
+**Resolution:** completed
+
+[Implementación](../../../docs/agent-maintenance/changes/AM-025-selection-implementation.md) y [resultados](../../../docs/agent-maintenance/evaluations/2026-10-15-maintenance-cycle/report.md). Los ocho escenarios de convenciones, entrevista y worktree pasaron. La reutilización de convenciones tenía el procedimiento incluido en la solicitud y no cuenta como selección automática; la brecha nueva conserva trigger ambiguo. Se registró una acción innecesaria. La muestra sigue limitada al entorno congelado.
