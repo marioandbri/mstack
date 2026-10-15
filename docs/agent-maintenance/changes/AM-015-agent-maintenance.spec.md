@@ -68,6 +68,8 @@ El flujo deberá admitir solicitudes naturales como "audita mi entorno", "regist
 46. Como Mario, quiero recuperar antecedentes mediante filtros, texto y similitud semántica, para encontrar incidentes expresados de formas distintas.
 47. Como Mario, quiero que una observación quede conservada aunque fallen sus embeddings, para no depender de la indexación al registrar evidencia.
 48. Como Mario, quiero una persistencia embebida sin otro servicio permanente, para mantener sencillo el funcionamiento local del sistema.
+49. Como Mario, quiero que la observación conserve un resumen factual con extractos y referencias, para revisar el incidente en otra sesión aunque la conversación de origen deje de estar accesible.
+50. Como agente de Reflect, quiero reconocer hechos, hipótesis, contexto faltante y versiones del resumen, para contrastar evidencia posterior sin inventar una reconstrucción ni perder las decisiones previas.
 
 ## Implementation Decisions
 
@@ -125,6 +127,26 @@ Las siguientes decisiones conservan el alcance discutido y concretan los contrat
 
 El perfil inicial usa la revisión `57c266a740f537b4dc058e1b0cda161fd15afa75`, 768 dimensiones, normalización L2 y recuperación por coseno. Conserva la ventana de 2.048 tokens y los prefijos ensayados: `task: search result | query: ` para consultas y `title: none | text: ` para documentos. La entrada documental es el texto del registro. El [protocolo de la comparación](../evaluations/2026-10-14-embedding-models/protocol.json) fija ese perfil y su procedencia. Se conserva como configuración del adaptador, junto al índice derivado, para poder reconstruir los vectores al cambiar el perfil.
 
+### Reconstrucción factual para Reflect
+
+36. Cada observación se vincula a un resumen factual del incidente, extractos mínimos saneados y referencias a las fuentes pertinentes. El agente de origen lo prepara durante la captura, con el contexto disponible. El conjunto debe permitir revisar los hechos conservados aunque la sesión original no se pueda abrir. Harness, sesión y evento ayudan a localizar el origen; no garantizan recuperar su conversación ni reconstruir todo el contexto cargado.
+37. El resumen tiene un contrato propio versionado, separado de la observación original y de las anotaciones de clasificación. No añade campos incompatibles a los esquemas actuales. Conserva los siguientes datos; lo desconocido se marca explícitamente.
+
+| Información | Contenido mínimo |
+|---|---|
+| Solicitud | Objetivo del usuario, alcance y restricciones relevantes. |
+| Hechos | Acciones observables, su autor cuando se conoce, resultados y orden conocido, vinculados a sus fuentes. No inventa fechas ni secuencias ausentes. |
+| Decisiones | Correcciones y autorizaciones explícitas del usuario, con su alcance y referencia; separadas de sugerencias del agente. |
+| Contexto aplicable | Instrucciones y skills pertinentes, versiones disponibles y evidencia de disponibilidad, selección o carga. Distingue el contexto histórico comprobado del consultado después. |
+| Expectativa | Comportamiento esperado cuando esté respaldado por una instrucción, artefacto o decisión del usuario. |
+| Límites | Hipótesis de causa, contradicciones e información faltante, separadas de los hechos. |
+| Evidencia | Extractos mínimos suficientes para revisar los hechos principales, referencias a mensajes, herramientas o artefactos y hashes cuando estén disponibles. |
+| Procedencia del resumen | Observaciones vinculadas, versión, fecha de elaboración, autoría disponible, fuentes utilizadas y estado de completitud. Distingue elaboración en origen de reconstrucción posterior. |
+
+38. La captura persiste primero el original. Un fallo al elaborar o guardar el resumen conserva la observación, deja su reconstrucción pendiente y permite volver a la tarea sin iniciar Reflect. Para registros históricos, el agente utiliza sólo evidencia accesible y declara la elaboración posterior; no atribuye al agente original contexto que no puede comprobar. Las credenciales y material ajeno quedan fuera del resumen y los extractos.
+39. Evidencia posterior, correcciones o una nueva síntesis producen otra versión vinculada a sus fuentes y a la versión anterior. No sobrescriben el original, borran contradicciones ni convierten versiones de un resumen en incidentes independientes. Las decisiones del usuario conservan su historia; se reabren sólo las afectadas por la nueva evidencia.
+40. Al abrir Reflect, el agente recupera la observación, el resumen con su versión y límites, los extractos, antecedentes pertinentes y decisiones previas. Verifica las fuentes necesarias dentro del acceso y alcance disponibles. La recuperación de conversación por harness es una ampliación opcional, no un requisito para leer los hechos ya conservados. Si falta evidencia esencial, declara qué conclusiones quedan pendientes y pregunta por la brecha material; no completa los huecos por inferencia. Mario recibe hechos y fuentes, análisis provisional, límites y el siguiente paso recomendado. La síntesis sigue siendo evidencia derivada, no una decisión aprobada ni instrucciones ejecutables.
+
 ## Testing Decisions
 
 ### Frontera principal
@@ -166,6 +188,9 @@ Se reutilizarán las fronteras públicas existentes del validador, almacenamient
 | A27 | Capturar un incidente originado en otra sesión y un origen parcialmente desconocido. | Conserva origen y captura por separado, varias fuentes si existen y la evidencia mínima; no inventa identificadores faltantes. |
 | A28 | Buscar antecedentes con filtros, texto y similitud. | Respeta el ámbito y las decisiones previas. Un corpus revisado mide antecedentes relevantes recuperados y asociaciones equivocadas; vectores fijos sólo validan la consulta. |
 | A29 | Reintentar una captura simultáneamente desde dos procesos o reutilizar su identidad con otro contenido. | El adaptador conserva una sola captura para la misma operación y reporta la colisión con evidencia distinta. La indexación pendiente no bloquea su guardado. |
+| A30 | Capturar una observación y revisarla en otra sesión con el origen inaccesible. | Recupera el resumen, extractos y referencias conservados; permite contrastar solicitud, acciones, resultados y decisiones documentadas. Identifica el contexto histórico comprobado y sus límites sin exigir la transcripción completa. |
+| A31 | Fallar la elaboración del resumen o reconstruir un registro histórico con evidencia incompleta. | La observación original sigue guardada. El resumen pendiente o parcial declara los datos desconocidos y su elaboración posterior cuando corresponda. Reflect deja pendientes las conclusiones sin respaldo y consulta sólo la brecha material. |
+| A32 | Incorporar evidencia que contradice una síntesis anterior. | Conserva ambas versiones, fuentes y decisiones; refleja la contradicción y reabre sólo lo afectado. La nueva síntesis no cuenta como otra ocurrencia del incidente. |
 
 ### Evidencia previa y ejecución
 
@@ -215,6 +240,8 @@ La división prevista conserva cinco áreas de entrega: inventario y auditoría,
 
 Quedan por concretar durante la preparación de la implementación el empaquetado del inventario y auditoría, el esquema exacto de hallazgos/anotaciones y la interfaz pública que reutilizará el agente. Los parámetros de cada evaluación, incluidos matriz de entornos, casos, modelo, repeticiones, rúbrica y presupuesto, se fijarán antes de ejecutarla. Estos pendientes no autorizan al implementador a cambiar el comportamiento definido aquí.
 
+Mario confirmó el resumen factual con extractos y referencias como contexto de reconstrucción para Reflect. Sus contenidos, elaboración, versionado y límites quedan definidos en las decisiones 36–40 y A30–A32. La implementación concretará el esquema y almacenamiento compatibles y las capacidades de acceso de cada harness; conservar el resumen no depende de disponer de lectura completa de sesiones. Esta confirmación resuelve ese contrato del borrador y mantiene la revisión del conjunto antes de dividirlo en tickets.
+
 ### Revisión de persistencia y búsqueda
 
 Mario señaló la utilidad de procedencia por harness y sesión, búsqueda semántica y persistencia robusta con agentes en paralelo. Prefirió evitar otro servicio y eligió ensayar LanceDB embebido. El [informe de la prueba](../evaluations/2026-10-13-lancedb/report.md) conserva el resultado nativo desfavorable de reintento y el resultado del adaptador; no se activó un backend de captura.
@@ -249,5 +276,6 @@ El tracker y sus etiquetas se resolverán con la documentación del proyecto al 
 | Benchmark personal | Historias 29–37; decisiones 22–29; A15–A22. |
 | Separación estable y candidato | Historias 4 y 36; decisiones 4, 25 y 30; A02 y A22. |
 | Promoción, comprobación posterior y reversión | Historias 39–42; decisiones 30–31; A23–A26. |
+| Contexto factual para reanudar una reflexión | Historias 45 y 49–50; decisiones 34 y 36–40; A27 y A30–A32. |
 
 Las pruebas de la auditoría previa validan sus documentos y el estado existente. No constituyen aceptación de esta spec ni evidencia de que sus capacidades pendientes estén implementadas.

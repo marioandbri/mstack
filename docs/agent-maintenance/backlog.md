@@ -34,6 +34,8 @@ Tras aceptar Mario las condiciones y habilitar la cuenta, se completó la pasada
 
 Mario confirmó google/embeddinggemma-300m como modelo de embeddings del sistema. AM-015 fija la revisión y el perfil ensayados, con 768 dimensiones y los prefijos de recuperación. La selección queda resuelta; siguen pendientes la evaluación con más incidentes independientes y la calibración de abstención. La spec completa conserva su revisión previa a dividirla en tickets.
 
+El 15 de octubre Mario confirmó conservar un resumen factual del incidente junto con extractos mínimos saneados y referencias. AM-015 incorpora el contexto que recibirá Reflect, la elaboración durante la captura, el tratamiento de evidencia incompleta y el versionado sin sobrescribir originales ni decisiones. A30–A32 cubren reanudación con la sesión inaccesible, fallo o reconstrucción parcial del resumen y evidencia posterior contradictoria. La confirmación corresponde a este contrato del borrador; el conjunto sigue pendiente de revisión antes de los tickets.
+
 [OBS-CHROMA-ARTIFACT-RECOVERY-001](inbox/OBS-CHROMA-ARTIFACT-RECOVERY-001.json) conserva el fallo de serialización del recolector después de captura y consulta exitosas. Clasificación provisional por el procedimiento local: fallo del agente en publicación de evidencia, evaluación del recolector antes de añadir instrucciones. Una ocurrencia; búsqueda limitada a esta bandeja e índice. Se relaciona con los límites históricos de recogida de artefactos, pero no se contabiliza como repetición del fallo de exportación anterior ni como fallo de Chroma. Queda en inbox para revisión, sin integración.
 
 ## AM-012: evaluación conductual acotada
