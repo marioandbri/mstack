@@ -149,7 +149,9 @@ class Reviews:
         options = payload["options"]
         active = next((item for item in payload["record"]["opportunities"] if item["id"] == options["active_question"]), None)
         identities = [key for item in payload["record"]["opportunities"] for key in item["observationIds"]]
-        return {**payload, "revision": value["revision"], "sha256": value["sha256"], "historical_context": payload["context"], "context": self.context(identities), "active_question": {"id": active["id"], "question": active["question"]} if active else None, "allowed_actions": ["review", "prepare-proposal"], "presentation": {"facts": [v["evidence"] for v in payload["record"]["opportunities"]], "provisional_analysis": [v["recommendation"] for v in payload["record"]["opportunities"]], "next_step": active["question"] if active else "Consolidate the retained decisions and proposal; deployment remains separate."}}
+        with self.records._connection() as db:
+            evaluations = [json.loads(row[0]) for row in db.execute("SELECT payload FROM review_evidence WHERE review_id=? ORDER BY id", (identity,))] if db.execute("SELECT 1 FROM sqlite_master WHERE name='review_evidence'").fetchone() else []
+        return {**payload, "revision": value["revision"], "sha256": value["sha256"], "historical_context": payload["context"], "context": self.context(identities), "evaluations": evaluations, "active_question": {"id": active["id"], "question": active["question"]} if active else None, "allowed_actions": ["review", "prepare-proposal"], "presentation": {"facts": [v["evidence"] for v in payload["record"]["opportunities"]], "provisional_analysis": [v["recommendation"] for v in payload["record"]["opportunities"]], "next_step": active["question"] if active else "Consolidate the retained decisions and proposal; deployment remains separate."}}
 
     def reconcile(self, identity, checks, expected_revision, operation_id):
         history = self.history(identity)

@@ -102,6 +102,14 @@ class AnnotationTests(unittest.TestCase):
         self.assertEqual(self.annotations.save(context, annotation(context), 0, "first")["status"], "already-saved")
         self.assertEqual(self.annotations.latest("OBS-1")["state"], "provisional")
 
+    def test_new_user_decision_marks_old_classification_stale_without_erasing_it(self):
+        context = self.annotations.prepare("OBS-1")
+        self.annotations.save(context, annotation(context), 0, "first")
+        self.store.transition("OBS-1", 0, "discarded", {"answer": "Reject this proposal.", "source": "user:later"}, "later-decision")
+        self.assertEqual(self.annotations.latest("OBS-1")["state"], "pending")
+        self.assertEqual(self.annotations.latest("OBS-1")["revision"], 1)
+        self.assertEqual(self.store.get("OBS-1")["state"], "discarded")
+
     def test_untrusted_advice_and_changed_decisions_cannot_overwrite_a_version(self):
         context = self.annotations.prepare("OBS-1", categories=["agent-failure", "uncertain"])
         for field, value in [("category", "global-invariant"), ("suggested_component", "../../install"),

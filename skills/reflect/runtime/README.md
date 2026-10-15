@@ -1,6 +1,6 @@
 # Registros locales
 
-Este adaptador guarda originales de observaciones en SQLite. El original mantiene el esquema vigente y sus bytes. Procedencia y estados se guardan aparte. No llama a modelos, clasifica, abre Reflect ni instala instrucciones.
+La captura guarda originales de observaciones en SQLite y mantiene su esquema y bytes. Procedencia, estados y trabajo derivado se guardan aparte. Capturar no llama a modelos, clasifica, abre Reflect ni instala instrucciones. Los demás comandos realizan únicamente la operación explícita seleccionada.
 
 Usar uv 0.10.11 con Python 3.13.2 y las versiones de pyproject.toml y uv.lock. Desde el repositorio canónico:
 

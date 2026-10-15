@@ -79,6 +79,15 @@ def parser():
     reconcile.add_argument("--checks", required=True)
     reconcile.add_argument("--expected-revision", required=True, type=int)
     reconcile.add_argument("--operation", required=True)
+    comparison = commands.add_parser("comparison")
+    comparison.add_argument("--runner-root", required=True)
+    compare_commands = comparison.add_subparsers(dest="action", required=True)
+    compare_commands.add_parser("prepare").add_argument("--plan", required=True)
+    compare_commands.add_parser("get").add_argument("--id", required=True)
+    compare_result = compare_commands.add_parser("result")
+    compare_result.add_argument("--id", required=True)
+    compare_result.add_argument("--result-id", required=True)
+    compare_result.add_argument("--assessments", required=True)
     return result
 
 
@@ -145,6 +154,17 @@ def run(args):
         if args.action == "reconcile":
             return reviews.reconcile(args.id, json.loads(Path(args.checks).read_text()), args.expected_revision, args.operation)
         return reviews.get(args.id) if args.action == "get" else reviews.history(args.id)
+    if args.command == "comparison":
+        from comparisons import Comparisons
+        from evaluation import Runner
+        from reviews import Reviews
+        comparisons = Comparisons(Reviews(store), Runner(args.runner_root))
+        if args.action == "prepare":
+            plan = json.loads(Path(args.plan).read_text())
+            return comparisons.prepare(**plan)
+        if args.action == "result":
+            return comparisons.record_result(args.id, args.result_id, json.loads(Path(args.assessments).read_text()))
+        return comparisons.get(args.id)
     raise RecordError("unknown-operation")
 
 
@@ -155,8 +175,12 @@ def main():
     except RecordError as error:
         print(json.dumps({"error": str(error), "acknowledged": False, "persistence": "unconfirmed"}), file=sys.stderr)
         return 1
-    except (ValueError, OSError, TypeError):
-        print(json.dumps({"error": "invalid-input-or-storage", "acknowledged": False, "persistence": "unconfirmed"}), file=sys.stderr)
+    except Exception as error:
+        from evaluation import EvaluationError
+        if isinstance(error, EvaluationError):
+            print(json.dumps({"error": str(error), "acknowledged": False, "persistence": "unconfirmed"}), file=sys.stderr)
+        else:
+            print(json.dumps({"error": "invalid-input-or-storage", "acknowledged": False, "persistence": "unconfirmed"}), file=sys.stderr)
         return 1
     return 0
 

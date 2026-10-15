@@ -77,6 +77,18 @@ class SearchTests(unittest.TestCase):
         self.index.publish_embedding(ctx, first, meta, "first")
         self.assertAlmostEqual(self.index.vector(second)["matches"][0]["match"]["distance"], 0)
 
+    def test_category_filter_does_not_use_an_annotation_with_changed_related_decisions(self):
+        from annotations import Annotations
+        from test_annotations import annotation
+        self.records.capture("related", observation("RELATED"))
+        annotations = Annotations(self.records)
+        context = annotations.prepare("OBS-1", ["RELATED"])
+        annotations.save(context, annotation(context), 0, "classification")
+        self.assertEqual(len(self.index.search("convenciones", category="agent-failure")["matches"]), 1)
+        self.records.transition("RELATED", 0, "discarded", {"answer": "Reject the related proposal.", "source": "user:later"}, "related-decision")
+        self.assertEqual(annotations.latest("OBS-1")["state"], "pending")
+        self.assertEqual(self.index.search("convenciones", category="agent-failure")["matches"], [])
+
     @unittest.skipUnless(os.environ.get("MSTACK_GEMMA_MODEL_PATH"), "Real Gemma smoke requires its already accepted offline snapshot and embeddings extra")
     def test_real_selected_gemma_profile_through_public_index_and_cli(self):
         from embeddings import Gemma

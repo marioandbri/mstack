@@ -37,6 +37,8 @@ A single successful replay does not establish reliability or disprove the histor
 
 ## Compare relevant interventions
 
+Use the [comparison adapter](../runtime/comparisons.md) to bind a selected opportunity to frozen baseline/candidate protocols and retain results in the shared review. Preparation and recording results do not execute models or install a candidate.
+
 Consider clarification, removal of a conflicting rule, a skill change, a mechanical check or no change. Select alternatives that address the evidence; do not run every possible intervention by default.
 
 Test the targeted behavior and relevant negative or regression cases. Report outcomes, user interventions and actions outside scope. Treat tokens and calls as secondary measures.

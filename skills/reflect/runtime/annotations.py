@@ -21,7 +21,7 @@ class Annotations:
     def prepare(self, identity, related_ids=(), *, provider=None, categories=None, component_ids=None):
         related_ids = sorted(set(related_ids) - {identity})
         values = [self.records.get(key) for key in [identity, *related_ids]]
-        provider = provider or {"name": "agent-procedure", "version": "classification.v1"}
+        provider = {"name": "agent-procedure", "version": "classification.v1"} if provider is None else provider
         if (not isinstance(provider, dict) or set(provider) != {"name", "version"} or
                 any(not isinstance(v, str) or not v.strip() for v in provider.values())):
             raise RecordError("invalid-provider")
@@ -133,4 +133,10 @@ class Annotations:
         last = versions[-1]
         output = last["payload"]["output"]
         pending = "classification" in self.records.get(identity)["pending"]
-        return {"state": "pending" if pending else "provisional", "revision": last["revision"], "annotation": output, "input": last["payload"]["input"], "occurrence_count": len(output["occurrence_ids"]) if output["occurrence_ids"] else None}
+        context = last["payload"]["input"]
+        try:
+            fresh = self.prepare(context["primary_id"], context["related_ids"], provider=context["provider"], categories=context["allowed_categories"], component_ids=context["component_ids"])
+            stale = fresh != context
+        except RecordError:
+            stale = True
+        return {"state": "pending" if pending or stale else "provisional", "revision": last["revision"], "annotation": output, "input": context, "sources_changed": stale, "occurrence_count": len(output["occurrence_ids"]) if output["occurrence_ids"] else None}

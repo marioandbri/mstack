@@ -22,9 +22,11 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Status:** ready-for-agent
 
-- [ ] Preparar la comparación fija baseline/candidato, fuentes, casos, rúbrica, modelo/razonamiento, versiones, entorno, repeticiones y presupuesto antes de ejecución.
+- [x] Preparar la comparación fija baseline/candidato, fuentes, casos, rúbrica, modelo/razonamiento, versiones, entorno, repeticiones y presupuesto antes de ejecución.
 - [ ] El caso y sus controles pertinentes se ejecutan bajo condiciones comparables, con contexto cargado e aislamiento comprobados.
-- [ ] Se informan resultado de tarea, intervención humana y acciones innecesarias por separado de tokens/tiempo, infraestructura y resultados ausentes.
-- [ ] Una baseline que no reproduce conserva la evidencia histórica y la incertidumbre; permite concluir no cambiar, investigar o repetir sólo con autorización.
-- [ ] Un candidato que pierde evidencia, vulnera autorizaciones o promueve directamente queda invalidado para el caso correspondiente.
-- [ ] Reflect conserva resultado, límites y decisión sin instalar el candidato por haber pasado una evaluación.
+- [x] Se informan resultado de tarea, intervención humana y acciones innecesarias por separado de tokens/tiempo, infraestructura y resultados ausentes.
+- [x] Una baseline que no reproduce conserva la evidencia histórica y la incertidumbre; permite concluir no cambiar, investigar o repetir sólo con autorización.
+- [x] Un candidato que pierde evidencia, vulnera autorizaciones o promueve directamente queda invalidado para el caso correspondiente.
+- [x] Reflect conserva resultado, límites y decisión sin instalar el candidato por haber pasado una evaluación.
+
+[Implementación y evidencia](../../../docs/agent-maintenance/changes/AM-026-comparison-implementation.md). La comparación mecánica pasa; la ejecución generativa comparable sigue pendiente de protocolo y presupuesto del ciclo.

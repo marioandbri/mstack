@@ -13,7 +13,7 @@ import stat
 
 from jsonschema import Draft202012Validator
 from jsonschema.exceptions import ValidationError
-from derived_work import states
+from derived_work import states, mark
 
 SCHEMA_VERSION = 1
 APPLICATION_ID = 0x4D53544B
@@ -235,7 +235,10 @@ class RecordStore:
                 any(not isinstance(v, str) or not v.strip() for v in evidence.values())):
             raise RecordError("missing-user-evidence")
         with self._transaction() as db:
-            return self._append(db, "state", identity, expected_revision, {"state": state, "evidence": evidence}, operation_id)
+            result = self._append(db, "state", identity, expected_revision, {"state": state, "evidence": evidence}, operation_id)
+            if result["status"] == "saved" and db.execute("SELECT 1 FROM versions WHERE kind='annotation' AND record_id=?", (identity,)).fetchone():
+                mark(db, identity, "annotation", "pending", digest(encoded(evidence)), operation_id, "user-decision-changed")
+            return result
 
     def history(self, identity, kind):
         with self._connection() as db:

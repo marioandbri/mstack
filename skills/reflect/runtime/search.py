@@ -54,7 +54,8 @@ class SearchIndex:
         values = self.records.list(scope, state)
         if category is not None:
             from annotations import Annotations
-            values = [v for v in values if "classification" not in v["pending"] and (Annotations(self.records).latest(v["id"])["annotation"] or {}).get("category") == category]
+            current = [(value, Annotations(self.records).latest(value["id"])) for value in values]
+            values = [value for value, annotation in current if annotation["state"] == "provisional" and (annotation["annotation"] or {}).get("category") == category]
         return {value["id"]: value for value in values}
 
     def status(self, scope=None):
