@@ -23,10 +23,11 @@ def main():
     for key in ("case", "repository", "ref", "environment", "profile-id", "model", "reasoning"):
         git.add_argument("--" + key, required=True)
     git.add_argument("--seconds", type=int, required=True)
-    library = commands.add_parser("prepare-workflows")
-    for key in ("repository", "ref", "environment", "profile-id", "model", "reasoning"):
-        library.add_argument("--" + key, required=True)
-    library.add_argument("--seconds", type=int, required=True)
+    for name in ("prepare-workflows", "prepare-reflections"):
+        library = commands.add_parser(name)
+        for key in ("repository", "ref", "environment", "profile-id", "model", "reasoning"):
+            library.add_argument("--" + key, required=True)
+        library.add_argument("--seconds", type=int, required=True)
     execute = commands.add_parser("execute")
     for key in ("protocol", "attempt", "grant"):
         execute.add_argument("--" + key, required=True)
@@ -47,12 +48,14 @@ def main():
     try:
         if args.command == "prepare":
             result = runner.prepare(read(args.case), read(args.profile))
-        elif args.command in ("prepare-git", "prepare-workflows"):
+        elif args.command in ("prepare-git", "prepare-workflows", "prepare-reflections"):
             from evaluation_source import git_profile
             profile = git_profile(args.repository, args.ref, read(args.environment), identity=args.profile_id, model=args.model, reasoning=args.reasoning, seconds=args.seconds)
-            if args.command == "prepare-workflows":
+            if args.command in ("prepare-workflows", "prepare-reflections"):
                 from workflow_cases import workflow_cases
-                result = {"stage": "prepared", "cases": [runner.prepare(case, profile) for case in workflow_cases(profile)], "agent_turns_started": 0}
+                from cycle_cases import reflection_cases
+                cases = workflow_cases(profile) if args.command == "prepare-workflows" else reflection_cases(profile)
+                result = {"stage": "prepared", "cases": [runner.prepare(case, profile) for case in cases], "agent_turns_started": 0}
             else:
                 result = runner.prepare(read(args.case), profile)
         elif args.command in ("execute", "preflight"):

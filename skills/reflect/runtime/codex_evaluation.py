@@ -109,7 +109,7 @@ class CodexDocker:
             original_hash = helper.digest(self.auth_path)
             home = Path(tempfile.mkdtemp(prefix=".maintenance-auth-", dir=self.auth_path.parent)); home.chmod(0o700)
             shutil.copyfile(self.auth_path, home / "auth.json"); (home / "auth.json").chmod(0o600)
-            config = 'cli_auth_credentials_store = "file"\n[features]\napps = false\n[projects."/workspace"]\ntrust_level = "trusted"\n'
+            config = 'cli_auth_credentials_store = "file"\n[features]\napps = false\nmulti_agent = false\nmulti_agent_v2 = false\n[projects."/workspace"]\ntrust_level = "trusted"\n'
             (home / "config.toml").write_text(config); (home / "config.toml").chmod(0o600)
             global_text = profile["instructions"].get("global/AGENTS.md")
             if global_text is not None:
