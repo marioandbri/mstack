@@ -47,6 +47,25 @@ class Trace:
             raise EvaluationError("invalid-assessment-reference") from None
         return {"path": path, "line": line, "excerpt": excerpt, "sha256": digest(raw)}
 
+    def usage(self):
+        starts = [value for _, value in self.requests if value.get("method") == "turn/start"]
+        if len(starts) != 1:
+            return None
+        request = starts[0]
+        response = next((value for _, value in self.events if value.get("id") == request.get("id") and "method" not in value), {})
+        turn = response.get("result", {}).get("turn", {}).get("id")
+        if not turn:
+            return None
+        values = [(n, event["params"].get("tokenUsage", {}).get("total", {})) for n, event in self.events if event.get("method") == "thread/tokenUsage/updated" and event.get("params", {}).get("threadId") == request.get("params", {}).get("threadId") and event.get("params", {}).get("turnId") == turn]
+        if not values:
+            return None
+        line, total = values[-1]
+        keys = ("totalTokens", "inputTokens", "outputTokens", "cachedInputTokens", "reasoningOutputTokens", "cacheWriteInputTokens")
+        counts = {key: total.get(key) for key in keys}
+        if any(type(counts[key]) is not int or counts[key] < 0 for key in keys[:3]) or any(value is not None and (type(value) is not int or value < 0) for value in counts.values()):
+            return None
+        return {"reported_cumulative": counts, "source_ref": self.reference("events.jsonl", line, '"thread/tokenUsage/updated"'), "limits": ["Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.", "This does not reveal the number of internal provider calls or their price."]}
+
     def skill(self, skill):
         name = skill["name"]
         actual = [value for entry in (self.catalog or {}).get("data", []) for value in entry.get("skills", []) if value.get("name") == name]
@@ -139,7 +158,7 @@ def assess(protocol, receipt, root, judgment):
         attribution = "not-applicable" if compatible is False and value["selected"] is not True else "availability-gap" if value["exposed"] is not True else "trigger-ambiguous" if compatible is None else "overactivation" if compatible is False else "selection-not-observed" if expected["selection"] == "required" and value["selected"] is False else "observed-use" if value["selected"] else "undetermined"
         skills.append({**expected, **value, "attribution": attribution, "compliance": {v["id"]: v["result"] for v in criteria if v["id"] in expected["criteria"]}})
     environment = {key: protocol["profile"][key] for key in ("harness", "environment", "model", "reasoning")}
-    return {"schema_version": 1, "attempt_id": receipt["attempt_id"], "protocol_sha256": receipt["protocol_sha256"], "case_id": protocol["case"]["id"], "case_kind": protocol["case"]["kind"], "incident_id": protocol["case"]["incident_id"], "environment_sha256": digest(encoded(environment)), "environment": environment, "task_result": task, "skills": skills, "criteria": criteria, "invariants": invariants, "human_interventions": count, "unnecessary_actions": actions, "metrics": {"seconds": receipt["seconds"], "tokens": receipt.get("tokens"), "agent_turns_started": receipt.get("agent_turns_started"), "provider_calls": receipt.get("model_calls")}, "assessor": judgment["assessor"], "limits": ["Complementary skills are not competitors merely because they were used together.", "Textual trigger hypotheses and behavioral evidence remain separate; no universal harness reliability claim."]}
+    return {"schema_version": 1, "attempt_id": receipt["attempt_id"], "protocol_sha256": receipt["protocol_sha256"], "case_id": protocol["case"]["id"], "case_kind": protocol["case"]["kind"], "incident_id": protocol["case"]["incident_id"], "environment_sha256": digest(encoded(environment)), "environment": environment, "task_result": task, "skills": skills, "criteria": criteria, "invariants": invariants, "human_interventions": count, "unnecessary_actions": actions, "metrics": {"seconds": receipt["seconds"], "tokens": receipt.get("tokens") or trace.usage(), "agent_turns_started": receipt.get("agent_turns_started"), "provider_calls": receipt.get("model_calls")}, "assessor": judgment["assessor"], "limits": ["Complementary skills are not competitors merely because they were used together.", "Textual trigger hypotheses and behavioral evidence remain separate; no universal harness reliability claim."]}
 
 
 def save_assessment(runner, attempt_id, assessment_id, judgment):

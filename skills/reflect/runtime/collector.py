@@ -15,6 +15,7 @@ import uuid
 MARKER = ".mstack-evaluation.json"
 TERMINAL_STATES = {"completed", "timeout", "interrupted", "infrastructure-error", "not-executed"}
 PRIVATE_NAMES = {".git", ".ssh", ".aws", ".codex", ".netrc", "auth.json", "credentials.json"}
+RUNTIME_NAMES = {".cache", ".venv", "node_modules", "__pycache__"}
 
 
 class CollectionError(Exception):
@@ -152,6 +153,8 @@ def collect_workspace(source, destination, attempt_id, terminal, *, recovery_of=
                     report["artifacts"].append({"path": rel, "status": "excluded-private"}); continue
                 if path.is_symlink():
                     report["artifacts"].append({"path": rel, "status": "excluded-link"}); continue
+                if path.is_dir() and (path.name in RUNTIME_NAMES or not (path / "pyvenv.cfg").is_symlink() and (path / "pyvenv.cfg").is_file()):
+                    report["artifacts"].append({"path": rel, "status": "excluded-runtime"}); continue
                 try:
                     if path.is_dir():
                         walk(path)

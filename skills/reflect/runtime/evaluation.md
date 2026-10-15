@@ -32,4 +32,10 @@ La [biblioteca de selección](selection.md) añade controles naturales del catá
 
 El recibo separa execution_status, behavioral_status, mechanical_status, colección, límites, tiempo y turnos conocidos. Los checks mecánicos de un agente no aprueban la rúbrica semántica. Timeout, interrupción, contexto no comprobado, trazas parciales y resultado ausente siguen siendo inconclusos o infraestructura. Las solicitudes internas y tokens desconocidos permanecen desconocidos.
 
+Un fallo de cierre conserva el contexto y la finalización ya observados, pero deja el resultado inconcluso. Si no se confirma la detención de productores, checks y colección quedan aplazados. Los diagnósticos distinguen cierre RPC, detención del contenedor y conservación de autenticación, sin exportar credenciales.
+
+La evaluación extrae los tokens acumulados de la última notificación ligada al único turno con acuse. Conserva su referencia; una traza sin ese dato informa null. Caché y razonamiento son subconjuntos de entrada y salida. Ni su suma ni contar turnos identifica llamadas internas o coste del proveedor.
+
 El recolector conserva bytes y hashes legibles sin reparación manual en el recorrido normal. report enumera intentos, incluso reservas interrumpidas sin recibo. recover crea otro destino y conserva recovery_of; exige evidencia fresca de que no quedan consumidores y rechaza un intento con lease activo. Nunca sustituye el recibo original ni convierte recuperación en otro ensayo de conducta. Conservar las trazas privadas; publicar sólo extractos mínimos saneados.
+
+La recuperación registra recovery_execution_sources del recolector utilizado; no atribuye sus correcciones posteriores al código congelado del intento original.

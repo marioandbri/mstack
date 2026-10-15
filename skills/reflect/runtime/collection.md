@@ -13,6 +13,8 @@ Antes de collect, el ejecutor debe haber detenido y esperado a todos los proceso
 
 La exportación exige un destino nuevo y privado fuera del origen. No sigue symlinks, no lee inodos de archivos compartidos y excluye auth.json, credenciales y carpetas privadas conocidas. La exclusión se registra como límite, no se reemplaza por contenido supuesto. Si un archivo propio carece de lectura del propietario, el recolector añade ese permiso temporalmente y restaura el modo original al terminar. No modifica permisos de snapshots externos ni concede capacidades al contenedor.
 
+Las cachés .cache, .venv, node_modules y __pycache__, y los directorios con un pyvenv.cfg regular propio, quedan excluded-runtime. Sus dependencias y hardlinks no son evidencia del caso. Los registros durables fuera de esos directorios siguen exportándose; conservarlos separados del entorno generado.
+
 Los archivos exportados quedan legibles por el propietario. El informe conserva modo original, normalización automática, bytes y SHA-256 contrastado reabriendo el destino. Un archivo inaccesible deja evidencia parcial sin abortar la recogida restante.
 
 collection.json se guarda antes de copiar, con estado in-progress, y se reemplaza atómicamente al cerrar. Un proceso muerto puede dejar ese estado y archivos parciales; no se interpreta como éxito. Se distinguen collection_status, execution_status, infraestructura y behavioral_status. Recoger archivos no aprueba la conducta. Un resultado ausente y una traza truncada permanecen diferenciados.

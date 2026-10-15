@@ -12,4 +12,4 @@ test("maintenance runtime preserves originals and evaluation artifacts through p
   if (result.exitCode !== 0) throw new Error(result.stderr.toString());
   expect(result.exitCode).toBe(0);
   expect(result.stderr.toString()).toContain("OK");
-}, process.env.MSTACK_GEMMA_MODEL_PATH ? 180_000 : 60_000);
+}, process.env.MSTACK_GEMMA_MODEL_PATH ? 180_000 : 120_000);

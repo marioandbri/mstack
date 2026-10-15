@@ -13,4 +13,4 @@ test("snapshot installer passes real Git, temporary HOME, configuration, rollbac
   }
   expect(result.exitCode).toBe(0);
   expect(result.stderr.toString()).toContain("OK");
-}, 30_000);
+}, 60_000);

@@ -108,6 +108,32 @@ class EvaluationTests(unittest.TestCase):
             rpc.close()
         self.assertEqual(len((root / "events.jsonl").read_text().splitlines()), 2)
 
+    def test_closed_transport_keeps_completed_context_when_cleanup_fails(self):
+        from evaluation import ExecutionFailure
+        class CleanupFailure(FixtureTransport):
+            def run(self, workspace, protocol, seconds):
+                result = super().run(workspace, protocol, seconds)
+                raise ExecutionFailure("transport-cleanup-failed", result, consumers_stopped=True)
+        result = self.runner.execute(self.prepared["protocol_sha256"], "cleanup-failed", self.grant(), CleanupFailure())
+        self.assertEqual(result["execution_status"], "completed")
+        self.assertEqual(result["context"]["state"], "verified-fixture")
+        self.assertEqual(result["collection"]["collection_status"], "complete")
+        self.assertIn("transport-cleanup-failed", result["infrastructure_states"])
+        self.assertEqual(result["stage"], "inconclusive")
+
+    def test_unconfirmed_producer_stop_defers_checks_and_collection(self):
+        from evaluation import ExecutionFailure
+        class Unconfirmed(FixtureTransport):
+            def run(self, workspace, protocol, seconds):
+                result = super().run(workspace, protocol, seconds)
+                raise ExecutionFailure("producer-stop-unconfirmed", result, consumers_stopped=False)
+            def check(self, *args):
+                raise AssertionError("No checks while a producer might be active.")
+        result = self.runner.execute(self.prepared["protocol_sha256"], "stop-unconfirmed", self.grant(), Unconfirmed())
+        self.assertEqual(result["collection"]["collection_status"], "deferred")
+        self.assertFalse((self.runner.root / "attempts/stop-unconfirmed/collected").exists())
+        self.assertIn("consumers-not-stopped", result["infrastructure_states"])
+
     def test_public_cli_runs_a_frozen_mechanical_fixture_and_keeps_recovery_separate(self):
         value = case()
         value["fixture"][".evaluation/fixture.py"] = "from pathlib import Path\nPath('answer.json').write_text('{\"answer\":42}')\n"

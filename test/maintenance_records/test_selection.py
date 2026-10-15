@@ -48,6 +48,18 @@ class SelectionTests(unittest.TestCase):
         self.assertIsNone(value["selected"])
         self.assertEqual(value["read"], "unknown")
 
+    def test_reported_tokens_are_bound_to_the_acknowledged_turn_without_double_counting(self):
+        counts = {"totalTokens": 12, "inputTokens": 10, "outputTokens": 2, "cachedInputTokens": 8, "reasoningOutputTokens": 1}
+        event = {"method": "thread/tokenUsage/updated", "params": {"threadId": "thread", "turnId": "turn", "tokenUsage": {"total": counts}}}
+        self.trace([{"id": 1, "result": {"turn": {"id": "turn"}}}, event, {**event, "params": {**event["params"], "turnId": "another-turn", "tokenUsage": {"total": {**counts, "totalTokens": 999}}}}])
+        (self.root / "requests.jsonl").write_text(json.dumps({"id": 1, "method": "turn/start", "params": {"threadId": "thread"}}) + '\n')
+        usage = Trace(self.root, self.profile, complete=True).usage()
+        self.assertEqual(usage["reported_cumulative"]["totalTokens"], 12)
+        self.assertEqual(usage["reported_cumulative"]["cachedInputTokens"], 8)
+        self.assertEqual(usage["source_ref"]["line"], 2)
+        (self.root / "requests.jsonl").write_text('')
+        self.assertIsNone(Trace(self.root, self.profile, complete=True).usage())
+
     def test_assessment_uses_frozen_rubric_and_rejects_unknown_evidence(self):
         trace = self.trace([{"method": "item/completed", "params": {"item": {"id": "read", "type": "commandExecution", "command": "cat .agents/skills/example/SKILL.md", "exitCode": 0, "aggregatedOutput": self.body}}}])
         protocol = {"profile": self.profile, "case": {"id": "example", "kind": "synthetic-fixture", "incident_id": None,

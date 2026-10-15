@@ -26,6 +26,13 @@ class EvaluationError(Exception):
     pass
 
 
+class ExecutionFailure(EvaluationError):
+    """Preserve observed execution facts when transport finalization fails."""
+    def __init__(self, code, partial, *, consumers_stopped):
+        super().__init__(code)
+        self.partial, self.consumers_stopped = partial, consumers_stopped
+
+
 def safe_path(value):
     if not isinstance(value, str) or not value or PurePosixPath(value).is_absolute() or any(p in ('', '.', '..') for p in value.split('/')) or '\\' in value:
         raise EvaluationError("invalid-fixture-path")
@@ -327,11 +334,16 @@ class Runner:
         _write_json(attempt / "authorization.json", grant)
         start = time.monotonic()
         result = {"schema_version": 1, "attempt_id": attempt_id, "protocol_sha256": sha, "case_id": protocol["case"]["id"], "profile_id": protocol["profile"]["id"], "stage": "inconclusive", "execution_status": "infrastructure-error", "behavioral_status": "ungraded", "grading_scope": "mechanical-fixture" if protocol["profile"]["kind"] == "fixture" else "mechanical-checks-only; semantic rubric pending", "context": {"state": "unverified"}, "model_calls": None, "infrastructure_states": [], "created_at": datetime.now(timezone.utc).isoformat()}
+        consumers_stopped = True
         try:
             execution = transport.run(workspace, protocol, protocol["profile"]["budget_seconds"])
             result.update(execution)
             if result["execution_status"] not in ("completed", "timeout", "interrupted", "infrastructure-error"):
                 raise EvaluationError("invalid-transport-result")
+        except ExecutionFailure as error:
+            result.update(error.partial)
+            consumers_stopped = error.consumers_stopped
+            result["infrastructure_states"].append(str(error))
         except (TimeoutError, subprocess.TimeoutExpired):
             result["execution_status"] = "timeout"
         except KeyboardInterrupt:
@@ -342,7 +354,7 @@ class Runner:
         result["seconds"] = round(time.monotonic() - start, 3)
         if execution_sources() != protocol["execution_sources"]:
             result["infrastructure_states"].append("execution-source-changed")
-        result["checks"] = self._grade(workspace, protocol, transport)
+        result["checks"] = self._grade(workspace, protocol, transport) if consumers_stopped else []
         result["infrastructure_states"] += [value["infrastructure_state"] for value in result["checks"] if value.get("infrastructure_state")]
         expected_context = "verified-fixture" if protocol["profile"]["kind"] == "fixture" else "verified"
         if result["context"]["state"] != expected_context:
@@ -351,9 +363,12 @@ class Runner:
             passed = all(v["passed"] for v in result["checks"])
             result["mechanical_status"] = "passed" if passed else "failed"
             result["behavioral_status"] = ("passed" if passed else "failed") if protocol["profile"]["kind"] == "fixture" else "ungraded"
-        _write_json(workspace / "result.json", result)
         collection_path = attempt / "collected"
-        collection = collect_workspace(workspace, collection_path, attempt_id, result["execution_status"])
+        if consumers_stopped:
+            _write_json(workspace / "result.json", result)
+            collection = collect_workspace(workspace, collection_path, attempt_id, result["execution_status"])
+        else:
+            collection = {"collection_status": "deferred", "artifacts": [], "infrastructure_states": ["consumers-not-stopped"]}
         result["collection"] = collection; result["collection_path"] = str(collection_path)
         result["infrastructure_states"] += collection["infrastructure_states"]
         if result["execution_status"] == "completed" and not result["infrastructure_states"]:
@@ -390,6 +405,6 @@ class Runner:
             raise EvaluationError("attempt-workspace-unavailable")
         destination = self.root / "recoveries" / recovery_id
         result = collect_workspace(attempt / "workspace", destination, attempt_id, "interrupted", recovery_of=attempt_id)
-        receipt = {"stage": "recovered", "recovery_id": recovery_id, "recovery_of": attempt_id, "termination_evidence": termination_evidence, "collection": result, "behavioral_status": "ungraded", "model_calls": 0}
+        receipt = {"stage": "recovered", "recovery_id": recovery_id, "recovery_of": attempt_id, "termination_evidence": termination_evidence, "recovery_execution_sources": execution_sources(), "collection": result, "behavioral_status": "ungraded", "model_calls": 0}
         _write_json(destination / "recovery.json", receipt)
         return receipt

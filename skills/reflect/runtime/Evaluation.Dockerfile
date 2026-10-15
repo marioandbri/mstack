@@ -12,3 +12,5 @@ RUN uv sync --locked --project /opt/maintenance-runtime
 ENV PATH=/opt/maintenance-runtime/.venv/bin:$PATH
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV UV_PYTHON=3.13.2
+RUN /opt/maintenance-runtime/.venv/bin/python -c 'from pathlib import Path; script = "#!/bin/sh\nexec /opt/maintenance-runtime/.venv/bin/python \"$@\"\n"; [(p.write_text(script), p.chmod(0o755)) for p in (Path("/usr/local/bin/python"), Path("/usr/local/bin/python3"))]'
+RUN /bin/bash -lc 'python --version && python3 -c "import sys,jsonschema,sqlite_vec; assert sys.version.split()[0] == \"3.13.2\"; assert sys.prefix == \"/opt/maintenance-runtime/.venv\""'

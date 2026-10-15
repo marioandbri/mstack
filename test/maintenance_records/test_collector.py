@@ -72,6 +72,21 @@ class CollectorTests(unittest.TestCase):
         self.assertEqual(next(a for a in report["artifacts"] if a["path"] == "shared.txt")["status"], "unavailable")
         self.assertIn("unavailable-artifact", report["infrastructure_states"])
 
+    def test_generated_caches_and_detected_virtualenvs_do_not_make_evidence_partial(self):
+        dependency = self.root / "dependency.py"; dependency.write_text("synthetic dependency\n")
+        for folder in (self.source / ".cache/uv", self.source / "docs/agent-maintenance/.runtime/lib"):
+            folder.mkdir(parents=True); os.link(dependency, folder / "dependency.py")
+        (self.source / "docs/agent-maintenance/.runtime/pyvenv.cfg").write_text("home = /synthetic/python\ninclude-system-site-packages = false\n")
+        (self.source / "result.json").write_text('{"status":"completed"}\n')
+        (self.source / "events.jsonl").write_text('{"method":"turn/completed"}\n')
+        records = self.source / "docs/agent-maintenance/.records/records.sqlite3"
+        records.parent.mkdir(); records.write_bytes(b"synthetic durable evidence")
+        report = collect_workspace(self.source, self.root / "filtered", "attempt-1", "completed")
+        self.assertEqual(report["collection_status"], "complete")
+        self.assertEqual(report["infrastructure_states"], [])
+        self.assertEqual((self.root / "filtered/workspace/docs/agent-maintenance/.records/records.sqlite3").read_bytes(), records.read_bytes())
+        self.assertEqual({v["path"] for v in report["artifacts"] if v["status"] == "excluded-runtime"}, {".cache", "docs/agent-maintenance/.runtime"})
+
     def test_timeout_preserves_a_readable_incomplete_receipt_and_execution_interruption(self):
         report = collect_workspace(self.source, self.root / "timed-out", "attempt-1", "interrupted", timeout_seconds=0)
         self.assertEqual(report["execution_status"], "interrupted")

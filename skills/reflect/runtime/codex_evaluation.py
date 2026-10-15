@@ -13,7 +13,7 @@ import uuid
 
 from codex_rpc import RPC
 from collector import _write_json
-from evaluation import EvaluationError, private_directory
+from evaluation import EvaluationError, ExecutionFailure, private_directory
 from records import digest
 
 
@@ -60,11 +60,14 @@ class CodexDocker:
         if inspected.returncode == 0:
             if inspected.stdout.strip() != token:
                 raise EvaluationError("container-ownership-changed")
-            subprocess.run([*docker, "stop", "-t", "2", cid], env=child_env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True, timeout=10)
-        else:
-            present = subprocess.run([*docker, "ps", "-a", "--no-trunc", "--filter", "id=" + cid, "--format", "{{.ID}}"], env=child_env, capture_output=True, text=True)
-            if present.returncode != 0 or present.stdout.strip():
-                raise EvaluationError("container-stop-unverified")
+            stopped = subprocess.run([*docker, "stop", "-t", "2", cid], env=child_env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=10)
+            if stopped.returncode == 0:
+                return
+        # --rm may remove a naturally exiting container between inspect and stop.
+        # A failed daemon request is never evidence that the container is absent.
+        present = subprocess.run([*docker, "ps", "-a", "--no-trunc", "--filter", "id=" + cid, "--format", "{{.ID}}"], env=child_env, capture_output=True, text=True)
+        if present.returncode != 0 or present.stdout.strip():
+            raise EvaluationError("container-stop-unverified")
 
     def check(self, workspace, protocol, check):
         environment = protocol["profile"]["environment"]
@@ -114,25 +117,41 @@ class CodexDocker:
             global_text = profile["instructions"].get("global/AGENTS.md")
             if global_text is not None:
                 (home / "AGENTS.md").write_text(global_text); (home / "AGENTS.md").chmod(0o600)
-            preserved = False
-            lifecycle = {"consumers_stopped": True}
+            preserved, failure, result = False, None, None
+            failures = []
+            lifecycle = {"consumers_stopped": True, "partial": {}}
             try:
                 result = self._execute(workspace, protocol, seconds, home, docker, child_env, preflight, lifecycle)
                 if global_text is not None:
                     result["global_instructions_preserved"] = (home / "AGENTS.md").read_bytes() == global_text.encode()
-                return result
+            except Exception as error:
+                failure = error
+                result = lifecycle["partial"]
+                failures.append({"phase": lifecycle.get("failure_phase", "execution"), "type": type(error).__name__})
             finally:
                 try:
                     if not lifecycle["consumers_stopped"]:
                         raise EvaluationError("benchmark-auth-consumer-not-stopped")
                     helper.persist_refresh(home / "auth.json", self.auth_path, original_hash)
                     preserved = True
+                except Exception as error:
+                    failure = failure or error
+                    failures.append({"phase": "auth-preservation", "type": type(error).__name__})
                 finally:
                     if preserved:
-                        shutil.rmtree(home)
+                        try:
+                            shutil.rmtree(home)
+                        except OSError as error:
+                            failure = failure or error
+                            failures.append({"phase": "private-home-cleanup", "type": type(error).__name__})
                     else:
                         # Keep refreshed credentials private, outside collected artifacts.
                         _write_json(self.root / ("auth-recovery-" + uuid.uuid4().hex + ".json"), {"state": "refresh-not-persisted", "private_home": str(home)})
+            if failure:
+                detail = {"failures": failures, "consumers_stopped": lifecycle["consumers_stopped"], "auth_preserved": preserved}
+                _write_json(self.root / ("transport-error-" + uuid.uuid4().hex + ".json"), detail)
+                raise ExecutionFailure("transport-finalization-failed", {**(result or {}), "transport_error": detail}, consumers_stopped=lifecycle["consumers_stopped"]) from failure
+            return result
 
     def _execute(self, workspace, protocol, seconds, home, docker, child_env, preflight, lifecycle):
         profile = protocol["profile"]
@@ -162,6 +181,11 @@ class CodexDocker:
         deadline = time.monotonic() + seconds
         calls = 0
         context = {"state": "unverified", "image_digest": profile["environment"]["image_digest"], "harness": profile["harness"]}
+        lifecycle["partial"] = {"context": context}
+
+        def finish(value):
+            lifecycle["partial"] = value
+            return value
         try:
             lifecycle["consumers_stopped"] = False
             rpc = RPC(command, workspace, environment=child_env, stop=stop)
@@ -188,10 +212,11 @@ class CodexDocker:
                 context["state"] = "verified"
             _write_json(workspace / "context.json", context)
             if preflight:
-                return {"execution_status": "not-executed", "context": context, "model_calls": 0}
+                return finish({"execution_status": "not-executed", "context": context, "model_calls": 0})
             inputs = [{"type": "text", "text": protocol["case"]["request"], "text_elements": []}]
             for name in protocol["case"].get("explicit_skills", []):
                 inputs.append({"type": "skill", "name": name, "path": "/workspace/.agents/skills/" + name + "/SKILL.md"})
+            calls = None
             turn = call("turn/start", {"threadId": thread_id, "effort": profile["reasoning"], "input": inputs}); calls = 1
             turn_id = turn["turn"]["id"]
             while time.monotonic() < deadline:
@@ -204,20 +229,30 @@ class CodexDocker:
                 if message.get("method") == "turn/completed":
                     completion = message["params"]["turn"]
                     _write_json(workspace / "agent-result.json", completion)
-                    return {"execution_status": "completed" if completion["status"] == "completed" else "interrupted" if completion["status"] == "interrupted" else "infrastructure-error", "context": context, "model_calls": None, "agent_turns_started": calls, "turn_status": completion["status"]}
+                    return finish({"execution_status": "completed" if completion["status"] == "completed" else "interrupted" if completion["status"] == "interrupted" else "infrastructure-error", "context": context, "model_calls": None, "agent_turns_started": calls, "turn_status": completion["status"]})
                 if message.get("method") == "item/tool/requestUserInput":
                     _write_json(workspace / "agent-question.json", message["params"])
                     rpc.send("turn/interrupt", {"threadId": thread_id, "turnId": turn_id})
-                    return {"execution_status": "interrupted", "stop_reason": "awaiting-user-input", "context": context, "model_calls": None, "agent_turns_started": calls}
+                    return finish({"execution_status": "interrupted", "stop_reason": "awaiting-user-input", "context": context, "model_calls": None, "agent_turns_started": calls})
             raise TimeoutError()
         except TimeoutError:
             if rpc and thread_id and turn_id:
                 rpc.send("turn/interrupt", {"threadId": thread_id, "turnId": turn_id})
-            return {"execution_status": "timeout", "context": context, "model_calls": None, "agent_turns_started": calls}
+            return finish({"execution_status": "timeout", "context": context, "model_calls": None, "agent_turns_started": calls})
         finally:
+            failure = None
             try:
                 if rpc:
                     rpc.close()
+            except Exception as error:
+                failure = error
+                lifecycle["failure_phase"] = "rpc-close"
             finally:
-                stop()
-            lifecycle["consumers_stopped"] = True
+                try:
+                    stop()
+                except Exception:
+                    lifecycle["failure_phase"] = "container-stop"
+                    raise
+                lifecycle["consumers_stopped"] = rpc is None or rpc.closed
+            if failure:
+                raise failure

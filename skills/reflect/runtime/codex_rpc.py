@@ -15,6 +15,7 @@ class RPC:
     def __init__(self, command, workspace, *, environment=None, stop=None):
         self.queue = queue.Queue(); self.pending = deque(); self.sequence = 0
         self.stop = stop
+        self.closed = False
         self.events = self._open(workspace / "events.jsonl")
         self.requests = self._open(workspace / "requests.jsonl")
         self.errors = self._open(workspace / "transport.stderr.log")
@@ -69,13 +70,20 @@ class RPC:
         return self.pending.popleft() if self.pending else self.queue.get(timeout=timeout)
 
     def close(self):
-        if self.process.poll() is None:
+        failure = None
+        try:
             self.process.stdin.close()
+        except BrokenPipeError:
+            pass
+        if self.process.poll() is None:
             try:
                 self.process.wait(timeout=3)
             except subprocess.TimeoutExpired:
                 if self.stop:
-                    self.stop()
+                    try:
+                        self.stop()
+                    except Exception as error:
+                        failure = error
                 self.process.terminate()
                 try:
                     self.process.wait(timeout=3)
@@ -87,3 +95,6 @@ class RPC:
         self.process.stdout.close()
         for stream in (self.events, self.requests, self.errors):
             stream.close()
+        self.closed = True
+        if failure:
+            raise failure
