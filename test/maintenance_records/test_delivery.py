@@ -96,6 +96,52 @@ class DeliveryTests(unittest.TestCase):
         with self.assertRaisesRegex(RecordError, "candidate-artifact-mismatch"):
             self.delivery.prepare("wrong", "REVIEW-1", "behavior", "destination", unrelated)
 
+    def test_unreviewed_managed_changes_cannot_hide_in_an_accepted_commit(self):
+        self.fixture.write("skills/unslop/SKILL.md", "An additional unreviewed installed change.\n")
+        unrelated = self.fixture.commit()
+        with self.assertRaisesRegex(RecordError, "undeclared-installed-change"):
+            self.delivery.prepare("undeclared", "REVIEW-1", "behavior", "destination", unrelated)
+
+    def test_an_explicit_complete_deletion_can_be_promoted_and_reverted(self):
+        destination = "skills/code-review/scripts/check.py"
+        (self.fixture.repo / destination).unlink()
+        commit = self.fixture.commit()
+        state = self.reviews.get("REVIEW-1"); document, extra = state["record"], state["options"]
+        document["id"] = "DELETE-REVIEW"
+        extra["artifacts"].append({"id": "delete-helper", "destination": destination, "content": "", "diff": self.fixture.git("diff", self.stable, commit, "--", destination), "source_refs": ["source:behavior"]})
+        self.reviews.save(document, extra, 0, "accept-deletion")
+        self.delivery.prepare("delete", "DELETE-REVIEW", "behavior", "destination", commit)
+        grant = {**self.grant(), "commit": commit}
+        self.delivery.promote("delete", grant)
+        installed = self.fixture.home / ".codex/skills/code-review/scripts/check.py"
+        self.assertFalse(installed.exists())
+        self.delivery.rollback("delete", grant)
+        self.assertEqual(installed.read_text(), 'print("fixture")\n')
+
+    def test_evidence_for_another_opportunity_does_not_approve_this_behavior(self):
+        import test_comparisons as comparison_fixtures
+        other = comparison_fixtures.ComparisonTests(methodName="runTest")
+        other.setUp(); self.addCleanup(other.doCleanups)
+        other.candidate["source_commit"] = self.candidate
+        other.changed = other.runner.prepare(other.case, other.candidate)["protocol_sha256"]
+        alternatives = [{"id": "change", "kind": "global", "reason": "Fixture label comparison.", "targets": ["instructions/AGENTS.md"], "protocols": [other.changed]}]
+        other.comparisons.prepare("wrong-opportunity", "REVIEW-1", "destination", 1, [other.baseline], alternatives, repetitions=1)
+        judgments = [other.run_and_assess(other.baseline, "before", False), other.run_and_assess(other.changed, "after", True)]
+        other.comparisons.record_result("wrong-opportunity", "wrong-result", judgments)
+        state = other.reviews.get("REVIEW-1"); document, extra = state["record"], state["options"]
+        for item in document["opportunities"]:
+            item["decision"] = {"status": "adjust", "answer": "Accept the bounded fixture change.", "scope": item["id"]}
+            extra["decision_sources"][item["id"]] = "fixture:user:" + item["id"]
+        extra["active_question"] = None
+        extra["artifacts"] = self.reviews.get("REVIEW-1")["options"]["artifacts"]
+        other.reviews.save(document, extra, 1, "accept")
+        delivery = Delivery(other.reviews, other.runner, self.delivery.tools, self.fixture.repo, self.fixture.home, self.fixture.base / "other-delivery")
+        with self.assertRaisesRegex(RecordError, "candidate-behavior-evidence-pending"):
+            delivery.prepare("unrelated-evidence", "REVIEW-1", "behavior", "destination", self.candidate)
+        other.comparisons.prepare("correct-opportunity", "REVIEW-1", "behavior", 2, [other.baseline], alternatives, repetitions=1)
+        other.comparisons.record_result("correct-opportunity", "correct-result", judgments)
+        self.assertEqual(delivery.prepare("related-evidence", "REVIEW-1", "behavior", "destination", self.candidate)["stage"], "prepared")
+
     def test_continuing_the_same_review_does_not_erase_applicable_install_acceptance(self):
         self.delivery.prepare("delivery-1", "REVIEW-1", "behavior", "destination", self.candidate)
         state = self.reviews.get("REVIEW-1")

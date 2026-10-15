@@ -22,10 +22,12 @@ Preservar originales, decisiones, credenciales ajenas al artefacto y compatibili
 
 **Status:** ready-for-agent
 
-- [ ] Una auditoría solicitada produce una oportunidad con alcance, versiones y evidencia; captura y anotaciones se conservan sin promoción directa.
+- [x] Una auditoría solicitada produce una oportunidad con alcance, versiones y evidencia; captura y anotaciones se conservan sin promoción directa.
 - [ ] En una sesión separada, Reflect recupera resumen factual, extractos, antecedentes y decisiones aunque la sesión de origen sea inaccesible.
-- [ ] Los rechazos y autorizaciones aplicables se respetan; un cambio de fuente reabre sólo lo afectado y una reconstrucción incompleta mantiene sus límites.
+- [x] Los rechazos y autorizaciones aplicables se respetan; un cambio de fuente reabre sólo lo afectado y una reconstrucción incompleta mantiene sus límites.
 - [ ] Una comparación pertinente conserva protocolo, trazas y resultado; permite conservar lo actual o cerrar sin instalación.
 - [ ] La ruta aceptada de promoción y reversión se ensaya en destinos aislados con verificación conductual, recibos y restauración comprobada.
-- [ ] El caso sólo chat no escribe registros; en los demás se preserva el estado reanudable. El informe separa preparado/ejecutado/inconcluso y lista cobertura pendiente por entorno.
+- [x] El caso sólo chat no escribe registros; en los demás se preserva el estado reanudable. El informe separa preparado/ejecutado/inconcluso y lista cobertura pendiente por entorno.
 - [ ] Los checks obligatorios y el smoke del recorrido real pasan sin reparación manual de artefactos, sin cambios ajenos y sin convertir ejemplos o traducciones en incidentes independientes.
+
+[Recorrido mecánico completo](../../../docs/agent-maintenance/changes/AM-029-integrated-cycle.md) por interfaces públicas, procesos y HOME temporales. [Campaña conductual](../../../docs/agent-maintenance/changes/AM-030-cycle-protocol.md): 14 turnos y presupuesto propio; Mario autorizó ejecutarla. Los criterios restantes requieren sus resultados, sin reutilizar autorizaciones históricas.

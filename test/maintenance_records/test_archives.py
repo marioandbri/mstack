@@ -107,6 +107,7 @@ class ArchiveTests(unittest.TestCase):
         extra["decision_sources"]["behavior"] = "user:reject"; extra["active_question"] = "destination"
         reviews.save(document, extra, 1, "reject")
         self.assertEqual(classifier.latest("OBS-1")["state"], "pending")
+        self.assertIn("classification", self.store.get("OBS-1")["pending"])
         fresh = classifier.prepare("OBS-1")
         self.assertTrue(any(v.get("decision", {}).get("answer") == "Keep the current behavior." and v["source"] == "user:reject" for v in fresh["user_decisions"]))
         self.store.transition("OBS-1", 0, "resolved", {"answer": "Close this observation.", "source": "user:close"}, "close")

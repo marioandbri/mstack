@@ -25,6 +25,8 @@ La frontera inicial es 01, 02 y 03. Para continuar, leer el estado y cierre de c
 
 La auditoría no espera a captura. Reflect no espera a búsqueda semántica ni clasificación completa. La promoción admite preferencias explícitas sin comparación estadística obligatoria.
 
+La implementación de las 14 entregas está en el worktree de esta iniciativa. Los tickets 01–08 y 13 tienen cierre y evidencia. Los tickets 09–12 y 14 conservan abierta su verificación conductual con agentes; el recorrido mecánico completo ya pasó. [AM-029](../../docs/agent-maintenance/changes/AM-029-integrated-cycle.md) conserva ese resultado y [AM-030](../../docs/agent-maintenance/changes/AM-030-cycle-protocol.md) fija la campaña de 14 turnos, cuya ejecución autorizó Mario. La instalación activa sigue estable.
+
 La [configuración del tracker](../../docs/agents/issue-tracker.md) describe las operaciones locales y la [correspondencia de triage](../../docs/agents/triage-labels.md) define los estados.
 
 ## Cobertura de aceptación

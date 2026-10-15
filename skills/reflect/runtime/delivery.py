@@ -62,6 +62,21 @@ class Delivery:
         except subprocess.CalledProcessError:
             raise RecordError("delivery-source-unavailable") from None
 
+    def _managed_changes(self, before, after):
+        # Reuse the installer's source selection, including manifests and defaults.
+        sys.path.insert(0, str(self.tools / "install"))
+        try:
+            import mstack_source
+            if Path(mstack_source.__file__).resolve() != self.tools / "install/mstack_source.py":
+                raise RecordError("installer-source-conflict")
+            _, old = mstack_source.source(self.source, before)
+            _, new = mstack_source.source(self.source, after)
+        finally:
+            sys.path.pop(0)
+        paths = set(old) | set(new)
+        changed = self._git("diff", "--no-ext-diff", "--no-textconv", "--no-renames", "--name-only", "-z", before, after, "--", *sorted(paths))
+        return paths, {value.decode() for value in changed.split(b'\0') if value}
+
     def prepare(self, identity, review_id, behavior_id, destination_id, commit):
         identifier(identity)
         review = self.reviews.get(review_id)
@@ -78,21 +93,30 @@ class Delivery:
         if not artifacts:
             raise RecordError("missing-complete-candidate")
         for artifact in artifacts:
-            content = self._git("show", commit + ":" + artifact["destination"])
+            exists = self._git("ls-tree", "-z", commit, "--", artifact["destination"])
+            content = self._git("show", commit + ":" + artifact["destination"]) if exists else b""
             if content != artifact["content"].encode():
                 raise RecordError("candidate-artifact-mismatch")
             actual_diff = self._git("diff", "--no-ext-diff", "--no-textconv", previous["commit"], commit, "--", artifact["destination"]).decode()
             if actual_diff.strip() != artifact["diff"].strip():
                 raise RecordError("candidate-diff-mismatch")
+        managed, changed = self._managed_changes(previous["commit"], commit)
+        declared = {artifact["destination"] for artifact in artifacts}
+        if declared - managed:
+            raise RecordError("candidate-destination-not-managed")
+        if changed - declared:
+            raise RecordError("undeclared-installed-change")
         basis = items[behavior_id]["basis"]
         evidence = "explicit-preference-or-fact" if basis in ("user-preference", "technical-fact") else "evaluation-required"
         if evidence == "evaluation-required":
             from comparisons import Comparisons
             supported = False
             for result in review["evaluations"]:
-                if result.get("stage") != "executed" or result.get("review_sources_changed"):
+                if result.get("stage") != "executed" or result.get("review_sources_changed") or result.get("opportunity_id") != behavior_id:
                     continue
                 comparison = Comparisons(self.reviews, self.runner).get(result["comparison_id"])["plan"]
+                if comparison["opportunity_id"] != behavior_id or comparison["review_id"] != review_id:
+                    continue
                 for alternative in comparison["alternatives"]:
                     matched = next((v for v in result["alternatives"] if v["id"] == alternative["id"]), None)
                     if matched and matched["evidence"] == "case-supported" and alternative["protocols"] and all(self.runner.load(sha, check_execution=False)["profile"]["source_commit"] == commit for sha in alternative["protocols"]):

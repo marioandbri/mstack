@@ -86,7 +86,7 @@ class Reviews:
         seen = set()
         for artifact in artifacts:
             if (not isinstance(artifact, dict) or set(artifact) != {"id", "destination", "content", "diff", "source_refs"} or
-                    any(not isinstance(artifact[key], str) or not artifact[key].strip() for key in ("id", "destination", "content", "diff")) or
+                    any(not isinstance(artifact[key], str) or not artifact[key].strip() for key in ("id", "destination", "diff")) or not isinstance(artifact["content"], str) or
                     artifact["id"] in seen or not isinstance(artifact["source_refs"], list) or not artifact["source_refs"] or
                     any(not isinstance(v, str) or v not in references for v in artifact["source_refs"])):
                 raise RecordError("invalid-review-artifact")
@@ -143,6 +143,13 @@ class Reviews:
                     payload["legacy"] = old["legacy"]
                 body = encoded(payload)
             db.execute("INSERT INTO review_versions VALUES(?,?,?,?,?,?)", (identity, expected_revision + 1, operation_id, body.decode(), digest(body), datetime.now(timezone.utc).isoformat()))
+            from derived_work import mark
+            observations = {key for item in payload["record"]["opportunities"] for key in item["observationIds"]}
+            if previous:
+                observations.update(key for item in old["record"]["opportunities"] for key in item["observationIds"])
+            for key in observations:
+                if db.execute("SELECT 1 FROM versions WHERE kind='annotation' AND record_id=?", (key,)).fetchone():
+                    mark(db, key, "annotation", "pending", digest(body), operation_id, "review-decisions-changed")
         return {"status": "saved", "id": identity, "revision": expected_revision + 1}
 
     def history(self, identity):
