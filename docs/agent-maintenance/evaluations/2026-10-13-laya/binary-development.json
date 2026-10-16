@@ -1,0 +1,179 @@
+{
+  "stage": "adaptive development-only followup after choice results; not held-out",
+  "max_requests": 12,
+  "threshold_for_descriptive_scoring": 0.5,
+  "threshold_is_calibrated": false,
+  "questions": {
+    "observation": {
+      "failure_report": {
+        "type": "noul",
+        "instructions": "Does the text report that an agent or tool actually failed or behaved incorrectly?",
+        "criteria": {
+          "true": "An error or unwanted action is reported as having happened.",
+          "false": "No actual failure is reported; the text may state a possibility, preference, fact, or proposal."
+        }
+      },
+      "user_preference": {
+        "type": "noul",
+        "instructions": "Does the text explicitly express a user's preference about how work should be done?",
+        "criteria": {
+          "true": "The user states a desired way of working.",
+          "false": "The text does not express a user preference."
+        }
+      }
+    },
+    "audit": {
+      "operational_steps": {
+        "type": "noul",
+        "instructions": "Does this fragment describe steps for carrying out an operation?",
+        "criteria": {
+          "true": "The fragment gives operational steps.",
+          "false": "It contains no operational steps."
+        }
+      },
+      "action_boundary": {
+        "type": "noul",
+        "instructions": "Does this fragment prohibit an action or state a mandatory condition before an action?",
+        "criteria": {
+          "true": "It states a prohibition or required condition.",
+          "false": "No prohibition or required condition is stated."
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "O01",
+      "task": "observation",
+      "expected": {
+        "failure_report": true,
+        "user_preference": false
+      },
+      "language": "es",
+      "state": "El agente editó CHANGELOG.md a mano. El diff confirma el cambio y la instrucción vigente exige usar el generador.",
+      "split": "development"
+    },
+    {
+      "id": "O06",
+      "task": "observation",
+      "expected": {
+        "failure_report": true,
+        "user_preference": true
+      },
+      "language": "es",
+      "state": "El agente perdió el registro de decisiones al cerrar la sesión. Prefiero guardarlo antes de cada pregunta.",
+      "split": "development"
+    },
+    {
+      "id": "O08",
+      "task": "observation",
+      "expected": {
+        "failure_report": false,
+        "user_preference": false
+      },
+      "language": "en",
+      "state": "The installer appears able to overwrite unowned keys. This is a code-reading concern; it has not been reproduced.",
+      "split": "development"
+    },
+    {
+      "id": "O11",
+      "task": "observation",
+      "expected": {
+        "failure_report": false,
+        "user_preference": false
+      },
+      "language": "en",
+      "state": "Add a reusable evaluation library covering positive and negative skill-selection cases.",
+      "split": "development"
+    },
+    {
+      "id": "O15",
+      "task": "observation",
+      "expected": {
+        "failure_report": false,
+        "user_preference": true
+      },
+      "language": "es-en",
+      "state": "Prefiero un smoke test automatizado y reusable antes de marcar una feature como lista.",
+      "split": "development"
+    },
+    {
+      "id": "O16",
+      "task": "observation",
+      "expected": {
+        "failure_report": false,
+        "user_preference": false
+      },
+      "language": "es-en",
+      "state": "El worktree está en research/agent-maintenance-laya; git status reporta working tree clean.",
+      "split": "development"
+    },
+    {
+      "id": "A01",
+      "task": "audit",
+      "expected": {
+        "operational_steps": true,
+        "action_boundary": false
+      },
+      "language": "es",
+      "state": "Para iniciar la aplicación, abre el worktree, ejecuta bun run dev y comprueba la respuesta HTTP.",
+      "split": "development"
+    },
+    {
+      "id": "A06",
+      "task": "audit",
+      "expected": {
+        "operational_steps": true,
+        "action_boundary": true
+      },
+      "language": "es",
+      "state": "No reinicies servicios compartidos. Para iniciar la aplicación, ejecuta bun run dev desde su worktree.",
+      "split": "development"
+    },
+    {
+      "id": "A08",
+      "task": "audit",
+      "expected": {
+        "operational_steps": false,
+        "action_boundary": true
+      },
+      "language": "en",
+      "state": "Do not publish a candidate before the user approves its implementation.",
+      "split": "development"
+    },
+    {
+      "id": "A11",
+      "task": "audit",
+      "expected": {
+        "operational_steps": false,
+        "action_boundary": false
+      },
+      "language": "en",
+      "state": "I prefer maintained dependencies when they materially simplify the implementation.",
+      "split": "development"
+    },
+    {
+      "id": "A15",
+      "task": "audit",
+      "expected": {
+        "operational_steps": false,
+        "action_boundary": false
+      },
+      "language": "es-en",
+      "state": "El manifest usa skills.json como source of truth del inventario.",
+      "split": "development"
+    },
+    {
+      "id": "A16",
+      "task": "audit",
+      "expected": {
+        "operational_steps": false,
+        "action_boundary": false
+      },
+      "language": "es-en",
+      "state": "El smoke de esta sesión sigue running; el resultado todavía está pending.",
+      "split": "development"
+    }
+  ],
+  "frozen_at": "2026-10-13T16:07:27.961739+00:00"
+}

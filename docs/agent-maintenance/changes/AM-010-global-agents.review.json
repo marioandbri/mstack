@@ -1,0 +1,1014 @@
+{
+  "schemaVersion": 1,
+  "id": "AM-010-global-agents",
+  "phase": "ready-for-proposal",
+  "mode": "instructions",
+  "scope": "Revisión completa del global y destinos candidatos, con decisiones del usuario conservadas. Ajustes preparados en worktree; comprobación estructural y propuesta, sin instalación ni nuevas ejecuciones con modelos. Después se abordará mantenimiento/evaluación de Reflect.",
+  "sources": [
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/instructions/global/AGENTS.md",
+      "sha256": "9b9406a1036570535f7b5f391ae754bbcbc5c8ba8e5da04a66b873a45504ffe2"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/sources/proceso-de-mantenimiento-y-evaluacion-de-agentes.md",
+      "sha256": "cdb2168b3ec36a52dcb7e35e7453f85e382afd8e743b4a8a787a512f6f91e2ea"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/sources/evaluacion-de-skills-y-memoria-para-agentes.md",
+      "sha256": "f8abc108ea79bb64dd72118b62a52b0fbfe49136a923402889c1a4648078bb3b"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/sources/deep-research-report.md",
+      "sha256": "bb188c2f903bacbafbd8a003ed1343f0663d06e05284c943e1ca05ef6134ee1d"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/sources/redaccion-clara-y-precisa-de-skills.md",
+      "sha256": "78799324e1b0468ac93994994fefdd77fe86246c2b2c5c70a32b9c8968d48d9f"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-001.md",
+      "sha256": "b95456d9abe94d1fe002aec61454091a7a61236815da36c2c0cd56510b44010e"
+    },
+    {
+      "reference": "docs/agent-maintenance/changes/AM-001-handoff.md (version before routing confirmation)",
+      "sha256": "9d27f8bf0db9f3f8641a2efb78bd3f73c6fb4ff4229a02d0ca28cdfa0e0f79d7"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-002.md",
+      "sha256": "f1277fbae08da25b5cf278c063968387f38689f167562ba0ebd99c5da8272c14"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-003-writing-style.md",
+      "sha256": "e4ad9484c8416cfb03fb374aff7e2d6104a33ad6e46905fac5341320d537b08e"
+    },
+    {
+      "reference": "docs/agent-maintenance/changes/AM-004-testing-workflows.md (version before faithful-reproduction confirmation)",
+      "sha256": "cf50b77f2ff4c79702a9c02b726c4e17b95361efeab1a7e39868653431b69ee2"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/skills/implement/SKILL.md",
+      "sha256": "a39abcf9b0850a5e64cf296a750466ccb7c8b1fb836c0f3639d2145da0cb0d71"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/skills/grill-with-docs/SKILL.md",
+      "sha256": "fd1a4df10ed271e36599da327a4b2292c21ced97947e54f5ec72d5d830102313"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/skills/lavish/SKILL.md",
+      "sha256": "752ea038d37c64ec360d1a874e192c46ea93ea689df01d9df9419444b28e66fb"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/skills/lavish/references/codex-feedback-loop.md",
+      "sha256": "b0c501a2c042b3a51ea03520df3e1e7a7e660601fc7f83039d1aa6db5d400148"
+    },
+    {
+      "reference": "/Users/mario.brito/.agents/AGENTS.md",
+      "sha256": "9b9406a1036570535f7b5f391ae754bbcbc5c8ba8e5da04a66b873a45504ffe2"
+    },
+    {
+      "reference": "Current conversation: explicit user decisions and request to finish AGENTS before maintenance/evaluation",
+      "sha256": null
+    },
+    {
+      "reference": "docs/agent-maintenance/changes/AM-010-routing.md (version before routing confirmation)",
+      "sha256": "29bd3b5344a79b59f493f954001bce0ecf3347e8ad03ae0e8ab8c7a8041f2efa"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/skills/tdd/SKILL.md",
+      "sha256": "5363bb2775679fe9311fbb67947f95359169c6e7f1fac77c0f25e190bca6cf2f"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/skills/diagnose/SKILL.md",
+      "sha256": "28886402bbfa0470248086eab9106a103b964b76ae9496e63ff0c8a6761b6d13"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-001-handoff.md",
+      "sha256": "4cd12f4401f49a617bae030c3a011836958580d507caed5a0e9b4b921464ea41"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-010-routing.md",
+      "sha256": "752005cfddee47ec1951980dc2c31b60d93264f605dc25815f0e469b89c47e5b"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-004-testing-workflows.md",
+      "sha256": "9c47f5d2a872290a9e79dedeb520ae8365145e505711ad92d9c01e0eb1d055ab"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/skills/local-env/SKILL.md",
+      "sha256": "46c270d4a3f69323bed9aac1c664ab05e34989b2dca372a11a4112170cf4018f"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/skills/conventions-aware-engineering/SKILL.md",
+      "sha256": "4ae766caf1425f0deec2c415a0d3c330be72b8fb69cf062f1c3d8122e73fb233"
+    },
+    {
+      "reference": "docs/agent-maintenance/changes/AM-010-worktree-lifecycle.md (version before remote-merge confirmation)",
+      "sha256": "8feb8be4f733aeed5736de95a71a165538f0ff7f28312d9aecb18b208c46daa6"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-010-worktree-lifecycle.md",
+      "sha256": "0484cc44e4581e3e8e29b1d3f3ca58fc7c56055b65cf357ab680b773ceb02e27"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/skills.json",
+      "sha256": "6ae1fa3191d9b87d03b03e1ffd0be67ff2aa17b9eff20f9dea2785cb81b67725"
+    },
+    {
+      "reference": "/Users/mario.brito/.agents/skills/chrome-devtools-axi/SKILL.md",
+      "sha256": "befc1ddf89a46b21da95aa5414d0cfc93a563dd20b09ab228690a2ec84fd1994"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/engineering-skills/docs/agent-maintenance/changes/AM-010-operational-destinations.md",
+      "sha256": "a3461781077e11b13506b66f95f2a34cc9ff9e52604a475eba0d892af35cd59d"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/chrome-devtools-axi/SKILL.md",
+      "sha256": "421e8b0950e8ed95cad20ed0bc2258536f34e51b7af663b9544f037bb6eef084"
+    },
+    {
+      "reference": "Current conversation: request to complete candidates and classify reusable vs temporary content",
+      "sha256": null
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/changes/AM-010-global-agents.baseline.md",
+      "sha256": "9b9406a1036570535f7b5f391ae754bbcbc5c8ba8e5da04a66b873a45504ffe2"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/instructions/global/AGENTS.md",
+      "sha256": "0ac8eb3c9adfc18a7cfc3af3a4802fbbdb967f938a8049ce7709499fbdc6f8c2"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/changes/AM-010-classification.md",
+      "sha256": "ae50f0b873b0fea736619600d90773a77690fd5953257b9bed2d3f2263a28cde"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/AGENTS.md",
+      "sha256": "7a5af5d4797056d9a1d84fe6f06120d78d6d781bd940c193771588b004874418"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/README.md",
+      "sha256": "97e9e62dfac745fd33b4b06477ebf88a0b1d6b70c347b1ce30e00d18e7a5c1a8"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/THIRD_PARTY_NOTICES.md",
+      "sha256": "141bbd66f532e598d0d529fee4df2c629b29c8199e14bf89b78744e5e8d16d3e"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/UPSTREAM.md",
+      "sha256": "87a561dead9007b0ac0bed3ae6435e4eff9f7105fd9c91c20643b0d972550b2b"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/bun.lock",
+      "sha256": "614de0a85a4426881e68e3ee92526544f51c42f556cccbfd00c6d977fd9dbe2f"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/install/README.md",
+      "sha256": "871ae99da7b63e055b5308ffe6adc82424afc5b0e10be1a4b4588e6f69b63eec"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/mstack.json",
+      "sha256": "1dc5ecb9297396461fc3ad22d168615e56b001a34d532d8343e286563728591d"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/package.json",
+      "sha256": "94c0df6e856f12eff6e31f38a1f37720afe9d825b5fad305e904f478876fc0d6"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/capture-observations/SKILL.md",
+      "sha256": "b135a3dd502ae8e99a786a431c37bd79869912e14538074b1dc3c76638455db4"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/capture-observations/agents/openai.yaml",
+      "sha256": "8619a54e8c098122a7f3881394f84ca89b684366e848233a29ad18b6ec363935"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/caveman/SKILL.md",
+      "sha256": "8091b0e556271ec2ac483c75676f906b8cd3c082b13f89363d4c6e836fc71253"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/chrome-devtools-axi/agents/openai.yaml",
+      "sha256": "8619a54e8c098122a7f3881394f84ca89b684366e848233a29ad18b6ec363935"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/chrome-devtools-axi/references/session-isolation.md",
+      "sha256": "76377ab880bca487dc50a5d3a6c17e91d0c8afbb8e0df374b46b98e2dfad81c8"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/code-review/SKILL.md",
+      "sha256": "e1a04f86f3394c7ed399f5818097afcfd2c82f80da7b20a44a24810f599826d0"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/code-review/SMELL-BASELINE.md",
+      "sha256": "139ed589362979d84fcce414c82ca5f483ff2ce0d06a33cc1cc97aee634300e0"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/code-review/agents/openai.yaml",
+      "sha256": "8d294050a3040f128e3cc34d309b36dca53d3fa3b2ce792976f365c7e44f2514"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/code-review/candidate-harness.ts",
+      "sha256": "c7d473b9e22a513e5beeb8b435c8d68cc6d5ab127157a4a3e1fea0dc546d23fc"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/code-review/candidate-review.schema.json",
+      "sha256": "3854fbf47eb20e0842497092c9474e3615bd012d8b431602e22a8912cbcd2a1f"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/conventions-aware-engineering/GOVERNING-CONTEXT.md",
+      "sha256": "ba31a964e8a969d19aa2517eb3b40229581a8d0c63b5fd45b0bec084a6bcd60d"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/conventions-aware-engineering/SKILL.md",
+      "sha256": "4ae766caf1425f0deec2c415a0d3c330be72b8fb69cf062f1c3d8122e73fb233"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/diagnose/SKILL.md",
+      "sha256": "d87a9f4423ff3e5736439cf987966805169ca73b1e62a58f0aad8e077ea65ad6"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/diagnose/references/environment-diagnostics.md",
+      "sha256": "9788ca45dd8c9be5d0c0a45feb030a610b6a2bf0d90e528d66602ad6297d0ac5"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/diagnose/scripts/hitl-loop.template.sh",
+      "sha256": "b2932630950e5210075bcd6f850e5accf30c101c5367b29eac3a29b4dd8084c8"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/gh-axi/SKILL.md",
+      "sha256": "51e8800cb70241a15545882c3850956355c66e56a07f423ee0a738a2eb342477"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/grill-me/SKILL.md",
+      "sha256": "74147eb6010a65957efef2b9e0f0b3ff935c1def7fc117697151b1d0f3610556"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/grill-with-docs/ADR-FORMAT.md",
+      "sha256": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/grill-with-docs/CONTEXT-FORMAT.md",
+      "sha256": "8f6baaa3b1c91644bd7c600196b1aee781d5f525c7c345db8cdfbfb368329a05"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/grill-with-docs/SKILL.md",
+      "sha256": "a69f258f4f8f375049d3dbfa7ba4a39b0a92baf5ca02f58140f333397a990d64"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/handoff/SKILL.md",
+      "sha256": "7d171aeeb67754fa4c6eed4fafb701f076f401610893e683c047d863c8e84656"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/implement/SKILL.md",
+      "sha256": "b349a422464b240585d92e5e0e9e204695bb20398c1517c45ec6264b5b232057"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/implement/agents/openai.yaml",
+      "sha256": "8970a8596ade0c28ab427f41a4ea242d6bdf6186c59ebf55e1238dbecaab79dc"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/improve-codebase-architecture/DEEPENING.md",
+      "sha256": "645887d24bf8e9d73f5ceac57ff4955efcab88e13ca4dadc1325ff9db256cbdc"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/improve-codebase-architecture/INTERFACE-DESIGN.md",
+      "sha256": "bde4bc339db415089b87579f35c4abab99b876e5cefed01aa3fed2b24c9eeb12"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/improve-codebase-architecture/LANGUAGE.md",
+      "sha256": "1c51f6c7443ba27cb08a7f3371ef40ecfe2ec2083e057f97842ce1b2754297d9"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/improve-codebase-architecture/SKILL.md",
+      "sha256": "7f74ad51fd6cabbe6531c17a8e6b6ac5b0999acadce36d855eb63ec958e94a00"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/lavish/SKILL.md",
+      "sha256": "e08da2291d8da30c91648e0ad4cef9b6c3fc3efdb3030eaf1f65cdc404e8b449"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/lavish/agents/openai.yaml",
+      "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/lavish/references/codex-feedback-loop.md",
+      "sha256": "b0c501a2c042b3a51ea03520df3e1e7a7e660601fc7f83039d1aa6db5d400148"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/local-env/SKILL.md",
+      "sha256": "46c270d4a3f69323bed9aac1c664ab05e34989b2dca372a11a4112170cf4018f"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/local-env/references/operations.md",
+      "sha256": "35566b7df14072f784501ce9b41dc60b7994a9872e80a468c332b9525b91cf2f"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/local-env/references/state.md",
+      "sha256": "59dcf4639932efc313f50ec951c8893c5e7d14f6aa72b1ed292666cc55963375"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/local-env/scripts/state.mjs",
+      "sha256": "75e5fb7fa7fa55468ad86c48cdfb92931258854c9b7c2ba888af72a761d6ad96"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/mobile-next-android-testing/SKILL.md",
+      "sha256": "6c30eb730a2f4b6d69f0ceb574ed4fd9235a69a1da58f7123d50d0195ffa129e"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/receiving-code-review/SKILL.md",
+      "sha256": "c9382e92b8f32363566068ecfed19d3b2651eaf40d3942b24840f839dedfc406"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/reflect/SKILL.md",
+      "sha256": "347d4384db6311d41caa774c7cf4298cbea4bb56a75364793d26d98144af3b64"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/reflect/agents/openai.yaml",
+      "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/reflect/observation.schema.json",
+      "sha256": "7f460dfaadc5edf9ffe72a5a0f5d8ad2c0b8dae72857b6fa6e0c42b61d662939"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/reflect/references/classification.md",
+      "sha256": "4b99ca632e2bc3e49104505cc8bc1c6ad6214592c740a6f2b1b085464722152a"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/reflect/references/failure-evaluation.md",
+      "sha256": "23b8833bc364228ba97f82142e7626e2dbf9e0598b4e42fd00fa8235224802e2"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/reflect/references/instruction-review.md",
+      "sha256": "92431f757b9ffeeafdfef7c7750ca5f8566e889e2df17c91b5af71834d2ba5fe"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/reflect/references/questionnaire.md",
+      "sha256": "560d2f1cd994f7ef9206849637fad74192dcdc0a490686b981a4788a590bbb4f"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/reflect/references/records.md",
+      "sha256": "90f1b5046eab07db752ed79531f8743f026ea56cf099a042d23d563c4a60d2e8"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/reflect/references/research.md",
+      "sha256": "a99a5d16bb41d5e530c82c96db880689b41175e0f84df3376f75f6aea8e5341c"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/reflect/references/skill-support.md",
+      "sha256": "4f3ddfb10c25f0b2b23a8ff90a93c3db260531cbac6a20d893bd04eb8dfa9771"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/reflect/review.schema.json",
+      "sha256": "118135502472d5bfa2b42746ef37e8e34b065d2afceaea11dc8c7a0230f9c900"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/repository-workflow/SKILL.md",
+      "sha256": "9f0a9e82173166ff578a270e4994f53998b69610e103e2d4602f2cf50925659b"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/repository-workflow/agents/openai.yaml",
+      "sha256": "8619a54e8c098122a7f3881394f84ca89b684366e848233a29ad18b6ec363935"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/repository-workflow/references/worktree-lifecycle.md",
+      "sha256": "5751505843ffc2892bec8bddb87bc1037d4564e8519b0091c115af749c8e5fd9"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/setup-conventions-aware-engineering/DOCUMENT-LAYOUT.md",
+      "sha256": "1542d6b439ea4431c75f0626bd21475cc92d4bf8df212431efb05434489ca433"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/setup-conventions-aware-engineering/DOCUMENTATION-MAP-TEMPLATE.md",
+      "sha256": "91b4d14dac60c6da09d2d321c97b88b05e349e1b92521469f22ea08a147304ba"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/setup-conventions-aware-engineering/REPOSITORY-POSTURE-AND-STACK.md",
+      "sha256": "4c70294414a2b419b1a1473df029c2dbf8a96878c561a7e80a8cf9eb859f2da1"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/setup-conventions-aware-engineering/SKILL.md",
+      "sha256": "e7e0697a48cb337df268ab2e4b2afce28a8be6d0f612b0037935b3fc4b7918e1"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/setup-conventions-aware-engineering/TRACKER-AND-DOMAIN.md",
+      "sha256": "e0b4f8f18150401faac9428da57ae5e927a598b0f5b2767a1064ae6589628cd4"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/tdd/SKILL.md",
+      "sha256": "f993e6ac48c9ecb304db5e922992b80f1f21391af01a7e050a07fb09b39c2121"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/tdd/agents/openai.yaml",
+      "sha256": "ea6f01cf1b8c06a4b0f5b649d74b1b8ce8685e72af1b38d70d877693e092af0b"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/tdd/mocking.md",
+      "sha256": "3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/tdd/tests.md",
+      "sha256": "859f9e592c188fda4fc7277dd180e4ce9c7a2e13f6efe1f6f29eccc9d28c106a"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/thermo-nuclear-code-quality-review/SKILL.md",
+      "sha256": "e45dcfc34ed5c85aff6b5de4962759aeb9344c46ca0417bdf9d38816eeec5883"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/thermo-nuclear-code-quality-review/thermo-nuclear-code-quality-reviewer.md",
+      "sha256": "dc137df6da286a2ab086a743db60479fe4b8df26618891133d4c313e9565601f"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/to-spec/SKILL.md",
+      "sha256": "9f822dfca9fdf93ed4a9b7ace9816dc396fc734a19712ee1173b403758752765"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/to-spec/agents/openai.yaml",
+      "sha256": "1c5b4d1e3d8e52287ef19cc2742fdbbfae1914ac75d33af3e4c8174f08cc55bb"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/to-tickets/SKILL.md",
+      "sha256": "51f7254bcd4de6c8f782eeae4a6fcfcae6929827e0f5de5716179a5fc53b04bf"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/to-tickets/agents/openai.yaml",
+      "sha256": "21bc6215fffcd7614e9f772bb1760e87cc5fc7dcc707e7d282bc9414267a6090"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/triage/AGENT-BRIEF.md",
+      "sha256": "1c71c747aa97d938f75ec7a4b8fe87451763b38a3ce6348acf2b222e5819b2e5"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/triage/OUT-OF-SCOPE.md",
+      "sha256": "8ed8cf27833444060c81b3961a83c0e3d8e6cf2fcb2ddf6f8b07c6655cbb0d85"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/triage/SKILL.md",
+      "sha256": "4e6315630449aa6147bbf0f5f4d7c23fb1236bcc9e9a247dd97e1e8d59be1b58"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/unslop/SKILL.md",
+      "sha256": "7036e79cbfdd41ad01b978ecf27941a6a3e3007854dc2d8badc05697c6b23686"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/verification-before-completion/SKILL.md",
+      "sha256": "ea52d15aabaf72bc6b558efe2c126f161b53961090ddcd712000273bfe8c7b6c"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/visual-companion/SKILL.md",
+      "sha256": "2d3a57afe92e967068dad0333db2b98547d8cd637c8e85101fbfb1764489c764"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/visual-companion/agents/openai.yaml",
+      "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/wayfinder/SKILL.md",
+      "sha256": "82a20723a170d4d4173e7e5ab3967e534d3500f670d34abbd9fbd0b2d1c76f1a"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/wayfinder/agents/openai.yaml",
+      "sha256": "88bc81a11a6d52ac67aeaa76b8b619e387020d47c5133a4dd4927fd15c4ad073"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/write-a-skill/SKILL.md",
+      "sha256": "be8f20e66309258034b82a7db5040b03798aa40546f9d387662c2bd86be23123"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills/zoom-out/SKILL.md",
+      "sha256": "2a6894c7f9b1c9c55f451c625a834c4f377e217b623a85280e55db5fe9cacf48"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/skills.json",
+      "sha256": "5716d8f3c2a9173debd132e1fd1b234cc51828b44ba935a510d08d5baf3f84b5"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/changes/AM-010-verification.md",
+      "sha256": "9298a05b8a0d669e6b0732ec17228e8c8278fe385cdc0db5c6c36689d1d80292"
+    }
+  ],
+  "coverage": [
+    {
+      "section": "General Guidelines",
+      "status": "reviewed"
+    },
+    {
+      "section": "Agent Workflow",
+      "status": "reviewed"
+    },
+    {
+      "section": "Visual Accompaniment",
+      "status": "reviewed"
+    },
+    {
+      "section": "Environment Considerations",
+      "status": "reviewed"
+    },
+    {
+      "section": "Knowledge Gathered",
+      "status": "reviewed"
+    },
+    {
+      "section": "Chrome DevTools AXI usage",
+      "status": "reviewed"
+    },
+    {
+      "section": "Personal engineering skills",
+      "status": "reviewed"
+    },
+    {
+      "section": "Pi MCP configuration",
+      "status": "reviewed"
+    },
+    {
+      "section": "CLI paths and Portless",
+      "status": "reviewed"
+    },
+    {
+      "section": "Storage and worktree cleanup",
+      "status": "reviewed"
+    },
+    {
+      "section": "Conventions-aware engineering",
+      "status": "reviewed"
+    },
+    {
+      "section": "Bitbucket Cloud API",
+      "status": "reviewed"
+    },
+    {
+      "section": "Dependency Selection",
+      "status": "reviewed"
+    },
+    {
+      "section": "Lavish Feedback Sessions",
+      "status": "reviewed"
+    },
+    {
+      "section": "T3 Code remote-access diagnostics",
+      "status": "reviewed"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "AM-010-01",
+      "basis": "user-preference",
+      "observation": "Mario aceptó reparar regresiones propias y reportar fallos independientes.",
+      "evidence": [
+        {
+          "source": "docs/agent-maintenance/backlog.md#decisión-sobre-fallos-independientes",
+          "summary": "Mario aceptó reparar regresiones propias y reportar fallos independientes."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Sustituir la reparación universal por ese límite, conservando autorizaciones previas.",
+      "question": "¿Qué límite debe regir las reparaciones ajenas?",
+      "decision": {
+        "status": "adjust",
+        "answer": "si me gustaria ese limite",
+        "scope": "Comportamiento global aprobado para propuesta final."
+      },
+      "observationIds": [
+        "OBS-002"
+      ]
+    },
+    {
+      "id": "AM-010-02",
+      "basis": "user-preference",
+      "observation": "Mario aprobó avanzar sobre el alcance autorizado y confirmar cambios de alcance.",
+      "evidence": [
+        {
+          "source": "docs/agent-maintenance/changes/AM-001.md",
+          "summary": "Mario aprobó avanzar sobre el alcance autorizado y confirmar cambios de alcance."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Conservar esa autorización sin repetir discovery ni aprobación.",
+      "question": "¿Cómo proceder sobre trabajo aprobado?",
+      "decision": {
+        "status": "adjust",
+        "answer": "si apruebo, se debe avanzar sobre el alcance y confirmar cambios de alcance",
+        "scope": "Comportamiento aprobado; ubicación separada en AM-010-03."
+      },
+      "observationIds": [
+        "OBS-001"
+      ]
+    },
+    {
+      "id": "AM-010-03",
+      "basis": "static-risk",
+      "observation": "grill-with-docs exige spec o tickets; el global añade implementación directa. implement ya pide ejecutar lo descrito.",
+      "evidence": [
+        {
+          "source": "skills/grill-with-docs/SKILL.md",
+          "summary": "grill-with-docs exige spec o tickets; el global añade implementación directa. implement ya pide ejecutar lo descrito."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Global: principio de alcance y autorización. grill-with-docs: cierre y elección de ruta, con la opción directa aceptada. Sin añadir un guardrail de dudas a implement.",
+      "question": "¿Dejamos en AGENTS sólo el principio de alcance y llevamos el cierre completo a grill-with-docs?",
+      "decision": {
+        "status": "move",
+        "answer": "claro, lo que me complica es que grill with docs intente cerrar la entrevista lo antes posible para hacer una implementacion directa",
+        "scope": "Acepta la distribución de responsabilidades. Condición de cierre y ruta directa pendiente en AM-010-12; no autoriza aplicación."
+      },
+      "observationIds": [
+        "OBS-001"
+      ]
+    },
+    {
+      "id": "AM-010-04",
+      "basis": "user-preference",
+      "observation": "Mario eligió captura automática y reflexión explícita, con clasificación e integración o descarte.",
+      "evidence": [
+        {
+          "source": "docs/agent-maintenance/changes/AM-002.md",
+          "summary": "Mario eligió captura automática y reflexión explícita, con clasificación e integración o descarte."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Retirar la promoción directa a Knowledge Gathered; propuesta de principio global y captura en su skill.",
+      "question": "¿Cómo deben tratarse las observaciones?",
+      "decision": {
+        "status": "adjust",
+        "answer": "Captura automática; reflexión cuando la pida. Las observaciones quedan en bandeja para clasificación e integración o descarte.",
+        "scope": "Dirección aprobada en ambos ámbitos; redacción final pendiente."
+      },
+      "observationIds": [
+        "OBS-003"
+      ]
+    },
+    {
+      "id": "AM-010-05",
+      "basis": "user-preference",
+      "observation": "Mario eligió escritura breve y natural; caveman sólo explícito.",
+      "evidence": [
+        {
+          "source": "docs/agent-maintenance/changes/AM-003-writing-style.md",
+          "summary": "Mario eligió escritura breve y natural; caveman sólo explícito."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Conservar preferencia general; procedimientos y activación en las skills de escritura.",
+      "question": "¿Qué estilo usar por defecto?",
+      "decision": {
+        "status": "adjust",
+        "answer": "ya dejemos el otro entonces",
+        "scope": "Distribución de escritura aceptada; candidato documentado en AM-003."
+      },
+      "observationIds": [
+        "OBS-004"
+      ]
+    },
+    {
+      "id": "AM-010-06",
+      "basis": "user-preference",
+      "observation": "Mario pidió TDD y smoke para features; diagnóstico y regresiones fieles para bugs. Smoke automatizado y duradero, reutilizando pruebas.",
+      "evidence": [
+        {
+          "source": "docs/agent-maintenance/changes/AM-004-testing-workflows.md",
+          "summary": "Mario pidió TDD y smoke para features; diagnóstico y regresiones fieles para bugs. Smoke automatizado y duradero, reutilizando pruebas."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Usar esas condiciones como evidencia de funcionamiento, no como métrica de cobertura.",
+      "question": "¿Automatizar y conservar las pruebas estables?",
+      "decision": {
+        "status": "adjust",
+        "answer": "Si, lo quiero así, automatizado y conservado una vez estable, aprovechando pruebas existentes. La idea es que pueda servir de evidencia de que lo implementado funciona",
+        "scope": "Comportamiento aprobado. Traslado concreto separado en AM-010-07."
+      },
+      "observationIds": [
+        "OBS-005"
+      ]
+    },
+    {
+      "id": "AM-010-07",
+      "basis": "static-risk",
+      "observation": "tdd y diagnose ya cubren parte del comportamiento; global exige siempre E2E.",
+      "evidence": [
+        {
+          "source": "docs/agent-maintenance/changes/AM-004-testing-workflows.md",
+          "summary": "tdd y diagnose ya cubren parte del comportamiento; global exige siempre E2E."
+        },
+        {
+          "source": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/changes/AM-010-classification.md",
+          "summary": "Clasificación completa y candidatos de destinos preparados según la petición actual; notas históricas distinguidas de procedimientos y capacidades nuevas."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Preparar candidatos de esas skills y comprobar activación antes de retirar el procedimiento global.",
+      "question": "¿Se acepta el traslado concreto una vez revisados sus candidatos y comprobaciones?",
+      "decision": {
+        "status": "move",
+        "answer": "entiendo, completemos esos ajustes entonces. me parece correcto pasarlos a skills, revisando y analizando si realmente requieren existir como tal. o si fueron ajustes o observaciones temporales.",
+        "scope": "Autoriza completar candidatos y clasificar destinos. Pruebas en tdd/diagnose; procedimientos en propietarios existentes y coordinador de repositorio; Pi/Bitbucket/T3 como referencias condicionadas, no tres skills nuevas. Preparación sin despliegue; comportamiento y descubrimiento en harness pendientes."
+      },
+      "observationIds": [
+        "OBS-005"
+      ]
+    },
+    {
+      "id": "AM-010-08",
+      "basis": "user-preference",
+      "observation": "Mario indicó que cada skill debe resolver su activación mediante metadata, triggers y contenido.",
+      "evidence": [
+        {
+          "source": "Current conversation: skill activation decision",
+          "summary": "Mario indicó que cada skill debe resolver su activación mediante metadata, triggers y contenido."
+        },
+        {
+          "source": "Current conversation: reiterated skill activation ownership",
+          "summary": "pero volvemos al tema de, que la activacion de las skills deben depender de sus propios triggers, si no se activa, se debe revisar"
+        },
+        {
+          "source": "Current conversation: confirmation after trigger correction",
+          "summary": "confirmo"
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Corregir selección en el propietario, sin añadir selectores globales.",
+      "question": "¿Dónde resolver fallos de invocación?",
+      "decision": {
+        "status": "adjust",
+        "answer": "si una skill no se invoca correctamente hay que trabajar sobre el trigger y la skill en si, no sobre el agents",
+        "scope": "Criterio aprobado, reiterado y confirmado: cada skill resuelve activación y fallos de selección; no agregar rutas compensatorias al global ni reabrir esta decisión por herramienta."
+      },
+      "observationIds": []
+    },
+    {
+      "id": "AM-010-09",
+      "basis": "static-risk",
+      "observation": "Lavish repite en el global reglas que su skill y referencia ya contienen.",
+      "evidence": [
+        {
+          "source": "docs/agent-maintenance/backlog.md#procedimientos-de-lavish",
+          "summary": "Lavish repite en el global reglas que su skill y referencia ya contienen."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Aplicar AM-010-08: activación y condiciones de uso en metadata, triggers y contenido de Lavish; procedimiento de feedback en su skill y referencia. No usar AGENTS como selector ni fallback. La preferencia personal existente de ofrecer visuales no debe nombrar una skill. Inspeccionar disponibilidad, metadata y política de invocación si no se selecciona, distinguir selección de ejecución y comprobar casos pertinentes antes del traslado activo.",
+      "question": "¿Conservamos en el global sólo ofrecer visuales y esperar tu aceptación, y dejamos la elección de herramienta y el procedimiento de feedback en las skills?",
+      "decision": {
+        "status": "adjust",
+        "answer": "pero volvemos al tema de, que la activacion de las skills deben depender de sus propios triggers, si no se activa, se debe revisar",
+        "scope": "Reitera el criterio ya aprobado de activación propia para skills, aplicado a Lavish. Se retira la pregunta redundante de activación. El diff concreto, la eliminación de duplicados y las comprobaciones siguen pendientes para la propuesta consolidada; no se registra como autorización de despliegue ni aprobación nueva de toda la sección visual. Candidato concretado: descripción/cuerpo exigen review hi-fi solicitado o aceptado; feedback permanece en referencia obligatoria. Sin selector global ni despliegue; selección conductual pendiente."
+      },
+      "observationIds": [
+        "OBS-006"
+      ]
+    },
+    {
+      "id": "AM-010-10",
+      "basis": "static-risk",
+      "observation": "El global contiene Pi MCP, Bitbucket, T3, Chrome, Portless, instalación y limpieza, mezclando procedimientos, hechos e invariantes.",
+      "evidence": [
+        {
+          "source": "instructions/global/AGENTS.md",
+          "summary": "El global contiene Pi MCP, Bitbucket, T3, Chrome, Portless, instalación y limpieza, mezclando procedimientos, hechos e invariantes."
+        },
+        {
+          "source": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/changes/AM-010-classification.md",
+          "summary": "Clasificación completa y candidatos de destinos preparados según la petición actual; notas históricas distinguidas de procedimientos y capacidades nuevas."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Clasificar cada bloque. Conservar invariantes transversales y verificar propietarios y descubrimiento antes de retirar procedimientos.",
+      "question": "¿Qué destino debe tener cada procedimiento que aún carezca de propietario?",
+      "decision": {
+        "status": "move",
+        "answer": "entiendo, completemos esos ajustes entonces. me parece correcto pasarlos a skills, revisando y analizando si realmente requieren existir como tal. o si fueron ajustes o observaciones temporales.",
+        "scope": "Autoriza completar candidatos y clasificar destinos. Pruebas en tdd/diagnose; procedimientos en propietarios existentes y coordinador de repositorio; Pi/Bitbucket/T3 como referencias condicionadas, no tres skills nuevas. Preparación sin despliegue; comportamiento y descubrimiento en harness pendientes."
+      },
+      "observationIds": []
+    },
+    {
+      "id": "AM-010-11",
+      "basis": "static-risk",
+      "observation": "El global indica then commit para engineering-skills e implement termina con Commit your work to the current branch. El reporte propone separar edición, commits y publicación.",
+      "evidence": [
+        {
+          "source": "instructions/global/AGENTS.md:58",
+          "summary": "La instrucción específica de mantenimiento de engineering-skills termina en then commit."
+        },
+        {
+          "source": "skills/implement/SKILL.md:15",
+          "summary": "Commit your work to the current branch."
+        },
+        {
+          "source": "docs/agent-maintenance/sources/proceso-de-mantenimiento-y-evaluacion-de-agentes.md:671",
+          "summary": "Recomienda separar edición, cambios del entorno, commits y publicación; no establece una decisión del usuario."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Incluir commits del trabajo en el flujo autorizado, evidencia y PR tras confirmar implementación, según AM-010-15. No volver a pedir permiso para cada commit.",
+      "question": "¿Quieres commits sólo cuando estén incluidos en tu autorización, o prefieres que el agente haga commits locales automáticamente al terminar trabajo verificado, manteniendo push y publicación separados?",
+      "decision": {
+        "status": "adjust",
+        "answer": "la idea es que el flujo de trabajo en cualquier repo sea, trabajar en un worktree, hacer de ese worktree su propio ambiente de trabajo asegurando la correcta configuracion del worktree, tambien el git flow, haciendo commits, presetnar evidencia del trabajo, y una vez se confirme la correcta implementacion, preparar un pr para fusionar a la rama indicada (si no se indica ninguna, se asume main), una vez se mergea el pr, se actualiza el main localemnte y luego se debe limpiar el worktree si todo el trabajo quedo listo",
+        "scope": "Commits incluidos en el flujo habitual de trabajo aislado; reemplaza la propuesta del asistente de exigir autorización específica para cada encargo. PR después de confirmar correcta implementación. Quién autoriza y ejecuta merge pendiente en AM-010-17. No es orden de crear PR o limpiar el repositorio durante esta revisión."
+      },
+      "observationIds": []
+    },
+    {
+      "id": "AM-010-12",
+      "basis": "user-preference",
+      "observation": "Mario quiere evitar que la posibilidad de implementar directamente incentive un cierre prematuro de la entrevista o se convierta en ruta por defecto.",
+      "evidence": [
+        {
+          "source": "Current conversation: concern about premature interview closure",
+          "summary": "El usuario plantea el riesgo y pide un enrutado que evite ese resultado. No aporta una ejecución fallida."
+        },
+        {
+          "source": "docs/agent-maintenance/changes/AM-001-handoff.md",
+          "summary": "El candidato permite recomendar implementación directa para trabajo pequeño y acotado, sin exigir que el usuario solicite esa ruta."
+        }
+      ],
+      "suspectedCause": "Hipótesis: permitir la recomendación directa por tamaño aparente podría sesgar el cierre. Sin evidencia conductual de causalidad.",
+      "recommendation": "Separar cierre y ruta. Cerrar sólo con objetivo, alcance, exclusiones, escenarios relevantes, restricciones y aceptación resueltos con evidencia o respuestas. Resolver dudas pendientes antes de elegir ruta. Después recomendar spec para aceptación conjunta o tickets para entregas independientes. Implementación directa sólo por petición explícita del usuario y con trabajo acotado y aceptación clara. No repetir autorizaciones existentes. Ediciones pequeñas y claras no requieren iniciar esta entrevista.",
+      "question": "¿Quieres que, después de una entrevista, la implementación directa esté disponible sólo cuando tú la pidas, dejando spec o tickets como recomendación habitual?",
+      "decision": {
+        "status": "adjust",
+        "answer": "si, confirmo",
+        "scope": "Cierre independiente del enrutado; después de entrevista recomendar spec o tickets. Implementación directa sólo por petición del usuario, conservando autorización previa y aceptación clara. Aprobado para propuesta, sin despliegue."
+      },
+      "observationIds": [
+        "OBS-001"
+      ]
+    },
+    {
+      "id": "AM-010-13",
+      "basis": "static-risk",
+      "observation": "AGENTS exige empezar todo bug con E2E; diagnose ya permite distintos niveles y exige reproducir el síntoma original y su patrón real.",
+      "evidence": [
+        {
+          "source": "instructions/global/AGENTS.md:13",
+          "summary": "always start with reproducing the bug in an E2E testing setting"
+        },
+        {
+          "source": "skills/diagnose/SKILL.md",
+          "summary": "Phase 1 permite unit, integration y e2e. Phase 5 exige el patrón real y repetir el escenario original tras el fix."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Ubicar la elección del nivel en diagnose. Exigir fidelidad al problema, estado e interacciones causantes; una prueba menor sirve sólo si conserva ese recorrido. Usar E2E cuando el fallo dependa de la integración completa. Documentar limitaciones si falta reproducción fiel. Retirar la obligación global sólo tras preparar y comprobar el destino.",
+      "question": "¿Sustituimos la obligación de E2E por exigir una reproducción fiel, usando integración o unitarias cuando preserven el fallo y E2E cuando dependa del recorrido completo?",
+      "decision": {
+        "status": "adjust",
+        "answer": "si, confirmo",
+        "scope": "Sustituir E2E obligatorio por reproducción fiel, con elección de nivel ubicada en diagnose. Conservar cuatro requisitos de regresión y escenario original. Aprobado para candidato final, sin aplicación activa."
+      },
+      "observationIds": [
+        "OBS-005"
+      ]
+    },
+    {
+      "id": "AM-010-14",
+      "basis": "static-risk",
+      "observation": "El global fomenta crear aliases y funciones persistentes por iniciativa del agente; el reporte propone separar cambios del entorno de edición y publicación.",
+      "evidence": [
+        {
+          "source": "instructions/global/AGENTS.md:32",
+          "summary": "Prefer to take advantage of fish functions and aliases ... dont be afraid to create new ones if needed."
+        },
+        {
+          "source": "docs/agent-maintenance/sources/proceso-de-mantenimiento-y-evaluacion-de-agentes.md:671",
+          "summary": "Separar autorización para editar, modificar el entorno, hacer commit y publicar."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Mantener preferencias fish/bun. Permitir ajustes temporales necesarios dentro del alcance. Para persistencia global, exigir que configurar ese entorno esté autorizado; si ya se pidió preparación del entorno, respetar esa autorización sin preguntar por cada archivo. Proponer utilidades reutilizables no autorizadas en la bandeja.",
+      "question": "¿Prefieres que los cambios persistentes globales, como aliases o funciones de fish, requieran que hayas autorizado configurar ese entorno, mientras los ajustes temporales necesarios puedan hacerse dentro de la tarea?",
+      "decision": {
+        "status": "adjust",
+        "answer": "confirmo el limite, y los guardrails propuestos",
+        "scope": "Ajustes temporales necesarios dentro del alcance. Persistencia global sólo cuando configurar ese entorno esté autorizado; conservar autorización previa sin preguntar por archivo. Utilidades fuera del alcance a bandeja. Aprobado para propuesta global, no para aplicación activa."
+      },
+      "observationIds": []
+    },
+    {
+      "id": "AM-010-15",
+      "basis": "user-preference",
+      "observation": "Mario define el ciclo de trabajo por repositorio con worktree, entorno, Git, commits, evidencia, PR, actualización local y limpieza.",
+      "evidence": [
+        {
+          "source": "Current conversation: requested repository worktree lifecycle",
+          "summary": "la idea es que el flujo de trabajo en cualquier repo sea, trabajar en un worktree, hacer de ese worktree su propio ambiente de trabajo asegurando la correcta configuracion del worktree, tambien el git flow, haciendo commits, presetnar evidencia del trabajo, y una vez se confirme la correcta implementacion, preparar un pr para fusionar a la rama indicada (si no se indica ninguna, se asume main), una vez se mergea el pr, se actualiza el main localemnte y luego se debe limpiar el worktree si todo el trabajo quedo listo"
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Conservar el ciclo solicitado y separar sus etapas y evidencia. No equiparar preparar PR con autorizar merge.",
+      "question": "¿Cuál es el flujo habitual de trabajo en un repositorio?",
+      "decision": {
+        "status": "adjust",
+        "answer": "la idea es que el flujo de trabajo en cualquier repo sea, trabajar en un worktree, hacer de ese worktree su propio ambiente de trabajo asegurando la correcta configuracion del worktree, tambien el git flow, haciendo commits, presetnar evidencia del trabajo, y una vez se confirme la correcta implementacion, preparar un pr para fusionar a la rama indicada (si no se indica ninguna, se asume main), una vez se mergea el pr, se actualiza el main localemnte y luego se debe limpiar el worktree si todo el trabajo quedo listo",
+        "scope": "Comportamiento solicitado. Worktree como ambiente de trabajo; commits durante ejecución; evidencia; PR tras confirmación a rama indicada o main por defecto; después de merge actualizar main local y limpiar sólo si terminado. Persistencia global del entorno conserva límites AM-010-14. Ubicación pendiente AM-010-16."
+      },
+      "observationIds": []
+    },
+    {
+      "id": "AM-010-16",
+      "basis": "new-capability",
+      "observation": "local-env cubre operación y cierre de recursos; implement ejecuta artefactos y commits, pero no describe el ciclo hasta PR y limpieza.",
+      "evidence": [
+        {
+          "source": "Current conversation: requested repository worktree lifecycle",
+          "summary": "la idea es que el flujo de trabajo en cualquier repo sea, trabajar en un worktree, hacer de ese worktree su propio ambiente de trabajo asegurando la correcta configuracion del worktree, tambien el git flow, haciendo commits, presetnar evidencia del trabajo, y una vez se confirme la correcta implementacion, preparar un pr para fusionar a la rama indicada (si no se indica ninguna, se asume main), una vez se mergea el pr, se actualiza el main localemnte y luego se debe limpiar el worktree si todo el trabajo quedo listo"
+        },
+        {
+          "source": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/changes/AM-010-classification.md",
+          "summary": "Clasificación completa y candidatos de destinos preparados según la petición actual; notas históricas distinguidas de procedimientos y capacidades nuevas."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Mantener invariantes transversales en AGENTS y usar un propietario de workflow que coordine conventions-aware-engineering, local-env, implementación, pruebas y revisión. Evaluar ampliar implement antes de crear otra skill; revisar su activación y soporte de trabajo directo. Procedimientos de Git y worktree en referencias del propietario, no selectores globales.",
+      "question": "¿Qué propietario debe coordinar este ciclo completo?",
+      "decision": {
+        "status": "move",
+        "answer": "el merge se hace a traves del remoto cuando se mergea el pr, es decir lo gestiono yo, los commits no deben tener co-autoria. y me parece bien la recomendación",
+        "scope": "Aprueba principios transversales en AGENTS y procedimiento coordinado por una skill reutilizando propietarios existentes. Nombre, implementación y activación del coordinador siguen siendo trabajo de diseño y validación; no se afirma que haya aprobado una skill concreta. Petición posterior de completar ajustes autoriza diseñar repository-workflow como coordinador original; conserva implement explícito para artefactos y admite trabajo directo autorizado. Candidato sin instalación."
+      },
+      "observationIds": []
+    },
+    {
+      "id": "AM-010-17",
+      "basis": "user-preference",
+      "observation": "El usuario define qué hacer una vez mergeado el PR, pero no asigna quién lo mergea ni qué autorización lo habilita.",
+      "evidence": [
+        {
+          "source": "Current conversation: requested repository worktree lifecycle",
+          "summary": "la idea es que el flujo de trabajo en cualquier repo sea, trabajar en un worktree, hacer de ese worktree su propio ambiente de trabajo asegurando la correcta configuracion del worktree, tambien el git flow, haciendo commits, presetnar evidencia del trabajo, y una vez se confirme la correcta implementacion, preparar un pr para fusionar a la rama indicada (si no se indica ninguna, se asume main), una vez se mergea el pr, se actualiza el main localemnte y luego se debe limpiar el worktree si todo el trabajo quedo listo"
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Respetar merge gestionado por Mario en remoto. El agente prepara PR tras confirmación, luego verifica merge antes del cierre. No interpretar confirmación de implementación como permiso de merge.",
+      "question": "¿El merge debe esperar una autorización tuya, o quieres que el agente lo ejecute automáticamente cuando el PR cumpla las comprobaciones y revisiones requeridas?",
+      "decision": {
+        "status": "adjust",
+        "answer": "el merge se hace a traves del remoto cuando se mergea el pr, es decir lo gestiono yo, los commits no deben tener co-autoria. y me parece bien la recomendación",
+        "scope": "Mario gestiona el merge del PR en el remoto. El agente no ejecuta ni programa auto-merge; verifica estado remoto antes de actualizar main local y limpiar el worktree propio completado. Aprobado para propuesta, sin operaciones Git actuales."
+      },
+      "observationIds": []
+    },
+    {
+      "id": "AM-010-18",
+      "basis": "user-preference",
+      "observation": "Mario confirma que los commits no deben tener coautoría.",
+      "evidence": [
+        {
+          "source": "Current conversation: remote merge and coauthorship clarification",
+          "summary": "el merge se hace a traves del remoto cuando se mergea el pr, es decir lo gestiono yo, los commits no deben tener co-autoria. y me parece bien la recomendación"
+        },
+        {
+          "source": "instructions/global/AGENTS.md:10",
+          "summary": "El global ya prohíbe añadir automáticamente al agente como coautor."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Conservar en el global la preferencia de no añadir coautoría en los commits creados por el agente. No reescribir historia existente.",
+      "question": "¿Qué autoría deben tener los commits?",
+      "decision": {
+        "status": "adjust",
+        "answer": "el merge se hace a traves del remoto cuando se mergea el pr, es decir lo gestiono yo, los commits no deben tener co-autoria. y me parece bien la recomendación",
+        "scope": "Commits nuevos del flujo sin coautoría. Preferencia confirmada; no autoriza cambiar identidad Git global ni commits previos."
+      },
+      "observationIds": []
+    },
+    {
+      "id": "AM-010-19",
+      "basis": "static-risk",
+      "observation": "La skill externa chrome-devtools-axi recomienda npx sin versión y carece de las reglas de aislamiento que hoy conserva el global. No está en skills.json.",
+      "evidence": [
+        {
+          "source": "/Users/mario.brito/.agents/skills/chrome-devtools-axi/SKILL.md",
+          "summary": "You do not need chrome-devtools-axi installed globally - invoke it with npx -y chrome-devtools-axi <command>. El archivo completo no contiene sesiones propias, headless verificado ni aislamiento de perfiles."
+        },
+        {
+          "source": "instructions/global/AGENTS.md:46",
+          "summary": "Contiene headless verificado, sesión estable única, tab propio, aislamiento de autenticación/perfiles y no detener procesos ajenos; versiones 0.1.35 y MCP 1.9.0 en Environment."
+        },
+        {
+          "source": "skills.json",
+          "summary": "Inventario de 28 skills gestionadas sin chrome-devtools-axi."
+        },
+        {
+          "source": "/Users/mario.brito/.agents/.skill-lock.json",
+          "summary": "La entrada chrome-devtools-axi declara procedencia kunchenguid/chrome-devtools-axi y skillPath skills/chrome-devtools-axi/SKILL.md."
+        },
+        {
+          "source": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/chrome-managed-candidate.md",
+          "summary": "Candidato local d0dc8081388f3b14d5dc4ac95ae390ce2e99b804, rama feat/managed-chrome-skill. 29 skills válidas; 28 tests pasan, 1 opcional omitido, 0 fallos. Instalación activa de 28 skills intacta. Sin coautoría, worktree limpio. Comportamiento del agente sin evaluar; no instalado ni publicado."
+        }
+      ],
+      "suspectedCause": null,
+      "recommendation": "Preparar un fork gestionado en engineering-skills tras comprobar procedencia y licencia; mantener versiones actuales, trasladar controles al propietario y sus referencias obligatorias, y comprobar selección y operación antes de retirar el bloque global. No editar la copia instalada ni añadir otra skill con el mismo trigger como parche.",
+      "question": "¿Quieres incorporar chrome-devtools-axi como una versión mantenida en engineering-skills, preservando su procedencia y licencia, para que sus reglas y triggers se mantengan allí?",
+      "decision": {
+        "status": "move",
+        "answer": "si, confirmo",
+        "scope": "Autoriza preparar chrome-devtools-axi como fork mantenido en engineering-skills, con procedencia y licencia. Candidato en worktree propio; no autoriza instalar, retirar guardrails del global ni ejecutar nuevas evaluaciones con modelos."
+      },
+      "observationIds": []
+    }
+  ],
+  "promotion": "none"
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "status": "prepared-not-executed",
+  "source_commit": "38f88a622100f2bd7302642de9602aa41646a315",
+  "authorization": "Mario requested examples, labels and cases to review, then conventions/interview/worktree omissions; this does not authorize new model executions",
+  "runtime": {
+    "python": "3.13.2",
+    "external_dependencies": 0
+  },
+  "inputs": {
+    "records.json": "8ae8a751e9382227007b0b3b6b68b1947291afcc087292aa32db54221200f16b",
+    "queries.json": "b046add8e1e27e0690d451e5a4c1ba2585a32f61569863706ee8d50f2f8e1010",
+    "review-feedback.json": "45de9d66c032b3324cc721d6aeadbb94bee3fdd2be73008d9855d695fada978a",
+    "prepare.py": "1d033e92841ac3cd84a1c0b9a7d03fe5ebfc891b93979cada33ecd932d26e0e1",
+    "verify.py": "c0558c7a08ea45a289b698ff49251b341a0d12241013075cb69dc1208d427f48"
+  },
+  "outputs": {
+    "sources.json": "ae487a115e7b58e214557450b8e9889329dbb927d3c397904a2ed3c8bd4785ec",
+    "labels.json": "764e5712edaeb6438c4d21dda8be053985dbc7753b047ab3e649e53628521bda",
+    "review.md": "3eae123f9b084b232518061db0d4403b298dde17005c6f1dc94d951a99e79169"
+  },
+  "counts": {
+    "records": 33,
+    "source_files": 20,
+    "record_kinds": {
+      "incident": 5,
+      "audit-finding": 4,
+      "evaluation-result": 7,
+      "review-decision": 9,
+      "review-result": 1,
+      "installation-result": 1,
+      "storage-probe": 3,
+      "prepared-scenario": 3
+    },
+    "unexecuted_scenarios": 3,
+    "source_episodes": 26,
+    "historical_source_episodes": 25,
+    "base_query_intents": 26,
+    "proposed_queries": 52,
+    "languages": {
+      "es": 26,
+      "en": 26
+    },
+    "no_match_queries": 6,
+    "held_out_queries": 5,
+    "excluded_historical_queries": 1
+  },
+  "new_embedding_calls": 0,
+  "new_hosted_model_calls": 0,
+  "user_approved_labels": false,
+  "limits": [
+    "Only mstack maintenance sources; source diversity and incident count are limited",
+    "Authored queries and translations, not natural query logs",
+    "Provisional relevance judgments by the preparing agent, not an independent judge",
+    "Five unresolved cases and one excluded historical control have no scoring grades",
+    "Three user-requested workflow scenarios use procedures and review feedback; no execution trace or observed incident",
+    "Related records, follow-ups and language variants are not independent incident recurrences",
+    "No model selection, benchmark winner or production adoption"
+  ]
+}

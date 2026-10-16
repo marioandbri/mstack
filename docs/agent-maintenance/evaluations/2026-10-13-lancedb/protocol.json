@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Evaluate embedded LanceDB against agent-maintenance storage requirements before implementation",
+  "authorization": "Mario requested the local LanceDB test and resumed it after interruption",
+  "runtime": "Python 3.13.2",
+  "sdk": "lancedb==0.40.0",
+  "storage": "Private local directory owned by this experiment; synthetic data only",
+  "workers": 2,
+  "worker_deadline_seconds": 45,
+  "cases": [
+    {"id":"capture_without_embedding","expected":"Observation, source harness/session/event and text survive reopen with a null vector"},
+    {"id":"concurrent_append","repetitions":3,"rows_per_writer":30,"expected":"All 60 acknowledged distinct observations remain readable, with exact IDs and provenance"},
+    {"id":"sequential_retry","repetitions":4,"expected":"Repeated merge_insert of one capture-operation ID leaves one original"},
+    {"id":"concurrent_retry","repetitions":10,"expected":"Two simultaneous merge_insert calls of the same capture-operation ID leave exactly one original; rejection is reported separately"},
+    {"id":"conflicting_revision","repetitions":10,"expected":"Two updates based on revision 0 produce one accepted change and one detectable conflict, with final revision 1"},
+    {"id":"reader_freshness","expected":"A process can observe another writer's committed observation when configured to refresh; default behavior is recorded separately"},
+    {"id":"interrupted_write","repetitions":3,"confirmed_prefix_rows":6,"batch_rows":12000,"kill_delays_seconds":[0.0,0.005,0.02],"expected":"SIGKILL after batch-start notification preserves all previously acknowledged rows; interrupted batch is absent or complete, never partial; no claim of exact commit-phase injection"},
+    {"id":"hybrid_retrieval","expected":"Fixed-vector nearest-neighbor, full-text and hybrid queries honor project filters; null-vector original remains retrievable without embedding generation"}
+  ],
+  "followup_if_native_contract_fails": "Test a minimal experimental filesystem-lock adapter with fresh reads, operation-key idempotence and revision checks; report its results separately from native LanceDB",
+  "limits": [
+    "Python SDK and local macOS filesystem only; does not establish JS SDK behavior",
+    "No models, generated embeddings, cloud services or active agent installation",
+    "Fixed vectors validate retrieval plumbing, not semantic quality",
+    "Small finite concurrency sample is not a reliability guarantee",
+    "Cooperative locks protect only writers using the same adapter",
+    "No claim of multi-table transactions or power-loss durability"
+  ]
+}

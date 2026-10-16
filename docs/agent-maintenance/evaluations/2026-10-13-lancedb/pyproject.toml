@@ -1,0 +1,9 @@
+[project]
+name = "mstack-lancedb-probe"
+version = "0.1.0"
+description = "Isolated LanceDB persistence and retrieval experiment"
+requires-python = "==3.13.2"
+dependencies = ["lancedb==0.40.0"]
+
+[tool.uv]
+package = false

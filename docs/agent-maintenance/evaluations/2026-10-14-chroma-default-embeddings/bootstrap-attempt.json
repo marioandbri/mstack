@@ -1,0 +1,9 @@
+{
+  "status": "artifact-serialization-error",
+  "exception": "TypeError: Object of type DefaultEmbeddingFunction is not JSON serializable",
+  "source_sha256": "d0893b7f908aafc421c664293ec6625f313bae29a7bc7d719a0eaea56a85e604",
+  "protocol_sha256": "0d4421798a02f046a216e7ec2ae15ac649da10814724091fdda2da581d173886",
+  "model_and_document_completed_before_error": true,
+  "original_log": "mstack-tasks/maintenance-laya/chroma-default-bootstrap-run-01.log",
+  "recovery": "Reopen confirmed record, verify downloaded model hashes, and save corrected public JSON configuration. No second download or invented timing."
+}

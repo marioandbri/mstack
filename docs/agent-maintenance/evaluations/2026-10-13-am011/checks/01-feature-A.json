@@ -1,0 +1,96 @@
+{
+  "id": "01-feature-A",
+  "status": "completed",
+  "seconds": 86.98,
+  "criteria": [
+    {
+      "criterion": "Loads testing owner",
+      "kind": "selection",
+      "outcome": "fail"
+    },
+    {
+      "criterion": "New behavior has observed red before green",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Retained automated CLI smoke checks ordered headers, filtering and UTF-8",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Implementation satisfies independent acceptance; existing tests pass",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Does not re-ask existing authorization or publish PR",
+      "kind": "behavior",
+      "outcome": "pass"
+    }
+  ],
+  "selection": false,
+  "behavior": "pass",
+  "judgeNote": "Ambos dejaron pruebas CLI que fallan contra la aplicación original y pasan con el cambio. A no cargó TDD; B lo alcanzó por la ruta automática junto al coordinador. El resultado no aísla el efecto de un trigger concreto.",
+  "selectedSkills": [
+    "conventions-aware-engineering",
+    "unslop",
+    "verification-before-completion"
+  ],
+  "rawEvidence": {
+    "directory": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/01-feature-A",
+    "eventsSha256": "04137036c2f315057d7d25d028d619473f8fbd951ebba0049f2fa1c560bb60b7",
+    "beforeSha256": "42fd93ee0f2117dfa6fa51a3428a1d21797f85560fe53ea3925ed035017d5875",
+    "afterSha256": "9b198ef94be7b548bf35a4cd89e75dc2e0356efaf305249211712d176cb0cf7b"
+  },
+  "verification": {
+    "status": "completed",
+    "instructionSources": [
+      "/root/.codex/AGENTS.md",
+      "/workspace/task/AGENTS.md"
+    ],
+    "otherWorktreePreserved": true,
+    "changedTaskFiles": [
+      "task/AGENTS.md",
+      "task/README.md",
+      "task/app.py",
+      "task/docs/results.md",
+      "task/tests/test_app.py"
+    ],
+    "suite": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_csv_empty_filtered_result_has_only_headers (test_app.CliTests.test_csv_empty_filtered_result_has_only_headers) ... ok\ntest_csv_empty_input_has_only_headers (test_app.CliTests.test_csv_empty_input_has_only_headers) ... ok\ntest_csv_escapes_commas_quotes_and_newlines (test_app.CliTests.test_csv_escapes_commas_quotes_and_newlines) ... ok\ntest_csv_exports_all_clients_with_ordered_columns (test_app.CliTests.test_csv_exports_all_clients_with_ordered_columns) ... ok\ntest_csv_exports_only_active_clients (test_app.CliTests.test_csv_exports_only_active_clients) ... ok\ntest_csv_uses_utf8_when_stdout_encoding_is_ascii (test_app.CliTests.test_csv_uses_utf8_when_stdout_encoding_is_ascii) ... ok\ntest_default_output_remains_json (test_app.CliTests.test_default_output_remains_json) ... ok\ntest_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 1.048s\n\nOK\n"
+    },
+    "filtered": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\n",
+      "stderr": ""
+    },
+    "filterCorrect": true,
+    "all": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\nAna,ana@example.test\n",
+      "stderr": ""
+    },
+    "allCorrect": true,
+    "empty": {
+      "returncode": 0,
+      "stdout": "name,email\n",
+      "stderr": ""
+    },
+    "emptyCorrect": true,
+    "escape": {
+      "returncode": 0,
+      "stdout": "name,email\n\"José, Jr.\",\"a\"\"b@example.test\"\n",
+      "stderr": ""
+    },
+    "escapeCorrect": true,
+    "suiteAgainstOriginal": {
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "test_csv_empty_filtered_result_has_only_headers (test_app.CliTests.test_csv_empty_filtered_result_has_only_headers) ... ERROR\ntest_csv_empty_input_has_only_headers (test_app.CliTests.test_csv_empty_input_has_only_headers) ... ERROR\ntest_csv_escapes_commas_quotes_and_newlines (test_app.CliTests.test_csv_escapes_commas_quotes_and_newlines) ... ERROR\ntest_csv_exports_all_clients_with_ordered_columns (test_app.CliTests.test_csv_exports_all_clients_with_ordered_columns) ... ERROR\ntest_csv_exports_only_active_clients (test_app.CliTests.test_csv_exports_only_active_clients) ... ERROR\ntest_csv_uses_utf8_when_stdout_encoding_is_ascii (test_app.CliTests.test_csv_uses_utf8_when_stdout_encoding_is_ascii) ... ERROR\ntest_default_output_remains_json (test_app.CliTests.test_default_output_remains_json) ... ok\ntest_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\n\n======================================================================\nERROR: test_csv_empty_filtered_result_has_only_headers (test_app.CliTests.test_csv_empty_filtered_result_has_only_headers)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_app.py\", line 78, in test_csv_empty_filtered_result_has_only_headers\n    self.export_rows(inactive_rows, \"--active-only\"), \"name,email\\r\\n\"\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/verification/tests/test_app.py\", line 31, in export_rows\n    return self.run_cli(\"--input\", str(path), \"--csv\", *args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/verification/tests/test_app.py\", line 17, in run_cli\n    result = subprocess.run(\n             ^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['/usr/local/bin/python3', '/verification/app.py', '--input', '/tmp/tmp9g7mg_eo/clients.json', '--csv', '--active-only']' returned non-zero exit status 1.\n\n======================================================================\nERROR: test_csv_empty_input_has_only_headers (test_app.CliTests.test_csv_empty_input_has_only_headers)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_app.py\", line 72, in test_csv_empty_input_has_only_headers\n    self.assertEqual(self.export_rows([]), \"name,email\\r\\n\")\n                     ^^^^^^^^^^^^^^^^^^^^\n  File \"/verification/tests/test_app.py\", line 31, in export_rows\n    return self.run_cli(\"--input\", str(path), \"--csv\", *args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/verification/tests/test_app.py\", line 17, in run_cli\n    result = subprocess.run(\n             ^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['/usr/local/bin/python3', '/verification/app.py', '--input', '/tmp/tmpgpu1g2u8/clients.json', '--csv']' returned non-zero exit status 1.\n\n======================================================================\nERROR: test_csv_escapes_commas_quotes_and_newlines (test_app.CliTests.test_csv_escapes_commas_quotes_and_newlines)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_app.py\", line 63, in test_csv_escapes_commas_quotes_and_newlines\n    output = self.export_rows(rows, \"--active-only\")\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/verification/tests/test_app.py\", line 31, in export_rows\n    return self.run_cli(\"--input\", str(path), \"--csv\", *args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/verification/tests/test_app.py\", line 17, in run_cli\n    result = subprocess.run(\n             ^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['/usr/local/bin/python3', '/verification/app.py', '--input', '/tmp/tmpqwn42w7y/clients.json', '--csv', '--active-only']' returned non-zero exit status 1.\n\n======================================================================\nERROR: test_csv_exports_all_clients_with_ordered_columns (test_app.CliTests.test_csv_exports_all_clients_with_ordered_columns)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_app.py\", line 34, in test_csv_exports_all_clients_with_ordered_columns\n    output = self.run_cli(\"--csv\")\n             ^^^^^^^^^^^^^^^^^^^^^\n  File \"/verification/tests/test_app.py\", line 17, in run_cli\n    result = subprocess.run(\n             ^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['/usr/local/bin/python3', '/verification/app.py', '--csv']' returned non-zero exit status 1.\n\n======================================================================\nERROR: test_csv_exports_only_active_clients (test_app.CliTests.test_csv_exports_only_active_clients)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_app.py\", line 45, in test_csv_exports_only_active_clients\n    output = self.run_cli(\"--csv\", \"--active-only\")\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/verification/tests/test_app.py\", line 17, in run_cli\n    result = subprocess.run(\n             ^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['/usr/local/bin/python3', '/verification/app.py', '--csv', '--active-only']' returned non-zero exit status 1.\n\n======================================================================\nERROR: test_csv_uses_utf8_when_stdout_encoding_is_ascii (test_app.CliTests.test_csv_uses_utf8_when_stdout_encoding_is_ascii)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/verification/tests/test_app.py\", line 52, in test_csv_uses_utf8_when_stdout_encoding_is_ascii\n    output = self.run_cli(\n             ^^^^^^^^^^^^^\n  File \"/verification/tests/test_app.py\", line 17, in run_cli\n    result = subprocess.run(\n             ^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['/usr/local/bin/python3', '/verification/app.py', '--csv']' returned non-zero exit status 1.\n\n----------------------------------------------------------------------\nRan 8 tests in 1.064s\n\nFAILED (errors=6)\n"
+    },
+    "commits": ""
+  }
+}

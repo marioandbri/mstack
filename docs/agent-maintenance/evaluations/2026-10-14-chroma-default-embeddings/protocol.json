@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "authorization": "Mario requested the documented default Chroma configuration with automatic local all-MiniLM-L6-v2 embeddings",
+  "runtime": "Python 3.13.2",
+  "dependency": "chromadb==1.5.9, using the previous experiment's locked environment",
+  "configuration": {
+    "client": "PersistentClient",
+    "create_collection": "client.create_collection(name='observations')",
+    "embedding_function": "omitted, therefore DefaultEmbeddingFunction",
+    "provided_embeddings": false,
+    "anonymized_telemetry": false,
+    "distance": "SDK default l2",
+    "model": "all-MiniLM-L6-v2 through bundled ONNX implementation",
+    "model_archive_sha256": "913d7300ceae3b2dbc2c50d1de4baacab4be7b9380491c27fab7418616a16ec3",
+    "cache_override": "Only the pinned ONNX class DOWNLOAD_PATH is redirected process-locally to task-owned private storage; algorithm, model and collection defaults remain unchanged"
+  },
+  "workers": 2,
+  "worker_deadline_seconds": 120,
+  "modes": {
+    "native": "Two simultaneous SDK processes use the same synthetic path; this remains outside documented process-safe deployment support",
+    "serialized-owner": "Cooperative parent lock covers the SDK child's entire lifetime, initialization through close and exit; no permanent server"
+  },
+  "cases": [
+    {"id":"capture_documents","expected":"add accepts documents/provenance without supplied vectors and automatically stores finite normalized 384-dimensional embeddings; this is not deferred embedding capture"},
+    {"id":"concurrent_append","repetitions":3,"rows_per_writer":30,"expected":"All 60 originals and provenance survive, each with a generated 384-dimensional vector"},
+    {"id":"sequential_retry","attempts":4,"expected":"One original survives repeated capture"},
+    {"id":"concurrent_retry","repetitions":10,"expected":"Two simultaneous retries of a stable identity leave one original"},
+    {"id":"conflicting_revision","repetitions":10,"expected":"One acceptance and one conflict from revision 0; preserve native failure rather than treating automatic embeddings as revision control"},
+    {"id":"reader_freshness","expected":"A fresh process reopens the default-configured collection and sees the confirmed original and generated vector"},
+    {"id":"interrupted_write","repetitions":3,"confirmed_prefix_rows":6,"requested_batch_rows":12000,"kill_delays_seconds":[0.0,0.005,0.02],"expected":"Confirmed prefix survives SIGKILL after public batch-start; SDK maximum and embedding-before-write phase are reported"},
+    {"id":"retrieval","corpus":"corpus.json","expected":"query_texts uses default local embeddings and respects project filters; top-3 recall is measured against four English and four Spanish expectations fixed before execution"},
+    {"id":"identity_conflicts","expected":"Operation/identity reused with incompatible content produces a detectable conflict"},
+    {"id":"embedding_failure","expected":"Invalid supplied vector dimensions do not overwrite an existing automatically embedded original"},
+    {"id":"capture_embedding_unavailable","expected":"Record survives an unavailable embedding stage; inject a local embedding exception before SDK add completes to reveal whether raw capture is independent"}
+  ],
+  "limits": [
+    "No hosted model calls, server or production backend activation",
+    "Automatic local embedding computation is newly authorized; first download must start from an empty owned cache",
+    "English MiniLM and a tiny predeclared bilingual corpus do not establish production multilingual quality or classification accuracy",
+    "No matched SQLite/LanceDB run with these real embeddings, so no semantic-quality or performance winner across databases",
+    "No coordinator-death, exact commit-phase or power-loss claim",
+    "The capture_embedding_unavailable fault is deliberate and isolated; it is not an observed default model outage"
+  ]
+}

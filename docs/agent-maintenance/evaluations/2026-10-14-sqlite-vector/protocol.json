@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "authorization": "Mario requested a test with SQLite and a vector plugin",
+  "purpose": "Compare the agent-maintenance persistence contracts already exercised with LanceDB",
+  "runtime": "Python 3.13.2",
+  "extension": "sqlite-vec==0.1.9",
+  "storage": "Private local database owned by this experiment; synthetic records only",
+  "configuration": {"journal_mode":"WAL","synchronous":"FULL","busy_timeout_ms":5000,"foreign_keys":true},
+  "workers": 2,
+  "worker_deadline_seconds": 45,
+  "cases": [
+    {"id":"capture_without_embedding","expected":"Original, harness/session/event and null vector survive a reopen, including reads without loading the vector extension"},
+    {"id":"concurrent_append","repetitions":3,"rows_per_writer":30,"expected":"All 60 distinct acknowledged observations survive with exact IDs and provenance"},
+    {"id":"sequential_retry","attempts":4,"expected":"One acknowledged capture and three idempotent recognitions leave one original"},
+    {"id":"concurrent_retry","repetitions":10,"expected":"Two simultaneous attempts of the same operation leave one original without an external file lock"},
+    {"id":"conflicting_revision","repetitions":10,"expected":"Two updates from revision 0 produce one accepted change and one conflict, with final revision 1"},
+    {"id":"reader_freshness","expected":"New autocommit reads see another process's commit; a deliberately open read transaction retains its snapshot until it ends"},
+    {"id":"interrupted_write","repetitions":3,"confirmed_prefix_rows":6,"batch_rows":12000,"kill_delays_seconds":[0.0,0.005,0.02],"expected":"SIGKILL after batch-start notification preserves confirmed prefix and leaves the batch absent or complete, never partial"},
+    {"id":"hybrid_retrieval","expected":"The same five LanceDB fixture records support scoped vector and textual queries; custom RRF combines the two with a documented deterministic tie break"},
+    {"id":"transaction_rollback","expected":"SIGKILL after explicitly inserting 37 uncommitted batch rows preserves six prior commits and removes all uncommitted rows"},
+    {"id":"identity_conflicts","expected":"Different content under one operation ID, or a different operation under one record ID, cannot overwrite the original"},
+    {"id":"embedding_failure","expected":"Invalid vector dimensions roll back the embedding operation while the previously confirmed raw observation remains readable"},
+    {"id":"index_atomicity","expected":"Failure between core vector update and vector-index insertion rolls back both changes; a successful write publishes both together"}
+  ],
+  "comparison_basis": "Same record constructor, worker count, IDs, texts, vectors, repetitions and public behavioral expectations as the LanceDB experiment; execution on a different day is not a controlled timing benchmark",
+  "limits": [
+    "No models or generated embeddings; retrieval quality and classification improvement are unmeasured",
+    "Small finite sample on macOS local disk only",
+    "SQLite serializes writes; busy timeout is not an unlimited availability guarantee",
+    "Synthetic SIGKILL probes do not establish power-loss durability",
+    "Hybrid RRF is supplied by the experiment; sqlite-vec does not implement the entire hybrid workflow",
+    "No active installation or approved production adapter"
+  ]
+}

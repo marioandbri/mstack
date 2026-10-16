@@ -1,0 +1,13 @@
+{
+  "frozen_at": "2026-10-13T16:05:51.718105+00:00",
+  "sha256": {
+    "cases.json": "008a260637c0b9a93c06f7ad3a3785e6f0669c42cf52aecc850b296b3a295394",
+    "questions.json": "a512aa65d48cd684e8758181836d3e6141ec55c344a520f513fb7e78d2a909f6"
+  },
+  "max_requests": 36,
+  "variants": "two predeclared question heads in each request",
+  "checkpoint": "english for en; multilingual for es and es-en",
+  "retries": 0,
+  "selection": "Report both variants; no held-out selection or tuning",
+  "limits": "Synthetic examples authored and labeled by the same assistant. Both splits cover every category and language, with only one or two examples per cell. No independent labels, workflow baseline or deployment decision."
+}

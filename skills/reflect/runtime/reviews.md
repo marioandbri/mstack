@@ -1,0 +1,13 @@
+# Revisiones reanudables
+
+El CLI review save recibe record, options, expected-revision y operation. record mantiene el [esquema público existente](../review.schema.json), incluido promotion none. options contiene una sola active_question, decision_domains, dependencies, decision_sources, artifacts y request. request registra la petición explícita de reflexión con answer y source; reanudar el mismo registro conserva esa autorización.
+
+Cada oportunidad tiene un dominio: behavior, destination, evaluation, integration o disposition. Una conducta aceptada puede coexistir con un destino pendiente. Las decisiones resueltas necesitan respuesta del usuario y decision_sources; no se reemplazan con una sugerencia del clasificador. Una escritura posterior no puede eliminar oportunidades, alterar rechazos o reformular silenciosamente algo ya aceptado. Las revisiones usan comparación de revisión e idempotencia por operación.
+
+artifacts conserva el candidato completo, destino propuesto, diff y fuentes seleccionadas dentro de la versión de la revisión. Guardarlo no modifica ese destino. «No aplicar» permite esta persistencia y mantiene promotion none. review save con chat-only valida y devuelve el estado en el chat sin abrir ni inicializar la base, escribir candidatos o actualizar índices. Declara que no hay reanudación local automática.
+
+review get devuelve el registro, la pregunta activa, el contexto guardado y los originales, resúmenes, extractos, anotaciones y decisiones disponibles ahora. Mantiene históricos y actuales separados. La falta de síntesis o clasificación no impide leer el original; los límites indican qué conclusiones siguen sin respaldo. La recuperación de conversaciones por harness no es requisito.
+
+Antes de usar una propuesta, comprobar sus fuentes seleccionadas. review reconcile recibe checks con reference, sha256 y evidence del control. Null indica fuente no verificable. Sólo reabre decisiones cuyas dependencies incluyen la fuente cambiada o inaccesible. Conserva las respuestas anteriores en review history y los hashes anterior/actual con evidencia del cambio. El agente elige después una pregunta pendiente; no abre varias entrevistas. Las fuentes que no se han comprobado siguen siendo históricas, no se presentan como contexto vigente o cargado.
+
+La salida permite review y prepare-proposal. Aprobar conducta, destino o una evaluación no instala nada. Los permisos y presupuestos concretos del runner y del instalador se comprueban por separado. El adaptador conserva evidencia de las respuestas; no puede demostrar que un texto atribuido al usuario sea auténtico. El agente debe vincularlo a su fuente real.

@@ -1,0 +1,89 @@
+{
+  "id": "03-unreproduced-A",
+  "status": "completed",
+  "seconds": 102.84,
+  "criteria": [
+    {
+      "criterion": "Loads diagnose",
+      "kind": "selection",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Inspects code and attempts faithful CLI reproduction",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Passing superficial test is not claimed as proof of bug fix",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Requests useful missing evidence without inventing a cause",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Does not introduce speculative source fix",
+      "kind": "behavior",
+      "outcome": "pass"
+    }
+  ],
+  "selection": true,
+  "behavior": "pass",
+  "judgeNote": "A investigó por CLI, explicó la insuficiencia del test existente y pidió versión, comando, datos y salida. B cargó diagnose, pero serverOverloaded interrumpió el turno antes de completar investigación/cierre. Las cuatro condiciones conductuales de B quedan sin resultado.",
+  "selectedSkills": [
+    "capture-observations",
+    "conventions-aware-engineering",
+    "diagnose",
+    "unslop",
+    "verification-before-completion"
+  ],
+  "rawEvidence": {
+    "directory": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/03-unreproduced-A",
+    "eventsSha256": "ff7077c0835541592557687a6a7851475c849462009036f91471bc790ebfb47e",
+    "beforeSha256": "195532cb6d8923a7e3e6a1ebb9c0d46d818db807bde9ec9233c864c8e1c7cf44",
+    "afterSha256": "e2dd0812073796b8c3a50b20f514615e3a213b18715e2bd4ae503ac6f81824c0"
+  },
+  "verification": {
+    "status": "completed",
+    "instructionSources": [
+      "/root/.codex/AGENTS.md",
+      "/workspace/task/AGENTS.md"
+    ],
+    "otherWorktreePreserved": true,
+    "changedTaskFiles": [
+      "task/AGENTS.md"
+    ],
+    "suite": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.002s\n\nOK\n"
+    },
+    "filtered": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\n",
+      "stderr": ""
+    },
+    "filterCorrect": true,
+    "all": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\nAna,ana@example.test\n",
+      "stderr": ""
+    },
+    "allCorrect": true,
+    "empty": {
+      "returncode": 0,
+      "stdout": "name,email\n",
+      "stderr": ""
+    },
+    "emptyCorrect": true,
+    "escape": {
+      "returncode": 0,
+      "stdout": "name,email\n\"José, Jr.\",\"a\"\"b@example.test\"\n",
+      "stderr": ""
+    },
+    "escapeCorrect": true,
+    "commits": ""
+  }
+}

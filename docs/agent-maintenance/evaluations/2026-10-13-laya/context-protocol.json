@@ -1,0 +1,471 @@
+{
+  "frozen_at": "2026-10-13T16:17:53.138843+00:00",
+  "purpose": "User-requested followup on model routing preset and contextualized inputs",
+  "limits": "Adaptive development-only subset selected after earlier results. Same target, questions, model and language within each pair. Not a confirmatory or independent A/B workflow evaluation. Context is background only, with no case label or predicted answer.",
+  "max_requests": 12,
+  "retries": 0,
+  "requests": [
+    {
+      "id": "O01",
+      "mode": "bare",
+      "expected": "failure",
+      "payload": {
+        "state": {
+          "target": "El agente editó CHANGELOG.md a mano. El diff confirma el cambio y la instrucción vigente exige usar el generador."
+        },
+        "questions": {
+          "v1": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. What kind of statement does this observation contain?",
+            "criteria": {
+              "failure": "A concrete failure is reported as having happened.",
+              "risk": "A possible problem is hypothesized, without an observed failure.",
+              "preference": "A user states how they prefer work or communication to happen.",
+              "fact": "A descriptive technical fact is reported.",
+              "proposal": "A new capability or change is proposed.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          },
+          "v2": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. Classify what the text explicitly says. A hypothetical failure is a risk; two distinct kinds are mixed. Do not decide what action to take.",
+            "criteria": {
+              "failure": "A concrete failure is reported as having happened.",
+              "risk": "A possible problem is hypothesized, without an observed failure.",
+              "preference": "A user states how they prefer work or communication to happen.",
+              "fact": "A descriptive technical fact is reported.",
+              "proposal": "A new capability or change is proposed.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          }
+        },
+        "model": "multilingual",
+        "lang": "es"
+      }
+    },
+    {
+      "id": "O01",
+      "mode": "context",
+      "expected": "failure",
+      "payload": {
+        "state": {
+          "context": "This repository maintains instructions and skills for software agents. Observations are recorded for later review. Generated files have a generator. Evidence and suspected causes are stored separately. The review distinguishes what happened from what could happen and retains user decisions without automatically changing instructions.",
+          "target": "El agente editó CHANGELOG.md a mano. El diff confirma el cambio y la instrucción vigente exige usar el generador."
+        },
+        "questions": {
+          "v1": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. What kind of statement does this observation contain?",
+            "criteria": {
+              "failure": "A concrete failure is reported as having happened.",
+              "risk": "A possible problem is hypothesized, without an observed failure.",
+              "preference": "A user states how they prefer work or communication to happen.",
+              "fact": "A descriptive technical fact is reported.",
+              "proposal": "A new capability or change is proposed.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          },
+          "v2": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. Classify what the text explicitly says. A hypothetical failure is a risk; two distinct kinds are mixed. Do not decide what action to take.",
+            "criteria": {
+              "failure": "A concrete failure is reported as having happened.",
+              "risk": "A possible problem is hypothesized, without an observed failure.",
+              "preference": "A user states how they prefer work or communication to happen.",
+              "fact": "A descriptive technical fact is reported.",
+              "proposal": "A new capability or change is proposed.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          }
+        },
+        "model": "multilingual",
+        "lang": "es"
+      }
+    },
+    {
+      "id": "O06",
+      "mode": "context",
+      "expected": "mixed",
+      "payload": {
+        "state": {
+          "context": "This repository maintains instructions and skills for software agents. Observations are recorded for later review. Generated files have a generator. Evidence and suspected causes are stored separately. The review distinguishes what happened from what could happen and retains user decisions without automatically changing instructions.",
+          "target": "El agente perdió el registro de decisiones al cerrar la sesión. Prefiero guardarlo antes de cada pregunta."
+        },
+        "questions": {
+          "v1": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. What kind of statement does this observation contain?",
+            "criteria": {
+              "failure": "A concrete failure is reported as having happened.",
+              "risk": "A possible problem is hypothesized, without an observed failure.",
+              "preference": "A user states how they prefer work or communication to happen.",
+              "fact": "A descriptive technical fact is reported.",
+              "proposal": "A new capability or change is proposed.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          },
+          "v2": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. Classify what the text explicitly says. A hypothetical failure is a risk; two distinct kinds are mixed. Do not decide what action to take.",
+            "criteria": {
+              "failure": "A concrete failure is reported as having happened.",
+              "risk": "A possible problem is hypothesized, without an observed failure.",
+              "preference": "A user states how they prefer work or communication to happen.",
+              "fact": "A descriptive technical fact is reported.",
+              "proposal": "A new capability or change is proposed.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          }
+        },
+        "model": "multilingual",
+        "lang": "es"
+      }
+    },
+    {
+      "id": "O06",
+      "mode": "bare",
+      "expected": "mixed",
+      "payload": {
+        "state": {
+          "target": "El agente perdió el registro de decisiones al cerrar la sesión. Prefiero guardarlo antes de cada pregunta."
+        },
+        "questions": {
+          "v1": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. What kind of statement does this observation contain?",
+            "criteria": {
+              "failure": "A concrete failure is reported as having happened.",
+              "risk": "A possible problem is hypothesized, without an observed failure.",
+              "preference": "A user states how they prefer work or communication to happen.",
+              "fact": "A descriptive technical fact is reported.",
+              "proposal": "A new capability or change is proposed.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          },
+          "v2": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. Classify what the text explicitly says. A hypothetical failure is a risk; two distinct kinds are mixed. Do not decide what action to take.",
+            "criteria": {
+              "failure": "A concrete failure is reported as having happened.",
+              "risk": "A possible problem is hypothesized, without an observed failure.",
+              "preference": "A user states how they prefer work or communication to happen.",
+              "fact": "A descriptive technical fact is reported.",
+              "proposal": "A new capability or change is proposed.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          }
+        },
+        "model": "multilingual",
+        "lang": "es"
+      }
+    },
+    {
+      "id": "O08",
+      "mode": "bare",
+      "expected": "risk",
+      "payload": {
+        "state": {
+          "target": "The installer appears able to overwrite unowned keys. This is a code-reading concern; it has not been reproduced."
+        },
+        "questions": {
+          "v1": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. What kind of statement does this observation contain?",
+            "criteria": {
+              "failure": "A concrete failure is reported as having happened.",
+              "risk": "A possible problem is hypothesized, without an observed failure.",
+              "preference": "A user states how they prefer work or communication to happen.",
+              "fact": "A descriptive technical fact is reported.",
+              "proposal": "A new capability or change is proposed.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          },
+          "v2": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. Classify what the text explicitly says. A hypothetical failure is a risk; two distinct kinds are mixed. Do not decide what action to take.",
+            "criteria": {
+              "failure": "A concrete failure is reported as having happened.",
+              "risk": "A possible problem is hypothesized, without an observed failure.",
+              "preference": "A user states how they prefer work or communication to happen.",
+              "fact": "A descriptive technical fact is reported.",
+              "proposal": "A new capability or change is proposed.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          }
+        },
+        "model": "english",
+        "lang": "en"
+      }
+    },
+    {
+      "id": "O08",
+      "mode": "context",
+      "expected": "risk",
+      "payload": {
+        "state": {
+          "context": "This repository maintains instructions and skills for software agents. Observations are recorded for later review. Generated files have a generator. Evidence and suspected causes are stored separately. The review distinguishes what happened from what could happen and retains user decisions without automatically changing instructions.",
+          "target": "The installer appears able to overwrite unowned keys. This is a code-reading concern; it has not been reproduced."
+        },
+        "questions": {
+          "v1": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. What kind of statement does this observation contain?",
+            "criteria": {
+              "failure": "A concrete failure is reported as having happened.",
+              "risk": "A possible problem is hypothesized, without an observed failure.",
+              "preference": "A user states how they prefer work or communication to happen.",
+              "fact": "A descriptive technical fact is reported.",
+              "proposal": "A new capability or change is proposed.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          },
+          "v2": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. Classify what the text explicitly says. A hypothetical failure is a risk; two distinct kinds are mixed. Do not decide what action to take.",
+            "criteria": {
+              "failure": "A concrete failure is reported as having happened.",
+              "risk": "A possible problem is hypothesized, without an observed failure.",
+              "preference": "A user states how they prefer work or communication to happen.",
+              "fact": "A descriptive technical fact is reported.",
+              "proposal": "A new capability or change is proposed.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          }
+        },
+        "model": "english",
+        "lang": "en"
+      }
+    },
+    {
+      "id": "A01",
+      "mode": "context",
+      "expected": "procedure",
+      "payload": {
+        "state": {
+          "context": "This repository maintains instructions and skills for software agents. Observations are recorded for later review. Generated files have a generator. Evidence and suspected causes are stored separately. The review distinguishes what happened from what could happen and retains user decisions without automatically changing instructions.",
+          "target": "Para iniciar la aplicación, abre el worktree, ejecuta bun run dev y comprueba la respuesta HTTP."
+        },
+        "questions": {
+          "v1": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. What kind of content does this instruction fragment contain?",
+            "criteria": {
+              "procedure": "Steps for carrying out an operation.",
+              "constraint": "A prohibition or mandatory boundary on allowed actions.",
+              "fact": "Descriptive knowledge about a system or project.",
+              "temporary": "The current status of a particular task, run or session.",
+              "preference": "A preference about style or working approach.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          },
+          "v2": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. Classify the text by its meaning: operational steps, action boundary, descriptive knowledge, current task status, preference, or mixed content.",
+            "criteria": {
+              "procedure": "Steps for carrying out an operation.",
+              "constraint": "A prohibition or mandatory boundary on allowed actions.",
+              "fact": "Descriptive knowledge about a system or project.",
+              "temporary": "The current status of a particular task, run or session.",
+              "preference": "A preference about style or working approach.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          }
+        },
+        "model": "multilingual",
+        "lang": "es"
+      }
+    },
+    {
+      "id": "A01",
+      "mode": "bare",
+      "expected": "procedure",
+      "payload": {
+        "state": {
+          "target": "Para iniciar la aplicación, abre el worktree, ejecuta bun run dev y comprueba la respuesta HTTP."
+        },
+        "questions": {
+          "v1": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. What kind of content does this instruction fragment contain?",
+            "criteria": {
+              "procedure": "Steps for carrying out an operation.",
+              "constraint": "A prohibition or mandatory boundary on allowed actions.",
+              "fact": "Descriptive knowledge about a system or project.",
+              "temporary": "The current status of a particular task, run or session.",
+              "preference": "A preference about style or working approach.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          },
+          "v2": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. Classify the text by its meaning: operational steps, action boundary, descriptive knowledge, current task status, preference, or mixed content.",
+            "criteria": {
+              "procedure": "Steps for carrying out an operation.",
+              "constraint": "A prohibition or mandatory boundary on allowed actions.",
+              "fact": "Descriptive knowledge about a system or project.",
+              "temporary": "The current status of a particular task, run or session.",
+              "preference": "A preference about style or working approach.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          }
+        },
+        "model": "multilingual",
+        "lang": "es"
+      }
+    },
+    {
+      "id": "A06",
+      "mode": "bare",
+      "expected": "mixed",
+      "payload": {
+        "state": {
+          "target": "No reinicies servicios compartidos. Para iniciar la aplicación, ejecuta bun run dev desde su worktree."
+        },
+        "questions": {
+          "v1": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. What kind of content does this instruction fragment contain?",
+            "criteria": {
+              "procedure": "Steps for carrying out an operation.",
+              "constraint": "A prohibition or mandatory boundary on allowed actions.",
+              "fact": "Descriptive knowledge about a system or project.",
+              "temporary": "The current status of a particular task, run or session.",
+              "preference": "A preference about style or working approach.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          },
+          "v2": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. Classify the text by its meaning: operational steps, action boundary, descriptive knowledge, current task status, preference, or mixed content.",
+            "criteria": {
+              "procedure": "Steps for carrying out an operation.",
+              "constraint": "A prohibition or mandatory boundary on allowed actions.",
+              "fact": "Descriptive knowledge about a system or project.",
+              "temporary": "The current status of a particular task, run or session.",
+              "preference": "A preference about style or working approach.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          }
+        },
+        "model": "multilingual",
+        "lang": "es"
+      }
+    },
+    {
+      "id": "A06",
+      "mode": "context",
+      "expected": "mixed",
+      "payload": {
+        "state": {
+          "context": "This repository maintains instructions and skills for software agents. Observations are recorded for later review. Generated files have a generator. Evidence and suspected causes are stored separately. The review distinguishes what happened from what could happen and retains user decisions without automatically changing instructions.",
+          "target": "No reinicies servicios compartidos. Para iniciar la aplicación, ejecuta bun run dev desde su worktree."
+        },
+        "questions": {
+          "v1": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. What kind of content does this instruction fragment contain?",
+            "criteria": {
+              "procedure": "Steps for carrying out an operation.",
+              "constraint": "A prohibition or mandatory boundary on allowed actions.",
+              "fact": "Descriptive knowledge about a system or project.",
+              "temporary": "The current status of a particular task, run or session.",
+              "preference": "A preference about style or working approach.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          },
+          "v2": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. Classify the text by its meaning: operational steps, action boundary, descriptive knowledge, current task status, preference, or mixed content.",
+            "criteria": {
+              "procedure": "Steps for carrying out an operation.",
+              "constraint": "A prohibition or mandatory boundary on allowed actions.",
+              "fact": "Descriptive knowledge about a system or project.",
+              "temporary": "The current status of a particular task, run or session.",
+              "preference": "A preference about style or working approach.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          }
+        },
+        "model": "multilingual",
+        "lang": "es"
+      }
+    },
+    {
+      "id": "A08",
+      "mode": "context",
+      "expected": "constraint",
+      "payload": {
+        "state": {
+          "context": "This repository maintains instructions and skills for software agents. Observations are recorded for later review. Generated files have a generator. Evidence and suspected causes are stored separately. The review distinguishes what happened from what could happen and retains user decisions without automatically changing instructions.",
+          "target": "Do not publish a candidate before the user approves its implementation."
+        },
+        "questions": {
+          "v1": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. What kind of content does this instruction fragment contain?",
+            "criteria": {
+              "procedure": "Steps for carrying out an operation.",
+              "constraint": "A prohibition or mandatory boundary on allowed actions.",
+              "fact": "Descriptive knowledge about a system or project.",
+              "temporary": "The current status of a particular task, run or session.",
+              "preference": "A preference about style or working approach.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          },
+          "v2": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. Classify the text by its meaning: operational steps, action boundary, descriptive knowledge, current task status, preference, or mixed content.",
+            "criteria": {
+              "procedure": "Steps for carrying out an operation.",
+              "constraint": "A prohibition or mandatory boundary on allowed actions.",
+              "fact": "Descriptive knowledge about a system or project.",
+              "temporary": "The current status of a particular task, run or session.",
+              "preference": "A preference about style or working approach.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          }
+        },
+        "model": "english",
+        "lang": "en"
+      }
+    },
+    {
+      "id": "A08",
+      "mode": "bare",
+      "expected": "constraint",
+      "payload": {
+        "state": {
+          "target": "Do not publish a candidate before the user approves its implementation."
+        },
+        "questions": {
+          "v1": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. What kind of content does this instruction fragment contain?",
+            "criteria": {
+              "procedure": "Steps for carrying out an operation.",
+              "constraint": "A prohibition or mandatory boundary on allowed actions.",
+              "fact": "Descriptive knowledge about a system or project.",
+              "temporary": "The current status of a particular task, run or session.",
+              "preference": "A preference about style or working approach.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          },
+          "v2": {
+            "type": "choice",
+            "instructions": "Classify only the target field. The context field, when present, is background and is not itself a statement to classify. Classify the text by its meaning: operational steps, action boundary, descriptive knowledge, current task status, preference, or mixed content.",
+            "criteria": {
+              "procedure": "Steps for carrying out an operation.",
+              "constraint": "A prohibition or mandatory boundary on allowed actions.",
+              "fact": "Descriptive knowledge about a system or project.",
+              "temporary": "The current status of a particular task, run or session.",
+              "preference": "A preference about style or working approach.",
+              "mixed": "Two or more of these kinds are substantively present."
+            }
+          }
+        },
+        "model": "english",
+        "lang": "en"
+      }
+    }
+  ]
+}

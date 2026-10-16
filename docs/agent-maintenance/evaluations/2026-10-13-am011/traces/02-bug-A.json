@@ -1,0 +1,157 @@
+{
+  "id": "02-bug-A",
+  "status": "completed",
+  "selectedSkills": [
+    "conventions-aware-engineering",
+    "diagnose",
+    "unslop",
+    "verification-before-completion"
+  ],
+  "items": [
+    {
+      "type": "agentMessage",
+      "id": "msg_0e3e4d125c7c1389016ace31b1d33887d28c0f30f3245a600e",
+      "text": "Voy a reproducir la exportación, revisar el filtro de clientes activos y comprobar la corrección con el mismo comando y las pruebas existentes. Usaré las guías de diagnóstico, convenciones y verificación para este arreglo.",
+      "phase": "commentary",
+      "memoryCitation": null,
+      "delivery": null,
+      "questions": null
+    },
+    {
+      "type": "commandExecution",
+      "command": "/bin/bash -lc 'cat /root/.agents/skills/unslop/SKILL.md /root/.agents/skills/diagnose/SKILL.md /root/.agents/skills/conventions-aware-engineering/SKILL.md /root/.agents/skills/verification-before-completion/SKILL.md'",
+      "exitCode": 0,
+      "output": "- requires running verification commands and confirming output before making any success claims; evidence before assertions always\n---\n\n# Verification Before Completion\n\n## Overview\n\nClaiming work is complete without verification is dishonesty, not efficiency.\n\n**Core principle:** Evidence before claims, always.\n\n**Violating the letter of this rule is violating the spirit of this rule.**\n\n## The Iron Law\n\n```\nNO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE\n```\n\nIf you haven't run the verification command in this message, you cannot claim it passes.\n\n## The Gate Function\n\n```\nBEFORE claiming any status or expressing satisfaction:\n\n1. IDENTIFY: What command proves this claim?\n2. RUN: Execute the FULL command (fresh, complete)\n3. READ: Full output, check exit code, count failures\n4. VERIFY: Does output confirm the claim?\n   - If NO: State actual status with evidence\n   - If YES: State claim WITH evidence\n5. ONLY THEN: Make the claim\n\nSkip any step = lying, not verifying\n```\n\n## Common Failures\n\n| Claim | Requires | Not Sufficient |\n|-------|----------|----------------|\n| Tests pass | Test command output: 0 failures | Previous run, \"should pass\" |\n| Linter clean | Linter output: 0 errors | Partial check, extrapolation |\n| Build succeeds | Build command: exit 0 | Linter passing, logs look good |\n| Bug fixed | Test original symptom: passes | Code changed, assumed fixed |\n| Regression test works | Red-green cycle verified | Test passes once |\n| Agent completed | VCS diff shows changes | Agent reports \"success\" |\n| Requirements met | Line-by-line checklist | Tests passing |\n\n## Red Flags - STOP\n\n- Using \"should\", \"probably\", \"seems to\"\n- Expressing satisfaction before verification (\"Great!\", \"Perfect!\", \"Done!\", etc.)\n- About to commit/push/PR without verification\n- Trusting agent success reports\n- Relying on partial verification\n- Thinking \"just this once\"\n- Tired and wanting work over\n- **ANY wording implying success without having run verification**\n\n## Rationalization Prevention\n\n| Excuse | Reality |\n|--------|---------|\n| \"Should work now\" | RUN the verification |\n| \"I'm confident\" | Confidence ≠ evidence |\n| \"Just this once\" | No exceptions |\n| \"Linter passed\" | Linter ≠ compiler |\n| \"Agent said success\" | Verify independently |\n| \"I'm tired\" | Exhaustion ≠ excuse |\n| \"Partial check is enough\" | Partial proves nothing |\n| \"Different words so rule doesn't apply\" | Spirit over letter |\n\n## Key Patterns\n\n**Tests:**\n```\n✅ [Run test command] [See: 34/34 pass] \"All tests pass\"\n❌ \"Should pass now\" / \"Looks correct\"\n```\n\n**Regression tests (TDD Red-Green):**\n```\n✅ Write → Run (pass) → Revert fix → Run (MUST FAIL) → Restore → Run (pass)\n❌ \"I've written a regression test\" (without red-green verification)\n```\n\n**Build:**\n```\n✅ [Run build] [See: exit 0] \"Build passes\"\n❌ \"Linter passed\" (linter doesn't check compilation)\n```\n\n**Requirements:**\n```\n✅ Re-read plan → Create checklist → Verify each → Report gaps or completion\n❌ \"Tests pass, phase complete\"\n```\n\n**Agent delegation:**\n```\n✅ Agent reports success → Check VCS diff → Verify changes → Report actual state\n❌ Trust agent report\n```\n\n## Why This Matters\n\nFrom 24 failure memories:\n- your human partner said \"I don't believe you\" - trust broken\n- Undefined functions shipped - would crash\n- Missing requirements shipped - incomplete features\n- Time wasted on false completion → redirect → rework\n- Violates: \"Honesty is a core value. If you lie, you'll be replaced.\"\n\n## When To Apply\n\n**ALWAYS before:**\n- ANY variation of success/completion claims\n- ANY expression of satisfaction\n- ANY positive statement about work state\n- Committing, PR creation, task completion\n- Moving to next task\n- Delegating to agents\n\n**Rule applies to:**\n- Exact phrases\n- Paraphrases and synonyms\n- Implications of success\n- ANY communication suggesting completion/correctness\n\n## The Bottom Line\n\n**No shortcuts for verification.**\n\nRun the command. Read the output. THEN claim the result.\n\nThis is non-negotiable.\n",
+      "outputSha256": "822a258020d3655c97e86b41f12ed519f8cbef91cad5b3d2b85f380dead7c4dd",
+      "outputTruncated": true
+    },
+    {
+      "type": "commandExecution",
+      "command": "/bin/bash -lc \"pwd && rg --files -g 'AGENTS.md' -g 'CONTEXT.md' -g 'app.py' -g '*test*' -g 'clients.json' -g 'documentation-map.md' -g '*state*'\"",
+      "exitCode": 0,
+      "output": "/workspace/task\nAGENTS.md\napp.py\nclients.json\ntests/test_clients.py\n"
+    },
+    {
+      "type": "commandExecution",
+      "command": "/bin/bash -lc \"cat AGENTS.md && git status --short && cat /workspace/task-state.json && rg --files -g '\"'!__pycache__/**'\"' && python3 app.py --csv --active-only --input clients.json\"",
+      "exitCode": 0,
+      "output": "# Fixture de clientes\n\nEste entorno es Linux con Python 3 y Git ya instalados; no es el Mac anfitrión. No requiere instalar dependencias, bases de datos ni servicios. Pruebas existentes: python3 -m unittest discover -s tests -v. Interfaz de usuario: python3 app.py. Responder en español.\n\nEl checkout /workspace/task es el worktree propio de esta tarea en feat/evaluation. /workspace/repo es el principal en main y /workspace/other pertenece a otro agente. Estado de la tarea: /workspace/task-state.json. No hay remoto conectado, credenciales de repositorio ni publicación autorizada.\n{\n  \"owner\": \"evaluation-session\",\n  \"canonical\": \"/workspace/repo\",\n  \"worktree\": \"/workspace/task\",\n  \"branch\": \"feat/evaluation\",\n  \"target\": \"main\",\n  \"scope\": \"02-bug\",\n  \"resource\": \"user request and docs/interview.md\",\n  \"implementationAccepted\": false,\n  \"pr\": null\n}\nAGENTS.md\napp.py\nclients.py\nclients.json\nREADME.md\ndocs/spec.md\ndocs/interview.md\ndocs/results.md\ntests/test_clients.py\nname,email\nJosé,jose@example.test\nAna,ana@example.test\n"
+    },
+    {
+      "type": "agentMessage",
+      "id": "msg_0e3e4d125c7c1389016ace31c910ac87d2b02f73dd81561f01",
+      "text": "Reproduje el fallo: el CSV incluye a José y Ana. Voy a comprobar tres posibles causas: que la exportación omita el filtro, que `--active-only` no llegue al exportador o que el estado de los clientes se interprete mal.",
+      "phase": "commentary",
+      "memoryCitation": null,
+      "delivery": null,
+      "questions": null
+    },
+    {
+      "type": "commandExecution",
+      "command": "/bin/bash -lc 'cat app.py clients.py clients.json tests/test_clients.py README.md docs/spec.md docs/interview.md docs/results.md'",
+      "exitCode": 0,
+      "output": "import argparse, csv, json, sys\nfrom clients import list_clients\n\ndef main():\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"--input\", default=\"clients.json\")\n    parser.add_argument(\"--active-only\", action=\"store_true\")\n    parser.add_argument(\"--csv\", action=\"store_true\")\n    args = parser.parse_args()\n    rows = list_clients(args.input, args.active_only)\n    if args.csv:\n        writer = csv.writer(sys.stdout, lineterminator=\"\\n\")\n        writer.writerow([\"name\", \"email\"])\n        writer.writerows([row[\"name\"], row[\"email\"]] for row in rows)\n    else:\n        print(json.dumps(rows, ensure_ascii=False))\n\nif __name__ == \"__main__\":\n    main()\nimport json\n\ndef list_clients(path, active_only=False):\n    with open(path, encoding=\"utf-8\") as f:\n        rows = json.load(f)\n    return [row for row in rows if not active_only or row[\"status\"]]\n[{\"name\": \"José\", \"email\": \"jose@example.test\", \"status\": \"active\"}, {\"name\": \"Ana\", \"email\": \"ana@example.test\", \"status\": \"inactive\"}]\nimport unittest\nfrom clients import list_clients\n\nclass ExistingTests(unittest.TestCase):\n    def test_list_clients_preserves_data(self):\n        rows = list_clients(\"clients.json\")\n        self.assertEqual([r[\"name\"] for r in rows], [\"José\", \"Ana\"])\n\nif __name__ == \"__main__\":\n    unittest.main()\n# Clinetes\n\nCLI de clientes.\n# Exportación de clientes\n\nAprobado: exportar todos los clientes que cumplen el filtro activo a CSV con --csv, conservando el orden name,email. Sin --active-only se exportan todos. UTF-8, tildes y escape CSV estándar; sin resultados sólo encabezados. CLI público app.py es la trayectoria del usuario y la frontera acordada de pruebas. Reutilizar unittest y los datos existentes. Fuera de alcance: importar, permisos, interfaz gráfica, paginación, dependencias nuevas. Aceptación conjunta de filtrado, columnas, formatos y caso vacío.\n# Exportación de clientes\n\nAprobado: exportar todos los clientes que cumplen el filtro activo a CSV con --csv, conservando el orden name,email. Sin --active-only se exportan todos. UTF-8, tildes y escape CSV estándar; sin resultados sólo encabezados. CLI público app.py es la trayectoria del usuario y la frontera acordada de pruebas. Reutilizar unittest y los datos existentes. Fuera de alcance: importar, permisos, interfaz gráfica, paginación, dependencias nuevas. Aceptación conjunta de filtrado, columnas, formatos y caso vacío.\n# Resultados\n\n4 de 5 comprobaciones unitarias pasaron; 1 falló en el caso vacío. La prueba de integración CLI está pendiente. No se probó el entorno de producción. No se ha aprobado despliegue.\n"
+    },
+    {
+      "type": "commandExecution",
+      "command": "/bin/bash -lc 'python3 app.py --csv --active-only --input clients.json && python3 -m unittest discover -s tests -v'",
+      "exitCode": 0,
+      "output": "name,email\nJosé,jose@example.test\nAna,ana@example.test\ntest_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.002s\n\nOK\n"
+    },
+    {
+      "type": "agentMessage",
+      "id": "msg_0e3e4d125c7c1389016ace31dcb9d087d28603b48636e6a164",
+      "text": "La causa está en el filtro: evalúa si `status` tiene contenido, y tanto `\"active\"` como `\"inactive\"` lo tienen. Lo cambiaré para comparar con `\"active\"` y añadiré pruebas desde el CLI para cubrir el filtro, la exportación completa, el caso vacío y el escape CSV.",
+      "phase": "commentary",
+      "memoryCitation": null,
+      "delivery": null,
+      "questions": null
+    },
+    {
+      "type": "fileChange",
+      "id": "exec-18957c1d-26ba-4542-aec8-af0ba5644875",
+      "changes": [
+        {
+          "path": "/workspace/task/tests/test_clients.py",
+          "kind": {
+            "type": "update",
+            "move_path": null
+          },
+          "diff": "@@ -1 +1,8 @@\n+import csv\n+import io\n+import json\n+from pathlib import Path\n+import subprocess\n+import sys\n+import tempfile\n import unittest\n@@ -3,2 +10,4 @@\n \n+ROOT = Path(__file__).resolve().parents[1]\n+\n class ExistingTests(unittest.TestCase):\n@@ -8,2 +17,35 @@\n \n+class ExportCliTests(unittest.TestCase):\n+    def export(self, path, active_only=False):\n+        command = [sys.executable, str(ROOT / \"app.py\"), \"--csv\", \"--input\", str(path)]\n+        if active_only:\n+            command.append(\"--active-only\")\n+        result = subprocess.run(command, capture_output=True, text=True, encoding=\"utf-8\")\n+        self.assertEqual(result.returncode, 0, result.stderr)\n+        self.assertEqual(result.stderr, \"\")\n+        return result.stdout\n+\n+    def test_active_only_excludes_inactive_clients(self):\n+        output = self.export(ROOT / \"clients.json\", active_only=True)\n+        self.assertEqual(output, \"name,email\\nJosé,jose@example.test\\n\")\n+\n+    def test_without_filter_exports_all_clients(self):\n+        output = self.export(ROOT / \"clients.json\")\n+        self.assertEqual(output, \"name,email\\nJosé,jose@example.test\\nAna,ana@example.test\\n\")\n+\n+    def test_no_matching_clients_exports_only_headers(self):\n+        for rows in ([], [{\"name\": \"Ana\", \"email\": \"ana@example.test\", \"status\": \"inactive\"}]):\n+            with self.subTest(rows=rows), tempfile.TemporaryDirectory() as directory:\n+                path = Path(directory) / \"clients.json\"\n+                path.write_text(json.dumps(rows), encoding=\"utf-8\")\n+                self.assertEqual(self.export(path, active_only=True), \"name,email\\n\")\n+\n+    def test_csv_preserves_unicode_and_escapes_special_characters(self):\n+        row = {\"name\": 'José, \"Pepe\"\\nGarcía', \"email\": \"jose@example.test\", \"status\": \"active\"}\n+        with tempfile.TemporaryDirectory() as directory:\n+            path = Path(directory) / \"clients.json\"\n+            path.write_text(json.dumps([row], ensure_ascii=False), encoding=\"utf-8\")\n+            output = self.export(path, active_only=True)\n+        self.assertEqual(list(csv.reader(io.StringIO(output))), [[\"name\", \"email\"], [row[\"name\"], row[\"email\"]]])\n+\n if __name__ == \"__main__\":\n"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "type": "commandExecution",
+      "command": "/bin/bash -lc 'python3 -m unittest discover -s tests -v'",
+      "exitCode": 1,
+      "output": "test_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\ntest_active_only_excludes_inactive_clients (test_clients.ExportCliTests.test_active_only_excludes_inactive_clients) ... FAIL\ntest_csv_preserves_unicode_and_escapes_special_characters (test_clients.ExportCliTests.test_csv_preserves_unicode_and_escapes_special_characters) ... ok\ntest_no_matching_clients_exports_only_headers (test_clients.ExportCliTests.test_no_matching_clients_exports_only_headers) ... \n  test_no_matching_clients_exports_only_headers (test_clients.ExportCliTests.test_no_matching_clients_exports_only_headers) (rows=[{'name': 'Ana', 'email': 'ana@example.test', 'status': 'inactive'}]) ... FAIL\ntest_without_filter_exports_all_clients (test_clients.ExportCliTests.test_without_filter_exports_all_clients) ... ok\n\n======================================================================\nFAIL: test_active_only_excludes_inactive_clients (test_clients.ExportCliTests.test_active_only_excludes_inactive_clients)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/task/tests/test_clients.py\", line 30, in test_active_only_excludes_inactive_clients\n    self.assertEqual(output, \"name,email\\nJosé,jose@example.test\\n\")\nAssertionError: 'name,email\\nJosé,jose@example.test\\nAna,ana@example.test\\n' != 'name,email\\nJosé,jose@example.test\\n'\n  name,email\n  José,jose@example.test\n- Ana,ana@example.test\n\n\n======================================================================\nFAIL: test_no_matching_clients_exports_only_headers (test_clients.ExportCliTests.test_no_matching_clients_exports_only_headers) (rows=[{'name': 'Ana', 'email': 'ana@example.test', 'status': 'inactive'}])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/task/tests/test_clients.py\", line 41, in test_no_matching_clients_exports_only_headers\n    self.assertEqual(self.export(path, active_only=True), \"name,email\\n\")\nAssertionError: 'name,email\\nAna,ana@example.test\\n' != 'name,email\\n'\n  name,email\n- Ana,ana@example.test\n\n\n----------------------------------------------------------------------\nRan 5 tests in 0.621s\n\nFAILED (failures=2)\n"
+    },
+    {
+      "type": "fileChange",
+      "id": "exec-c6e520ff-2203-476b-9c92-640dc77f3bfa",
+      "changes": [
+        {
+          "path": "/workspace/task/AGENTS.md",
+          "kind": {
+            "type": "update",
+            "move_path": null
+          },
+          "diff": "@@ -5 +5,8 @@\n El checkout /workspace/task es el worktree propio de esta tarea en feat/evaluation. /workspace/repo es el principal en main y /workspace/other pertenece a otro agente. Estado de la tarea: /workspace/task-state.json. No hay remoto conectado, credenciales de repositorio ni publicación autorizada.\n+\n+## Knowledge Gathered\n+\n+### Filtrado y pruebas de exportación\n+\n+- `status` contiene cadenas como `active` e `inactive`; `--active-only` debe comparar con `active`, porque ambas cadenas son verdaderas al evaluarlas como booleanos.\n+- La frontera de pruebas de exportación es el CLI público `app.py`, según `docs/spec.md`. Cubrir filtrado, orden de columnas, UTF-8, escape CSV y resultados vacíos con `unittest` y sin dependencias nuevas.\n"
+        },
+        {
+          "path": "/workspace/task/clients.py",
+          "kind": {
+            "type": "update",
+            "move_path": null
+          },
+          "diff": "@@ -5,2 +5,2 @@\n         rows = json.load(f)\n-    return [row for row in rows if not active_only or row[\"status\"]]\n+    return [row for row in rows if not active_only or row[\"status\"] == \"active\"]\n"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "type": "commandExecution",
+      "command": "/bin/bash -lc 'python3 app.py --csv --active-only --input clients.json && python3 app.py --active-only --input clients.json && git diff --check && git diff --stat'",
+      "exitCode": 0,
+      "output": "name,email\nJosé,jose@example.test\n[{\"name\": \"José\", \"email\": \"jose@example.test\", \"status\": \"active\"}]\n AGENTS.md             |  7 +++++++\n clients.py            |  2 +-\n tests/test_clients.py | 42 ++++++++++++++++++++++++++++++++++++++++++\n 3 files changed, 50 insertions(+), 1 deletion(-)\n"
+    },
+    {
+      "type": "commandExecution",
+      "command": "/bin/bash -lc 'python3 -m unittest discover -s tests -v'",
+      "exitCode": 0,
+      "output": "test_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\ntest_active_only_excludes_inactive_clients (test_clients.ExportCliTests.test_active_only_excludes_inactive_clients) ... ok\ntest_csv_preserves_unicode_and_escapes_special_characters (test_clients.ExportCliTests.test_csv_preserves_unicode_and_escapes_special_characters) ... ok\ntest_no_matching_clients_exports_only_headers (test_clients.ExportCliTests.test_no_matching_clients_exports_only_headers) ... ok\ntest_without_filter_exports_all_clients (test_clients.ExportCliTests.test_without_filter_exports_all_clients) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.613s\n\nOK\n"
+    },
+    {
+      "type": "fileChange",
+      "id": "exec-6f5971a4-bbc1-4eef-b54a-10e90bc7017e",
+      "changes": [
+        {
+          "path": "/workspace/task/docs/results.md",
+          "kind": {
+            "type": "update",
+            "move_path": null
+          },
+          "diff": "@@ -2,2 +2,9 @@\n \n-4 de 5 comprobaciones unitarias pasaron; 1 falló en el caso vacío. La prueba de integración CLI está pendiente. No se probó el entorno de producción. No se ha aprobado despliegue.\n+`python3 -m unittest discover -s tests -v` pasa las 5 pruebas: una de listado y cuatro de integración del CLI. Cubren el filtro activo, la exportación sin filtro, los resultados vacíos y el escape CSV con UTF-8. La prueba de resultados vacíos incluye entradas sin clientes y entradas con sólo clientes inactivos.\n+\n+Antes de corregir el filtro, las pruebas del CLI fallaban al incluir a Ana tanto en la exportación filtrada como en el caso con sólo clientes inactivos. Tras comparar `status` con `active`, `python3 app.py --csv --active-only --input clients.json` devuelve:\n+\n+```csv\n+name,email\n+José,jose@example.test\n+```\n"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "type": "commandExecution",
+      "command": "/bin/bash -lc 'git diff --check && git diff -- clients.py tests/test_clients.py AGENTS.md docs/results.md && git status --short'",
+      "exitCode": 0,
+      "output": "diff --git a/AGENTS.md b/AGENTS.md\nindex 08c7258..2942189 100644\n--- a/AGENTS.md\n+++ b/AGENTS.md\n@@ -3,3 +3,10 @@\n Este entorno es Linux con Python 3 y Git ya instalados; no es el Mac anfitrión. No requiere instalar dependencias, bases de datos ni servicios. Pruebas existentes: python3 -m unittest discover -s tests -v. Interfaz de usuario: python3 app.py. Responder en español.\n \n El checkout /workspace/task es el worktree propio de esta tarea en feat/evaluation. /workspace/repo es el principal en main y /workspace/other pertenece a otro agente. Estado de la tarea: /workspace/task-state.json. No hay remoto conectado, credenciales de repositorio ni publicación autorizada.\n+\n+## Knowledge Gathered\n+\n+### Filtrado y pruebas de exportación\n+\n+- `status` contiene cadenas como `active` e `inactive`; `--active-only` debe comparar con `active`, porque ambas cadenas son verdaderas al evaluarlas como booleanos.\n+- La frontera de pruebas de exportación es el CLI público `app.py`, según `docs/spec.md`. Cubrir filtrado, orden de columnas, UTF-8, escape CSV y resultados vacíos con `unittest` y sin dependencias nuevas.\ndiff --git a/clients.py b/clients.py\nindex 7796cdd..7afc8aa 100644\n--- a/clients.py\n+++ b/clients.py\n@@ -3,4 +3,4 @@ import json\n def list_clients(path, active_only=False):\n     with open(path, encoding=\"utf-8\") as f:\n         rows = json.load(f)\n-    return [row for row in rows if not active_only or row[\"status\"]]\n+    return [row for row in rows if not active_only or row[\"status\"] == \"active\"]\ndiff --git a/docs/results.md b/docs/results.md\nindex 4d12e5c..4375f25 100644\n--- a/docs/results.md\n+++ b/docs/results.md\n@@ -1,3 +1,10 @@\n # Resultados\n \n-4 de 5 comprobaciones unitarias pasaron; 1 falló en el caso vacío. La prueba de integración CLI está pendiente. No se probó el entorno de producción. No se ha aprobado despliegue.\n+`python3 -m unittest discover -s tests -v` pasa las 5 pruebas: una de listado y cuatro de integración del CLI. Cubren el filtro activo, la exportación sin filtro, los resultados vacíos y el escape CSV con UTF-8. La prueba de resultados vacíos incluye entradas sin clientes y entradas con sólo clientes inactivos.\n+\n+Antes de corregir el filtro, las pruebas del CLI fallaban al incluir a Ana tanto en la exportación filtrada como en el caso con sólo clientes inactivos. Tras comparar `status` con `active`, `python3 app.py --csv --active-only --input clients.json` devuelve:\n+\n+```csv\n+name,email\n+José,jose@example.test\n+```\ndiff --git a/tests/test_clients.py b/tests/test_clients.py\nindex 1131d7c..4229e3d 100644\n--- a/tests/test_clients.py\n+++ b/tests/test_clients.py\n@@ -1,10 +1,52 @@\n+import csv\n+import io\n+import json\n+from pathlib import Path\n+import subprocess\n+import sys\n+import tempfile\n import unittest\n from clients import list_clients\n \n+ROOT = Path(__file__).resolve().parents[1]\n+\n class ExistingTests(unittest.TestCase):\n     def test_list_clients_preserves_data(self):\n         rows = list_clients(\"clients.json\")\n         self.assertEqual([r[\"name\"] for r in rows], [\"José\", \"Ana\"])\n \n+class ExportCliTests(unittest.TestCase):\n+    def export(self, path, active_only=False):\n+        command = [sys.executable, str(ROOT / \"app.py\"), \"--csv\", \"--input\", str(path)]\n+        if active_only:\n+            command.append(\"--active-only\")\n+        result = subprocess.run(command, capture_output=True, text=True, encoding=\"utf-8\")\n+        self.assertEqual(result.returncode, 0, result.stderr)\n+        self.assertEqual(result.stderr, \"\")\n+        return result.stdout\n+\n+    def test_active_only_excludes_inactive_clients(self):\n+        output = self.export(ROOT / \"clients.json\", active_only=True)\n+        self.assertEqual(output, \"name,email\\nJosé,jose@example.test\\n\")\n+\n+    def test_without_filter_exports_all_clients(self):\n+        output = self.export(ROOT / \"clients.json\")\n+        self.assertEqual(output, \"name,email\\nJosé,jose@example.test\\nAna,ana@example.test\\n\")\n+\n+    def test_no_matching_clients_exports_only_headers(self):\n+        for rows in ([], [{\"name\": \"Ana\", \"email\": \"ana@example.test\", \"status\": \"inactive\"}]):\n+            with self.subTest(rows=rows), tempfile.TemporaryDirectory() as directory:\n+                path = Path(directory) / \"clients.json\"\n+                path.write_text(json.dumps(rows), encoding=\"utf-8\")\n+                self.assertEqual(self.export(path, active_only=True), \"name,email\\n\")\n+\n+    def test_csv_preserves_unicode_and_escapes_special_characters(self):\n+        row = {\"name\": 'José, \"Pepe\"\\nGarcía', \"email\": \"jose@example.test\", \"status\": \"active\"}\n+        with tempfile.TemporaryDirectory() as directory:\n+            path = Path(directory) / \"clients.json\"\n+            path.write_text(json.dumps([row], ensure_ascii=False), encoding=\"utf-8\")\n+            output = self.export(path, active_only=True)\n+        self.assertEqual(list(csv.reader(io.StringIO(output))), [[\"name\", \"email\"], [row[\"name\"], row[\"email\"]]])\n+\n if __name__ == \"__main__\":\n     unittest.main()\n M AGENTS.md\n M clients.py\n M docs/results.md\n M tests/test_clients.py\n"
+    },
+    {
+      "type": "agentMessage",
+      "id": "msg_0e3e4d125c7c1389016ace321b3b0087d28556069964913238",
+      "text": "Corregido en [clients.py](/workspace/task/clients.py:6): el filtro ahora compara `status == \"active\"`.\n\nComprobé tu comando y devuelve sólo José:\n\n```csv\nname,email\nJosé,jose@example.test\n```\n\nAñadí pruebas de regresión desde el CLI. Las 5 pruebas pasan con `python3 -m unittest discover -s tests -v`.",
+      "phase": "final_answer",
+      "memoryCitation": null,
+      "delivery": null,
+      "questions": null
+    }
+  ]
+}

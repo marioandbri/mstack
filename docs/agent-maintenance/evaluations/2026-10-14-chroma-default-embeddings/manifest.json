@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "authorization": "Mario requested the documented default embedding configuration, including automatic all-MiniLM-L6-v2 download and local execution",
+  "source_commit": "a03a538a0a8ebff98c7b09f901cc1bd10c77f7ad",
+  "runtime": {
+    "python": "3.13.2",
+    "chromadb": "1.5.9",
+    "onnxruntime": "1.31.0",
+    "tokenizers": "0.23.3",
+    "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "python_executable_sha256": "b6019173e99ba481ce8a2852ffbf19cdaa9b7352d7e40c92bbd408d47da11b2b",
+    "uv": "0.10.11",
+    "native_binaries": [
+      {
+        "name": "chromadb_rust_bindings/chromadb_rust_bindings.abi3.so",
+        "sha256": "e24fa03b6d0c87827332323706899c5edb92da36cac996bec238eb5c23b5818a"
+      }
+    ]
+  },
+  "inputs": {
+    "bootstrap.py": "0df40268596623ac64580a8bc9bea8dc3c3ed31826d3b1e86ddc7c5d8df2ec21",
+    "default_actor.py": "b8b102d17e216208fcdf5cd98bad3c51b2423946290455d55e8c96f25771a213",
+    "default_probe.py": "ae98ae255d4191af23147509d27b01bfb06a531306526269d2e2b94d949448e2",
+    "verify.py": "6a136b956c5fb1cdcd68696ad025b08105452cea830a92a53f688acf930ddeea",
+    "protocol.json": "0d4421798a02f046a216e7ec2ae15ac649da10814724091fdda2da581d173886",
+    "corpus.json": "d30218d1e0d952476bf96d76e77cd10db792341b1f9ee21ee5951f0e2242baf0",
+    "bootstrap-attempt.json": "492f97d6795a5127a19aeb7127caa0dce4f363d73eab871dfc4ebb8ba6409013"
+  },
+  "comparison_sources": [
+    {
+      "path": "../2026-10-13-lancedb/probe.py",
+      "sha256": "f4351485cbafdbff3c3fe1e17c302765979f3bdc5957f590860c600d285e1710"
+    },
+    {
+      "path": "../2026-10-13-lancedb/results.json",
+      "sha256": "f72990e9f21c388494f25830dae6cb29047281e6ee716ff4a2dae5a4574d76e8"
+    },
+    {
+      "path": "../2026-10-14-sqlite-vector/results.json",
+      "sha256": "d511bde75b4aec6cf96433cd5488e0b7bc24b2ebf15925a9a89d2b02d62b9970"
+    },
+    {
+      "path": "../2026-10-14-chroma/results.json",
+      "sha256": "0b84d58625e6f1a76c3a805022f2e84eeecd28b4f6518c035af999b1f0cb6e6a"
+    },
+    {
+      "path": "../2026-10-14-chroma/chroma_probe.py",
+      "sha256": "9b0e8572b28af2fd4c0c9605e5bea39a161077171d80d7b29671013d99fe5d33"
+    },
+    {
+      "path": "../2026-10-14-chroma/pyproject.toml",
+      "sha256": "b415cd7b4661d9181a7b4b3288002d6454d7819c546a13f03693aa9b3bf3e8ab"
+    },
+    {
+      "path": "../2026-10-14-chroma/uv.lock",
+      "sha256": "f457be537b51debf6debf3a7438af7ec04316172be569c13cb4b09dcf27ff278"
+    },
+    {
+      "path": "../2026-10-14-chroma/manifest.json",
+      "sha256": "6ef520802de24723898c11f2f8213d3fe004abe9465fa3b975000f919ec97447"
+    }
+  ],
+  "bootstrap_sha256": "f08b7d6fae4d233b58627c690e8bc2d33e53417abb468d314e45594303c4fba7",
+  "results_sha256": "4d165f9b840e0220d69860a70f3ea501215c3c6394311f303012a25cf1e1a511",
+  "model": {
+    "name": "all-MiniLM-L6-v2",
+    "implementation": "Chroma bundled ONNX default",
+    "archive_url": "https://chroma-onnx-models.s3.amazonaws.com/all-MiniLM-L6-v2/onnx.tar.gz",
+    "archive_sha256": "913d7300ceae3b2dbc2c50d1de4baacab4be7b9380491c27fab7418616a16ec3",
+    "archive_bytes": 83178821,
+    "model_files": {
+      "onnx/config.json": {
+        "bytes": 650,
+        "sha256": "b567c7d5a55b636c95186aaf993f9a8920842b7e05a9e703e68b23cab2c3a670"
+      },
+      "onnx/model.onnx": {
+        "bytes": 90387606,
+        "sha256": "4f148ba8ae9c2c7fbee4af2b132db8d06c6a6545b47fc83bbb98c3d22b8393e6"
+      },
+      "onnx/special_tokens_map.json": {
+        "bytes": 125,
+        "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3"
+      },
+      "onnx/tokenizer.json": {
+        "bytes": 711661,
+        "sha256": "da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0"
+      },
+      "onnx/tokenizer_config.json": {
+        "bytes": 518,
+        "sha256": "7702051bbc4953b94d47fa1d61b42ed4cbb3c71b501a8dd7183a823f8bea1f20"
+      },
+      "onnx/vocab.txt": {
+        "bytes": 231508,
+        "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+      },
+      "onnx.tar.gz": {
+        "bytes": 83178821,
+        "sha256": "913d7300ceae3b2dbc2c50d1de4baacab4be7b9380491c27fab7418616a16ec3"
+      }
+    },
+    "license_review": {
+      "repository": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_card_commit": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "license": "apache-2.0",
+      "model_card_url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/raw/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md",
+      "model_card_sha256": "dcd602d2fd35c203a247304a06fec6654a12f7941b739f9221a064fe8dc3b7f0",
+      "model_download": "Pinned Chroma ONNX archive, not a claim that S3 archive corresponds to this Hugging Face revision"
+    },
+    "owned_cache": "Private task run/model-cache/all-MiniLM-L6-v2; class DOWNLOAD_PATH overridden in process only"
+  },
+  "collection_creation": "client.create_collection(name=\"observations\") with omitted embedding_function and default l2",
+  "provided_embedding_vectors": false,
+  "hosted_model_calls": 0,
+  "local_embedding_execution": true,
+  "active_backend_installed": false,
+  "private_run": "canonical Git common directory, mstack-tasks/maintenance-laya/chroma-default-evidence/run-01",
+  "initial_attempt": {
+    "status": "artifact-serialization-error",
+    "preserved": "attempt-01 source/protocol/attempt summary and original bootstrap log",
+    "recovery": "Reopen confirmed record, verify model, save configuration_json; cold timing remains null"
+  },
+  "limits": [
+    "Native embedded simultaneous writers remain outside documented deployment support",
+    "Real bilingual retrieval smoke is tiny and synthetic; no semantic-quality comparison with the other databases or classification evaluation",
+    "Automatic embeddings run before document persistence; model failure is a deliberate local injected case",
+    "Owner control did not test coordinator termination with an active child",
+    "No exact commit-phase, power-loss, migration/history/backup acceptance",
+    "Model card revision records license provenance, not an asserted revision identity of the separate Chroma ONNX archive"
+  ]
+}

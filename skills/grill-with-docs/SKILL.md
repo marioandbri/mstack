@@ -15,14 +15,37 @@ If a question can be answered by exploring the codebase, explore the codebase in
 
 <workflow-handoff>
 
-Stop when you can state a **Shared Understanding** without guessing: goal, non-goals, canonical terms, acceptance checks, and material risks.
+Decide whether the interview is complete before choosing a route. Ground the goal,
+scope, exclusions, canonical terms, relevant scenarios, constraints, material
+decisions and acceptance checks in user answers or project evidence. Resolve a
+remaining material uncertainty through investigation or one question. Do not
+close merely because implementation seems easy. Do not prolong the interview
+once those decisions are resolved or require every private implementation detail.
 
-Then ask user to choose exactly one next artifact:
+Present a concise, natural closure: agreed outcome, scope and relevant exclusions,
+checks, and the recommended route with a task-specific reason. Apply unslop.
 
-- `to-spec` for cohesive work in one implementation flow.
-- `to-tickets` for independently grabbable vertical slices with blockers.
+- Recommend to-spec for work with cohesive requirements and joint acceptance.
+- Recommend to-tickets for independently executable deliveries and their blockers.
+- After an interview, direct implementation is available only when the user has
+  requested that route, scope is bounded, acceptance is clear, no material
+  decision remains open, and coordination does not require another artifact.
 
-Do not write a detailed implementation plan, publish artifacts, or begin implementation unless user explicitly asks.
+Do not make direct implementation the default based on few files, apparent
+simplicity or estimated speed. Preserve a route and authorization already given;
+do not ask the user to choose again. If the findings invalidate that route,
+explain the conflict and consult the change. Otherwise ask for the next route
+before producing an artifact or implementing it when none is authorized.
+
+Pass scope, exclusions, decisions, constraints, relevant references, acceptance
+and agreed test boundaries to the chosen artifact-producing skill. The resulting
+resource must preserve them directly or through accessible references, without
+relying on unrecorded chat history or repeating the interview. For authorized
+direct work, retain the same information in the task record.
+
+Small clear edits need not start this interview. Choosing to prepare an artifact
+alone does not authorize publication or implementation; retain any broader
+authorization the user already gave.
 
 </workflow-handoff>
 

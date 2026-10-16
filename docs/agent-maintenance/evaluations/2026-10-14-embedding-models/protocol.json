@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "status": "exploratory-authorized",
+  "authorization": "Mario requested adding google/embeddinggemma-300m and intfloat/multilingual-e5-small; repeat existing profiles as references",
+  "corpus_commit": "7cba5d9ddb1bdb5b4de7f16464e3bc272850cc03",
+  "corpus_hashes": {
+    "labels.json": "764e5712edaeb6438c4d21dda8be053985dbc7753b047ab3e649e53628521bda",
+    "queries.json": "b046add8e1e27e0690d451e5a4c1ba2585a32f61569863706ee8d50f2f8e1010",
+    "review-feedback.json": "45de9d66c032b3324cc721d6aeadbb94bee3fdd2be73008d9855d695fada978a",
+    "manifest.json": "2116a091cacdfd2f03be6223cde2f7f521f35057601b6be35caad00ea251f7e5",
+    "records.json": "8ae8a751e9382227007b0b3b6b68b1947291afcc087292aa32db54221200f16b"
+  },
+  "execution_sources": {
+    "run.py": "81452c917d8c35a0e807c5f65c89d235d6d857b0d2a2eaefc972edef5759b5a1",
+    "ranking.py": "94e0d9465147100496c36551c178c0906a27b82f26d6be01f6d3319161a50ce0",
+    "download.py": "d1c6a0c25c7e8ba59bbcf75b429383b11428671a3ce94e30bece5e842b8d7591",
+    "test_ranking.py": "b33d217da6979093fb1170f0d568967a7636f5da7d2d06a022da6689349c9932",
+    "pyproject.toml": "c2a205ea7c37cbe22e137ac90663acb7da4acfc4a3125d9cf6cf6358a5f18f37",
+    "uv.lock": "9763e2c0308d7309f5a052a0dd82f1086383f3bbd9fefc371f7cc39b60458ad2"
+  },
+  "runtime": {
+    "python": "3.13.2",
+    "packages": {
+      "numpy": "2.5.4",
+      "pillow": "12.3.0",
+      "psutil": "7.2.2",
+      "sentence-transformers": "6.1.0",
+      "sqlite-vec": "0.1.9",
+      "torch": "2.14.1",
+      "torchvision": "0.29.1",
+      "transformers": "5.19.0"
+    },
+    "sqlite": "3.47.1",
+    "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "device": "cpu",
+    "dtype": "float32",
+    "torch_threads": 4
+  },
+  "models": {
+    "minilm": {
+      "id": "sentence-transformers/all-MiniLM-L6-v2",
+      "dimension": 384,
+      "max_seq_length": 256,
+      "query_prompt_name": null,
+      "document_prompt_name": null,
+      "config_kwargs": {},
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "license": "apache-2.0"
+    },
+    "gemma": {
+      "id": "google/embeddinggemma-2",
+      "dimension": 768,
+      "max_seq_length": 8192,
+      "query_prompt_name": "query",
+      "document_prompt_name": "document",
+      "config_kwargs": {
+        "vision_config": null,
+        "audio_config": null
+      },
+      "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+      "license": "apache-2.0"
+    },
+    "qwen": {
+      "id": "Qwen/Qwen3-Embedding-0.6B",
+      "dimension": 1024,
+      "max_seq_length": 32768,
+      "query_prompt_name": "query",
+      "document_prompt_name": "document",
+      "config_kwargs": {},
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "license": "apache-2.0"
+    },
+    "gemma300": {
+      "id": "google/embeddinggemma-300m",
+      "dimension": 768,
+      "max_seq_length": 2048,
+      "query_prompt": "task: search result | query: ",
+      "document_prompt": "title: none | text: ",
+      "config_kwargs": {},
+      "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+      "license": "gemma"
+    },
+    "e5small": {
+      "id": "intfloat/multilingual-e5-small",
+      "dimension": 384,
+      "max_seq_length": 512,
+      "query_prompt": "query: ",
+      "document_prompt": "passage: ",
+      "config_kwargs": {},
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+      "license": "mit"
+    }
+  },
+  "pending_models": {},
+  "model_order": [
+    "minilm",
+    "gemma",
+    "qwen",
+    "gemma300",
+    "e5small"
+  ],
+  "model_remote_code": false,
+  "hosted_inference": false,
+  "embedding_input": "record.text only, with fixed native retrieval prompts; no titles, IDs, grades, source metadata or judge rationale",
+  "encoding": {
+    "document_batch_size": 4,
+    "query_batch_size": 1,
+    "l2_normalize": true,
+    "output_dimensions": "full native",
+    "sequence_limits": "model-card/default retrieval limits, explicitly bound; actual token counts and truncation recorded",
+    "scope_filter_first": true,
+    "warmup_inputs": 2,
+    "measured_query_passes": 1
+  },
+  "retrieval": {
+    "vector": "sqlite-vec cosine",
+    "lexical": "FTS5 BM25; OR of all unique unicode query tokens, no tuned stopwords",
+    "hybrid": "equal-weight RRF, constant 60, top 10 candidates per branch",
+    "tie_break": "record ID"
+  },
+  "scoring": {
+    "labels": "current provisional judgments, not independently approved gold",
+    "direct_grade": 2,
+    "positive_queries": 46,
+    "per_language": 23,
+    "no_match_queries": 6,
+    "metrics": [
+      "hit@1",
+      "hit@3",
+      "hit@5",
+      "direct recall@3/@5",
+      "direct MRR@5",
+      "graded nDCG@5"
+    ],
+    "ungraded_cases": "V01/V02/V03/V04/V06 excluded; V05 historical control excluded",
+    "abstention_threshold": null
+  },
+  "limits": [
+    "Single project, authored queries and provisional judgments",
+    "Related scenarios and translated queries are not independent incidents",
+    "Ranking candidates for a no-match query does not confirm an incident",
+    "No threshold tuning or calibrated classification",
+    "CPU float32 timings on one M1 Pro 16GB pass; no production capacity claim"
+  ]
+}

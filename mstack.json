@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "skillsManifest": "skills.json",
+  "runtime": {
+    "python": "3.13.2",
+    "tomlkit": "0.15.1"
+  },
+  "externalTools": {
+    "codex": "0.159.0",
+    "pi": "1.0.0"
+  },
+  "managed": [
+    {
+      "source": "instructions/global/AGENTS.md",
+      "target": "agents/AGENTS.md",
+      "method": "copy"
+    },
+    {
+      "sourceTarget": "agents/AGENTS.md",
+      "target": "codex/AGENTS.md",
+      "method": "link"
+    },
+    {
+      "sourceTarget": "agents/AGENTS.md",
+      "target": "pi/AGENTS.md",
+      "method": "link"
+    },
+    {
+      "source": "config/claude/CLAUDE.md.template",
+      "target": "claude/CLAUDE.md",
+      "method": "template"
+    },
+    {
+      "source": "config/codex/defaults.toml",
+      "target": "codex/config.toml",
+      "method": "toml-keys",
+      "keys": [
+        "model",
+        "model_reasoning_effort"
+      ]
+    },
+    {
+      "source": "config/pi/defaults.json",
+      "target": "pi/settings.json",
+      "method": "json-keys",
+      "keys": [
+        "defaultProvider",
+        "defaultModel",
+        "defaultThinkingLevel"
+      ]
+    }
+  ]
+}

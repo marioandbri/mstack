@@ -1,0 +1,92 @@
+{
+  "id": "03-unreproduced-B",
+  "status": "failed",
+  "seconds": 28.51,
+  "criteria": [
+    {
+      "criterion": "Loads diagnose",
+      "kind": "selection",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Inspects code and attempts faithful CLI reproduction",
+      "kind": "behavior",
+      "outcome": "inconclusive"
+    },
+    {
+      "criterion": "Passing superficial test is not claimed as proof of bug fix",
+      "kind": "behavior",
+      "outcome": "inconclusive"
+    },
+    {
+      "criterion": "Requests useful missing evidence without inventing a cause",
+      "kind": "behavior",
+      "outcome": "inconclusive"
+    },
+    {
+      "criterion": "Does not introduce speculative source fix",
+      "kind": "behavior",
+      "outcome": "inconclusive"
+    }
+  ],
+  "selection": true,
+  "behavior": "inconclusive",
+  "judgeNote": "A investigó por CLI, explicó la insuficiencia del test existente y pidió versión, comando, datos y salida. B cargó diagnose, pero serverOverloaded interrumpió el turno antes de completar investigación/cierre. Las cuatro condiciones conductuales de B quedan sin resultado.",
+  "selectedSkills": [
+    "conventions-aware-engineering",
+    "diagnose",
+    "unslop",
+    "verification-before-completion"
+  ],
+  "rawEvidence": {
+    "directory": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/03-unreproduced-B",
+    "eventsSha256": "623cfd677f0de67bbb32aa697c2ea253e217f441111e2aa1bfedfb7adf40255c",
+    "beforeSha256": "0e9e48c05393f8916f31c63831796b38c034c9942a89c31e39563e2439c46478",
+    "afterSha256": "0e9e48c05393f8916f31c63831796b38c034c9942a89c31e39563e2439c46478"
+  },
+  "verification": {
+    "status": "failed",
+    "instructionSources": [
+      "/root/.codex/AGENTS.md",
+      "/workspace/task/AGENTS.md"
+    ],
+    "otherWorktreePreserved": true,
+    "changedTaskFiles": [],
+    "suite": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_list_clients_preserves_data (test_clients.ExistingTests.test_list_clients_preserves_data) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.002s\n\nOK\n"
+    },
+    "filtered": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\n",
+      "stderr": ""
+    },
+    "filterCorrect": true,
+    "all": {
+      "returncode": 0,
+      "stdout": "name,email\nJosé,jose@example.test\nAna,ana@example.test\n",
+      "stderr": ""
+    },
+    "allCorrect": true,
+    "empty": {
+      "returncode": 0,
+      "stdout": "name,email\n",
+      "stderr": ""
+    },
+    "emptyCorrect": true,
+    "escape": {
+      "returncode": 0,
+      "stdout": "name,email\n\"José, Jr.\",\"a\"\"b@example.test\"\n",
+      "stderr": ""
+    },
+    "escapeCorrect": true,
+    "commits": ""
+  },
+  "providerError": {
+    "message": "Selected model is at capacity. Please try a different model.",
+    "codexErrorInfo": "serverOverloaded",
+    "additionalDetails": null,
+    "misalignment": null
+  }
+}

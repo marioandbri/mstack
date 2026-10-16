@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 2,
+  "status": "PASS",
+  "repository_check": "PASS 30 skills, 59 Markdown files",
+  "tests": {
+    "pass": 28,
+    "skip": 1,
+    "fail": 0,
+    "assertions": 297,
+    "duration_seconds": 16.44,
+    "skip_reason": "Optional Portless HTTP E2E"
+  },
+  "retrieval_tests": {
+    "chunk_id": "2b6e04",
+    "wall_time_seconds": 0.826346833,
+    "exit_code": 0,
+    "original_token_count": 204,
+    "output": "test_absent_target_is_not_given_a_success_score (test_ranking.RetrievalTests.test_absent_target_is_not_given_a_success_score) ... ok\ntest_context_is_not_a_direct_hit (test_ranking.RetrievalTests.test_context_is_not_a_direct_hit) ... ok\ntest_e5_uses_english_retrieval_prefixes_for_spanish_text (test_ranking.RetrievalTests.test_e5_uses_english_retrieval_prefixes_for_spanish_text) ... ok\ntest_missing_serialized_model_prompt_cannot_silently_encode_bare_text (test_ranking.RetrievalTests.test_missing_serialized_model_prompt_cannot_silently_encode_bare_text) ... ok\ntest_sqlite_queries_preserve_scope_and_rank_real_vectors (test_ranking.RetrievalTests.test_sqlite_queries_preserve_scope_and_rank_real_vectors) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.012s\n\nOK\n"
+  },
+  "installation": {
+    "status": "PASS",
+    "commit": "25e722daafadb2b39ea597adbc19b41632e48b4a",
+    "skills": 30,
+    "targets": 126
+  },
+  "experiment": {
+    "status": "PASS",
+    "models": 5,
+    "sqlite_vector_queries_reopened": 250,
+    "finite_normalized_vectors": true,
+    "project_filters": "PASS",
+    "held_out_excluded": true,
+    "source_model_artifact_hashes": "PASS",
+    "labels": "provisional; source verification cannot approve semantic judgments"
+  },
+  "replication": {
+    "previous_run": "run-03",
+    "previous_protocol_sha256": "dd6f357d2abf849d19e68c00db5ffd322612184e60808380da0292c30cb76e85",
+    "previous_execution_sources": {
+      "run.py": "81452c917d8c35a0e807c5f65c89d235d6d857b0d2a2eaefc972edef5759b5a1",
+      "ranking.py": "94e0d9465147100496c36551c178c0906a27b82f26d6be01f6d3319161a50ce0",
+      "download.py": "d1c6a0c25c7e8ba59bbcf75b429383b11428671a3ce94e30bece5e842b8d7591",
+      "test_ranking.py": "b33d217da6979093fb1170f0d568967a7636f5da7d2d06a022da6689349c9932",
+      "pyproject.toml": "c2a205ea7c37cbe22e137ac90663acb7da4acfc4a3125d9cf6cf6358a5f18f37",
+      "uv.lock": "9763e2c0308d7309f5a052a0dd82f1086383f3bbd9fefc371f7cc39b60458ad2"
+    },
+    "runtime_and_corpus_unchanged": true,
+    "previous_pending_models": {
+      "gemma300": {
+        "model": {
+          "id": "google/embeddinggemma-300m",
+          "dimension": 768,
+          "max_seq_length": 2048,
+          "query_prompt": "task: search result | query: ",
+          "document_prompt": "title: none | text: ",
+          "config_kwargs": {},
+          "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+          "license": "gemma"
+        },
+        "status": "not-executed-access-required",
+        "access_check": {
+          "token_available": false,
+          "id": "google/embeddinggemma-300m",
+          "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+          "access": "not-granted",
+          "error_class": "GatedRepoError",
+          "http_status": 401
+        }
+      }
+    },
+    "models": {
+      "minilm": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 6.771500498871319,
+        "current_p50_ms": 6.72529150324408,
+        "previous_result_sha256": "3e4d7a3510611433a3be8f60c2f71442d6fdf3ae4da20adaa4941ace2b8e0a1a"
+      },
+      "gemma": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 73.25429199408973,
+        "current_p50_ms": 72.88091650116257,
+        "previous_result_sha256": "f2833006b0058e07f1c16e6ed22abd244108ca8711040e4a53002e88d446e812"
+      },
+      "qwen": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 162.00279149779817,
+        "current_p50_ms": 164.51285449875286,
+        "previous_result_sha256": "93982e2587e647944cf67a2d29daa2f9e9ffe67f0dd0b0bf4594064087b389ad"
+      },
+      "e5small": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 13.433083506242838,
+        "current_p50_ms": 14.557103495462798,
+        "previous_result_sha256": "92e26bd7254341f2be8b8c4de1c7d7dc2ccf7504c04d0ebb363e6207d0f88d32"
+      }
+    }
+  },
+  "pending_models": {},
+  "documents": "PASS deterministic regeneration, generated output hashes, unchanged frozen corpus, Python syntax, JSON, 48 stories and 29 acceptance criteria, relative links",
+  "prior_attempt": {
+    "status": "retained-infrastructure-error",
+    "gemma_corpus_embeddings": 0,
+    "cause": "Missing Pillow; subsequent preflight required Torchvision",
+    "final_attempt": "run-04 complete for all available profiles"
+  },
+  "harness_workspace": {
+    "environment_cwd": "/Users/mario.brito/personal/engineering-skills",
+    "owned_worktree": "/Users/mario.brito/personal/mstack-maintenance-laya",
+    "association_verified": false
+  },
+  "limits": [
+    "Provisional relevance judgments, not independently approved gold",
+    "Small single-project corpus with authored queries and related language variants",
+    "One CPU pass; observed timing variation between attempts",
+    "No calibrated abstention, classifier or autonomous workflow evaluation",
+    "No production model/backend adoption"
+  ]
+}

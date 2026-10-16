@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "candidateCommit": "44bb69cb2b684833c9eef3365cca836bf7c3650d",
+  "executions": 16,
+  "completed": 15,
+  "infrastructureInconclusive": 1,
+  "timeouts": 0,
+  "retries": 0,
+  "comparableBehaviorPairs": 7,
+  "behaviorPaired": {
+    "A": {
+      "passed": 7,
+      "total": 7
+    },
+    "B": {
+      "passed": 7,
+      "total": 7
+    }
+  },
+  "behaviorAll": {
+    "A": {
+      "passed": 8,
+      "total": 8
+    },
+    "B": {
+      "passed": 7,
+      "inconclusive": 1,
+      "total": 8
+    }
+  },
+  "selectionObservable": {
+    "A": {
+      "passed": 5,
+      "total": 6
+    },
+    "B": {
+      "passed": 6,
+      "total": 6
+    }
+  },
+  "note": "Selection for 03-B is observable before provider failure; completed behavior is not. Scores are descriptive counts, not estimated reliability. Supplementary learning mutation is a separate finding outside frozen scoring criteria.",
+  "cases": [
+    {
+      "id": "01-feature-A",
+      "status": "completed",
+      "selection": false,
+      "behavior": "pass"
+    },
+    {
+      "id": "01-feature-B",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "02-bug-B",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "02-bug-A",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "03-unreproduced-A",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "03-unreproduced-B",
+      "status": "failed",
+      "selection": true,
+      "behavior": "inconclusive"
+    },
+    {
+      "id": "04-interview-gap-B",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "04-interview-gap-A",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "05-interview-closed-A",
+      "status": "completed",
+      "selection": null,
+      "behavior": "pass"
+    },
+    {
+      "id": "05-interview-closed-B",
+      "status": "completed",
+      "selection": null,
+      "behavior": "pass"
+    },
+    {
+      "id": "06-direct-approved-B",
+      "status": "completed",
+      "selection": null,
+      "behavior": "pass"
+    },
+    {
+      "id": "06-direct-approved-A",
+      "status": "completed",
+      "selection": null,
+      "behavior": "pass"
+    },
+    {
+      "id": "07-brief-A",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "07-brief-B",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "08-report-B",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "08-report-A",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    }
+  ]
+}

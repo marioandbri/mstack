@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-13",
+  "runtime": "bun 1.3.14",
+  "checks": [
+    {
+      "command": "bun run check",
+      "exit": 0,
+      "result": "30 skills, 59 Markdown files; this validator covers skills, not the new research documents"
+    },
+    {
+      "command": "bun test",
+      "exit": 0,
+      "pass": 28,
+      "skip": 1,
+      "fail": 0,
+      "assertions": 297,
+      "skip_reason": "optional Portless HTTP E2E not enabled"
+    },
+    {
+      "command": "fish install/verify.fish",
+      "exit": 0,
+      "result": "active commit 3b2789839c27ed90709c88758761ab59f1ebd1ff; 30 skills; 126 targets verified"
+    },
+    {
+      "command": "offline Python assertions over saved JSON and new report links",
+      "exit": 0,
+      "result": "frozen hashes; 36 unique choice responses; 12 unique development-only binary responses; split coverage; successful untruncated responses; recomputed scores; new report links"
+    },
+    {
+      "command": "Ajv 2020 strict validation of OBS-MAINTENANCE-SCOPE-001",
+      "exit": 0
+    }
+  ],
+  "review": "Self-inspection of research artifacts and task scope. No independent code review or hosted baseline evaluation."
+}

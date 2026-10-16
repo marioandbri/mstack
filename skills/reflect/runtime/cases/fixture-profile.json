@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "id": "local-mechanical",
+  "kind": "fixture",
+  "source_commit": null,
+  "model": null,
+  "reasoning": null,
+  "harness": {
+    "name": "fixture-process",
+    "version": "1"
+  },
+  "environment": {
+    "python": "3.13.2"
+  },
+  "budget_seconds": 5,
+  "max_turns": 1,
+  "instructions": {
+    "AGENTS.md": "# Mechanical fixture\nPreserve source evidence.\n"
+  },
+  "catalog": [],
+  "source_files": {}
+}
