@@ -15,6 +15,7 @@ preparing a PR or closing resources. Resume the recorded task state before actin
    the authorized scope and route. If material requirements remain unresolved,
    use grill-with-docs; do not restart discovery for an approved resource.
 2. Prepare or reuse an owned worktree and task branch with the required setup.
+   Verify the harness's workspace association as the lifecycle reference explains.
    Load local-env only when running services or test databases are needed.
 3. Execute the approved resource with implement when using spec or tickets.
    For authorized direct work, use the same scope and acceptance in task state.
