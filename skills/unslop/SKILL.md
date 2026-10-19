@@ -7,6 +7,14 @@ description: Cut AI tells from any writing. Must always apply.
 
 Edit text to remove AI patterns and add human voice.
 
+## Match the purpose
+
+Use concise natural wording for progress, confirmations and focused technical
+answers. Use clear prose and enough structure for documentation, executive
+writing and longer explanations. Preserve conditions, exact terms and evidence.
+Brevity is not a request for caveman mode and technical subject matter alone does
+not require either fragments or a long report.
+
 ## Process
 
 1. Scan for the patterns below.

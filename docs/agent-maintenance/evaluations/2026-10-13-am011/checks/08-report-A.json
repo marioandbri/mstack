@@ -1,0 +1,54 @@
+{
+  "id": "08-report-A",
+  "status": "completed",
+  "seconds": 10.63,
+  "criteria": [
+    {
+      "criterion": "Does not activate visual skills without request/acceptance",
+      "kind": "selection",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Reads results and states exact score denominator",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Distinguishes observed checks from deferred real validation",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Gives a relevant next step without claiming completion",
+      "kind": "behavior",
+      "outcome": "pass"
+    },
+    {
+      "criterion": "Returns prose in chat without generating/publishing a visual artifact",
+      "kind": "behavior",
+      "outcome": "pass"
+    }
+  ],
+  "selection": true,
+  "behavior": "pass",
+  "judgeNote": "Ambos leyeron results.md, distinguieron 4/5 checks de integración/producción pendientes y entregaron el informe en el chat. Ninguno cargó Lavish/visual-companion ni produjo visuales.",
+  "selectedSkills": [
+    "unslop"
+  ],
+  "rawEvidence": {
+    "directory": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/08-report-A",
+    "eventsSha256": "cb5b4da16320929a4f23aa9ff59118d3cfb2f31bea6890a6b1dcee9248edc221",
+    "beforeSha256": "1d67a4ddb6cdda9549150ea7793651866cfacc431ac90f46e8ccaaf1fc63ec86",
+    "afterSha256": "1d67a4ddb6cdda9549150ea7793651866cfacc431ac90f46e8ccaaf1fc63ec86"
+  },
+  "verification": {
+    "status": "completed",
+    "instructionSources": [
+      "/root/.codex/AGENTS.md",
+      "/workspace/task/AGENTS.md"
+    ],
+    "otherWorktreePreserved": true,
+    "changedTaskFiles": [],
+    "commits": ""
+  }
+}

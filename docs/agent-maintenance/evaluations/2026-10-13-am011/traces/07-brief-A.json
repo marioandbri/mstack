@@ -1,0 +1,16 @@
+{
+  "id": "07-brief-A",
+  "status": "completed",
+  "selectedSkills": [],
+  "items": [
+    {
+      "type": "agentMessage",
+      "id": "msg_0b9af323682b72d7016ace343ab5108191997cfdcdd03c47d2",
+      "text": "Un test de regresión útil debe reproducir las condiciones reales del fallo para demostrar que la corrección resuelve el problema que sufrió el usuario. Así detectará si el mismo error reaparece, aunque cambie la implementación.",
+      "phase": "final_answer",
+      "memoryCitation": null,
+      "delivery": null,
+      "questions": null
+    }
+  ]
+}

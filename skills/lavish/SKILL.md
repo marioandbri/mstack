@@ -1,6 +1,6 @@
 ---
 name: lavish
-description: Turn complex or visual agent responses into rich, reviewable HTML artifacts the user can annotate and send feedback on, using the lavish-axi CLI. Use when about to give a plan, comparison, diagram, table, code diff, report, or anything easier to grasp visually than as prose.
+description: Create polished interactive HTML artifacts for annotation and feedback using Lavish when the user explicitly requests or accepts a hi-fi visual review. Do not activate from a plan, report, comparison or table request alone; skip low-fi visual exploration.
 disable-model-invocation: true
 metadata:
   hermes:
@@ -12,7 +12,7 @@ metadata:
 
 > **Hi-fi route.** Use after user explicitly requests or accepts an offered hi-fi visual review. Load `visual-companion` for low-fi wireframes, diagrams, and structural choices.
 
-Lavish Editor helps agents turn rich HTML artifacts into collaborative human review surfaces. Whenever you are about to give user a complex response that will be easier to understand via a rich / interactive page, consider using Lavish Editor. First generate an interactive HTML artifact according to user request, then run `bunx lavish-axi@0.1.45 <html-file>` so the user can visually review it, annotate elements or selected text, queue prompts, and send feedback back through `bunx lavish-axi@0.1.45 poll`.
+Lavish Editor helps agents turn rich HTML artifacts into collaborative human review surfaces. Offer a hi-fi visual review when it would help, and wait for explicit request or acceptance before generating it. First generate an interactive HTML artifact according to user request, then run `bunx lavish-axi@0.1.45 <html-file>` so the user can visually review it, annotate elements or selected text, queue prompts, and send feedback back through `bunx lavish-axi@0.1.45 poll`.
 
 You do not need lavish-axi installed globally. Use the exact version pinned here; update the pin deliberately only after reviewing the new version's `--help` and playbooks. If lavish-axi output shows a follow-up command starting with `lavish-axi`, run it as `bunx lavish-axi@0.1.45 ...` instead.
 
@@ -21,11 +21,11 @@ You do not need lavish-axi installed globally. Use the exact version pinned here
 $ARGUMENTS
 
 If the request above is non-empty, the user invoked `/lavish` explicitly - build an HTML artifact for that request now, following the workflow below.
-If it is empty, infer what to visualize from the conversation.
+If it is empty, use the explicitly accepted hi-fi review scope from the conversation. If no such request or acceptance exists, offer the review and wait.
 
 ## When to use
 
-Use lavish-axi when the user asks for a visual artifact, HTML explainer, interactive prototype, review surface, product or technical plan, comparison, report, or browser-based feedback loop
+Use lavish-axi for an explicitly requested or accepted hi-fi artifact or browser-based feedback review. A plan, comparison or report alone does not authorize a visual artifact.
 
 ## Workflow
 
@@ -75,4 +75,4 @@ For flows, architecture, state, or sequence diagrams, do not hand-build boxes-an
 - Run `bunx lavish-axi@0.1.45 stop` to shut down the background server (it also self-stops when idle or after the last session ends with nothing connected)
 - Run `bunx lavish-axi@0.1.45 playbook <playbook_id>` for focused artifact guidance. One artifact often combines several playbooks (for example a plan that includes a comparison and a diagram), so MUST open each matching playbook before writing HTML.
 - Lavish does not auto-inject any design system - artifacts stay portable so they render identically when opened directly without lavish-axi running. Before writing any HTML, decide the design direction in this strict priority order, and only move to the next step when the current one truly yields nothing: (1) if the user asked for a specific look or named design system, use that; (2) otherwise you must first inspect the project the artifact is about - the subject or product whose content or UI it represents, which may differ from your current working directory - and match that project's design system: Tailwind or theme config, shared CSS variables or design tokens, component library, brand assets, or existing styled pages. If the artifact previews, proposes, or mocks a specific app's UI, render it in that app's own design system so it faithfully shows the product, even when you are running in a different repo; (3) only when both steps come up empty, use the Lavish-recommended Tailwind CSS browser runtime v4 + DaisyUI v5, available via CDN - run `bunx lavish-axi@0.1.45 design` for a content-to-playbook router, a copy-pasteable CDN snippet, a Mermaid CDN snippet/init for diagrams, and the DaisyUI component reference, and prefer the Tailwind/DaisyUI CDN snippet over hand-writing styles unless explicitly instructed otherwise by the user. When you deliver the artifact, state which of the three design sources you used and why.
-- Use lavish-axi when the user asks for a visual artifact, HTML explainer, interactive prototype, review surface, product or technical plan, comparison, report, or browser-based feedback loop
+- Use lavish-axi for an explicitly requested or accepted hi-fi artifact or browser-based feedback review. A plan, comparison or report alone does not authorize a visual artifact.

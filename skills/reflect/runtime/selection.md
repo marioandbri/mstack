@@ -1,0 +1,15 @@
+# Selección y cumplimiento
+
+prepare-workflows congela ocho escenarios contra el catálogo real del commit seleccionado: carga de convenciones, contexto ya cargado, explicación sin trigger, entrevista con brechas, spec cerrada, brecha material nueva, worktree nuevo y reutilización del propio. [workflow_cases.py](workflow_cases.py) conserva prompts, fixtures, negativos cercanos y rúbricas antes de ejecutar. Ninguno es un incidente independiente por estar en la biblioteca.
+
+El caso de brecha nueva mantiene una ambigüedad explícita: la descripción actual de grill-with-docs excluye specs aprobadas, mientras que una decisión material nueva puede justificar una pregunta tras investigar. La compatibilidad del trigger queda desconocida y la selección es opcional; el resultado evalúa investigación y pregunta pertinente. No se corrige esa descripción desde el benchmark ni se atribuye un fallo sin evidencia.
+
+El parser conserva disponibilidad del catálogo congelado, exposición del catálogo real, compatibilidad predefinida, selección observada, lectura y cumplimiento. Una mención en prosa o un comando fallido no demuestra lectura. Un comando completado con ruta y contenido del recurso aporta evidencia de uso, con porción completa o parcial; es un proxy de selección, no prueba del razonamiento interno del harness. Una invocación explícita acredita inyección solicitada y no se puntúa como selección automática. Ausencia de catálogo, traza parcial y métodos no observados conservan sus límites.
+
+Los checks funcionales ejecutan la conducta de la tarea. En Codex se ejecutan después del turno, dentro de otro contenedor sin red ni credenciales y con workspace readonly. No basta con que el agente escriba «pasó». Se preservan las pruebas suministradas y se verifica identidad y reutilización del worktree. Los logs de checks quedan privados; el recibo conserva exit code, hash y extracto mínimo.
+
+assess recibe attempt, id y judgment. Cada criterio y cada invariante corresponde a la rúbrica congelada; exige resultado, razón y referencias con hash, línea y extracto disponible. Inconcluso permite declarar la falta de evidencia. El llamador revisa el significado; no hay juez externo ni probabilidades inventadas. Alterar evidencia recolectada impide aceptar otra evaluación. Una pérdida de evidencia, cambio global directo o invariante fallido invalida el candidato para ese caso.
+
+El juicio conserva tarea, intervenciones humanas y acciones innecesarias separados de tiempo, tokens y estado de infraestructura. Se pueden conservar varios juicios del mismo intento, sin contarlos como nuevas pruebas. selection-report agrupa por entorno comprobado, modelo, razonamiento e imagen. Las capacidades complementarias no compiten sólo por actuar juntas. Un análisis textual de triggers sigue siendo una hipótesis distinta de la traza conductual.
+
+Un hallazgo de omisión necesita una tarea compatible, disponibilidad comprobada y evidencia de lo omitido. Registrar el caso y su hipótesis con la fuente concreta; no convertir la ausencia de catálogo en fallo de trigger, ni iniciar Reflect o una promoción desde el resultado.

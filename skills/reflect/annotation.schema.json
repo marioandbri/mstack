@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Provisional maintenance annotation",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "input_sha256", "provider", "category", "abstention_reason", "opportunity", "rationale", "source_refs", "relations", "occurrence_ids", "priority", "limits", "suggested_component"],
+  "properties": {
+    "schema_version": {"const": 1}, "input_sha256": {"$ref": "#/$defs/hash"},
+    "provider": {"type": "object", "additionalProperties": false, "required": ["name", "version"], "properties": {"name": {"$ref": "#/$defs/text"}, "version": {"$ref": "#/$defs/text"}}},
+    "category": {"enum": ["ephemeral", "project-fact", "architectural-decision", "reusable-procedure", "global-invariant", "agent-failure", "uncertain", null]},
+    "abstention_reason": {"$ref": "#/$defs/optional_text"},
+    "opportunity": {
+      "type": "object", "additionalProperties": false, "required": ["observed", "expected", "scope", "suspected_cause", "uncertainty"],
+      "properties": {"observed": {"$ref": "#/$defs/text"}, "expected": {"$ref": "#/$defs/optional_text"}, "scope": {"$ref": "#/$defs/text"}, "suspected_cause": {"$ref": "#/$defs/optional_text"}, "uncertainty": {"$ref": "#/$defs/texts"}}
+    },
+    "rationale": {"$ref": "#/$defs/text"},
+    "source_refs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/reference"}},
+    "relations": {
+      "type": "array", "items": {
+        "type": "object", "additionalProperties": false, "required": ["from_id", "to_id", "relation", "scope_match", "reason", "source_refs"],
+        "properties": {
+          "from_id": {"$ref": "#/$defs/text"}, "to_id": {"$ref": "#/$defs/text"},
+          "relation": {"enum": ["same-incident", "recurrence", "related", "conflict", "possible-match"]},
+          "scope_match": {"enum": ["equivalent", "different", "uncertain"]},
+          "reason": {"$ref": "#/$defs/text"},
+          "source_refs": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/reference"}}
+        }
+      }
+    },
+    "occurrence_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "priority": {"type": "object", "additionalProperties": false, "required": ["impact", "reason"], "properties": {"impact": {"$ref": "#/$defs/text"}, "reason": {"$ref": "#/$defs/text"}}},
+    "limits": {"$ref": "#/$defs/texts"},
+    "suggested_component": {"$ref": "#/$defs/optional_text"}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "optional_text": {"anyOf": [{"$ref": "#/$defs/text"}, {"type": "null"}]},
+    "texts": {"type": "array", "items": {"$ref": "#/$defs/text"}},
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "reference": {"type": "object", "additionalProperties": false, "required": ["id", "sha256"], "properties": {"id": {"$ref": "#/$defs/text"}, "sha256": {"anyOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]}}}
+  }
+}

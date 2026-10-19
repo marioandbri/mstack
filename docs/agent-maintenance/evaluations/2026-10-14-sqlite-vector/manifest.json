@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "authorization": "Mario: realiza una prueba con sqlite y plugin vectorial",
+  "source_commit": "2b57e900da0171eecc336a42d05a625ab1d45dae",
+  "runtime": {
+    "python": "3.13.2",
+    "sqlite": "3.47.1",
+    "sqlite_vec": "0.1.9",
+    "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "uv": "0.10.11",
+    "sqlite_source_id": "2024-11-25 12:07:48 b95d11e958643b969c47a8e5857f3793b9e69700b8f1469371386369a26e577e",
+    "extension_reported_version": "v0.1.9",
+    "extension_binary_sha256": "193e480c50b59a55977d166f4aaf0e1bc8832d6963516e5950f39e4d2ce0b793",
+    "python_executable_sha256": "b6019173e99ba481ce8a2852ffbf19cdaa9b7352d7e40c92bbd408d47da11b2b",
+    "fts5": true
+  },
+  "inputs": {
+    "sqlite_probe.py": "b6e6a0c574aefb4dc7a309d693dca68dce8350b54ef24c82756b0e31bb01a50f",
+    "sqlite_store.py": "1ff7601ee88f52d5f3a2857deb637c6503862ad8b551712721b4408f5383ef29",
+    "protocol.json": "9b13ffc8651a0181f85f2884a8bde15e167895576d9261ee92ad679f4ea5b0ff",
+    "pyproject.toml": "8b928d18563581817bb03a4ece726813900aca5a093b44d0b39263ed220f04d4",
+    "uv.lock": "ca0f1147b04ba6bfad700cc02968660133ff64aca78e03529326fa26bfb5c236",
+    "verify.py": "372f114d09e5ee9fa8159dcd1e64e2d257c408a22423a65e60fac66f09ba3678"
+  },
+  "shared_fixture_source": {
+    "path": "../2026-10-13-lancedb/probe.py",
+    "sha256": "f4351485cbafdbff3c3fe1e17c302765979f3bdc5957f590860c600d285e1710",
+    "scope": "Only its standard-library record constructor is reused; no LanceDB SDK loaded"
+  },
+  "lancedb_comparison_results": {
+    "path": "../2026-10-13-lancedb/results.json",
+    "sha256": "f72990e9f21c388494f25830dae6cb29047281e6ee716ff4a2dae5a4574d76e8"
+  },
+  "results_sha256": "d511bde75b4aec6cf96433cd5488e0b7bc24b2ebf15925a9a89d2b02d62b9970",
+  "license_review": {
+    "choice": "MIT or Apache-2.0; experiment-only dependency",
+    "sources": {
+      "LICENSE-MIT": {
+        "url": "https://raw.githubusercontent.com/asg017/sqlite-vec/v0.1.9/LICENSE-MIT",
+        "sha256": "6ce72bbe12d975bd5286e5ab0a064c069693300c47bccbc57bec18485f1621ea"
+      },
+      "LICENSE-APACHE": {
+        "url": "https://raw.githubusercontent.com/asg017/sqlite-vec/v0.1.9/LICENSE-APACHE",
+        "sha256": "a38070a94d4afd9cd710e3ce67bd1de78097cfe1784c1f0109ac95d3c196bfdc"
+      }
+    }
+  },
+  "private_run": "canonical Git common directory, mstack-tasks/maintenance-laya/sqlite-vector-evidence/run-01",
+  "model_calls": 0,
+  "active_backend_installed": false,
+  "limits": [
+    "Fixed vectors, no semantic-quality comparison",
+    "LanceDB and SQLite were executed on different days; durations are not a controlled benchmark",
+    "Native database constraints and transactions still require application operation IDs and conflict semantics",
+    "Extension remains pre-v1; migration and release pinning need implementation coverage",
+    "No power-loss test or approved production adapter"
+  ]
+}

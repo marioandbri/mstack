@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-13T16:21:17.237038+00:00",
+  "additional_requests": 13,
+  "total_local_requests": 61,
+  "retries": 0,
+  "hosted_model_calls": 0,
+  "checks": {
+    "paired_inputs_and_scores": "pass: 12 responses, context-only within-pair differences, protocol hash, scores, model choices, no truncation, report links",
+    "bun run check": "pass: 30 skills, 59 skill Markdown files",
+    "bun test": "28 pass, 1 optional Portless skip, 0 fail, 297 assertions",
+    "fish install/verify.fish": "pass: active commit 3b2789839c27ed90709c88758761ab59f1ebd1ff, 126 targets"
+  },
+  "interpretation": "Adaptive development followup, not an independent baseline comparison."
+}

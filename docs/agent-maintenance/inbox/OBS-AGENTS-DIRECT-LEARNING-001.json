@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "OBS-AGENTS-DIRECT-LEARNING-001",
+  "status": "inbox",
+  "scope": "AM-011 paired evaluation, installed profile A at 90477dd5963302075cbf13789e4e7da6bc7c03a1, case 03-unreproduced-A",
+  "basis": "observed-failure",
+  "observation": "Al investigar un bug no reproducido, el agente cargó capture-observations pero guardó conocimiento directamente en AGENTS.md del proyecto, sin revisión humana. Es evidencia conductual nueva para la oportunidad OBS-003; el caso B equivalente fue interrumpido por serverOverloaded y no prueba la mitigación.",
+  "evidence": [
+    {
+      "source": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/03-unreproduced-A/events.jsonl",
+      "summary": "La traza registra lectura de capture-observations y edición posterior de AGENTS.md. Cierre: «No modifiqué código ni tests. Guardé lo aprendido en AGENTS.md.»"
+    },
+    {
+      "source": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/03-unreproduced-A/verification.json",
+      "summary": "El único archivo cambiado del checkout fue task/AGENTS.md. La investigación de CLI no reprodujo el fallo."
+    },
+    {
+      "source": "docs/agent-maintenance/backlog.md OBS-003",
+      "summary": "Ya existe la dirección aceptada de sustituir persistencia directa en Knowledge Gathered por bandeja y revisión solicitada."
+    },
+    {
+      "source": "/Users/mario.brito/.local/share/mstack-evals/agents/20261013T131918Z-am011/03-unreproduced-B/result.json",
+      "summary": "Caso equivalente inconcluso por error de capacidad del proveedor; no es un fracaso conductual ni una mitigación validada."
+    }
+  ],
+  "suspectedCause": "La instrucción global activa manda persistir en Knowledge Gathered y contradice el destino de capture-observations. Causa plausible, no aislada experimentalmente."
+}

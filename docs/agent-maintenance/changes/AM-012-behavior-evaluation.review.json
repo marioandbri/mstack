@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "AM-012-behavior-evaluation",
+  "phase": "ready-for-proposal",
+  "mode": "session",
+  "scope": "Comparación acotada de AM-011: tanda inicial de 16 turnos y un único turno adicional 03-B explícitamente autorizado. Ocho pares completados, un fallo histórico del proveedor conservado. Sin promoción.",
+  "sources": [
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/instructions/global/AGENTS.md",
+      "sha256": "e2ea594f4b122950d5299652a6a591d046a055ef8504f106512547e744b25b12"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/evaluations/2026-10-13-am011/report-initial.md",
+      "sha256": "495959fdfa8c32f2034da06fd7e47f5adf1f9d7db8505e59b71f204a9c3f3743"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/evaluations/2026-10-13-am011/scores.json",
+      "sha256": "dc191d6bb74202a62404cb91980c7a985d5b696f500ff93f687ef5e949d439e1"
+    },
+    {
+      "reference": "Current conversation: Mario selected \"8 casos comparados (recomendado)\" for 16 turns, 180 seconds, no retries, gpt-6.1-sol high",
+      "sha256": null
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/evaluations/2026-10-13-am011/report.md",
+      "sha256": "5ef40f27212ac2b6b0b166960bd3d8f380ac5c08efbe2d88afec8f7e88695c0d"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/evaluations/2026-10-13-am011/scores-current.json",
+      "sha256": "00fab1ba0d95988f75c8488cb8f3934ca24d8dda3cef36390be0f1d425d0a76c"
+    },
+    {
+      "reference": "/Users/mario.brito/personal/mstack-chrome-skill/docs/agent-maintenance/evaluations/2026-10-13-am011/supplement/check.json",
+      "sha256": "8cd8cc7e62fb57fb4db8a42523770ab89b3f00b1905a9f553f20c89a68d5815c"
+    },
+    {
+      "reference": "Current conversation: Mario authorized \"si, ejecuta el adicional faltante\"",
+      "sha256": null
+    }
+  ],
+  "coverage": [
+    {
+      "section": "01-feature",
+      "status": "reviewed"
+    },
+    {
+      "section": "02-bug",
+      "status": "reviewed"
+    },
+    {
+      "section": "03-unreproduced-A",
+      "status": "reviewed"
+    },
+    {
+      "section": "03-unreproduced-B",
+      "status": "reviewed"
+    },
+    {
+      "section": "04-interview-gap",
+      "status": "reviewed"
+    },
+    {
+      "section": "05-interview-closed",
+      "status": "reviewed"
+    },
+    {
+      "section": "06-direct-approved",
+      "status": "reviewed"
+    },
+    {
+      "section": "07-brief",
+      "status": "reviewed"
+    },
+    {
+      "section": "08-report",
+      "status": "reviewed"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "AM-012-01",
+      "basis": "observed-failure",
+      "observation": "La baseline promovió conocimiento a AGENTS.md mientras investigaba un bug no reproducido. El candidato equivalente quedó inconcluso por saturación, por lo que no hay comparación completa de esa persistencia. La ejecución adicional autorizada completó el caso y conservó intactas las instrucciones; no creó registros de observación.",
+      "evidence": [
+        {
+          "source": "docs/agent-maintenance/inbox/OBS-AGENTS-DIRECT-LEARNING-001.json",
+          "summary": "Una ocurrencia observada, vinculada a OBS-003. No modifica el juicio de los criterios ya congelados."
+        },
+        {
+          "source": "docs/agent-maintenance/evaluations/2026-10-13-am011/checks/03-unreproduced-B.json",
+          "summary": "Diagnose cargado antes de serverOverloaded; conducta final sin resultado."
+        },
+        {
+          "source": "docs/agent-maintenance/evaluations/2026-10-13-am011/supplement/check.json",
+          "summary": "La ejecución adicional cumple el caso, conserva ambos AGENTS y no crea observaciones. Una muestra, sin garantía general de captura."
+        }
+      ],
+      "suspectedCause": "Conflicto entre la persistencia global vigente y capture-observations; no se aisló causalmente.",
+      "recommendation": "Conservar el candidato y esta evidencia acotada. La evaluación solicitada está completa; decidir promoción por separado, sin inferir fiabilidad general ni validar los flujos operativos no cubiertos.",
+      "question": "¿Autorizas una única ejecución adicional de 03-B, con gpt-6.1-sol high y hasta 180 segundos, sin reintentos?",
+      "decision": {
+        "status": "adjust",
+        "answer": "si, ejecuta el adicional faltante",
+        "scope": "Autoriza exactamente una ejecución adicional de 03-B con el mismo modelo, razonamiento y hasta 180 segundos. No autoriza instalación."
+      },
+      "observationIds": [
+        "OBS-AGENTS-DIRECT-LEARNING-001"
+      ]
+    }
+  ],
+  "promotion": "none"
+}

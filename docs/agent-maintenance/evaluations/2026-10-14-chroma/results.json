@@ -1,0 +1,3353 @@
+{
+  "schemaVersion": 1,
+  "modes": {
+    "native": {
+      "mode": "native",
+      "python": "3.13.2",
+      "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+      "chromadb": "1.5.9",
+      "source_sha256": "9b0e8572b28af2fd4c0c9605e5bea39a161077171d80d7b29671013d99fe5d33",
+      "actor_sha256": "8453176259f6adc45aa4f1762e031c158c180dcd89daacb6872d1ce08fe84208",
+      "protocol_sha256": "08e478a06b18e91837ff333f9e11ce16134ddbc9f00d8609766559d37d566cea",
+      "results": {
+        "capture_without_embedding": {
+          "pass": false,
+          "actual_count": 0,
+          "outcome": {
+            "before_rows": 0,
+            "results": [
+              {
+                "status": "rejected",
+                "error": "You must provide an embedding function to compute embeddings.https://docs.trychroma.com/guides/embeddings in add.",
+                "exception": "ValueError"
+              }
+            ],
+            "exitcode": 0
+          },
+          "no_dummy_vector": true,
+          "status": "contract-failure",
+          "duration_seconds": 4.537
+        },
+        "concurrent_append": {
+          "pass": true,
+          "repetitions": [
+            {
+              "pass": true,
+              "actual_count": 60,
+              "expected_count": 60,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "a-00"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-01"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-02"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-03"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-04"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-05"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-06"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-07"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-08"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-09"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-10"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-11"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-12"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-13"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-14"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-15"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-16"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-17"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-18"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-19"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-20"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-21"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-22"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-23"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-24"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-25"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-26"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-27"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-28"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-29"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "b-00"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-01"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-02"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-03"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-04"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-05"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-06"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-07"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-08"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-09"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-10"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-11"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-12"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-13"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-14"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-15"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-16"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-17"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-18"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-19"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-20"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-21"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-22"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-23"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-24"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-25"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-26"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-27"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-28"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-29"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 60,
+              "expected_count": 60,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "a-00"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-01"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-02"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-03"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-04"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-05"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-06"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-07"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-08"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-09"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-10"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-11"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-12"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-13"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-14"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-15"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-16"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-17"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-18"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-19"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-20"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-21"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-22"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-23"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-24"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-25"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-26"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-27"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-28"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-29"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "b-00"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-01"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-02"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-03"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-04"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-05"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-06"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-07"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-08"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-09"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-10"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-11"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-12"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-13"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-14"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-15"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-16"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-17"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-18"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-19"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-20"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-21"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-22"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-23"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-24"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-25"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-26"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-27"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-28"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-29"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 60,
+              "expected_count": 60,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "a-00"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-01"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-02"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-03"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-04"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-05"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-06"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-07"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-08"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-09"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-10"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-11"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-12"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-13"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-14"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-15"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-16"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-17"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-18"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-19"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-20"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-21"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-22"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-23"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-24"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-25"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-26"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-27"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-28"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-29"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "b-00"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-01"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-02"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-03"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-04"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-05"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-06"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-07"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-08"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-09"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-10"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-11"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-12"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-13"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-14"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-15"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-16"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-17"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-18"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-19"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-20"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-21"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-22"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-23"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-24"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-25"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-26"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-27"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-28"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-29"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            }
+          ],
+          "explicit_vector_fixtures": true,
+          "status": "pass",
+          "duration_seconds": 9.9
+        },
+        "sequential_retry": {
+          "pass": true,
+          "actual_count": 1,
+          "outcomes": [
+            {
+              "before_rows": 0,
+              "results": [
+                {
+                  "status": "returned",
+                  "id": "retry-001"
+                }
+              ],
+              "exitcode": 0
+            },
+            {
+              "before_rows": 1,
+              "results": [
+                {
+                  "status": "returned",
+                  "id": "retry-001"
+                }
+              ],
+              "exitcode": 0
+            },
+            {
+              "before_rows": 1,
+              "results": [
+                {
+                  "status": "returned",
+                  "id": "retry-001"
+                }
+              ],
+              "exitcode": 0
+            },
+            {
+              "before_rows": 1,
+              "results": [
+                {
+                  "status": "returned",
+                  "id": "retry-001"
+                }
+              ],
+              "exitcode": 0
+            }
+          ],
+          "status": "pass",
+          "duration_seconds": 6.77
+        },
+        "concurrent_retry": {
+          "pass": true,
+          "repetitions": [
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            }
+          ],
+          "status": "pass",
+          "duration_seconds": 31.954
+        },
+        "conflicting_revision": {
+          "pass": false,
+          "repetitions": [
+            {
+              "pass": false,
+              "statuses": [
+                "accepted",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "keep",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": false,
+              "statuses": [
+                "accepted",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "defer",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": false,
+              "statuses": [
+                "accepted",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "keep",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": false,
+              "statuses": [
+                "accepted",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "defer",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": false,
+              "statuses": [
+                "accepted",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "keep",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": false,
+              "statuses": [
+                "accepted",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "defer",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": false,
+              "statuses": [
+                "accepted",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "defer",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": false,
+              "statuses": [
+                "accepted",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "keep",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": false,
+              "statuses": [
+                "accepted",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "keep",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": false,
+              "statuses": [
+                "accepted",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "keep",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            }
+          ],
+          "status": "contract-failure",
+          "duration_seconds": 42.17
+        },
+        "reader_freshness": {
+          "pass": true,
+          "fresh_process_count": 1,
+          "status": "pass",
+          "duration_seconds": 3.05
+        },
+        "interrupted_write": {
+          "pass": true,
+          "repetitions": [
+            {
+              "pass": true,
+              "confirmed_rows": 6,
+              "batch_rows": 5461,
+              "interrupted_batch_rows": 0,
+              "events": [
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-0"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-1"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-2"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-3"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-4"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-5"
+                },
+                {
+                  "event": "batch_started",
+                  "batch_rows": 5461,
+                  "maximum": 5461
+                }
+              ],
+              "exitcode": -9
+            },
+            {
+              "pass": true,
+              "confirmed_rows": 6,
+              "batch_rows": 5461,
+              "interrupted_batch_rows": 0,
+              "events": [
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-0"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-1"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-2"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-3"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-4"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-5"
+                },
+                {
+                  "event": "batch_started",
+                  "batch_rows": 5461,
+                  "maximum": 5461
+                }
+              ],
+              "exitcode": -9
+            },
+            {
+              "pass": true,
+              "confirmed_rows": 6,
+              "batch_rows": 5461,
+              "interrupted_batch_rows": 0,
+              "events": [
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-0"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-1"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-2"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-3"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-4"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-5"
+                },
+                {
+                  "event": "batch_started",
+                  "batch_rows": 5461,
+                  "maximum": 5461
+                }
+              ],
+              "exitcode": -9
+            }
+          ],
+          "scope": "One writer only; batch bounded by SDK maximum",
+          "status": "pass",
+          "duration_seconds": 9.44
+        },
+        "retrieval": {
+          "pass": true,
+          "queries": {
+            "vector_ids": [
+              "approval"
+            ],
+            "substring_ids": [
+              "approval"
+            ],
+            "combined_filter_ids": [
+              "approval"
+            ],
+            "exitcode": 0
+          },
+          "missing_vector_fixture_excluded_and_reported": true,
+          "no_hybrid_rank_fusion": true,
+          "status": "pass",
+          "duration_seconds": 3.174
+        },
+        "identity_conflicts": {
+          "pass": false,
+          "statuses": [
+            "returned",
+            "returned",
+            "returned",
+            "returned"
+          ],
+          "original_unchanged": true,
+          "outcomes": [
+            {
+              "before_rows": 0,
+              "results": [
+                {
+                  "status": "returned",
+                  "id": "original-001"
+                }
+              ],
+              "exitcode": 0
+            },
+            {
+              "before_rows": 1,
+              "results": [
+                {
+                  "status": "returned",
+                  "id": "original-001"
+                }
+              ],
+              "exitcode": 0
+            },
+            {
+              "before_rows": 1,
+              "results": [
+                {
+                  "status": "returned",
+                  "id": "original-001"
+                }
+              ],
+              "exitcode": 0
+            },
+            {
+              "before_rows": 1,
+              "results": [
+                {
+                  "status": "returned",
+                  "id": "original-001"
+                }
+              ],
+              "exitcode": 0
+            }
+          ],
+          "status": "contract-failure",
+          "duration_seconds": 6.779
+        },
+        "embedding_failure": {
+          "pass": true,
+          "outcome": {
+            "error_message": "Collection expecting embedding with dimension of 3, got 2",
+            "unchanged": true,
+            "exitcode": 0
+          },
+          "requires_original_vector": true,
+          "status": "pass",
+          "duration_seconds": 4.489
+        }
+      }
+    },
+    "serialized-owner": {
+      "mode": "serialized-owner",
+      "python": "3.13.2",
+      "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+      "chromadb": "1.5.9",
+      "source_sha256": "9b0e8572b28af2fd4c0c9605e5bea39a161077171d80d7b29671013d99fe5d33",
+      "actor_sha256": "8453176259f6adc45aa4f1762e031c158c180dcd89daacb6872d1ce08fe84208",
+      "protocol_sha256": "08e478a06b18e91837ff333f9e11ce16134ddbc9f00d8609766559d37d566cea",
+      "results": {
+        "capture_without_embedding": {
+          "pass": false,
+          "actual_count": 0,
+          "outcome": {
+            "before_rows": 0,
+            "results": [
+              {
+                "status": "rejected",
+                "error": "You must provide an embedding function to compute embeddings.https://docs.trychroma.com/guides/embeddings in add.",
+                "exception": "ValueError"
+              }
+            ],
+            "exitcode": 0
+          },
+          "no_dummy_vector": true,
+          "status": "contract-failure",
+          "duration_seconds": 3.506
+        },
+        "concurrent_append": {
+          "pass": true,
+          "repetitions": [
+            {
+              "pass": true,
+              "actual_count": 60,
+              "expected_count": 60,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "a-00"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-01"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-02"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-03"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-04"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-05"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-06"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-07"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-08"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-09"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-10"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-11"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-12"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-13"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-14"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-15"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-16"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-17"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-18"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-19"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-20"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-21"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-22"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-23"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-24"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-25"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-26"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-27"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-28"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-29"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 30,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "b-00"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-01"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-02"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-03"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-04"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-05"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-06"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-07"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-08"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-09"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-10"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-11"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-12"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-13"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-14"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-15"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-16"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-17"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-18"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-19"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-20"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-21"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-22"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-23"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-24"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-25"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-26"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-27"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-28"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-29"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 60,
+              "expected_count": 60,
+              "workers": [
+                {
+                  "before_rows": 30,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "a-00"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-01"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-02"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-03"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-04"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-05"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-06"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-07"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-08"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-09"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-10"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-11"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-12"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-13"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-14"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-15"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-16"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-17"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-18"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-19"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-20"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-21"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-22"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-23"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-24"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-25"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-26"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-27"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-28"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-29"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "b-00"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-01"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-02"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-03"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-04"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-05"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-06"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-07"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-08"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-09"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-10"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-11"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-12"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-13"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-14"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-15"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-16"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-17"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-18"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-19"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-20"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-21"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-22"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-23"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-24"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-25"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-26"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-27"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-28"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-29"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 60,
+              "expected_count": 60,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "a-00"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-01"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-02"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-03"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-04"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-05"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-06"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-07"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-08"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-09"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-10"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-11"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-12"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-13"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-14"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-15"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-16"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-17"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-18"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-19"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-20"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-21"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-22"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-23"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-24"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-25"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-26"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-27"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-28"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "a-29"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 30,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "b-00"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-01"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-02"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-03"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-04"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-05"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-06"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-07"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-08"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-09"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-10"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-11"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-12"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-13"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-14"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-15"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-16"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-17"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-18"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-19"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-20"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-21"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-22"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-23"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-24"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-25"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-26"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-27"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-28"
+                    },
+                    {
+                      "status": "returned",
+                      "id": "b-29"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            }
+          ],
+          "explicit_vector_fixtures": true,
+          "status": "pass",
+          "duration_seconds": 13.939
+        },
+        "sequential_retry": {
+          "pass": true,
+          "actual_count": 1,
+          "outcomes": [
+            {
+              "before_rows": 0,
+              "results": [
+                {
+                  "status": "returned",
+                  "id": "retry-001"
+                }
+              ],
+              "exitcode": 0
+            },
+            {
+              "before_rows": 1,
+              "results": [
+                {
+                  "status": "already-captured",
+                  "id": "retry-001"
+                }
+              ],
+              "exitcode": 0
+            },
+            {
+              "before_rows": 1,
+              "results": [
+                {
+                  "status": "already-captured",
+                  "id": "retry-001"
+                }
+              ],
+              "exitcode": 0
+            },
+            {
+              "before_rows": 1,
+              "results": [
+                {
+                  "status": "already-captured",
+                  "id": "retry-001"
+                }
+              ],
+              "exitcode": 0
+            }
+          ],
+          "status": "pass",
+          "duration_seconds": 6.488
+        },
+        "concurrent_retry": {
+          "pass": true,
+          "repetitions": [
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "already-captured",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "already-captured",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "already-captured",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "already-captured",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "already-captured",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "already-captured",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "already-captured",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "already-captured",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "already-captured",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "actual_count": 1,
+              "expected_count": 1,
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "already-captured",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 0,
+                  "results": [
+                    {
+                      "status": "returned",
+                      "id": "shared-operation"
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            }
+          ],
+          "status": "pass",
+          "duration_seconds": 43.186
+        },
+        "conflicting_revision": {
+          "pass": true,
+          "repetitions": [
+            {
+              "pass": true,
+              "statuses": [
+                "conflict",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "defer",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "conflict",
+                      "observed_revision": 1
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "statuses": [
+                "accepted",
+                "conflict"
+              ],
+              "final_revision": 1,
+              "final_decision": "keep",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "conflict",
+                      "observed_revision": 1
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "statuses": [
+                "accepted",
+                "conflict"
+              ],
+              "final_revision": 1,
+              "final_decision": "keep",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "conflict",
+                      "observed_revision": 1
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "statuses": [
+                "conflict",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "defer",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "conflict",
+                      "observed_revision": 1
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "statuses": [
+                "accepted",
+                "conflict"
+              ],
+              "final_revision": 1,
+              "final_decision": "keep",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "conflict",
+                      "observed_revision": 1
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "statuses": [
+                "conflict",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "defer",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "conflict",
+                      "observed_revision": 1
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "statuses": [
+                "accepted",
+                "conflict"
+              ],
+              "final_revision": 1,
+              "final_decision": "keep",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "conflict",
+                      "observed_revision": 1
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "statuses": [
+                "conflict",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "defer",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "conflict",
+                      "observed_revision": 1
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "statuses": [
+                "conflict",
+                "accepted"
+              ],
+              "final_revision": 1,
+              "final_decision": "defer",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "conflict",
+                      "observed_revision": 1
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            },
+            {
+              "pass": true,
+              "statuses": [
+                "accepted",
+                "conflict"
+              ],
+              "final_revision": 1,
+              "final_decision": "keep",
+              "workers": [
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "accepted",
+                      "base_revision": 0
+                    }
+                  ],
+                  "exitcode": 0
+                },
+                {
+                  "before_rows": 1,
+                  "results": [
+                    {
+                      "status": "conflict",
+                      "observed_revision": 1
+                    }
+                  ],
+                  "exitcode": 0
+                }
+              ]
+            }
+          ],
+          "status": "pass",
+          "duration_seconds": 55.023
+        },
+        "reader_freshness": {
+          "pass": true,
+          "fresh_process_count": 1,
+          "status": "pass",
+          "duration_seconds": 3.153
+        },
+        "interrupted_write": {
+          "pass": true,
+          "repetitions": [
+            {
+              "pass": true,
+              "confirmed_rows": 6,
+              "batch_rows": 5461,
+              "interrupted_batch_rows": 0,
+              "events": [
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-0"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-1"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-2"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-3"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-4"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-5"
+                },
+                {
+                  "event": "batch_started",
+                  "batch_rows": 5461,
+                  "maximum": 5461
+                }
+              ],
+              "exitcode": -9
+            },
+            {
+              "pass": true,
+              "confirmed_rows": 6,
+              "batch_rows": 5461,
+              "interrupted_batch_rows": 0,
+              "events": [
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-0"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-1"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-2"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-3"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-4"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-5"
+                },
+                {
+                  "event": "batch_started",
+                  "batch_rows": 5461,
+                  "maximum": 5461
+                }
+              ],
+              "exitcode": -9
+            },
+            {
+              "pass": true,
+              "confirmed_rows": 6,
+              "batch_rows": 5461,
+              "interrupted_batch_rows": 0,
+              "events": [
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-0"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-1"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-2"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-3"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-4"
+                },
+                {
+                  "event": "acknowledged",
+                  "id": "confirmed-5"
+                },
+                {
+                  "event": "batch_started",
+                  "batch_rows": 5461,
+                  "maximum": 5461
+                }
+              ],
+              "exitcode": -9
+            }
+          ],
+          "scope": "One writer only; batch bounded by SDK maximum",
+          "status": "pass",
+          "duration_seconds": 9.804
+        },
+        "retrieval": {
+          "pass": true,
+          "queries": {
+            "vector_ids": [
+              "approval"
+            ],
+            "substring_ids": [
+              "approval"
+            ],
+            "combined_filter_ids": [
+              "approval"
+            ],
+            "exitcode": 0
+          },
+          "missing_vector_fixture_excluded_and_reported": true,
+          "no_hybrid_rank_fusion": true,
+          "status": "pass",
+          "duration_seconds": 3.322
+        },
+        "identity_conflicts": {
+          "pass": true,
+          "statuses": [
+            "returned",
+            "already-captured",
+            "operation-conflict",
+            "identity-conflict"
+          ],
+          "original_unchanged": true,
+          "outcomes": [
+            {
+              "before_rows": 0,
+              "results": [
+                {
+                  "status": "returned",
+                  "id": "original-001"
+                }
+              ],
+              "exitcode": 0
+            },
+            {
+              "before_rows": 1,
+              "results": [
+                {
+                  "status": "already-captured",
+                  "id": "original-001"
+                }
+              ],
+              "exitcode": 0
+            },
+            {
+              "before_rows": 1,
+              "results": [
+                {
+                  "status": "operation-conflict",
+                  "id": "original-001"
+                }
+              ],
+              "exitcode": 0
+            },
+            {
+              "before_rows": 1,
+              "results": [
+                {
+                  "status": "identity-conflict",
+                  "id": "original-001"
+                }
+              ],
+              "exitcode": 0
+            }
+          ],
+          "status": "pass",
+          "duration_seconds": 6.695
+        },
+        "embedding_failure": {
+          "pass": true,
+          "outcome": {
+            "error_message": "Collection expecting embedding with dimension of 3, got 2",
+            "unchanged": true,
+            "exitcode": 0
+          },
+          "requires_original_vector": true,
+          "status": "pass",
+          "duration_seconds": 4.379
+        }
+      }
+    }
+  },
+  "totals": {
+    "native": {
+      "pass": 7,
+      "contract-failure": 3,
+      "infrastructure-error": 0
+    },
+    "serialized-owner": {
+      "pass": 9,
+      "contract-failure": 1,
+      "infrastructure-error": 0
+    }
+  }
+}

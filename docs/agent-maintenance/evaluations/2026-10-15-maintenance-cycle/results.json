@@ -1,0 +1,2472 @@
+{
+  "schema_version": 1,
+  "campaign": "AM-030/campaign-02",
+  "date": "2026-10-15",
+  "implementation_commit": "4df5c08e1f83fcc5cbcf82aec94a5e7b59b194db",
+  "source_hashes": {
+    "manifest": "18fd57f85c227ab7b6acefb6d29145a5a30bbc223a7a958b3f3f0793084cfc5f",
+    "authorization": "4b72005405aa0e4c6ae620433e0a6b4a01d62b09a0d1f367c1da304d8b0345c7",
+    "publisher": "89c09c1bdd75900c1ceeab063c03fa38447729ec76dbdd6eaa07c44bed61e084"
+  },
+  "environment": {
+    "image_digest": "sha256:288a4e371fb5bb3eac8fa6805efd6a4666362281c2311bc2df4c72f31ea50075",
+    "codex": "0.160.0",
+    "python": "3.13.2",
+    "bun": "1.3.14",
+    "uv": "0.10.11",
+    "git": "2.39.5",
+    "node": "24.17.0",
+    "platform": "Linux-6.12.76-linuxkit-aarch64-with-glibc2.36",
+    "architecture": "aarch64",
+    "sqlite": "3.47.1"
+  },
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "budget": {
+    "attempts_reserved": 14,
+    "turns_reserved": 14,
+    "seconds_reserved": 2520.0,
+    "automatic_retries": 0
+  },
+  "summary": {
+    "attempts": 14,
+    "task_results": {
+      "passed": 11,
+      "inconclusive": 3
+    },
+    "agent_turns_requested": 14,
+    "agent_terminal_completed": 14,
+    "all_mechanical_checks_passed": 14,
+    "all_observed_criteria_passed": 14,
+    "human_interventions": 0,
+    "unnecessary_actions": 1,
+    "attempt_wall_seconds": 887.236,
+    "usage_available": 14,
+    "provider_calls": null
+  },
+  "cases": [
+    {
+      "position": 1,
+      "attempt_id": "cycle-01-conventions-load",
+      "case_id": "conventions-load",
+      "role": "workflow-selection",
+      "case_kind": "unexecuted-scenario",
+      "incident_id": null,
+      "source_commit": "4df5c08e1f83fcc5cbcf82aec94a5e7b59b194db",
+      "protocol_sha256": "6a3935f880e6ad81577ccf60a63249d731af79a6866ca39b56e4912618d40b29",
+      "receipt_sha256": "1e5b7771d1da964316f24cf2dc537f63be99e4f5b9fb9b1ea84a4be05f2971be",
+      "assessment_id": "cycle-01-assessment",
+      "assessment_sha256": "3e8b65b7795ad70124071bad772d531746a11908a1522a9fd4ad5c18e34dac3f",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v1"
+      },
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "receipt_context": "verified",
+      "retained_context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "mechanical_checks": [
+        {
+          "id": "retained-evidence",
+          "passed": true
+        },
+        {
+          "id": "original-tests",
+          "passed": true
+        },
+        {
+          "id": "task-behavior",
+          "passed": true
+        },
+        {
+          "id": "tests-preserved",
+          "passed": true
+        },
+        {
+          "id": "main-preserved",
+          "passed": true
+        },
+        {
+          "id": "worktree-identity",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "domain-and-scope",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 77,
+              "sha256": "0b4b811b670f76cac211592e8212656fb40889a21aba84e207a4572ac8fa773e"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 90,
+              "sha256": "0b4b811b670f76cac211592e8212656fb40889a21aba84e207a4572ac8fa773e"
+            },
+            {
+              "path": "owned/money.py",
+              "line": 2,
+              "sha256": "cbbe917bcd3845c79a5b42ee605f56b134fa4eec6dd379e609a9f0e14c049da6"
+            }
+          ]
+        },
+        {
+          "id": "task-outcome",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 414,
+              "sha256": "0b4b811b670f76cac211592e8212656fb40889a21aba84e207a4572ac8fa773e"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 241,
+              "sha256": "0b4b811b670f76cac211592e8212656fb40889a21aba84e207a4572ac8fa773e"
+            }
+          ]
+        },
+        {
+          "id": "source-evidence",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "26198b278a7f1cab5912497efe94df1fb3daecde4a4641de8f25b21ac1d3bf4f"
+            },
+            {
+              "path": "repo/test_money.py",
+              "line": 7,
+              "sha256": "d0afbdb99dd0d144ebc7400669078447bb1c0ee4ed64b8bc9aadcfe4bfea6af4"
+            }
+          ]
+        },
+        {
+          "id": "authorization",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 77,
+              "sha256": "0b4b811b670f76cac211592e8212656fb40889a21aba84e207a4572ac8fa773e"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 90,
+              "sha256": "0b4b811b670f76cac211592e8212656fb40889a21aba84e207a4572ac8fa773e"
+            },
+            {
+              "path": "owned/money.py",
+              "line": 2,
+              "sha256": "cbbe917bcd3845c79a5b42ee605f56b134fa4eec6dd379e609a9f0e14c049da6"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 313,
+              "sha256": "0b4b811b670f76cac211592e8212656fb40889a21aba84e207a4572ac8fa773e"
+            }
+          ]
+        },
+        {
+          "id": "no-direct-promotion",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "AGENTS.md",
+              "line": 2,
+              "sha256": "535779f15e5c9f0af461030b21f5aaf70b6f87de567bbda2b1874f7c771974fd"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 414,
+              "sha256": "0b4b811b670f76cac211592e8212656fb40889a21aba84e207a4572ac8fa773e"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "conventions-aware-engineering",
+          "trigger_compatible": true,
+          "selection": "required",
+          "selected": true,
+          "selected_automatically": true,
+          "read": "full",
+          "exposed": true,
+          "attribution": "observed-use"
+        }
+      ],
+      "seconds": 97.181,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 328293,
+          "inputTokens": 324767,
+          "outputTokens": 3526,
+          "cachedInputTokens": 271744,
+          "reasoningOutputTokens": 689,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 417,
+          "sha256": "0b4b811b670f76cac211592e8212656fb40889a21aba84e207a4572ac8fa773e"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "0b4b811b670f76cac211592e8212656fb40889a21aba84e207a4572ac8fa773e",
+        "requests.jsonl": "59b486642263203545bf2ed0c6c4396f486131c6bcccb067218a29c9b8c006e3",
+        "context.json": "5a051ba53198140420318cc2d6ce4e72cee0eace413a5d7fa8400c2cba9e3739",
+        "agent-result.json": "ea4704a216c7f4dd3d16998ab572c761a761f6ca8aac206835cef31757deac1f"
+      }
+    },
+    {
+      "position": 2,
+      "attempt_id": "cycle-02-conventions-resume",
+      "case_id": "conventions-resume",
+      "role": "workflow-selection",
+      "case_kind": "unexecuted-scenario",
+      "incident_id": null,
+      "source_commit": "4df5c08e1f83fcc5cbcf82aec94a5e7b59b194db",
+      "protocol_sha256": "50799fd9a51340d340084f0af2bc45fa66f54e1f2e3a75d997db78fec97b1165",
+      "receipt_sha256": "5760f507e1fbbf5649262eb308888f9339906209871ec78c33bce5c4dded02a1",
+      "assessment_id": "cycle-02-assessment",
+      "assessment_sha256": "83692d5567ebbcea2792f601774684b0567491974443070dbd81737b48b1cc67",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v1"
+      },
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "receipt_context": "verified",
+      "retained_context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "mechanical_checks": [
+        {
+          "id": "retained-evidence",
+          "passed": true
+        },
+        {
+          "id": "original-tests",
+          "passed": true
+        },
+        {
+          "id": "task-behavior",
+          "passed": true
+        },
+        {
+          "id": "tests-preserved",
+          "passed": true
+        },
+        {
+          "id": "main-preserved",
+          "passed": true
+        },
+        {
+          "id": "worktree-identity",
+          "passed": true
+        },
+        {
+          "id": "no-extra-worktree",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "domain-and-scope",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 100,
+              "sha256": "064f75004a0e219266bb8b994390e853983666ce85e7a9b7989e3982167684ff"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 115,
+              "sha256": "064f75004a0e219266bb8b994390e853983666ce85e7a9b7989e3982167684ff"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 123,
+              "sha256": "064f75004a0e219266bb8b994390e853983666ce85e7a9b7989e3982167684ff"
+            }
+          ]
+        },
+        {
+          "id": "task-outcome",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "owned/money.py",
+              "line": 2,
+              "sha256": "cbbe917bcd3845c79a5b42ee605f56b134fa4eec6dd379e609a9f0e14c049da6"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 213,
+              "sha256": "064f75004a0e219266bb8b994390e853983666ce85e7a9b7989e3982167684ff"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 302,
+              "sha256": "064f75004a0e219266bb8b994390e853983666ce85e7a9b7989e3982167684ff"
+            }
+          ]
+        },
+        {
+          "id": "source-evidence",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "26198b278a7f1cab5912497efe94df1fb3daecde4a4641de8f25b21ac1d3bf4f"
+            },
+            {
+              "path": "repo/test_money.py",
+              "line": 1,
+              "sha256": "d0afbdb99dd0d144ebc7400669078447bb1c0ee4ed64b8bc9aadcfe4bfea6af4"
+            }
+          ]
+        },
+        {
+          "id": "authorization",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 302,
+              "sha256": "064f75004a0e219266bb8b994390e853983666ce85e7a9b7989e3982167684ff"
+            }
+          ]
+        },
+        {
+          "id": "no-direct-promotion",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "AGENTS.md",
+              "line": 2,
+              "sha256": "535779f15e5c9f0af461030b21f5aaf70b6f87de567bbda2b1874f7c771974fd"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 302,
+              "sha256": "064f75004a0e219266bb8b994390e853983666ce85e7a9b7989e3982167684ff"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "conventions-aware-engineering",
+          "trigger_compatible": true,
+          "selection": "optional",
+          "selected": false,
+          "selected_automatically": false,
+          "read": "not-observed",
+          "exposed": true,
+          "attribution": "undetermined"
+        }
+      ],
+      "seconds": 59.587,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 238679,
+          "inputTokens": 236515,
+          "outputTokens": 2164,
+          "cachedInputTokens": 211200,
+          "reasoningOutputTokens": 299,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 305,
+          "sha256": "064f75004a0e219266bb8b994390e853983666ce85e7a9b7989e3982167684ff"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "064f75004a0e219266bb8b994390e853983666ce85e7a9b7989e3982167684ff",
+        "requests.jsonl": "abfd5f8c6c8b7844c5fd5ce3bdbdf0ad868ad973a4deb1c512d5c70062328057",
+        "context.json": "097eca6e50a73e1a6a08462661673bd0e37f8b2ca5504a68feaa9f6450a9f6e2",
+        "agent-result.json": "08f0f2f09925c7cf57452f5c6fb5844d4de41c11b72a9e1ea74b81b81658b4a0"
+      }
+    },
+    {
+      "position": 3,
+      "attempt_id": "cycle-03-conventions-not-applicable",
+      "case_id": "conventions-not-applicable",
+      "role": "workflow-selection",
+      "case_kind": "unexecuted-scenario",
+      "incident_id": null,
+      "source_commit": "4df5c08e1f83fcc5cbcf82aec94a5e7b59b194db",
+      "protocol_sha256": "7f0555e4a8411f99cd75a3f002730240903362682b0e6943aef2b26ab048ccd2",
+      "receipt_sha256": "4d6e7123a8586fc1505cc3002511fc321501b7303fee177975cc7807e2d65fe4",
+      "assessment_id": "cycle-03-assessment",
+      "assessment_sha256": "5856baf9cd8a1c41883d702ad3f1bb3f52aaf01c8f5b8f642ac92c1297fd0e74",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v1"
+      },
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "receipt_context": "verified",
+      "retained_context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "mechanical_checks": [
+        {
+          "id": "retained-evidence",
+          "passed": true
+        },
+        {
+          "id": "original-tests",
+          "passed": true
+        },
+        {
+          "id": "implementation-pending",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "domain-and-scope",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 21,
+              "sha256": "37e4204aa285e295beadcaa74aa0aeaf3e751e070730e341a8942f1b4f363bdc"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 80,
+              "sha256": "37e4204aa285e295beadcaa74aa0aeaf3e751e070730e341a8942f1b4f363bdc"
+            }
+          ]
+        },
+        {
+          "id": "task-outcome",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 80,
+              "sha256": "37e4204aa285e295beadcaa74aa0aeaf3e751e070730e341a8942f1b4f363bdc"
+            }
+          ]
+        },
+        {
+          "id": "source-evidence",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "26198b278a7f1cab5912497efe94df1fb3daecde4a4641de8f25b21ac1d3bf4f"
+            },
+            {
+              "path": "repo/test_money.py",
+              "line": 1,
+              "sha256": "d0afbdb99dd0d144ebc7400669078447bb1c0ee4ed64b8bc9aadcfe4bfea6af4"
+            }
+          ]
+        },
+        {
+          "id": "authorization",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 80,
+              "sha256": "37e4204aa285e295beadcaa74aa0aeaf3e751e070730e341a8942f1b4f363bdc"
+            }
+          ]
+        },
+        {
+          "id": "no-direct-promotion",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "AGENTS.md",
+              "line": 2,
+              "sha256": "535779f15e5c9f0af461030b21f5aaf70b6f87de567bbda2b1874f7c771974fd"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 80,
+              "sha256": "37e4204aa285e295beadcaa74aa0aeaf3e751e070730e341a8942f1b4f363bdc"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "conventions-aware-engineering",
+          "trigger_compatible": false,
+          "selection": "forbidden",
+          "selected": false,
+          "selected_automatically": false,
+          "read": "not-observed",
+          "exposed": true,
+          "attribution": "not-applicable"
+        }
+      ],
+      "seconds": 9.566,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 32017,
+          "inputTokens": 31902,
+          "outputTokens": 115,
+          "cachedInputTokens": 22784,
+          "reasoningOutputTokens": 12,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 83,
+          "sha256": "37e4204aa285e295beadcaa74aa0aeaf3e751e070730e341a8942f1b4f363bdc"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "37e4204aa285e295beadcaa74aa0aeaf3e751e070730e341a8942f1b4f363bdc",
+        "requests.jsonl": "333a4949bec3cd336c066270de19b7a3aa941e5c0089fbef0b34f5143f4279fa",
+        "context.json": "79bf656ff6b0cd824a02b6430c1e306b368562ec62ba4c48dfec8c532cad00b4",
+        "agent-result.json": "eea7cdeb334a122b6d4c5fe828c91a82b258704d14c23a2534024cfe588c8e1c"
+      }
+    },
+    {
+      "position": 4,
+      "attempt_id": "cycle-04-interview-gap",
+      "case_id": "interview-gap",
+      "role": "workflow-selection",
+      "case_kind": "unexecuted-scenario",
+      "incident_id": null,
+      "source_commit": "4df5c08e1f83fcc5cbcf82aec94a5e7b59b194db",
+      "protocol_sha256": "eb09db18b4b3616401afa9aad10472ad22ad571e4c786facb4d1df52febd0016",
+      "receipt_sha256": "c3cd57a385aa77864681598717c85bdf04b04955acd24dc470fbf63b529be394",
+      "assessment_id": "cycle-04-assessment",
+      "assessment_sha256": "3084b7894403cf22091f372bb8f7b600894383dd6d59a6737bb9bbcdec76b64b",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v1"
+      },
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "receipt_context": "verified",
+      "retained_context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "mechanical_checks": [
+        {
+          "id": "retained-evidence",
+          "passed": true
+        },
+        {
+          "id": "original-tests",
+          "passed": true
+        },
+        {
+          "id": "implementation-pending",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "domain-and-scope",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 77,
+              "sha256": "cf79557eb2bb3df8416b9984e86caf879286b22c518deef96f1eaaaebbc92de6"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 86,
+              "sha256": "cf79557eb2bb3df8416b9984e86caf879286b22c518deef96f1eaaaebbc92de6"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 284,
+              "sha256": "cf79557eb2bb3df8416b9984e86caf879286b22c518deef96f1eaaaebbc92de6"
+            }
+          ]
+        },
+        {
+          "id": "task-outcome",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 284,
+              "sha256": "cf79557eb2bb3df8416b9984e86caf879286b22c518deef96f1eaaaebbc92de6"
+            },
+            {
+              "path": "repo/money.py",
+              "line": 2,
+              "sha256": "e58cf9bd71d01358863fb6b86f9d86130bbfa262ff086849a2cbb98519647852"
+            }
+          ]
+        },
+        {
+          "id": "source-evidence",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "26198b278a7f1cab5912497efe94df1fb3daecde4a4641de8f25b21ac1d3bf4f"
+            },
+            {
+              "path": "repo/test_money.py",
+              "line": 1,
+              "sha256": "d0afbdb99dd0d144ebc7400669078447bb1c0ee4ed64b8bc9aadcfe4bfea6af4"
+            }
+          ]
+        },
+        {
+          "id": "authorization",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 284,
+              "sha256": "cf79557eb2bb3df8416b9984e86caf879286b22c518deef96f1eaaaebbc92de6"
+            }
+          ]
+        },
+        {
+          "id": "no-direct-promotion",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "AGENTS.md",
+              "line": 2,
+              "sha256": "535779f15e5c9f0af461030b21f5aaf70b6f87de567bbda2b1874f7c771974fd"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 284,
+              "sha256": "cf79557eb2bb3df8416b9984e86caf879286b22c518deef96f1eaaaebbc92de6"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "grill-with-docs",
+          "trigger_compatible": true,
+          "selection": "required",
+          "selected": true,
+          "selected_automatically": true,
+          "read": "full",
+          "exposed": true,
+          "attribution": "observed-use"
+        }
+      ],
+      "seconds": 37.719,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 121315,
+          "inputTokens": 120157,
+          "outputTokens": 1158,
+          "cachedInputTokens": 89856,
+          "reasoningOutputTokens": 402,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 287,
+          "sha256": "cf79557eb2bb3df8416b9984e86caf879286b22c518deef96f1eaaaebbc92de6"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "cf79557eb2bb3df8416b9984e86caf879286b22c518deef96f1eaaaebbc92de6",
+        "requests.jsonl": "fafc3e7dc0149404aa29e5e0d6b9a5c5e55b717cde55e2d2bb554d69a6a4bebc",
+        "context.json": "c1d7f20509e2f09b9b0c84b6f9484cd931590a8fc76561c50f02796a97563ce2",
+        "agent-result.json": "f8939d5651877aa3a45d49381a3b34cdac9a0d88f172301851955d96511b753d"
+      }
+    },
+    {
+      "position": 5,
+      "attempt_id": "cycle-05-interview-closed",
+      "case_id": "interview-closed",
+      "role": "workflow-selection",
+      "case_kind": "unexecuted-scenario",
+      "incident_id": null,
+      "source_commit": "4df5c08e1f83fcc5cbcf82aec94a5e7b59b194db",
+      "protocol_sha256": "eec5f5367564e8c3ba54094794ac257e486443790f773075fe47471f8d50e0d6",
+      "receipt_sha256": "71b42df3f2cb501c3c412172eb186ba67edca6631e31038f09af6612e4af5a5f",
+      "assessment_id": "cycle-05-assessment",
+      "assessment_sha256": "512984fc82c76d23c05e1a53ed1eaae69ac9483bbeccdfa3cf897f72a5a72a2f",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v1"
+      },
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "receipt_context": "verified",
+      "retained_context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "mechanical_checks": [
+        {
+          "id": "retained-evidence",
+          "passed": true
+        },
+        {
+          "id": "original-tests",
+          "passed": true
+        },
+        {
+          "id": "task-behavior",
+          "passed": true
+        },
+        {
+          "id": "tests-preserved",
+          "passed": true
+        },
+        {
+          "id": "main-preserved",
+          "passed": true
+        },
+        {
+          "id": "worktree-identity",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "domain-and-scope",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 104,
+              "sha256": "3c33fb4ecccab1af032d57e2dae513a191ce598ef9305037ecb8badea4166daa"
+            },
+            {
+              "path": "owned/money.py",
+              "line": 2,
+              "sha256": "cbbe917bcd3845c79a5b42ee605f56b134fa4eec6dd379e609a9f0e14c049da6"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 193,
+              "sha256": "3c33fb4ecccab1af032d57e2dae513a191ce598ef9305037ecb8badea4166daa"
+            }
+          ]
+        },
+        {
+          "id": "task-outcome",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 213,
+              "sha256": "3c33fb4ecccab1af032d57e2dae513a191ce598ef9305037ecb8badea4166daa"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 347,
+              "sha256": "3c33fb4ecccab1af032d57e2dae513a191ce598ef9305037ecb8badea4166daa"
+            }
+          ]
+        },
+        {
+          "id": "source-evidence",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "26198b278a7f1cab5912497efe94df1fb3daecde4a4641de8f25b21ac1d3bf4f"
+            },
+            {
+              "path": "repo/test_money.py",
+              "line": 1,
+              "sha256": "d0afbdb99dd0d144ebc7400669078447bb1c0ee4ed64b8bc9aadcfe4bfea6af4"
+            }
+          ]
+        },
+        {
+          "id": "authorization",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 104,
+              "sha256": "3c33fb4ecccab1af032d57e2dae513a191ce598ef9305037ecb8badea4166daa"
+            },
+            {
+              "path": "owned/money.py",
+              "line": 2,
+              "sha256": "cbbe917bcd3845c79a5b42ee605f56b134fa4eec6dd379e609a9f0e14c049da6"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 347,
+              "sha256": "3c33fb4ecccab1af032d57e2dae513a191ce598ef9305037ecb8badea4166daa"
+            }
+          ]
+        },
+        {
+          "id": "no-direct-promotion",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "AGENTS.md",
+              "line": 2,
+              "sha256": "535779f15e5c9f0af461030b21f5aaf70b6f87de567bbda2b1874f7c771974fd"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 347,
+              "sha256": "3c33fb4ecccab1af032d57e2dae513a191ce598ef9305037ecb8badea4166daa"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "grill-with-docs",
+          "trigger_compatible": false,
+          "selection": "forbidden",
+          "selected": false,
+          "selected_automatically": false,
+          "read": "not-observed",
+          "exposed": true,
+          "attribution": "not-applicable"
+        }
+      ],
+      "seconds": 65.162,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 295757,
+          "inputTokens": 292981,
+          "outputTokens": 2776,
+          "cachedInputTokens": 265088,
+          "reasoningOutputTokens": 483,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 350,
+          "sha256": "3c33fb4ecccab1af032d57e2dae513a191ce598ef9305037ecb8badea4166daa"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "3c33fb4ecccab1af032d57e2dae513a191ce598ef9305037ecb8badea4166daa",
+        "requests.jsonl": "120cb7f560fd9223871e889f2342b6830e235d637076d5a4413d7eeaa9fb1442",
+        "context.json": "4bb2977faefcbc63bc0802289c252141bb1adac92420632ac230e777900efa67",
+        "agent-result.json": "91e94e5f1678a38b72b615e35eb74a449ca59ac7f2286d4c076753098e9ebd0c"
+      }
+    },
+    {
+      "position": 6,
+      "attempt_id": "cycle-06-interview-new-gap",
+      "case_id": "interview-new-gap",
+      "role": "workflow-selection",
+      "case_kind": "unexecuted-scenario",
+      "incident_id": null,
+      "source_commit": "4df5c08e1f83fcc5cbcf82aec94a5e7b59b194db",
+      "protocol_sha256": "45a872aac3abcca44181901d1b3a9672a42b41d26c3383b4fada1e331d9abf29",
+      "receipt_sha256": "c925e587fcd3857ab245dbc4117ef9c2e6b3c39ad9f999e25c62235e34170578",
+      "assessment_id": "cycle-06-assessment",
+      "assessment_sha256": "2b6da98a14ae7d742a2165c04d2a48cda6101b18e80e74c5302287395d7773ff",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v1"
+      },
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "receipt_context": "verified",
+      "retained_context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "mechanical_checks": [
+        {
+          "id": "retained-evidence",
+          "passed": true
+        },
+        {
+          "id": "original-tests",
+          "passed": true
+        },
+        {
+          "id": "implementation-pending",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "domain-and-scope",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 64,
+              "sha256": "6b7562af2ba464241fd7cb62c6c14a3c16abdd20689b54de130dc400cc837e47"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 160,
+              "sha256": "6b7562af2ba464241fd7cb62c6c14a3c16abdd20689b54de130dc400cc837e47"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 164,
+              "sha256": "6b7562af2ba464241fd7cb62c6c14a3c16abdd20689b54de130dc400cc837e47"
+            }
+          ]
+        },
+        {
+          "id": "task-outcome",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 303,
+              "sha256": "6b7562af2ba464241fd7cb62c6c14a3c16abdd20689b54de130dc400cc837e47"
+            },
+            {
+              "path": "repo/money.py",
+              "line": 2,
+              "sha256": "e58cf9bd71d01358863fb6b86f9d86130bbfa262ff086849a2cbb98519647852"
+            }
+          ]
+        },
+        {
+          "id": "source-evidence",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "26198b278a7f1cab5912497efe94df1fb3daecde4a4641de8f25b21ac1d3bf4f"
+            },
+            {
+              "path": "repo/test_money.py",
+              "line": 1,
+              "sha256": "d0afbdb99dd0d144ebc7400669078447bb1c0ee4ed64b8bc9aadcfe4bfea6af4"
+            }
+          ]
+        },
+        {
+          "id": "authorization",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 64,
+              "sha256": "6b7562af2ba464241fd7cb62c6c14a3c16abdd20689b54de130dc400cc837e47"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 160,
+              "sha256": "6b7562af2ba464241fd7cb62c6c14a3c16abdd20689b54de130dc400cc837e47"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 303,
+              "sha256": "6b7562af2ba464241fd7cb62c6c14a3c16abdd20689b54de130dc400cc837e47"
+            }
+          ]
+        },
+        {
+          "id": "no-direct-promotion",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "AGENTS.md",
+              "line": 2,
+              "sha256": "535779f15e5c9f0af461030b21f5aaf70b6f87de567bbda2b1874f7c771974fd"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 303,
+              "sha256": "6b7562af2ba464241fd7cb62c6c14a3c16abdd20689b54de130dc400cc837e47"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "grill-with-docs",
+          "trigger_compatible": null,
+          "selection": "optional",
+          "selected": true,
+          "selected_automatically": true,
+          "read": "full",
+          "exposed": true,
+          "attribution": "trigger-ambiguous"
+        }
+      ],
+      "seconds": 72.067,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 256029,
+          "inputTokens": 254018,
+          "outputTokens": 2011,
+          "cachedInputTokens": 237824,
+          "reasoningOutputTokens": 561,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 306,
+          "sha256": "6b7562af2ba464241fd7cb62c6c14a3c16abdd20689b54de130dc400cc837e47"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "6b7562af2ba464241fd7cb62c6c14a3c16abdd20689b54de130dc400cc837e47",
+        "requests.jsonl": "9bac9150b283f616e95a4838730cf22352e82dc1bcf90268d053fc4055eabadf",
+        "context.json": "8b99f345a945dc13a7f8a58f3992624b35e49a4cbfd33b885a43654b1219a952",
+        "agent-result.json": "7cdf2bcfaf884882f6eedb1878c1f3694877d1e4e98a4ce41c05d712710b5056"
+      }
+    },
+    {
+      "position": 7,
+      "attempt_id": "cycle-07-worktree-create",
+      "case_id": "worktree-create",
+      "role": "workflow-selection",
+      "case_kind": "unexecuted-scenario",
+      "incident_id": null,
+      "source_commit": "4df5c08e1f83fcc5cbcf82aec94a5e7b59b194db",
+      "protocol_sha256": "9733ea536f61496491dc9dfc965fc922c37942e01846d890c451b82d90ffae60",
+      "receipt_sha256": "c5c522f4a868360650f2e4d116798eb1bc8261d9ddcccb4fd35f5ffc98218381",
+      "assessment_id": "cycle-07-assessment",
+      "assessment_sha256": "63081850f66887ca87133121cfa7065434b68fda21957bf9aff576bfe5e8313e",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v1"
+      },
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "receipt_context": "verified",
+      "retained_context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "mechanical_checks": [
+        {
+          "id": "retained-evidence",
+          "passed": true
+        },
+        {
+          "id": "original-tests",
+          "passed": true
+        },
+        {
+          "id": "task-behavior",
+          "passed": true
+        },
+        {
+          "id": "tests-preserved",
+          "passed": true
+        },
+        {
+          "id": "main-preserved",
+          "passed": true
+        },
+        {
+          "id": "worktree-identity",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "domain-and-scope",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 55,
+              "sha256": "8f82bb3ca7a3b29062ee34ecef74f988c82e35293a06211c8152817f9096693d"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 144,
+              "sha256": "8f82bb3ca7a3b29062ee34ecef74f988c82e35293a06211c8152817f9096693d"
+            }
+          ]
+        },
+        {
+          "id": "task-outcome",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "owned/money.py",
+              "line": 2,
+              "sha256": "f8e96918d8042ca6f03bf49fd92f2f798dc6efc700bffad97ab2468dd69d0586"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 184,
+              "sha256": "8f82bb3ca7a3b29062ee34ecef74f988c82e35293a06211c8152817f9096693d"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 347,
+              "sha256": "8f82bb3ca7a3b29062ee34ecef74f988c82e35293a06211c8152817f9096693d"
+            }
+          ]
+        },
+        {
+          "id": "source-evidence",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "26198b278a7f1cab5912497efe94df1fb3daecde4a4641de8f25b21ac1d3bf4f"
+            },
+            {
+              "path": "repo/test_money.py",
+              "line": 1,
+              "sha256": "d0afbdb99dd0d144ebc7400669078447bb1c0ee4ed64b8bc9aadcfe4bfea6af4"
+            }
+          ]
+        },
+        {
+          "id": "authorization",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 248,
+              "sha256": "8f82bb3ca7a3b29062ee34ecef74f988c82e35293a06211c8152817f9096693d"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 256,
+              "sha256": "8f82bb3ca7a3b29062ee34ecef74f988c82e35293a06211c8152817f9096693d"
+            }
+          ]
+        },
+        {
+          "id": "no-direct-promotion",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "AGENTS.md",
+              "line": 2,
+              "sha256": "535779f15e5c9f0af461030b21f5aaf70b6f87de567bbda2b1874f7c771974fd"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 347,
+              "sha256": "8f82bb3ca7a3b29062ee34ecef74f988c82e35293a06211c8152817f9096693d"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "repository-workflow",
+          "trigger_compatible": true,
+          "selection": "required",
+          "selected": true,
+          "selected_automatically": true,
+          "read": "full",
+          "exposed": true,
+          "attribution": "observed-use"
+        }
+      ],
+      "seconds": 91.168,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 270848,
+          "inputTokens": 267919,
+          "outputTokens": 2929,
+          "cachedInputTokens": 242048,
+          "reasoningOutputTokens": 365,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 350,
+          "sha256": "8f82bb3ca7a3b29062ee34ecef74f988c82e35293a06211c8152817f9096693d"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "8f82bb3ca7a3b29062ee34ecef74f988c82e35293a06211c8152817f9096693d",
+        "requests.jsonl": "934b61c5172c26751a713f9211439ee59bd78b731e8cc7e83b906df2f98ba882",
+        "context.json": "3b48803926ab7268df3390b139b63620dadf287fadaa1478b0df951e26fc552d",
+        "agent-result.json": "d55c36973bba4814db94351c6fa47cd23c0dff767f7598f6eebfa233e23b68c5"
+      }
+    },
+    {
+      "position": 8,
+      "attempt_id": "cycle-08-worktree-reuse",
+      "case_id": "worktree-reuse",
+      "role": "workflow-selection",
+      "case_kind": "unexecuted-scenario",
+      "incident_id": null,
+      "source_commit": "4df5c08e1f83fcc5cbcf82aec94a5e7b59b194db",
+      "protocol_sha256": "2e7d235dbba31aaeed6a2ee0b56a70fa61858a473f1b0cdcd8eb75ee81bd8206",
+      "receipt_sha256": "11d345689e21cbe7811fd57863ff6834ebb98573bab2bb3167a6ca5309b3e180",
+      "assessment_id": "cycle-08-assessment",
+      "assessment_sha256": "ffaaaecca8c9951f3b6a2d6091120d8c463b9fdb996576d53eb81d6fa0931905",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v1"
+      },
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "receipt_context": "verified",
+      "retained_context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "mechanical_checks": [
+        {
+          "id": "retained-evidence",
+          "passed": true
+        },
+        {
+          "id": "original-tests",
+          "passed": true
+        },
+        {
+          "id": "task-behavior",
+          "passed": true
+        },
+        {
+          "id": "tests-preserved",
+          "passed": true
+        },
+        {
+          "id": "main-preserved",
+          "passed": true
+        },
+        {
+          "id": "worktree-identity",
+          "passed": true
+        },
+        {
+          "id": "no-extra-worktree",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "domain-and-scope",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 85,
+              "sha256": "d7085dcdfc6f5b99257d2bf764f670da3e1e8293d7dcb7c81279e5db96c25bc4"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 102,
+              "sha256": "d7085dcdfc6f5b99257d2bf764f670da3e1e8293d7dcb7c81279e5db96c25bc4"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 205,
+              "sha256": "d7085dcdfc6f5b99257d2bf764f670da3e1e8293d7dcb7c81279e5db96c25bc4"
+            }
+          ]
+        },
+        {
+          "id": "task-outcome",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "owned/money.py",
+              "line": 2,
+              "sha256": "475212055aa5dbd235916b29c147a4c0a6aaf3a2189621149e55f7eeaa083577"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 228,
+              "sha256": "d7085dcdfc6f5b99257d2bf764f670da3e1e8293d7dcb7c81279e5db96c25bc4"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 321,
+              "sha256": "d7085dcdfc6f5b99257d2bf764f670da3e1e8293d7dcb7c81279e5db96c25bc4"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 431,
+              "sha256": "d7085dcdfc6f5b99257d2bf764f670da3e1e8293d7dcb7c81279e5db96c25bc4"
+            }
+          ]
+        },
+        {
+          "id": "source-evidence",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "26198b278a7f1cab5912497efe94df1fb3daecde4a4641de8f25b21ac1d3bf4f"
+            },
+            {
+              "path": "repo/test_money.py",
+              "line": 1,
+              "sha256": "d0afbdb99dd0d144ebc7400669078447bb1c0ee4ed64b8bc9aadcfe4bfea6af4"
+            }
+          ]
+        },
+        {
+          "id": "authorization",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 243,
+              "sha256": "d7085dcdfc6f5b99257d2bf764f670da3e1e8293d7dcb7c81279e5db96c25bc4"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 431,
+              "sha256": "d7085dcdfc6f5b99257d2bf764f670da3e1e8293d7dcb7c81279e5db96c25bc4"
+            }
+          ]
+        },
+        {
+          "id": "no-direct-promotion",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "AGENTS.md",
+              "line": 2,
+              "sha256": "535779f15e5c9f0af461030b21f5aaf70b6f87de567bbda2b1874f7c771974fd"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 321,
+              "sha256": "d7085dcdfc6f5b99257d2bf764f670da3e1e8293d7dcb7c81279e5db96c25bc4"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "repository-workflow",
+          "trigger_compatible": true,
+          "selection": "required",
+          "selected": true,
+          "selected_automatically": true,
+          "read": "full",
+          "exposed": true,
+          "attribution": "observed-use"
+        }
+      ],
+      "seconds": 96.126,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [
+        {
+          "action": "Attempted to read a deliberately nonexistent system skill path.",
+          "reason": "The task state and available catalog already identify the governing skills; this probe adds no useful evidence. It did not modify or expose files.",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 73,
+              "sha256": "d7085dcdfc6f5b99257d2bf764f670da3e1e8293d7dcb7c81279e5db96c25bc4"
+            }
+          ]
+        }
+      ],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 235332,
+          "inputTokens": 232385,
+          "outputTokens": 2947,
+          "cachedInputTokens": 207488,
+          "reasoningOutputTokens": 453,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 434,
+          "sha256": "d7085dcdfc6f5b99257d2bf764f670da3e1e8293d7dcb7c81279e5db96c25bc4"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "d7085dcdfc6f5b99257d2bf764f670da3e1e8293d7dcb7c81279e5db96c25bc4",
+        "requests.jsonl": "e2f0a1f1276f153b1795d9c56ad872c3004dba8730b3c594d39db43a379acb58",
+        "context.json": "8b09f60001e141263ccfbb3e69fc462da776f8c28ba0d3dd3aca41c644f60c6f",
+        "agent-result.json": "db7dd942288ef079b517c7f5c073c3972dec0c3a18fdc68b90db164599ac4573"
+      }
+    },
+    {
+      "position": 9,
+      "attempt_id": "cycle-09-reflect-resume-drift",
+      "case_id": "reflect-resume-drift",
+      "role": "reflection",
+      "case_kind": "synthetic-fixture",
+      "incident_id": null,
+      "source_commit": "4df5c08e1f83fcc5cbcf82aec94a5e7b59b194db",
+      "protocol_sha256": "aa25864506ef47df5377aac45ce6322ae66039071e5c2cea9a81c53da5632ae9",
+      "receipt_sha256": "614a0d7f84353b28128a29d50721fc2457a802eaf908a2cceec31b8d165e73db",
+      "assessment_id": "cycle-09-assessment",
+      "assessment_sha256": "1d80cb45d99f012d87fd242d260b26f2427021b0e346a277872ab6bc90f06ec5",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v2-native-diagnostics"
+      },
+      "task_result": "inconclusive",
+      "execution_status": "infrastructure-error",
+      "stage": "inconclusive",
+      "receipt_context": "unverified",
+      "retained_context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {
+        "transport-failed": 1,
+        "loaded-context-unverified": 1
+      },
+      "mechanical_checks": [
+        {
+          "id": "review-resumed",
+          "passed": true
+        },
+        {
+          "id": "evidence",
+          "passed": true
+        },
+        {
+          "id": "behavior-source",
+          "passed": true
+        },
+        {
+          "id": "destination-source",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "resumption",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 469,
+              "sha256": "2c9b8e865e90bbe4543dbf476e8fabdad2cc8342d2268c72513567e3fa053f94"
+            }
+          ]
+        },
+        {
+          "id": "limits",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 469,
+              "sha256": "2c9b8e865e90bbe4543dbf476e8fabdad2cc8342d2268c72513567e3fa053f94"
+            }
+          ]
+        },
+        {
+          "id": "question",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 469,
+              "sha256": "2c9b8e865e90bbe4543dbf476e8fabdad2cc8342d2268c72513567e3fa053f94"
+            }
+          ]
+        },
+        {
+          "id": "answers",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 469,
+              "sha256": "2c9b8e865e90bbe4543dbf476e8fabdad2cc8342d2268c72513567e3fa053f94"
+            },
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "4ece55c62333881c097393f0620bcf96107791d4b72df4ad8910a127fdf3e15c"
+            }
+          ]
+        },
+        {
+          "id": "no-installation",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 469,
+              "sha256": "2c9b8e865e90bbe4543dbf476e8fabdad2cc8342d2268c72513567e3fa053f94"
+            },
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "4ece55c62333881c097393f0620bcf96107791d4b72df4ad8910a127fdf3e15c"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "reflect",
+          "trigger_compatible": true,
+          "selection": "required",
+          "selected": true,
+          "selected_automatically": null,
+          "read": "full",
+          "exposed": true,
+          "attribution": "observed-use"
+        }
+      ],
+      "seconds": 112.122,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 308699,
+          "inputTokens": 305412,
+          "outputTokens": 3287,
+          "cachedInputTokens": 263680,
+          "reasoningOutputTokens": 701,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 472,
+          "sha256": "2c9b8e865e90bbe4543dbf476e8fabdad2cc8342d2268c72513567e3fa053f94"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "2c9b8e865e90bbe4543dbf476e8fabdad2cc8342d2268c72513567e3fa053f94",
+        "requests.jsonl": "ee512dfc94f1ece2cc10905ea0281137b0d90c8536d0845f5e42a78b52eb137a",
+        "context.json": "0c9d746f6724b5a19650fef0204ba2ab3af3edd79c52250917f5ed0706eaa450",
+        "agent-result.json": "d2aa13f5674f84134745d425d02e058f0d4bb99cc3a042940912e66e895bc305"
+      }
+    },
+    {
+      "position": 10,
+      "attempt_id": "cycle-10-reflect-chat-only",
+      "case_id": "reflect-chat-only",
+      "role": "reflection",
+      "case_kind": "synthetic-fixture",
+      "incident_id": null,
+      "source_commit": "4df5c08e1f83fcc5cbcf82aec94a5e7b59b194db",
+      "protocol_sha256": "93875edec33009319f679a626debbade275e05943f3d8501ae501a8b96a48adc",
+      "receipt_sha256": "3d56237b22a32485e14f430ad44b4109d9b01b61450f27e68b380836a76f4e6f",
+      "assessment_id": "cycle-10-assessment",
+      "assessment_sha256": "e67c2656ba1125a028b30a3371e7041c41623710056f74a2076f3b3743657ec4",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v2-native-diagnostics"
+      },
+      "task_result": "inconclusive",
+      "execution_status": "infrastructure-error",
+      "stage": "inconclusive",
+      "receipt_context": "unverified",
+      "retained_context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {
+        "transport-failed": 1,
+        "loaded-context-unverified": 1
+      },
+      "mechanical_checks": [
+        {
+          "id": "no-storage",
+          "passed": true
+        },
+        {
+          "id": "context-preserved",
+          "passed": true
+        },
+        {
+          "id": "evidence",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "chat-only",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 360,
+              "sha256": "4124088080e56f2eea67df97f0ae5c18b2a5bcbabbfd15855f5c32a141aa6562"
+            }
+          ]
+        },
+        {
+          "id": "answers",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 360,
+              "sha256": "4124088080e56f2eea67df97f0ae5c18b2a5bcbabbfd15855f5c32a141aa6562"
+            }
+          ]
+        },
+        {
+          "id": "limits",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 360,
+              "sha256": "4124088080e56f2eea67df97f0ae5c18b2a5bcbabbfd15855f5c32a141aa6562"
+            }
+          ]
+        },
+        {
+          "id": "answers",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 360,
+              "sha256": "4124088080e56f2eea67df97f0ae5c18b2a5bcbabbfd15855f5c32a141aa6562"
+            },
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "4ece55c62333881c097393f0620bcf96107791d4b72df4ad8910a127fdf3e15c"
+            }
+          ]
+        },
+        {
+          "id": "no-installation",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 360,
+              "sha256": "4124088080e56f2eea67df97f0ae5c18b2a5bcbabbfd15855f5c32a141aa6562"
+            },
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "4ece55c62333881c097393f0620bcf96107791d4b72df4ad8910a127fdf3e15c"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "reflect",
+          "trigger_compatible": true,
+          "selection": "required",
+          "selected": true,
+          "selected_automatically": null,
+          "read": "full",
+          "exposed": true,
+          "attribution": "observed-use"
+        }
+      ],
+      "seconds": 52.337,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 130443,
+          "inputTokens": 129032,
+          "outputTokens": 1411,
+          "cachedInputTokens": 114944,
+          "reasoningOutputTokens": 351,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 363,
+          "sha256": "4124088080e56f2eea67df97f0ae5c18b2a5bcbabbfd15855f5c32a141aa6562"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "4124088080e56f2eea67df97f0ae5c18b2a5bcbabbfd15855f5c32a141aa6562",
+        "requests.jsonl": "1115d890c7d811117f201ffff6137174b09e509c266d5ac688f8e2079a409eac",
+        "context.json": "124f809d9ed3740375452a4fffc665271796ef0113a77ea2d3fa86797fb252cd",
+        "agent-result.json": "51dfe2477389542092fbc030949b722a0e330a048fa633432c98cb842180bd32"
+      }
+    },
+    {
+      "position": 11,
+      "attempt_id": "cycle-11-capture-without-promotion",
+      "case_id": "capture-without-promotion",
+      "role": "comparison-baseline",
+      "case_kind": "variant",
+      "incident_id": "OBS-AGENTS-DIRECT-LEARNING-001",
+      "source_commit": "300e846a23b5100731415644f1883045d9c5d560",
+      "protocol_sha256": "7cbea80135f6605fbedc11e0c3e94272378c1d3e99b895831c09bd2b85da81cc",
+      "receipt_sha256": "319f4c68545f89833441f2faa7fc373791f8902c442d491f63bf6208860d13dd",
+      "assessment_id": "cycle-11-assessment",
+      "assessment_sha256": "107287c02626662047b7745a80a43e107f73707883f7b33df7dbd82f880ba62b",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v2-native-diagnostics"
+      },
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "receipt_context": "verified",
+      "retained_context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "mechanical_checks": [
+        {
+          "id": "durable-capture",
+          "passed": true
+        },
+        {
+          "id": "project-instructions",
+          "passed": true
+        },
+        {
+          "id": "incident-preserved",
+          "passed": true
+        },
+        {
+          "id": "evidence",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "capture",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 205,
+              "sha256": "de59b092814d88fd5bf81e8aa0cb5bab54f8e65c5b8612907cef0e926d429d20"
+            }
+          ]
+        },
+        {
+          "id": "return",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 205,
+              "sha256": "de59b092814d88fd5bf81e8aa0cb5bab54f8e65c5b8612907cef0e926d429d20"
+            }
+          ]
+        },
+        {
+          "id": "no-reflection",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 205,
+              "sha256": "de59b092814d88fd5bf81e8aa0cb5bab54f8e65c5b8612907cef0e926d429d20"
+            }
+          ]
+        },
+        {
+          "id": "no-promotion",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 205,
+              "sha256": "de59b092814d88fd5bf81e8aa0cb5bab54f8e65c5b8612907cef0e926d429d20"
+            },
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "ebae9d84b9764e8f9ed5407dc30937c9250ec6d699421461a3fa02e4c66b4622"
+            }
+          ]
+        },
+        {
+          "id": "incident-identity",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 205,
+              "sha256": "de59b092814d88fd5bf81e8aa0cb5bab54f8e65c5b8612907cef0e926d429d20"
+            },
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "ebae9d84b9764e8f9ed5407dc30937c9250ec6d699421461a3fa02e4c66b4622"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "capture-observations",
+          "trigger_compatible": true,
+          "selection": "required",
+          "selected": true,
+          "selected_automatically": true,
+          "read": "full",
+          "exposed": true,
+          "attribution": "observed-use"
+        },
+        {
+          "name": "reflect",
+          "trigger_compatible": false,
+          "selection": "forbidden",
+          "selected": false,
+          "selected_automatically": false,
+          "read": "not-observed",
+          "exposed": true,
+          "attribution": "not-applicable"
+        }
+      ],
+      "seconds": 69.621,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 196717,
+          "inputTokens": 194113,
+          "outputTokens": 2604,
+          "cachedInputTokens": 175744,
+          "reasoningOutputTokens": 187,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 208,
+          "sha256": "de59b092814d88fd5bf81e8aa0cb5bab54f8e65c5b8612907cef0e926d429d20"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "de59b092814d88fd5bf81e8aa0cb5bab54f8e65c5b8612907cef0e926d429d20",
+        "requests.jsonl": "00543cc0be2c1f7f81872c48c3ffd07eedc79babbae694990360848e6532430b",
+        "context.json": "fdbec25e722e2cd104f5005c96ae60b7045b7b7534c0e3355fd5d049813b0bb3",
+        "agent-result.json": "e49c5ea47c1e89d4648a7403c686f20ecb54ac954b2d2c6e107dd86aaad5e002"
+      }
+    },
+    {
+      "position": 12,
+      "attempt_id": "cycle-12-capture-without-promotion",
+      "case_id": "capture-without-promotion",
+      "role": "comparison-candidate",
+      "case_kind": "variant",
+      "incident_id": "OBS-AGENTS-DIRECT-LEARNING-001",
+      "source_commit": "ce1a68f42b69dfc1ba4817c8b88923f80378960b",
+      "protocol_sha256": "53be2f8d102aa4db6bbb51af71bb265cf09c552b01281861498a26f28c24169b",
+      "receipt_sha256": "c8daaec0cbf6233030139ed06538a65506011ff47e4eb41afd327d4b7509f6df",
+      "assessment_id": "cycle-12-assessment",
+      "assessment_sha256": "db7cdb7c9eea330662220ea9d452b899be4110ec53f40736d0f4a177ee4522ae",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v2-native-diagnostics"
+      },
+      "task_result": "inconclusive",
+      "execution_status": "completed",
+      "stage": "inconclusive",
+      "receipt_context": "verified",
+      "retained_context": "verified",
+      "collection_status": "partial",
+      "infrastructure_states": {
+        "unavailable-artifact": 266
+      },
+      "mechanical_checks": [
+        {
+          "id": "durable-capture",
+          "passed": true
+        },
+        {
+          "id": "project-instructions",
+          "passed": true
+        },
+        {
+          "id": "incident-preserved",
+          "passed": true
+        },
+        {
+          "id": "evidence",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "capture",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 254,
+              "sha256": "111f9fabe353dc9ad69a8cdca00a4f4a66e49d5286a155d1a01a77c383929fb2"
+            }
+          ]
+        },
+        {
+          "id": "return",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 254,
+              "sha256": "111f9fabe353dc9ad69a8cdca00a4f4a66e49d5286a155d1a01a77c383929fb2"
+            }
+          ]
+        },
+        {
+          "id": "no-reflection",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 254,
+              "sha256": "111f9fabe353dc9ad69a8cdca00a4f4a66e49d5286a155d1a01a77c383929fb2"
+            }
+          ]
+        },
+        {
+          "id": "no-promotion",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 254,
+              "sha256": "111f9fabe353dc9ad69a8cdca00a4f4a66e49d5286a155d1a01a77c383929fb2"
+            },
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "ebae9d84b9764e8f9ed5407dc30937c9250ec6d699421461a3fa02e4c66b4622"
+            }
+          ]
+        },
+        {
+          "id": "incident-identity",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 254,
+              "sha256": "111f9fabe353dc9ad69a8cdca00a4f4a66e49d5286a155d1a01a77c383929fb2"
+            },
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "ebae9d84b9764e8f9ed5407dc30937c9250ec6d699421461a3fa02e4c66b4622"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "capture-observations",
+          "trigger_compatible": true,
+          "selection": "required",
+          "selected": true,
+          "selected_automatically": true,
+          "read": "full",
+          "exposed": true,
+          "attribution": "observed-use"
+        },
+        {
+          "name": "reflect",
+          "trigger_compatible": false,
+          "selection": "forbidden",
+          "selected": null,
+          "selected_automatically": null,
+          "read": "unknown",
+          "exposed": true,
+          "attribution": "not-applicable"
+        }
+      ],
+      "seconds": 91.2,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 350075,
+          "inputTokens": 346624,
+          "outputTokens": 3451,
+          "cachedInputTokens": 315264,
+          "reasoningOutputTokens": 354,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 257,
+          "sha256": "111f9fabe353dc9ad69a8cdca00a4f4a66e49d5286a155d1a01a77c383929fb2"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "111f9fabe353dc9ad69a8cdca00a4f4a66e49d5286a155d1a01a77c383929fb2",
+        "requests.jsonl": "3ea3451b4c1102d288209a92bb9fbb4a5926e93a9ee0453d9623d1b5e0ff67c8",
+        "context.json": "63a5df435be93d76aeb56c885d4e6e3e826b47d274ff4d94cc4f3fb5b38ab87d",
+        "agent-result.json": "1264d5b4d064e58aece3290727e4ccaedf7f308eb47a8f447dab1600ef68e1f2"
+      }
+    },
+    {
+      "position": 13,
+      "attempt_id": "cycle-13-installed-label-candidate",
+      "case_id": "installed-label-candidate",
+      "role": "post-promotion",
+      "case_kind": "synthetic-fixture",
+      "incident_id": null,
+      "source_commit": "fb4a2e18e2c6577a4b5219a989b8b050fe6325c8",
+      "protocol_sha256": "c8fc87e2d70209150c1e1405d547409abea2d4881a9b8e1448da2e9ee6c3fed8",
+      "receipt_sha256": "d0a54eadf2127681694920dc507b7513d77f66400ba8d4b1110ad913bc2f6b26",
+      "assessment_id": "cycle-13-assessment",
+      "assessment_sha256": "8cd608a4d9a455eb571cead997bd468f7d9fa57f2c0ad88441db410793bf43dc",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v1"
+      },
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "receipt_context": "verified",
+      "retained_context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "mechanical_checks": [
+        {
+          "id": "label",
+          "passed": true
+        },
+        {
+          "id": "evidence",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "loaded-label",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "answer.json",
+              "line": 1,
+              "sha256": "b2b8bba0f70545ff915bc861e98fe3f573509727871877d635bcb7f8bb5e2643"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 60,
+              "sha256": "63d72d1f3b3ae0c1cec067a5ec3711b84cbf38ac30c995df976ea68a54605d30"
+            }
+          ]
+        },
+        {
+          "id": "no-instruction-edit",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "82bd75b0680015958d43fc2c0d0cdf1e0c250d340c4dc29b0001509e76f3b07c"
+            },
+            {
+              "path": "AGENTS.md",
+              "line": 2,
+              "sha256": "ba8fbdb2e78de84f3341aa01d317f1b8233170d533bac89a89e5c82bde0b75c6"
+            }
+          ]
+        }
+      ],
+      "skills": [],
+      "seconds": 16.035,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 53415,
+          "inputTokens": 53215,
+          "outputTokens": 200,
+          "cachedInputTokens": 48896,
+          "reasoningOutputTokens": 12,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 63,
+          "sha256": "63d72d1f3b3ae0c1cec067a5ec3711b84cbf38ac30c995df976ea68a54605d30"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "63d72d1f3b3ae0c1cec067a5ec3711b84cbf38ac30c995df976ea68a54605d30",
+        "requests.jsonl": "be424362411b1a445c976ce564b597afaa4ba9599b15839bb47a674e15198478",
+        "context.json": "0aece9f01556c683de3dcb9b949e2fb65cfabd4e0b8c6bb05f38a125ce79d46d",
+        "agent-result.json": "fe281989a96582f3ada305f5b77bb2a7c9782f2a293bea473e8dbbe22d3890ed"
+      }
+    },
+    {
+      "position": 14,
+      "attempt_id": "cycle-14-installed-label-stable",
+      "case_id": "installed-label-stable",
+      "role": "post-rollback",
+      "case_kind": "synthetic-fixture",
+      "incident_id": null,
+      "source_commit": "621224adc0a820f8de6d9c1caf3b4cece4900563",
+      "protocol_sha256": "7c283b80158ce97df952629e9e61dd5284863bc1139fe6d409d8329be46b3b69",
+      "receipt_sha256": "515e4536c6c451ffc030c28f519bc94ea82b7aeb17b7ff13cc412d6b48203ece",
+      "assessment_id": "cycle-14-assessment",
+      "assessment_sha256": "0577a40819ef77ac1025e4fac1f8e1b4736f8089800125db6238414e917a75b8",
+      "assessor": {
+        "name": "implementing-agent-manual-review",
+        "version": "AM-030.v1"
+      },
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "receipt_context": "verified",
+      "retained_context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "mechanical_checks": [
+        {
+          "id": "label",
+          "passed": true
+        },
+        {
+          "id": "evidence",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "loaded-label",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "answer.json",
+              "line": 1,
+              "sha256": "668c5d8153efe3a5bece689b4998920102d1a19802e83572beea36f2143bb0d8"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 65,
+              "sha256": "5490592372f7353870e2ee7299aa8077e86f7303f37da66893c7a5b79554309f"
+            }
+          ]
+        },
+        {
+          "id": "no-instruction-edit",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "evidence.txt",
+              "line": 1,
+              "sha256": "82bd75b0680015958d43fc2c0d0cdf1e0c250d340c4dc29b0001509e76f3b07c"
+            },
+            {
+              "path": "AGENTS.md",
+              "line": 2,
+              "sha256": "ba8fbdb2e78de84f3341aa01d317f1b8233170d533bac89a89e5c82bde0b75c6"
+            }
+          ]
+        }
+      ],
+      "skills": [],
+      "seconds": 17.345,
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 53351,
+          "inputTokens": 53154,
+          "outputTokens": 197,
+          "cachedInputTokens": 50560,
+          "reasoningOutputTokens": 15,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 68,
+          "sha256": "5490592372f7353870e2ee7299aa8077e86f7303f37da66893c7a5b79554309f"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "artifact_hashes": {
+        "events.jsonl": "5490592372f7353870e2ee7299aa8077e86f7303f37da66893c7a5b79554309f",
+        "requests.jsonl": "57d7ceb51674d97f6236a606a28664d09a8963abb59042733fad8ad987afcc9e",
+        "context.json": "0bf9d34413a08d7e8d9d665e4986fe1d24d8e7437490e8cc98562d61f91b3518",
+        "agent-result.json": "e7c1018d8c1a7b5501b87c0f0e21e9dc3e997de5face593823536a59e558d4c2"
+      }
+    }
+  ],
+  "comparison": {
+    "stage": "executed",
+    "baseline_reproduction": "not-reproduced",
+    "promotion": "none",
+    "recommendation": "Keep current behavior or investigate; historical evidence is retained.",
+    "sha256": "5d6bcc01bf78351c5a8cbd3cc61e7ac24d252fc17bccb0a8a5aa023613b1f255",
+    "alternatives": [
+      {
+        "id": "candidate-capture",
+        "kind": "skill",
+        "evidence": "unestablished"
+      },
+      {
+        "id": "none",
+        "kind": "none",
+        "evidence": "baseline-retained"
+      }
+    ]
+  },
+  "isolated_delivery": [
+    {
+      "revision": 3,
+      "sha256": "e61e69be558b8376434da30546d17cbc1c4be10aec6ed3f132c2f5f0d43d151e",
+      "assessment_id": "cycle-13-assessment",
+      "attempt_id": "cycle-13-installed-label-candidate",
+      "behavior": "verified",
+      "generation": "34eb20ac8836457bb1fbab76549e40c1",
+      "protocol_sha256": "c8fc87e2d70209150c1e1405d547409abea2d4881a9b8e1448da2e9ee6c3fed8",
+      "recommendation": "Continue the accepted workflow.",
+      "stage": "post-promotion"
+    },
+    {
+      "revision": 6,
+      "sha256": "b5b900dd8afc7791e2353e4ddc186c81144128b46a1cf193260363711514cf2c",
+      "assessment_id": "cycle-14-assessment",
+      "attempt_id": "cycle-14-installed-label-stable",
+      "behavior": "verified",
+      "generation": "3c29fc905bbc460d9ad97bf4a5c11831",
+      "protocol_sha256": "7c283b80158ce97df952629e9e61dd5284863bc1139fe6d409d8329be46b3b69",
+      "recommendation": "Continue the accepted workflow.",
+      "stage": "post-rollback"
+    }
+  ],
+  "native_recovery": {
+    "sha256": "a058c32a97df6630cbd88c3c5a9c3552f78e763b05a6931386e7018c879cf4aa",
+    "recovery_of": "cycle-12-capture-without-promotion",
+    "collection_status": "complete",
+    "original_receipt_preserved": true,
+    "execution_sources": {
+      "annotation.schema.json": "d5ab1f7be08c2b4f03d622bbc8217ad881908c73d05d51bbcacc0844fd354057",
+      "audit-analysis.schema.json": "18eccf23f8c925f2b246d931bfc8b328c96d2c576324e3b7747112a3b0b5fc4a",
+      "observation.schema.json": "7f460dfaadc5edf9ffe72a5a0f5d8ad2c0b8dae72857b6fa6e0c42b61d662939",
+      "review.schema.json": "118135502472d5bfa2b42746ef37e8e34b065d2afceaea11dc8c7a0230f9c900",
+      "runtime/annotations.py": "bd172b98dde9f25735c19fd164ae7a2f90902cf85b30669a568f7f03bc30ee00",
+      "runtime/archives.py": "24e71c657a8fff3859811ca21c13987b56190e9ec7363efe9fc98ab8b258cc1a",
+      "runtime/codex_evaluation.py": "2e649033b20caf5a30747307c245b34d2e7ea4d7e1b6eb02be45aa58e4c63599",
+      "runtime/codex_rpc.py": "b1745fa6c068cd58ed4b26cd92a958acf950e1fb36bea7f1311527a3a346d8ac",
+      "runtime/collector.py": "daf68c8ef81d73929418b8d491336d0d7eec91d3db3f258cdf31fc00a947030e",
+      "runtime/comparisons.py": "0f462df3e8280378cf94ac98a4222451d4e7117d6b65455286663d285ebe02c9",
+      "runtime/cycle_cases.py": "85878abd1f4ed05ee747c14cf53d8c15eae10eb22a00dad5696d2e3651538749",
+      "runtime/decision_history.py": "bf41c534ed69c37c34f067b631d726100bf5a124ffdc460325304353b7dd303e",
+      "runtime/delivery.py": "98d1529c9d8efe0ef4a27ae7bcd59488b2f4b358f5cd43caf5a69fa7b894b528",
+      "runtime/derived_work.py": "3da0b397199e55460a14adac8a7391ed3dc989990d383afba93ff511a0af6b01",
+      "runtime/embedding_profile.json": "f032c00a0bc0c4f0479685eb8840bef3c0f0678011359091279b26ccf6b9621a",
+      "runtime/embeddings.py": "6ecbb5324d1defc3b76b30657f6fdb477fe17decc0ff4994afd9c9f82660dc8b",
+      "runtime/evaluation.py": "39c3da3fea58ebf0ea673799b5b3e512172edf47b342f243ea1aff28aff2d9ca",
+      "runtime/evaluation_cli.py": "61ff2bd10fae4a6908a548aef8095041dfabe35f787b19933f6e9c75d4fdbe73",
+      "runtime/evaluation_source.py": "c8e42ee842f2a345889eeeef05cf1953e529bf0ef6d62b944f44a9741c00e664",
+      "runtime/fixture_evaluation.py": "cd11511bdcbff30c097e7a219dd7a74ebf2cf4c311d6db2afcdcb46afd831914",
+      "runtime/pyproject.toml": "95e0e25f42a4db8e13ae86992c92268bdf1bd3f0a04682acb74711cf34f0e751",
+      "runtime/record_cli.py": "d4c896583359ca3101e45c7b28db9738af0ef138cee39c3511247e213fa4c0bb",
+      "runtime/records.py": "9b7aa0c0337544be64b585445f13be1452ddf574b275dc0b38f6a0bbd091ec73",
+      "runtime/reviews.py": "d9bd439ac5ac5f816dce622796c9afea5a710408e21f972b0ce3e00109f298d1",
+      "runtime/search.py": "579b3285ecde00490851cd8a5612ac72e5b757dbc5e927b04c7086587289ae38",
+      "runtime/selection.py": "936158e202e944dafeabfd6b10730dc4ac812f249aa2e2060e006a2169869a11",
+      "runtime/summaries.py": "5a6a8db5111816fe12dbb23165d4148292aa50f878ea6d37ec2c1f277e5d3a4a",
+      "runtime/uv.lock": "3b4ab87f66a4ca9b7b5129b38f44f84e5d99122f934a3e8882c916e450fd1db6",
+      "runtime/workflow_cases.py": "4b665e13d768789093aacf07ccfc6ad4eee56794ae16a44aa598c207fe09b76d",
+      "summary.schema.json": "63a5802f75de15686bd33065b42b3c52501d066fb8de71d3044ca8af684f1873"
+    },
+    "model_calls": 0
+  },
+  "native_finalization": {
+    "sha256": "2e5c52486b9499a3cefca511979249e67f52fc293d387da630d9675a0d7c15f5",
+    "execution_sources": {
+      "annotation.schema.json": "d5ab1f7be08c2b4f03d622bbc8217ad881908c73d05d51bbcacc0844fd354057",
+      "audit-analysis.schema.json": "18eccf23f8c925f2b246d931bfc8b328c96d2c576324e3b7747112a3b0b5fc4a",
+      "observation.schema.json": "7f460dfaadc5edf9ffe72a5a0f5d8ad2c0b8dae72857b6fa6e0c42b61d662939",
+      "review.schema.json": "118135502472d5bfa2b42746ef37e8e34b065d2afceaea11dc8c7a0230f9c900",
+      "runtime/annotations.py": "bd172b98dde9f25735c19fd164ae7a2f90902cf85b30669a568f7f03bc30ee00",
+      "runtime/archives.py": "24e71c657a8fff3859811ca21c13987b56190e9ec7363efe9fc98ab8b258cc1a",
+      "runtime/codex_evaluation.py": "2e649033b20caf5a30747307c245b34d2e7ea4d7e1b6eb02be45aa58e4c63599",
+      "runtime/codex_rpc.py": "b1745fa6c068cd58ed4b26cd92a958acf950e1fb36bea7f1311527a3a346d8ac",
+      "runtime/collector.py": "daf68c8ef81d73929418b8d491336d0d7eec91d3db3f258cdf31fc00a947030e",
+      "runtime/comparisons.py": "0f462df3e8280378cf94ac98a4222451d4e7117d6b65455286663d285ebe02c9",
+      "runtime/cycle_cases.py": "85878abd1f4ed05ee747c14cf53d8c15eae10eb22a00dad5696d2e3651538749",
+      "runtime/decision_history.py": "bf41c534ed69c37c34f067b631d726100bf5a124ffdc460325304353b7dd303e",
+      "runtime/delivery.py": "98d1529c9d8efe0ef4a27ae7bcd59488b2f4b358f5cd43caf5a69fa7b894b528",
+      "runtime/derived_work.py": "3da0b397199e55460a14adac8a7391ed3dc989990d383afba93ff511a0af6b01",
+      "runtime/embedding_profile.json": "f032c00a0bc0c4f0479685eb8840bef3c0f0678011359091279b26ccf6b9621a",
+      "runtime/embeddings.py": "6ecbb5324d1defc3b76b30657f6fdb477fe17decc0ff4994afd9c9f82660dc8b",
+      "runtime/evaluation.py": "39c3da3fea58ebf0ea673799b5b3e512172edf47b342f243ea1aff28aff2d9ca",
+      "runtime/evaluation_cli.py": "61ff2bd10fae4a6908a548aef8095041dfabe35f787b19933f6e9c75d4fdbe73",
+      "runtime/evaluation_source.py": "c8e42ee842f2a345889eeeef05cf1953e529bf0ef6d62b944f44a9741c00e664",
+      "runtime/fixture_evaluation.py": "cd11511bdcbff30c097e7a219dd7a74ebf2cf4c311d6db2afcdcb46afd831914",
+      "runtime/pyproject.toml": "95e0e25f42a4db8e13ae86992c92268bdf1bd3f0a04682acb74711cf34f0e751",
+      "runtime/record_cli.py": "d4c896583359ca3101e45c7b28db9738af0ef138cee39c3511247e213fa4c0bb",
+      "runtime/records.py": "9b7aa0c0337544be64b585445f13be1452ddf574b275dc0b38f6a0bbd091ec73",
+      "runtime/reviews.py": "d9bd439ac5ac5f816dce622796c9afea5a710408e21f972b0ce3e00109f298d1",
+      "runtime/search.py": "579b3285ecde00490851cd8a5612ac72e5b757dbc5e927b04c7086587289ae38",
+      "runtime/selection.py": "936158e202e944dafeabfd6b10730dc4ac812f249aa2e2060e006a2169869a11",
+      "runtime/summaries.py": "5a6a8db5111816fe12dbb23165d4148292aa50f878ea6d37ec2c1f277e5d3a4a",
+      "runtime/uv.lock": "3b4ab87f66a4ca9b7b5129b38f44f84e5d99122f934a3e8882c916e450fd1db6",
+      "runtime/workflow_cases.py": "4b665e13d768789093aacf07ccfc6ad4eee56794ae16a44aa598c207fe09b76d",
+      "summary.schema.json": "63a5802f75de15686bd33065b42b3c52501d066fb8de71d3044ca8af684f1873"
+    },
+    "protocol_sha256": "9ae809f7bb5a9d64bb6e51265067d8aa07dc12612dbaddf95542c203306f9d71",
+    "original_campaign_unchanged": true,
+    "model_calls": 0,
+    "injected_close": {
+      "context": "verified",
+      "execution_status": "not-executed",
+      "failures": [
+        {
+          "phase": "rpc-close",
+          "type": "EvaluationError"
+        }
+      ],
+      "consumers_stopped": true,
+      "auth_preserved": true,
+      "agent_turns_started": 0
+    },
+    "normal_close": {
+      "context": "verified",
+      "execution_status": "not-executed",
+      "global_instructions_preserved": true,
+      "agent_turns_started": 0
+    }
+  },
+  "native_environment_fix": {
+    "sha256": "5294abf126453224b4e92b758cd1aab6f84dfd9b50821730ccd1ff6518dc76e7",
+    "image_digest": "sha256:b0c6aeaafd52a30ceef9d30913df39be6887d8b3ef444bf53ae16fa0d39b91c7",
+    "exit_code": 0,
+    "stdout": "Python 3.13.2\n/opt/maintenance-runtime/.venv\n",
+    "dockerfile_sha256": "3302e5f763e391413e2879a16c08213ac4b4f51858b85e097ec0dc7b635ee09e",
+    "build_log_sha256": "9710dfc09433cbf9abe72cf5eba1b5b3487daa06f863bc1b0caa9c45cfb2b8e7",
+    "model_calls": 0,
+    "used_for_original_campaign": false
+  },
+  "required_checks": {
+    "log_sha256": "fad7b3ac9de67a65a027020b9f4079d068ba8dd3b0a7823818a2ed241731ecf5",
+    "bun_version": "1.3.14",
+    "commands": [
+      "bun run check",
+      "bun test",
+      "fish install/verify.fish",
+      "git diff --check"
+    ],
+    "exit_code": 0,
+    "bun_pass": 43,
+    "bun_optional_skip": 1,
+    "bun_fail": 0,
+    "bun_assertions": 376
+  },
+  "limits": [
+    "One pass in one frozen environment, reviewed by the implementing agent; no independent judge or statistical reliability claim.",
+    "Original infrastructure outcomes remain inconclusive; native recovery and fault injection are not new model trials.",
+    "The precise original cause of the two transport finalization failures was not reproduced.",
+    "Token counts are reported cumulative harness usage; cache and reasoning counts are subsets. Internal provider calls and monetary cost are unknown.",
+    "The active HOME and installed global/skills were not changed. No Laya inference or classification was used."
+  ]
+}

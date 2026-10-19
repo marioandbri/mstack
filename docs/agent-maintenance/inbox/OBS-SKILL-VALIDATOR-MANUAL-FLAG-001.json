@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "OBS-SKILL-VALIDATOR-MANUAL-FLAG-001",
+  "status": "inbox",
+  "scope": "mstack: validation of the existing Reflect manual-invocation metadata, 2026-10-15",
+  "basis": "technical-fact",
+  "observation": "El quick_validate de skill-creator rechaza disable-model-invocation en el frontmatter de Reflect. El campo ya existía antes de la implementación y se conservó; el validador del repositorio acepta esa metadata. La comprobación externa quedó limitada por esa diferencia de formatos.",
+  "evidence": [
+    {
+      "source": "local:skill-creator/scripts/quick_validate.py#sha256:ee6dba90f44d37171c5a6edb8095979c54919ff6822c1a907afca2e78c48738c",
+      "summary": "Con Python 3.13.2 y PyYAML 6.0.3 temporales, quick_validate devolvió Unexpected key(s) in SKILL.md frontmatter: disable-model-invocation. Su lista permitida enumera allowed-tools, description, license, metadata y name."
+    },
+    {
+      "source": "git:60b8bca:skills/reflect/SKILL.md",
+      "summary": "La versión anterior al ticket 04 ya declara disable-model-invocation: true. No se retiró ni cambió esa política para satisfacer el validador externo."
+    },
+    {
+      "source": "command:bun-run-check#2026-10-15",
+      "summary": "El comprobador del repositorio pasó para 30 skills y 62 Markdown. Esto acredita su contrato local, no compatibilidad con todos los validadores o harnesses."
+    }
+  ],
+  "suspectedCause": null
+}

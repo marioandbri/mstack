@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "runtime": "Bun 1.3.14 and Python 3.13.2",
+  "repository_check": "PASS 30 skills, 59 Markdown",
+  "suite_attempts": [
+    {
+      "attempt": 1,
+      "pass": 27,
+      "skip": 1,
+      "fail": 1,
+      "assertions": 295,
+      "failure": "Installer integration test exceeded its 30-second deadline; reported 82.59 seconds. Cause not established."
+    },
+    {
+      "attempt": "focused installer",
+      "pass": 1,
+      "fail": 0,
+      "duration_seconds": 13.28
+    },
+    {
+      "attempt": 2,
+      "pass": 28,
+      "skip": 1,
+      "fail": 0,
+      "assertions": 297,
+      "duration_seconds": 16.33
+    }
+  ],
+  "installation_verification": {
+    "status": "PASS",
+    "commit": "25e722daafadb2b39ea597adbc19b41632e48b4a",
+    "skills": 30,
+    "targets": 126,
+    "change": "External installation update during this task. Global still matches worktree; repository-workflow entrypoint changed. Not performed by this task."
+  },
+  "probe_verification": "PASS source hashes, recorded summaries, persisted IDs/provenance, native duplicate reproduction, guarded uniqueness, conditional updates and interruption state",
+  "documents": "PASS links, 48 stories, 29 acceptance criteria and git diff --check",
+  "harness_workspace": {
+    "environment_cwd": "/Users/mario.brito/personal/engineering-skills",
+    "owned_worktree": "/Users/mario.brito/personal/mstack-maintenance-laya",
+    "association_verified": false,
+    "reason": "No exposed T3 worktree association tool; commands and edits explicitly target owned worktree."
+  },
+  "limits": "Storage experiment only; no generated embeddings, active backend, approved spec, tickets or publication"
+}

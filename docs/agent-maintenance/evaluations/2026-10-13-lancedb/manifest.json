@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "captured_at": "2026-10-13T22:53:36.253084+00:00",
+  "source_commit": "1d08127c24a564080f2f371c8626591b48574c3b",
+  "authorization": "Mario explicitly requested this LanceDB test and resumed it",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "python": "3.13.2",
+  "uv": "0.10.11",
+  "packages": {
+    "lancedb": "0.40.0",
+    "pyarrow": "26.0.0",
+    "numpy": "2.5.4",
+    "pydantic": "2.14.1"
+  },
+  "dependency_lock_sha256": "d4a3e77c7301a327c29d4498db9291d1c7dc80ffa290c70a85af568986217d4a",
+  "inputs": {
+    "probe.py": "f4351485cbafdbff3c3fe1e17c302765979f3bdc5957f590860c600d285e1710",
+    "guarded_store.py": "a46b4cce519d284e51c5c40c936308d326fac6e57b78219aa66077d2bdf4dde2",
+    "adapter_checks.py": "b31b6b7c5b162f0592210628fcdd1dc95d2063a68dc924a4db759a21cf55da9c",
+    "protocol.json": "6030c0e3ad59527837c8687d618f765ad3e681394d2127e5231c8cd7fa9da6e9",
+    "pyproject.toml": "fc5759aa822c2df73ae068614e57ca54776a6eca8fd19ed938464c4bbfc5ce94",
+    "verify.py": "4277e0ed3b5a7bb748de584ff1207fb0026944d02e6723522e0604641df6378c"
+  },
+  "native_source": {
+    "probe.py": "f4351485cbafdbff3c3fe1e17c302765979f3bdc5957f590860c600d285e1710",
+    "protocol.json": "6030c0e3ad59527837c8687d618f765ad3e681394d2127e5231c8cd7fa9da6e9",
+    "pyproject.toml": "fc5759aa822c2df73ae068614e57ca54776a6eca8fd19ed938464c4bbfc5ce94",
+    "uv.lock": "d4a3e77c7301a327c29d4498db9291d1c7dc80ffa290c70a85af568986217d4a"
+  },
+  "guarded_source_sha256": "a46b4cce519d284e51c5c40c936308d326fac6e57b78219aa66077d2bdf4dde2",
+  "results_sha256": "f72990e9f21c388494f25830dae6cb29047281e6ee716ff4a2dae5a4574d76e8",
+  "license_review": {
+    "sdk_license": "Apache-2.0",
+    "url": "https://raw.githubusercontent.com/lancedb/lancedb/v0.40.0/LICENSE",
+    "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+    "scope": "Experiment-only dependency; no skill import or active installation"
+  },
+  "private_run": "canonical Git common directory, mstack-tasks/maintenance-laya/lancedb-evidence/run-01",
+  "execution": "uv run --locked with PYTHONDONTWRITEBYTECODE=1; spawned real processes and local on-disk databases",
+  "scope_limits": [
+    "Python/macOS/local disk only",
+    "Fixed synthetic vectors; no generated embeddings or model calls",
+    "Interruption after API-start notification, not exact commit-phase or power-loss injection",
+    "No multi-table transaction, migration, backup/restore or large-corpus acceptance",
+    "Adapter requires all writers to cooperate; no enforcement against raw SDK writes"
+  ]
+}

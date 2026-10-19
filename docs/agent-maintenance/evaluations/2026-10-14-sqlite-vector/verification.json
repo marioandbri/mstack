@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "repository_check": "PASS 30 skills, 59 Markdown",
+  "tests": {
+    "pass": 28,
+    "skip": 1,
+    "fail": 0,
+    "assertions": 297,
+    "duration_seconds": 17.18,
+    "skip_reason": "Optional Portless HTTP E2E"
+  },
+  "installation": {
+    "status": "PASS",
+    "commit": "25e722daafadb2b39ea597adbc19b41632e48b4a",
+    "skills": 30,
+    "targets": 126
+  },
+  "experiment": {
+    "cases": 12,
+    "passed": 12,
+    "model_calls": 0,
+    "independent_verification": "PASS source bindings, integrity_check, persisted IDs/provenance, retry uniqueness, revision conflicts, rollback and filtered retrieval"
+  },
+  "documents": "PASS Python syntax, JSON artifacts, links, lock URL check and git diff --check",
+  "harness_workspace": {
+    "environment_cwd": "/Users/mario.brito/personal/engineering-skills",
+    "owned_worktree": "/Users/mario.brito/personal/mstack-maintenance-laya",
+    "association_verified": false
+  },
+  "limits": "No generated embeddings, semantic-quality or controlled timing benchmark; no active backend adoption"
+}

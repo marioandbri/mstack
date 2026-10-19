@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "candidateCommit": "44bb69cb2b684833c9eef3365cca836bf7c3650d",
+  "executions": 17,
+  "completed": 16,
+  "infrastructureInconclusive": 0,
+  "timeouts": 0,
+  "retries": 1,
+  "comparableBehaviorPairs": 8,
+  "behaviorPaired": {
+    "A": {
+      "passed": 8,
+      "total": 8
+    },
+    "B": {
+      "passed": 8,
+      "total": 8
+    }
+  },
+  "behaviorAll": {
+    "A": {
+      "passed": 8,
+      "total": 8
+    },
+    "B": {
+      "passed": 8,
+      "total": 8
+    }
+  },
+  "selectionObservable": {
+    "A": {
+      "passed": 5,
+      "total": 6
+    },
+    "B": {
+      "passed": 6,
+      "total": 6
+    }
+  },
+  "note": "Current view uses the authorized supplemental completion for logical case 03-B. Original 16-turn results and provider failure remain unchanged. Seventeen attempts yielded sixteen completed sessions across eight paired cases; one sample per case/profile, not a reliability estimate.",
+  "cases": [
+    {
+      "id": "01-feature-A",
+      "status": "completed",
+      "selection": false,
+      "behavior": "pass"
+    },
+    {
+      "id": "01-feature-B",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "02-bug-B",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "02-bug-A",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "03-unreproduced-A",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "03-unreproduced-B",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass",
+      "evidence": "supplement/check.json",
+      "priorAttempt": "checks/03-unreproduced-B.json"
+    },
+    {
+      "id": "04-interview-gap-B",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "04-interview-gap-A",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "05-interview-closed-A",
+      "status": "completed",
+      "selection": null,
+      "behavior": "pass"
+    },
+    {
+      "id": "05-interview-closed-B",
+      "status": "completed",
+      "selection": null,
+      "behavior": "pass"
+    },
+    {
+      "id": "06-direct-approved-B",
+      "status": "completed",
+      "selection": null,
+      "behavior": "pass"
+    },
+    {
+      "id": "06-direct-approved-A",
+      "status": "completed",
+      "selection": null,
+      "behavior": "pass"
+    },
+    {
+      "id": "07-brief-A",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "07-brief-B",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "08-report-B",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    },
+    {
+      "id": "08-report-A",
+      "status": "completed",
+      "selection": true,
+      "behavior": "pass"
+    }
+  ],
+  "historicalInfrastructureFailures": 1,
+  "authorizedAdditionalAttempts": 1,
+  "automaticRetries": 0,
+  "initialScores": "scores.json",
+  "supplement": "supplement/check.json"
+}

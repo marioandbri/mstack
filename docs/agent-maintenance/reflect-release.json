@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "skills": [
+    "capture-observations",
+    "reflect"
+  ],
+  "sourceHashes": {
+    "capture-observations/SKILL.md": "b135a3dd502ae8e99a786a431c37bd79869912e14538074b1dc3c76638455db4",
+    "capture-observations/agents/openai.yaml": "8619a54e8c098122a7f3881394f84ca89b684366e848233a29ad18b6ec363935",
+    "reflect/SKILL.md": "347d4384db6311d41caa774c7cf4298cbea4bb56a75364793d26d98144af3b64",
+    "reflect/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
+    "reflect/observation.schema.json": "7f460dfaadc5edf9ffe72a5a0f5d8ad2c0b8dae72857b6fa6e0c42b61d662939",
+    "reflect/references/classification.md": "4b99ca632e2bc3e49104505cc8bc1c6ad6214592c740a6f2b1b085464722152a",
+    "reflect/references/failure-evaluation.md": "23b8833bc364228ba97f82142e7626e2dbf9e0598b4e42fd00fa8235224802e2",
+    "reflect/references/instruction-review.md": "92431f757b9ffeeafdfef7c7750ca5f8566e889e2df17c91b5af71834d2ba5fe",
+    "reflect/references/questionnaire.md": "560d2f1cd994f7ef9206849637fad74192dcdc0a490686b981a4788a590bbb4f",
+    "reflect/references/records.md": "90f1b5046eab07db752ed79531f8743f026ea56cf099a042d23d563c4a60d2e8",
+    "reflect/references/research.md": "a99a5d16bb41d5e530c82c96db880689b41175e0f84df3376f75f6aea8e5341c",
+    "reflect/references/skill-support.md": "4f3ddfb10c25f0b2b23a8ff90a93c3db260531cbac6a20d893bd04eb8dfa9771",
+    "reflect/review.schema.json": "118135502472d5bfa2b42746ef37e8e34b065d2afceaea11dc8c7a0230f9c900"
+  },
+  "evaluation": {
+    "reference": "2026-10-08-reflect-persistence",
+    "cases": 4,
+    "passed": 4,
+    "model": "gpt-6.1-sol",
+    "reasoning": "high",
+    "cli": "0.160.0",
+    "limit": "One sample per stage; no general reliability claim."
+  },
+  "deploymentScope": {
+    "preserveOtherInstalledSkills": true,
+    "baseCommit": "3f3da0805ecbf3431eaf45e2f466358212032f38",
+    "preserveActiveGlobalBytes": true,
+    "globalSha256": "9b9406a1036570535f7b5f391ae754bbcbc5c8ba8e5da04a66b873a45504ffe2"
+  },
+  "persistence": "Project maintenance files; see persistence.md. No central cross-project aggregator."
+}

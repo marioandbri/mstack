@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 2,
+  "status": "executed-exploratory",
+  "protocol_sha256": "4182109bf1734a28249237c2749f9ae252c8ddd03f3254d13c5dfe14293a3aea",
+  "results_sha256": "238ab2e096bf7af7d046c369fdd6886fb9ee4fdff62812d2f8267ec0be3f4c81",
+  "report_sha256": "68be42df87e323b6e7dcab16e64e10ecfb3e22e6491a42c88c246da8f2a9c9ba",
+  "publication_sources": {
+    "publish.py": "08386f7bfee2eae96af09cd51bfa01786004c82ed1d08c08475dc8445e3f28ce",
+    "verify.py": "f2730564483c55d7767688ede78005b30461b13c5ce28805189fe7a123535705"
+  },
+  "execution_sources": {
+    "run.py": "81452c917d8c35a0e807c5f65c89d235d6d857b0d2a2eaefc972edef5759b5a1",
+    "ranking.py": "94e0d9465147100496c36551c178c0906a27b82f26d6be01f6d3319161a50ce0",
+    "download.py": "d1c6a0c25c7e8ba59bbcf75b429383b11428671a3ce94e30bece5e842b8d7591",
+    "test_ranking.py": "b33d217da6979093fb1170f0d568967a7636f5da7d2d06a022da6689349c9932",
+    "pyproject.toml": "c2a205ea7c37cbe22e137ac90663acb7da4acfc4a3125d9cf6cf6358a5f18f37",
+    "uv.lock": "9763e2c0308d7309f5a052a0dd82f1086383f3bbd9fefc371f7cc39b60458ad2"
+  },
+  "private_evidence": "task Git common directory: embedding-model-evidence/run-04",
+  "models": {
+    "minilm": {
+      "id": "sentence-transformers/all-MiniLM-L6-v2",
+      "dimension": 384,
+      "max_seq_length": 256,
+      "query_prompt_name": null,
+      "document_prompt_name": null,
+      "config_kwargs": {},
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "license": "apache-2.0"
+    },
+    "gemma": {
+      "id": "google/embeddinggemma-2",
+      "dimension": 768,
+      "max_seq_length": 8192,
+      "query_prompt_name": "query",
+      "document_prompt_name": "document",
+      "config_kwargs": {
+        "vision_config": null,
+        "audio_config": null
+      },
+      "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+      "license": "apache-2.0"
+    },
+    "qwen": {
+      "id": "Qwen/Qwen3-Embedding-0.6B",
+      "dimension": 1024,
+      "max_seq_length": 32768,
+      "query_prompt_name": "query",
+      "document_prompt_name": "document",
+      "config_kwargs": {},
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "license": "apache-2.0"
+    },
+    "gemma300": {
+      "id": "google/embeddinggemma-300m",
+      "dimension": 768,
+      "max_seq_length": 2048,
+      "query_prompt": "task: search result | query: ",
+      "document_prompt": "title: none | text: ",
+      "config_kwargs": {},
+      "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+      "license": "gemma"
+    },
+    "e5small": {
+      "id": "intfloat/multilingual-e5-small",
+      "dimension": 384,
+      "max_seq_length": 512,
+      "query_prompt": "query: ",
+      "document_prompt": "passage: ",
+      "config_kwargs": {},
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+      "license": "mit"
+    }
+  },
+  "pending_models": {},
+  "independent_verification": {
+    "status": "PASS",
+    "models": 5,
+    "sqlite_vector_queries_reopened": 250,
+    "finite_normalized_vectors": true,
+    "project_filters": "PASS",
+    "held_out_excluded": true,
+    "source_model_artifact_hashes": "PASS",
+    "labels": "provisional; source verification cannot approve semantic judgments"
+  },
+  "reference_repetition": {
+    "previous_run": "run-03",
+    "previous_protocol_sha256": "dd6f357d2abf849d19e68c00db5ffd322612184e60808380da0292c30cb76e85",
+    "previous_execution_sources": {
+      "run.py": "81452c917d8c35a0e807c5f65c89d235d6d857b0d2a2eaefc972edef5759b5a1",
+      "ranking.py": "94e0d9465147100496c36551c178c0906a27b82f26d6be01f6d3319161a50ce0",
+      "download.py": "d1c6a0c25c7e8ba59bbcf75b429383b11428671a3ce94e30bece5e842b8d7591",
+      "test_ranking.py": "b33d217da6979093fb1170f0d568967a7636f5da7d2d06a022da6689349c9932",
+      "pyproject.toml": "c2a205ea7c37cbe22e137ac90663acb7da4acfc4a3125d9cf6cf6358a5f18f37",
+      "uv.lock": "9763e2c0308d7309f5a052a0dd82f1086383f3bbd9fefc371f7cc39b60458ad2"
+    },
+    "runtime_and_corpus_unchanged": true,
+    "previous_pending_models": {
+      "gemma300": {
+        "model": {
+          "id": "google/embeddinggemma-300m",
+          "dimension": 768,
+          "max_seq_length": 2048,
+          "query_prompt": "task: search result | query: ",
+          "document_prompt": "title: none | text: ",
+          "config_kwargs": {},
+          "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+          "license": "gemma"
+        },
+        "status": "not-executed-access-required",
+        "access_check": {
+          "token_available": false,
+          "id": "google/embeddinggemma-300m",
+          "revision": "57c266a740f537b4dc058e1b0cda161fd15afa75",
+          "access": "not-granted",
+          "error_class": "GatedRepoError",
+          "http_status": 401
+        }
+      }
+    },
+    "models": {
+      "minilm": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 6.771500498871319,
+        "current_p50_ms": 6.72529150324408,
+        "previous_result_sha256": "3e4d7a3510611433a3be8f60c2f71442d6fdf3ae4da20adaa4941ace2b8e0a1a"
+      },
+      "gemma": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 73.25429199408973,
+        "current_p50_ms": 72.88091650116257,
+        "previous_result_sha256": "f2833006b0058e07f1c16e6ed22abd244108ca8711040e4a53002e88d446e812"
+      },
+      "qwen": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 162.00279149779817,
+        "current_p50_ms": 164.51285449875286,
+        "previous_result_sha256": "93982e2587e647944cf67a2d29daa2f9e9ffe67f0dd0b0bf4594064087b389ad"
+      },
+      "e5small": {
+        "rankings_and_metrics_unchanged": true,
+        "previous_p50_ms": 13.433083506242838,
+        "current_p50_ms": 14.557103495462798,
+        "previous_result_sha256": "92e26bd7254341f2be8b8c4de1c7d7dc2ccf7504c04d0ebb363e6207d0f88d32"
+      }
+    }
+  },
+  "access_followup_sha256": null,
+  "granted_access_sha256": "453dccd67df36d25e4fae8c2309a7fcde77831fbd1c8b91a333dc677c2739d79",
+  "prior_attempt": {
+    "id": "run-01",
+    "status": "partial-infrastructure-failure",
+    "execution": {
+      "minilm": {
+        "exit_code": 0,
+        "seconds": 10.276127000004635
+      },
+      "gemma": {
+        "exit_code": 1,
+        "seconds": 10.020248540997272
+      },
+      "qwen": {
+        "exit_code": 0,
+        "seconds": 24.38606141600758
+      }
+    },
+    "failure": "EmbeddingGemma2Processor requires PIL even for text-only use; no Gemma embeddings generated in run-01",
+    "change": "Pin Pillow 12.3.0 in the isolated environment; use current dimension API; repeat all profiles",
+    "model_files": "Reuse already verified same model snapshots; no second weight download",
+    "original_source_hashes": {
+      "run.py": "2b1902f683c1e28972f1a5cf2886592bad02cc67ea6ba851f184cc4fd334cd47",
+      "ranking.py": "94e0d9465147100496c36551c178c0906a27b82f26d6be01f6d3319161a50ce0",
+      "download.py": "760ac87987603ed91c86ea9a41ffde706cda4ebdd735ea6ee864808fde8d0604",
+      "test_ranking.py": "ff69043362e86e0681f7d77c96702f5d6df63c45016f1be205660574a0216518",
+      "pyproject.toml": "245ba7233bd115e28e293c445cbd42799f3f4921fcb195c07887a0cc03391162",
+      "uv.lock": "7c159f5d7d5f711cc08e7f4c8da9f726ba0db67fc9daf73d338e8eab3a002a75"
+    },
+    "followup_preflight": {
+      "status": "infrastructure-error",
+      "corpus_inference": false,
+      "error": "EmbeddingGemma2Processor imports torchvision via Gemma4ImageProcessor; Pillow alone does not complete required image extra",
+      "trace": "native transformers/models/gemma4/image_processing_gemma4.py imports torchvision.transforms.v2"
+    },
+    "successful_preflight": {
+      "preflight": "PASS",
+      "shape": [
+        1,
+        768
+      ],
+      "loaded_parameters": 271002624,
+      "generic_embeddings": 1,
+      "corpus_examples": 0,
+      "max_seq_length": 1000000000000000019884624838656,
+      "tokenizer_present": true
+    },
+    "final_correction": "Pillow 12.3.0 and Torchvision 0.29.1 pinned; 8192-token Gemma window explicitly bound after sentinel observed; all three profiles repeated",
+    "final_repetition": "run-02"
+  },
+  "hosted_inference_calls": 0,
+  "active_backend_installed": false,
+  "labels_independently_approved": false
+}

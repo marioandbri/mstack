@@ -1,0 +1,586 @@
+{
+  "schema_version": 1,
+  "campaign": "AM-031/campaign-03",
+  "date": "2026-10-15",
+  "source_commit": "df5976e0c38c8d65b89e161b86073e1a277f31f1",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "environment": {
+    "image_digest": "sha256:b0c6aeaafd52a30ceef9d30913df39be6887d8b3ef444bf53ae16fa0d39b91c7",
+    "codex": "0.160.0",
+    "python": "3.13.2",
+    "bun": "1.3.14",
+    "uv": "0.10.11",
+    "git": "2.39.5",
+    "node": "24.17.0",
+    "sqlite": "3.47.1",
+    "platform": "Linux-6.12.76-linuxkit-aarch64-with-glibc2.36"
+  },
+  "budget": {
+    "max_attempts": 3,
+    "max_turns": 3,
+    "max_seconds": 540,
+    "seconds_per_attempt": 180,
+    "repetitions": 1,
+    "automatic_retries": 0
+  },
+  "authorization_answer": "procede con eso entonces",
+  "source_hashes": {
+    "manifest": "783031207dbf59a0f227db71769daf529d1f48f4ba421f58728ebd4d33cfc389",
+    "authorization": "5685f051d06eb12e52bd45d6f1851bdb462c65fbfc59643f6e19c219f122e1fe",
+    "publisher": "da4812ca64e8f670061a45a68d0fdf1cc93614b736ec99618adc823d13c9c0f7",
+    "native_readback": "94164d72bd7b954b02d7bdf95c6b127fb02f5c3c217088066dad650038ad3b7e",
+    "previous_results": "e2023100069717c18b1344067fe9dc22f3fcbd308343508bc2911bb3d784d3f5"
+  },
+  "summary": {
+    "attempts": 3,
+    "task_results": {
+      "passed": 3
+    },
+    "agent_turns_requested": 3,
+    "terminal_completed": 3,
+    "all_mechanical_checks_passed": 3,
+    "human_interventions": 0,
+    "unnecessary_actions": 0,
+    "attempt_wall_seconds": 161.256,
+    "provider_calls": null
+  },
+  "cases": [
+    {
+      "attempt_id": "followup-01-reflect-resume-drift",
+      "case_id": "reflect-resume-drift",
+      "previous_attempt_id": "cycle-09-reflect-resume-drift",
+      "case_kind": "synthetic-fixture",
+      "incident_id": null,
+      "protocol_sha256": "2c034a509586c386659a1e154b9682900d9da38ca1eb55339f90fd8ab248af71",
+      "previous_protocol_sha256": "aa25864506ef47df5377aac45ce6322ae66039071e5c2cea9a81c53da5632ae9",
+      "receipt_sha256": "816b34d0620b239383cbe93e953045bfb6ac5bb553857fa77c1cf6cd51acbb12",
+      "assessment_sha256": "a94c869e4ed2c6fbf9f38384cd627fddb202d59a81d23da2848a670511aef926",
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "checks": [
+        {
+          "id": "review-resumed",
+          "passed": true
+        },
+        {
+          "id": "evidence",
+          "passed": true
+        },
+        {
+          "id": "behavior-source",
+          "passed": true
+        },
+        {
+          "id": "destination-source",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "resumption",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 88,
+              "sha256": "d1201b30ca45c79b6492f3ceb09972e093fa3b57cc7adefc03bf1577965b5051"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 195,
+              "sha256": "d1201b30ca45c79b6492f3ceb09972e093fa3b57cc7adefc03bf1577965b5051"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 195,
+              "sha256": "d1201b30ca45c79b6492f3ceb09972e093fa3b57cc7adefc03bf1577965b5051"
+            }
+          ]
+        },
+        {
+          "id": "limits",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 88,
+              "sha256": "d1201b30ca45c79b6492f3ceb09972e093fa3b57cc7adefc03bf1577965b5051"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 437,
+              "sha256": "d1201b30ca45c79b6492f3ceb09972e093fa3b57cc7adefc03bf1577965b5051"
+            }
+          ]
+        },
+        {
+          "id": "question",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 195,
+              "sha256": "d1201b30ca45c79b6492f3ceb09972e093fa3b57cc7adefc03bf1577965b5051"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 437,
+              "sha256": "d1201b30ca45c79b6492f3ceb09972e093fa3b57cc7adefc03bf1577965b5051"
+            }
+          ]
+        },
+        {
+          "id": "answers",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 195,
+              "sha256": "d1201b30ca45c79b6492f3ceb09972e093fa3b57cc7adefc03bf1577965b5051"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 195,
+              "sha256": "d1201b30ca45c79b6492f3ceb09972e093fa3b57cc7adefc03bf1577965b5051"
+            }
+          ]
+        },
+        {
+          "id": "no-installation",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 195,
+              "sha256": "d1201b30ca45c79b6492f3ceb09972e093fa3b57cc7adefc03bf1577965b5051"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 437,
+              "sha256": "d1201b30ca45c79b6492f3ceb09972e093fa3b57cc7adefc03bf1577965b5051"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "reflect",
+          "trigger_compatible": true,
+          "selection": "required",
+          "selected": true,
+          "selected_automatically": null,
+          "read": "full",
+          "exposed": true,
+          "attribution": "observed-use"
+        }
+      ],
+      "seconds": 87.24,
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 308343,
+          "inputTokens": 305147,
+          "outputTokens": 3196,
+          "cachedInputTokens": 269184,
+          "reasoningOutputTokens": 931,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 440,
+          "excerpt": "\"thread/tokenUsage/updated\"",
+          "sha256": "d1201b30ca45c79b6492f3ceb09972e093fa3b57cc7adefc03bf1577965b5051"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "artifact_hashes": {
+        "events.jsonl": "d1201b30ca45c79b6492f3ceb09972e093fa3b57cc7adefc03bf1577965b5051",
+        "requests.jsonl": "c9f9866d94ad0b48907b529deeaf7499f6dd41c8559eb5a34ffa8e08561d7c1e",
+        "context.json": "a5ca94ec9bb5e16ea7d8bebc370d28356c7b946a94727db6d0f3b404eca80149",
+        "agent-result.json": "7d83e30eb40389a20ec491f64a50a6267c0508813cdd4f2656452793fc9224b0"
+      }
+    },
+    {
+      "attempt_id": "followup-02-reflect-chat-only",
+      "case_id": "reflect-chat-only",
+      "previous_attempt_id": "cycle-10-reflect-chat-only",
+      "case_kind": "synthetic-fixture",
+      "incident_id": null,
+      "protocol_sha256": "39687d8d081e6e0f00bbd82816bd95dc65919869785a5432af48c331b5ed92d7",
+      "previous_protocol_sha256": "93875edec33009319f679a626debbade275e05943f3d8501ae501a8b96a48adc",
+      "receipt_sha256": "2043e60d8ad7b00cc225ad49c69d0a7e1b523d93efdcece7be290a3ff01bc9b3",
+      "assessment_sha256": "3995f3c5e36b40742f92af51cfee95e0f42268e16a12c35c88d912eecb1c6987",
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "checks": [
+        {
+          "id": "no-storage",
+          "passed": true
+        },
+        {
+          "id": "context-preserved",
+          "passed": true
+        },
+        {
+          "id": "evidence",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "chat-only",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 53,
+              "sha256": "350da8959135514d631673929a6490cfbd38c8b63edf9e75afd876cc8eb5ef7f"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 302,
+              "sha256": "350da8959135514d631673929a6490cfbd38c8b63edf9e75afd876cc8eb5ef7f"
+            }
+          ]
+        },
+        {
+          "id": "answers",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 302,
+              "sha256": "350da8959135514d631673929a6490cfbd38c8b63edf9e75afd876cc8eb5ef7f"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 302,
+              "sha256": "350da8959135514d631673929a6490cfbd38c8b63edf9e75afd876cc8eb5ef7f"
+            }
+          ]
+        },
+        {
+          "id": "limits",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 63,
+              "sha256": "350da8959135514d631673929a6490cfbd38c8b63edf9e75afd876cc8eb5ef7f"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 302,
+              "sha256": "350da8959135514d631673929a6490cfbd38c8b63edf9e75afd876cc8eb5ef7f"
+            }
+          ]
+        },
+        {
+          "id": "answers",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 302,
+              "sha256": "350da8959135514d631673929a6490cfbd38c8b63edf9e75afd876cc8eb5ef7f"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 302,
+              "sha256": "350da8959135514d631673929a6490cfbd38c8b63edf9e75afd876cc8eb5ef7f"
+            }
+          ]
+        },
+        {
+          "id": "no-installation",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 302,
+              "sha256": "350da8959135514d631673929a6490cfbd38c8b63edf9e75afd876cc8eb5ef7f"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 302,
+              "sha256": "350da8959135514d631673929a6490cfbd38c8b63edf9e75afd876cc8eb5ef7f"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "reflect",
+          "trigger_compatible": true,
+          "selection": "required",
+          "selected": true,
+          "selected_automatically": null,
+          "read": "full",
+          "exposed": true,
+          "attribution": "observed-use"
+        }
+      ],
+      "seconds": 28.665,
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 81324,
+          "inputTokens": 80403,
+          "outputTokens": 921,
+          "cachedInputTokens": 67200,
+          "reasoningOutputTokens": 342,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 305,
+          "excerpt": "\"thread/tokenUsage/updated\"",
+          "sha256": "350da8959135514d631673929a6490cfbd38c8b63edf9e75afd876cc8eb5ef7f"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "artifact_hashes": {
+        "events.jsonl": "350da8959135514d631673929a6490cfbd38c8b63edf9e75afd876cc8eb5ef7f",
+        "requests.jsonl": "606973904148ce960c5ffbf1f90d77cdcc6207ecf6dbbc03a0e7e7662ad22f65",
+        "context.json": "c07abf9ac14ab4e0eb18fa06c44998dd6c22dd8e7a8518ccb3fc25c4ca9d3695",
+        "agent-result.json": "b51b1ee108450d8f2ea5875247138fafdd6f1d15a9eb82000c81a6adcea38af2"
+      }
+    },
+    {
+      "attempt_id": "followup-03-capture-without-promotion",
+      "case_id": "capture-without-promotion",
+      "previous_attempt_id": "cycle-12-capture-without-promotion",
+      "case_kind": "variant",
+      "incident_id": "OBS-AGENTS-DIRECT-LEARNING-001",
+      "protocol_sha256": "f81a76678967bfca13eacb4b1baff5ab0c721ad32cc3e01cd6b0a117f4c16235",
+      "previous_protocol_sha256": "53be2f8d102aa4db6bbb51af71bb265cf09c552b01281861498a26f28c24169b",
+      "receipt_sha256": "69167c6abeaf6f9e8a7b40a613fb7ec13ad7c19186b0bb70ae096e1c891dd94e",
+      "assessment_sha256": "d844d6abc730bd3ebfdf38d00232be10b1a5db920d7b2db20d00c952b6d5fa9f",
+      "task_result": "passed",
+      "execution_status": "completed",
+      "stage": "executed",
+      "context": "verified",
+      "collection_status": "complete",
+      "infrastructure_states": {},
+      "checks": [
+        {
+          "id": "durable-capture",
+          "passed": true
+        },
+        {
+          "id": "project-instructions",
+          "passed": true
+        },
+        {
+          "id": "incident-preserved",
+          "passed": true
+        },
+        {
+          "id": "evidence",
+          "passed": true
+        }
+      ],
+      "criteria": [
+        {
+          "id": "capture",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 183,
+              "sha256": "c09befc2437d407fe996b57b132d3bb3afb7b7c779f071a2725df82e2046edf8"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 183,
+              "sha256": "c09befc2437d407fe996b57b132d3bb3afb7b7c779f071a2725df82e2046edf8"
+            }
+          ]
+        },
+        {
+          "id": "return",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 232,
+              "sha256": "c09befc2437d407fe996b57b132d3bb3afb7b7c779f071a2725df82e2046edf8"
+            }
+          ]
+        },
+        {
+          "id": "no-reflection",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 66,
+              "sha256": "c09befc2437d407fe996b57b132d3bb3afb7b7c779f071a2725df82e2046edf8"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 232,
+              "sha256": "c09befc2437d407fe996b57b132d3bb3afb7b7c779f071a2725df82e2046edf8"
+            }
+          ]
+        },
+        {
+          "id": "no-promotion",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 183,
+              "sha256": "c09befc2437d407fe996b57b132d3bb3afb7b7c779f071a2725df82e2046edf8"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 232,
+              "sha256": "c09befc2437d407fe996b57b132d3bb3afb7b7c779f071a2725df82e2046edf8"
+            }
+          ]
+        },
+        {
+          "id": "incident-identity",
+          "result": "passed",
+          "evidence": [
+            {
+              "path": "events.jsonl",
+              "line": 183,
+              "sha256": "c09befc2437d407fe996b57b132d3bb3afb7b7c779f071a2725df82e2046edf8"
+            },
+            {
+              "path": "events.jsonl",
+              "line": 232,
+              "sha256": "c09befc2437d407fe996b57b132d3bb3afb7b7c779f071a2725df82e2046edf8"
+            }
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "capture-observations",
+          "trigger_compatible": true,
+          "selection": "required",
+          "selected": true,
+          "selected_automatically": true,
+          "read": "full",
+          "exposed": true,
+          "attribution": "observed-use"
+        },
+        {
+          "name": "reflect",
+          "trigger_compatible": false,
+          "selection": "forbidden",
+          "selected": false,
+          "selected_automatically": false,
+          "read": "not-observed",
+          "exposed": true,
+          "attribution": "not-applicable"
+        }
+      ],
+      "seconds": 45.351,
+      "tokens": {
+        "reported_cumulative": {
+          "totalTokens": 304310,
+          "inputTokens": 301863,
+          "outputTokens": 2447,
+          "cachedInputTokens": 271232,
+          "reasoningOutputTokens": 157,
+          "cacheWriteInputTokens": 0
+        },
+        "source_ref": {
+          "path": "events.jsonl",
+          "line": 235,
+          "excerpt": "\"thread/tokenUsage/updated\"",
+          "sha256": "c09befc2437d407fe996b57b132d3bb3afb7b7c779f071a2725df82e2046edf8"
+        },
+        "limits": [
+          "Last reported cumulative usage for the acknowledged turn; cached input and reasoning output are subsets, not additional totals.",
+          "This does not reveal the number of internal provider calls or their price."
+        ]
+      },
+      "agent_turns_requested": 1,
+      "terminal_status": "completed",
+      "human_interventions": 0,
+      "unnecessary_actions": [],
+      "artifact_hashes": {
+        "events.jsonl": "c09befc2437d407fe996b57b132d3bb3afb7b7c779f071a2725df82e2046edf8",
+        "requests.jsonl": "78459ea6dff5fd4f57b197c2f401c772d6f01c7ba62dc8465cce5406a49ed475",
+        "context.json": "509fb83175b09af0677182fbcfc4b18281e4636cca7b1d02eb15ed9173ffc5d7",
+        "agent-result.json": "b482c12a17ae8cbf32c8dda27a737ae7a157564653b96cb69f07406081d2ff79"
+      }
+    }
+  ],
+  "previous_14_receipts_preserved": true,
+  "native_readback": {
+    "resumption": {
+      "latest_revision": 3,
+      "settled_decisions_preserved": true,
+      "only_destination_reopened": true,
+      "active_questions": 1,
+      "promotion": "none"
+    },
+    "capture": {
+      "original_bytes_exact": true,
+      "originals": 1,
+      "derived_versions": [
+        [
+          "annotation",
+          1
+        ],
+        [
+          "summary",
+          1
+        ]
+      ],
+      "occurrences": 1,
+      "summary_mode": "posthoc",
+      "summary_completeness": "partial",
+      "correction_retained": true,
+      "unknown_session_ids_preserved": true
+    }
+  },
+  "required_checks": {
+    "log_sha256": "71eb92128c535b947447b1dd8e1ae336c52ed849b5e61534d1c3c152b7dee7fa",
+    "commands": [
+      "bun run check",
+      "bun test",
+      "fish install/verify.fish",
+      "git diff --check"
+    ],
+    "exit_code": 0,
+    "bun_pass": 43,
+    "bun_optional_skip": 1,
+    "bun_fail": 0,
+    "bun_assertions": 376
+  },
+  "limits": [
+    "Three targeted attempts after AM-030, not a single rerun of all 14 cases or a new A/B comparison.",
+    "Manual assessment by the implementing agent, no independent judge or statistical reliability claim.",
+    "Original infrastructure outcomes remain unchanged. This campaign does not establish the precise cause of the old intermittent close failures.",
+    "Cumulative token usage includes cached input and reasoning output as subsets. Provider call counts and monetary cost are unknown.",
+    "No active installation, PR publication or remote merge was performed."
+  ]
+}

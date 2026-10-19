@@ -1,6 +1,6 @@
 ---
 name: tdd
-description: Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants integration tests.
+description: Implement features with behavior-first tests and a verified functional smoke, including when the user does not mention TDD. Also use for requested test-first bug fixes and integration tests. Skip explanation-only, read-only review and changes without runtime behavior.
 ---
 
 # Test-Driven Development
@@ -19,9 +19,12 @@ See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking g
 
 A **seam** is the public boundary you test at: the interface where you observe behavior without reaching inside. Tests live at seams, never against internals.
 
-**Test only at pre-agreed seams.** Before writing any test, write down the seams under test and confirm them with the user. No test is written at an unconfirmed seam. You can't test everything — agreeing the seams up front is how testing effort lands on the critical paths and complex logic instead of every edge case.
-
-Ask: "What's the public interface, and which seams should we test?"
+Reuse test boundaries and acceptance already agreed in the interview, spec or
+tickets. Do not ask for that approval again. Inspect existing public interfaces
+and tests before proposing a new boundary. Resolve technical choices within the
+approved scope; ask when a missing behavioral expectation or new scope decision
+needs the user's direction. Tests must exercise the behavior, not an unapproved
+interpretation or private implementation details.
 
 ## Anti-patterns
 
@@ -34,3 +37,20 @@ Ask: "What's the public interface, and which seams should we test?"
 - **Red before green.** Write the failing test first, then only enough code to pass it. Don't anticipate future tests or add speculative features.
 - **One slice at a time.** One seam, one test, one minimal implementation per cycle.
 - **Refactoring is not part of the loop.** It belongs to the review stage (see the `code-review` skill), not the red → green implementation cycle.
+
+## Functional smoke and retained evidence
+
+After the red-green cycles, check the main functional path through the real
+entrypoint, UI, API, CLI or public library interface as appropriate. Reuse or
+extend an existing integrated test when it covers the path. Do not add a duplicate
+smoke merely to satisfy a label. Starting the application without checking the
+expected effect is insufficient.
+
+Automate the smoke and retain it in the normal suite once stable and repeatable.
+Keep necessary assertions and test data independent of the implementation. Use
+local-env only when the checks require running services or test databases.
+
+Report the path, expected effect, tested version, relevant environment, execution
+command and observed result, linked to existing runner output. Preserve red and
+green evidence for new behavior. Mark unexecuted, blocked and failing checks
+accurately. Do not optimize for a coverage metric at the expense of behavior.

@@ -1,0 +1,3255 @@
+{
+  "schemaVersion": 1,
+  "native": {
+    "mode": "native",
+    "python": "3.13.2",
+    "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "packages": {
+      "lancedb": "0.40.0",
+      "pyarrow": "26.0.0",
+      "numpy": "2.5.4",
+      "pydantic": "2.14.1"
+    },
+    "protocol_sha256": "6030c0e3ad59527837c8687d618f765ad3e681394d2127e5231c8cd7fa9da6e9",
+    "source_sha256": "f4351485cbafdbff3c3fe1e17c302765979f3bdc5957f590860c600d285e1710",
+    "results": {
+      "capture_without_embedding": {
+        "pass": true,
+        "rows": [
+          {
+            "id": "origin-001",
+            "operation_id": "origin-001",
+            "project": "mstack",
+            "harness": "synthetic-python",
+            "source_session": "source-a",
+            "capture_session": "capture-a",
+            "event_id": "event-origin-001",
+            "text": "Approval was requested again after it had been granted.",
+            "content_sha256": "04951362ff720000d736e9826539f180081f52f385227cea9977dbe498c70fed",
+            "revision": 0,
+            "decision": "pending",
+            "vector": null
+          }
+        ],
+        "expected_count": 1,
+        "status": "pass",
+        "duration_seconds": 0.986
+      },
+      "concurrent_append": {
+        "pass": true,
+        "repetitions": [
+          {
+            "pass": true,
+            "expected_count": 60,
+            "actual_count": 60,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "a-00"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-01"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-02"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-03"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-04"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-05"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-06"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-07"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-08"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-09"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-10"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-11"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-12"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-13"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-14"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-15"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-16"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-17"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-18"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-19"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-20"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-21"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-22"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-23"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-24"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-25"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-26"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-27"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-28"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-29"
+                  }
+                ],
+                "pid": 83247,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "b-00"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-01"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-02"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-03"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-04"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-05"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-06"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-07"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-08"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-09"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-10"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-11"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-12"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-13"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-14"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-15"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-16"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-17"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-18"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-19"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-20"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-21"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-22"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-23"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-24"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-25"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-26"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-27"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-28"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-29"
+                  }
+                ],
+                "pid": 83248,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "expected_count": 60,
+            "actual_count": 60,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "a-00"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-01"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-02"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-03"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-04"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-05"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-06"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-07"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-08"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-09"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-10"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-11"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-12"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-13"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-14"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-15"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-16"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-17"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-18"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-19"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-20"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-21"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-22"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-23"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-24"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-25"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-26"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-27"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-28"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-29"
+                  }
+                ],
+                "pid": 83270,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "b-00"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-01"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-02"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-03"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-04"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-05"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-06"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-07"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-08"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-09"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-10"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-11"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-12"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-13"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-14"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-15"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-16"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-17"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-18"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-19"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-20"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-21"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-22"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-23"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-24"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-25"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-26"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-27"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-28"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-29"
+                  }
+                ],
+                "pid": 83271,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "expected_count": 60,
+            "actual_count": 60,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "a-00"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-01"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-02"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-03"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-04"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-05"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-06"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-07"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-08"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-09"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-10"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-11"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-12"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-13"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-14"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-15"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-16"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-17"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-18"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-19"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-20"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-21"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-22"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-23"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-24"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-25"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-26"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-27"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-28"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-29"
+                  }
+                ],
+                "pid": 83319,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "b-00"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-01"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-02"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-03"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-04"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-05"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-06"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-07"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-08"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-09"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-10"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-11"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-12"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-13"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-14"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-15"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-16"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-17"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-18"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-19"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-20"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-21"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-22"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-23"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-24"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-25"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-26"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-27"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-28"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-29"
+                  }
+                ],
+                "pid": 83320,
+                "exitcode": 0
+              }
+            ]
+          }
+        ],
+        "status": "pass",
+        "duration_seconds": 2.716
+      },
+      "sequential_retry": {
+        "pass": true,
+        "actual_count": 1,
+        "outcomes": [
+          "MergeResult(version=2, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)",
+          "MergeResult(version=3, num_updated_rows=0, num_inserted_rows=0, num_deleted_rows=0, num_attempts=1, num_rows=0)",
+          "MergeResult(version=4, num_updated_rows=0, num_inserted_rows=0, num_deleted_rows=0, num_attempts=1, num_rows=0)",
+          "MergeResult(version=5, num_updated_rows=0, num_inserted_rows=0, num_deleted_rows=0, num_attempts=1, num_rows=0)"
+        ],
+        "status": "pass",
+        "duration_seconds": 0.064
+      },
+      "concurrent_retry": {
+        "pass": false,
+        "repetitions": [
+          {
+            "pass": false,
+            "expected_count": 1,
+            "actual_count": 2,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=3, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83355,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=2, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83356,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": false,
+            "expected_count": 1,
+            "actual_count": 2,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=3, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83379,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=2, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83380,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": false,
+            "expected_count": 1,
+            "actual_count": 2,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=3, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83403,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=2, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83404,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": false,
+            "expected_count": 1,
+            "actual_count": 2,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=3, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83427,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=2, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83428,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": false,
+            "expected_count": 1,
+            "actual_count": 2,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=3, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83454,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=2, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83455,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": false,
+            "expected_count": 1,
+            "actual_count": 2,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=3, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83475,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=2, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83476,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": false,
+            "expected_count": 1,
+            "actual_count": 2,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=2, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83499,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=3, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83500,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": false,
+            "expected_count": 1,
+            "actual_count": 2,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=2, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83601,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=3, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83602,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": false,
+            "expected_count": 1,
+            "actual_count": 2,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=3, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83625,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=2, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83626,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": false,
+            "expected_count": 1,
+            "actual_count": 2,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=2, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83651,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation",
+                    "sdk_result": "MergeResult(version=3, num_updated_rows=0, num_inserted_rows=1, num_deleted_rows=0, num_attempts=1, num_rows=1)"
+                  }
+                ],
+                "pid": 83652,
+                "exitcode": 0
+              }
+            ]
+          }
+        ],
+        "status": "contract-failure",
+        "duration_seconds": 11.541
+      },
+      "conflicting_revision": {
+        "pass": true,
+        "repetitions": [
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 83785,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 83786,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "conflict",
+              "accepted"
+            ],
+            "final_revision": 1,
+            "final_decision": "defer",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 83803,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 83804,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "conflict",
+              "accepted"
+            ],
+            "final_revision": 1,
+            "final_decision": "defer",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 83838,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 83839,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 83866,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 83867,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "conflict",
+              "accepted"
+            ],
+            "final_revision": 1,
+            "final_decision": "defer",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 83892,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 83893,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 83992,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 84002,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 84454,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 84455,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 85211,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 85212,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 85304,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 85305,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 85329,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 85330,
+                "exitcode": 0
+              }
+            ]
+          }
+        ],
+        "status": "pass",
+        "duration_seconds": 11.976
+      },
+      "reader_freshness": {
+        "pass": true,
+        "initial_counts": [
+          0,
+          0
+        ],
+        "default_count_after_other_process_commit": 0,
+        "refreshing_count": 1,
+        "manual_refresh_count": 1,
+        "workers": [
+          {
+            "before_rows": 0,
+            "results": [
+              {
+                "status": "acknowledged",
+                "id": "writer-001"
+              }
+            ],
+            "pid": 85372,
+            "exitcode": 0
+          },
+          {
+            "before_rows": 0,
+            "results": [],
+            "pid": 85373,
+            "exitcode": 0
+          }
+        ],
+        "status": "pass",
+        "duration_seconds": 3.709
+      },
+      "interrupted_write": {
+        "pass": true,
+        "repetitions": [
+          {
+            "pass": true,
+            "delay_seconds": 0.0,
+            "exitcode": -9,
+            "confirmed_rows": 6,
+            "interrupted_batch_rows": 0,
+            "events": [
+              {
+                "event": "acknowledged",
+                "id": "confirmed-0"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-1"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-2"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-3"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-4"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-5"
+              },
+              {
+                "event": "batch_started"
+              }
+            ],
+            "injection": "After public batch-start notification; exact native commit phase not observable"
+          },
+          {
+            "pass": true,
+            "delay_seconds": 0.005,
+            "exitcode": -9,
+            "confirmed_rows": 6,
+            "interrupted_batch_rows": 0,
+            "events": [
+              {
+                "event": "acknowledged",
+                "id": "confirmed-0"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-1"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-2"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-3"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-4"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-5"
+              },
+              {
+                "event": "batch_started"
+              }
+            ],
+            "injection": "After public batch-start notification; exact native commit phase not observable"
+          },
+          {
+            "pass": true,
+            "delay_seconds": 0.02,
+            "exitcode": -9,
+            "confirmed_rows": 6,
+            "interrupted_batch_rows": 0,
+            "events": [
+              {
+                "event": "acknowledged",
+                "id": "confirmed-0"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-1"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-2"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-3"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-4"
+              },
+              {
+                "event": "acknowledged",
+                "id": "confirmed-5"
+              },
+              {
+                "event": "batch_started"
+              }
+            ],
+            "injection": "After public batch-start notification; exact native commit phase not observable"
+          }
+        ],
+        "status": "pass",
+        "duration_seconds": 7.051
+      },
+      "hybrid_retrieval": {
+        "pass": true,
+        "vector_ids": [
+          "approval"
+        ],
+        "lexical_ids": [
+          "approval",
+          "pending-vector"
+        ],
+        "hybrid_ids": [
+          "approval",
+          "tests",
+          "pending-vector"
+        ],
+        "fixed_vectors_only": true,
+        "status": "pass",
+        "duration_seconds": 0.373
+      }
+    }
+  },
+  "guarded": {
+    "mode": "guarded",
+    "python": "3.13.2",
+    "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "packages": {
+      "lancedb": "0.40.0",
+      "pyarrow": "26.0.0",
+      "numpy": "2.5.4",
+      "pydantic": "2.14.1"
+    },
+    "protocol_sha256": "6030c0e3ad59527837c8687d618f765ad3e681394d2127e5231c8cd7fa9da6e9",
+    "source_sha256": "f4351485cbafdbff3c3fe1e17c302765979f3bdc5957f590860c600d285e1710",
+    "results": {
+      "concurrent_retry": {
+        "pass": true,
+        "repetitions": [
+          {
+            "pass": true,
+            "expected_count": 1,
+            "actual_count": 1,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "already-captured",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91166,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91167,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "expected_count": 1,
+            "actual_count": 1,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "already-captured",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91191,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91192,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "expected_count": 1,
+            "actual_count": 1,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "already-captured",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91207,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91208,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "expected_count": 1,
+            "actual_count": 1,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91499,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "already-captured",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91500,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "expected_count": 1,
+            "actual_count": 1,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91739,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "already-captured",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91740,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "expected_count": 1,
+            "actual_count": 1,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91770,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "already-captured",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91771,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "expected_count": 1,
+            "actual_count": 1,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "already-captured",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91793,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91795,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "expected_count": 1,
+            "actual_count": 1,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "already-captured",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91832,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91833,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "expected_count": 1,
+            "actual_count": 1,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91940,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "already-captured",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91941,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "expected_count": 1,
+            "actual_count": 1,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91971,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "already-captured",
+                    "id": "shared-operation"
+                  }
+                ],
+                "pid": 91972,
+                "exitcode": 0
+              }
+            ]
+          }
+        ],
+        "status": "pass",
+        "duration_seconds": 19.883
+      },
+      "conflicting_revision": {
+        "pass": true,
+        "repetitions": [
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 92001,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 92002,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 92102,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 92104,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "conflict",
+              "accepted"
+            ],
+            "final_revision": 1,
+            "final_decision": "defer",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 92127,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 92128,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 92152,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 92153,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 92183,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 92184,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 92207,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 92208,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 92303,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 92304,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 92329,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 92330,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 92363,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 92365,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "statuses": [
+              "accepted",
+              "conflict"
+            ],
+            "final_revision": 1,
+            "final_decision": "keep",
+            "workers": [
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "accepted",
+                    "rows_updated": 1,
+                    "version": 3
+                  }
+                ],
+                "pid": 92393,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 1,
+                "results": [
+                  {
+                    "status": "conflict",
+                    "rows_updated": 0,
+                    "version": 4
+                  }
+                ],
+                "pid": 92394,
+                "exitcode": 0
+              }
+            ]
+          }
+        ],
+        "status": "pass",
+        "duration_seconds": 26.061
+      },
+      "concurrent_append": {
+        "pass": true,
+        "repetitions": [
+          {
+            "pass": true,
+            "expected_count": 60,
+            "actual_count": 60,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "a-00"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-01"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-02"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-03"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-04"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-05"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-06"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-07"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-08"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-09"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-10"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-11"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-12"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-13"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-14"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-15"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-16"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-17"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-18"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-19"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-20"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-21"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-22"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-23"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-24"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-25"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-26"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-27"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-28"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-29"
+                  }
+                ],
+                "pid": 92411,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "b-00"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-01"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-02"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-03"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-04"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-05"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-06"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-07"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-08"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-09"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-10"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-11"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-12"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-13"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-14"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-15"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-16"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-17"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-18"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-19"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-20"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-21"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-22"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-23"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-24"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-25"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-26"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-27"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-28"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-29"
+                  }
+                ],
+                "pid": 92412,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "expected_count": 60,
+            "actual_count": 60,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "a-00"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-01"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-02"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-03"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-04"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-05"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-06"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-07"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-08"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-09"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-10"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-11"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-12"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-13"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-14"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-15"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-16"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-17"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-18"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-19"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-20"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-21"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-22"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-23"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-24"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-25"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-26"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-27"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-28"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-29"
+                  }
+                ],
+                "pid": 92457,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "b-00"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-01"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-02"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-03"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-04"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-05"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-06"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-07"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-08"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-09"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-10"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-11"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-12"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-13"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-14"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-15"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-16"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-17"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-18"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-19"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-20"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-21"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-22"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-23"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-24"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-25"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-26"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-27"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-28"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-29"
+                  }
+                ],
+                "pid": 92458,
+                "exitcode": 0
+              }
+            ]
+          },
+          {
+            "pass": true,
+            "expected_count": 60,
+            "actual_count": 60,
+            "workers": [
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "a-00"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-01"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-02"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-03"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-04"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-05"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-06"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-07"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-08"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-09"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-10"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-11"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-12"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-13"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-14"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-15"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-16"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-17"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-18"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-19"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-20"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-21"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-22"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-23"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-24"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-25"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-26"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-27"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-28"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "a-29"
+                  }
+                ],
+                "pid": 92531,
+                "exitcode": 0
+              },
+              {
+                "before_rows": 0,
+                "results": [
+                  {
+                    "status": "acknowledged",
+                    "id": "b-00"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-01"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-02"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-03"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-04"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-05"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-06"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-07"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-08"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-09"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-10"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-11"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-12"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-13"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-14"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-15"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-16"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-17"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-18"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-19"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-20"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-21"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-22"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-23"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-24"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-25"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-26"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-27"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-28"
+                  },
+                  {
+                    "status": "acknowledged",
+                    "id": "b-29"
+                  }
+                ],
+                "pid": 92532,
+                "exitcode": 0
+              }
+            ]
+          }
+        ],
+        "status": "pass",
+        "duration_seconds": 4.129
+      },
+      "sequential_retry": {
+        "pass": true,
+        "actual_count": 1,
+        "outcomes": [
+          {
+            "status": "acknowledged",
+            "id": "retry-001"
+          },
+          {
+            "status": "already-captured",
+            "id": "retry-001"
+          },
+          {
+            "status": "already-captured",
+            "id": "retry-001"
+          },
+          {
+            "status": "already-captured",
+            "id": "retry-001"
+          }
+        ],
+        "status": "pass",
+        "duration_seconds": 0.019
+      },
+      "capture_without_embedding": {
+        "pass": true,
+        "rows": [
+          {
+            "id": "origin-001",
+            "operation_id": "origin-001",
+            "project": "mstack",
+            "harness": "synthetic-python",
+            "source_session": "source-a",
+            "capture_session": "capture-a",
+            "event_id": "event-origin-001",
+            "text": "Approval was requested again after it had been granted.",
+            "content_sha256": "04951362ff720000d736e9826539f180081f52f385227cea9977dbe498c70fed",
+            "revision": 0,
+            "decision": "pending",
+            "vector": null
+          }
+        ],
+        "expected_count": 1,
+        "status": "pass",
+        "duration_seconds": 0.008
+      },
+      "reader_freshness": {
+        "pass": true,
+        "initial_counts": [
+          0,
+          0
+        ],
+        "default_count_after_other_process_commit": 0,
+        "refreshing_count": 1,
+        "manual_refresh_count": 1,
+        "workers": [
+          {
+            "before_rows": 0,
+            "results": [
+              {
+                "status": "acknowledged",
+                "id": "writer-001"
+              }
+            ],
+            "pid": 92600,
+            "exitcode": 0
+          },
+          {
+            "before_rows": 0,
+            "results": [],
+            "pid": 92601,
+            "exitcode": 0
+          }
+        ],
+        "status": "pass",
+        "duration_seconds": 0.858
+      }
+    }
+  },
+  "additional_adapter_checks": {
+    "conflicts_preserve_original": {
+      "pass": true,
+      "outcomes": [
+        {
+          "status": "acknowledged",
+          "id": "original-001"
+        },
+        {
+          "status": "already-captured",
+          "id": "original-001"
+        },
+        {
+          "status": "operation-conflict",
+          "id": "original-001"
+        },
+        {
+          "status": "identity-conflict",
+          "id": "original-001"
+        }
+      ],
+      "original_unchanged": true
+    },
+    "terminated_lock_holder": {
+      "pass": true,
+      "holder_exitcode": -9,
+      "waiter_exitcode": 0,
+      "capture": {
+        "status": "acknowledged",
+        "id": "after-terminated-writer"
+      },
+      "actual_count": 1
+    }
+  },
+  "model_calls": 0,
+  "interpretation": "Contract compatibility probe, not a general reliability score or embedding-quality evaluation"
+}
