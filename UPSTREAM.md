@@ -87,6 +87,7 @@ Chrome local divergence:
 - `reflect`
 - `conventions-aware-engineering`
 - `local-env`
+- `react-state-architecture`
 - `repository-workflow`
 - `mobile-next-android-testing`
 - `setup-conventions-aware-engineering`
