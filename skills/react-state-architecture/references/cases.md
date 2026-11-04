@@ -6,7 +6,7 @@ Un hook de funcionalidad administra la selección desde el padre común; la tabl
 
 ## Filtros con Aplicar
 
-nuqs posee los filtros confirmados; un hook local gestiona el borrador con `useState` o reducer según sus reglas. Deriva `hasChanges` y `canApply` sin almacenarlos. El handler Aplicar valida y publica filtros y reinicio de página juntos; esos criterios forman la query key de TanStack Query. Define qué ocurre con el borrador al usar Atrás. Si la búsqueda consulta mientras se escribe, el debounce de la URL por sí solo no aplaza la consulta cliente.
+nuqs posee los filtros confirmados; un hook local gestiona el borrador. Un objeto en `useState` basta para un borrador sencillo; prefiere reducer cuando centralizar eventos e invariantes facilite mantener sus reglas, no por el número de campos. Deriva `hasChanges` y `canApply` sin almacenarlos. La acción Aplicar del hook valida y publica filtros y reinicio de página juntos; esos criterios forman la query key de TanStack Query. Define qué ocurre con el borrador al usar Atrás. Si la búsqueda consulta mientras se escribe, el debounce de la URL por sí solo no aplaza la consulta cliente.
 
 ## Editor al cambiar de entidad
 

@@ -5,13 +5,13 @@ description: Chooses ownership and structure for React state, using TanStack Que
 
 # Arquitectura de estado en React
 
-Mantén un dueño por dato y conserva las soluciones existentes si cubren el cambio. Los defaults de TanStack Query, nuqs y XState orientan nuevas elecciones; no justifican migraciones por sí solos. Trabaja sobre la funcionalidad solicitada y respeta las convenciones del proyecto.
+Mantén un dueño por dato y conserva las soluciones existentes si cubren el cambio. Los defaults de TanStack Query y nuqs orientan nuevas elecciones; no justifican migraciones por sí solos. Trabaja sobre la funcionalidad solicitada y respeta las convenciones del proyecto.
 
 ## Separar comportamiento y presentación
 
 Encapsula por defecto el comportamiento con estado de una funcionalidad en un custom hook, aunque tenga un único consumidor. El componente conserva presentación, composición y conexión de eventos. Permite estado inline para interacciones visuales autocontenidas con actualizaciones directas.
 
-Extraer un hook no exige un reducer. Usa `useState` para cambios simples y prefiere reducer cuando centralizar eventos e invariantes facilite mantener las reglas. Expón valores y acciones de dominio.
+Extraer un hook no exige un reducer. Usa `useState` para cambios simples y prefiere reducer cuando centralizar eventos e invariantes facilite mantener las reglas. Agrupa lógica por una responsabilidad reconocible y expón valores y acciones de dominio que preserven sus reglas. Evita que el componente tenga que coordinar varios setters para completar una intención.
 
 ## Elegir el dueño y la estructura
 
@@ -19,10 +19,10 @@ Extraer un hook no exige un reducer. Usa `useState` para cambios simples y prefi
 - **UI local:** el estado pertenece a una instancia de componente o funcionalidad, aunque sus hijos reciban valores y acciones.
 - **UI compartida:** varios consumidores necesitan la misma instancia. Mantén un propietario común en el alcance mínimo y expón un hook consumidor. Extraer o reutilizar un hook que crea estado no comparte sus instancias; contexto o el mecanismo existente pueden bastar.
 - **UI compartida con actualizaciones frecuentes:** si los consumidores necesitan distintas porciones del estado de cliente, prefiere suscripciones selectivas con el store del proyecto (Zustand, Jotai u otro). Context suele bastar para valores de bajo cambio; el alcance global por sí solo no exige un store. No copies datos de Query ni de nuqs en él.
-- **Flujo complejo:** evalúa XState cuando explicitar transiciones y ciclo de vida aclare prerrequisitos, coordinación entre operaciones, interrupciones o recuperación. Compartir estado o gestionar la carga, cancelación y reintentos habituales de una petición no bastan. Explica qué dificultad concreta resuelve la máquina.
+- **Flujo complejo:** evalúa una máquina de estados cuando explicitar transiciones y ciclo de vida aclare prerrequisitos, coordinación entre operaciones, interrupciones o recuperación. Compartir estado o gestionar la carga, cancelación y reintentos habituales de una petición no bastan. Explica qué dificultad concreta resuelve la máquina. Si aporta, prefiere XState salvo que el proyecto ya tenga una solución adecuada.
 - **Valores derivados:** calcula indicadores desde el estado existente, aunque condicionen transiciones. Representa explícitamente solo decisiones del proceso que no puedan reconstruirse desde sus datos y operaciones.
 
-El crecimiento previsto aumenta la preferencia por estructurar la lógica en un hook con reducer o, si aporta, una máquina. Basa esa previsión en requisitos conocidos o variantes ya presentes; evita diseñar para crecimiento hipotético.
+Elige la estructura según las reglas actuales y las variantes comprometidas; evita anticipar crecimiento hipotético.
 
 ## Evaluar la URL
 
