@@ -34,7 +34,8 @@ Para cada dato de UI relevante, decide si compartir el enlace, recargar o navega
 
 ## Implementar el contrato
 
-- Mantén reducers puros. Ejecuta operaciones mediante handlers, servicios o actores; evita cadenas de Effects que implementen transiciones o mantengan valores derivados. Usa Effects cuando debas sincronizar sistemas externos.
+- Mantén reducers puros. Ejecuta operaciones mediante handlers, servicios o actores; evita Effects para calcular valores derivados o encadenar transiciones.
+- Usa Effects para sincronizar APIs del navegador, suscripciones o widgets imperativos con el estado de React, incluyendo su limpieza. Para consultas y mutaciones remotas, conserva TanStack Query o la solución existente.
 - Define identidad, inicialización, reinicio y finalización del estado local y compartido, también al cambiar de entidad con un borrador. El hook consumidor accede al propietario correspondiente. En SSR, aísla el estado mutable por petición.
 - Si conviven Query y XState, Query posee las operaciones remotas y la máquina las decisiones del proceso. Evita duplicar peticiones o políticas de reintento.
 - Para URL, usa parsers y defaults compartidos, valida restricciones del dominio y decide qué debe restaurar Atrás. Agrupa cambios relacionados, como filtro y reinicio de página.
