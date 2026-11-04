@@ -18,6 +18,7 @@ Extraer un hook no exige un reducer. Usa `useState` para cambios simples y prefi
 - **Datos remotos:** usa TanStack Query por defecto para consultas y mutaciones. Consume sus datos y estados de operación sin replicarlos en reducers o máquinas.
 - **UI local:** el estado pertenece a una instancia de componente o funcionalidad, aunque sus hijos reciban valores y acciones.
 - **UI compartida:** varios consumidores necesitan la misma instancia. Mantén un propietario común en el alcance mínimo y expón un hook consumidor. Extraer o reutilizar un hook que crea estado no comparte sus instancias; contexto o el mecanismo existente pueden bastar.
+- **UI compartida con actualizaciones frecuentes:** si los consumidores necesitan distintas porciones del estado de cliente, prefiere suscripciones selectivas con el store del proyecto (Zustand, Jotai u otro). Context suele bastar para valores de bajo cambio; el alcance global por sí solo no exige un store. No copies datos de Query ni de nuqs en él.
 - **Flujo complejo:** evalúa XState cuando explicitar transiciones y ciclo de vida aclare prerrequisitos, coordinación entre operaciones, interrupciones o recuperación. Compartir estado o gestionar la carga, cancelación y reintentos habituales de una petición no bastan. Explica qué dificultad concreta resuelve la máquina.
 - **Valores derivados:** calcula indicadores desde el estado existente, aunque condicionen transiciones. Representa explícitamente solo decisiones del proceso que no puedan reconstruirse desde sus datos y operaciones.
 

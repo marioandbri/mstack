@@ -22,6 +22,15 @@ Consulta [estado remoto](https://tanstack.com/query/latest/docs/framework/react/
 
 Consulta [adapters](https://nuqs.dev/docs/adapters), [opciones](https://nuqs.dev/docs/options) y [cambios agrupados](https://nuqs.dev/docs/batching).
 
+## Stores de cliente y Context
+
+- Elige según frecuencia de actualización, porciones observadas y coste de los consumidores. Reutiliza el mecanismo adoptado; añadir Zustand o Jotai requiere una necesidad concreta de suscripción o integración que la solución existente no cubra bien.
+- Un cambio del valor de Context notifica a todos sus consumidores. Context también puede distribuir una instancia estable de un store; las suscripciones al store controlan entonces qué cambios de estado observa cada consumidor.
+- Expón hooks que seleccionen lo necesario mediante selectores o átomos de granularidad adecuada. Cuida la estabilidad de los resultados y la comparación según la versión instalada; suscribirse al store completo no aporta esa selectividad. Verifica que actualizaciones ajenas a la selección no provoquen renders por esa suscripción.
+- Streaming, mensajes y tool calls no son automáticamente estado de UI de cliente. Conserva su dueño si ya los administra Query, un SDK o un actor. Usa las suscripciones del dueño existente, incluidos los selectores de XState, antes de introducir otro store.
+
+Consulta [Context](https://react.dev/reference/react/useContext), [selectores de Zustand](https://zustand.docs.pmnd.rs/learn/guides/prevent-rerenders-with-use-shallow.html) y [granularidad en Jotai](https://jotai.org/docs/guides/performance).
+
 ## XState con Query
 
 Conecta acciones y resultados mediante un único responsable. Los consumidores que observan la misma consulta no deben disparar todos la misma transición. Deriva indicadores como `isBusy` o `canContinue`; usarlos como condiciones no obliga a almacenarlos. La máquina conserva decisiones propias, como una confirmación previa que no se deduce del resultado actual de una consulta.

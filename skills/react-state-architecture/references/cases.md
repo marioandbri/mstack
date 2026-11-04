@@ -16,6 +16,10 @@ nuqs posee los filtros confirmados; un hook local gestiona el borrador con `useS
 
 Una subida simple usa una mutación con dueño compartido. Panel e indicador observan la misma operación y derivan sus indicadores. Si aparecen confirmaciones, interrupciones y recuperación condicionada, evalúa si XState aclara su ciclo de vida. El loading y el error de la subida siguen perteneciendo a Query. Verifica que ambos consumidores no inicien la misma escritura y distingue los reintentos configurados de los disparadores duplicados.
 
+## Panel de agente con streaming
+
+Conserva mensajes y tool calls en su dueño existente, como el SDK de streaming. Para estado de cliente compartido que cambie con frecuencia, usa el store adoptado si distintos consumidores necesitan observar distintas porciones. Expón hooks selectivos: una actualización del texto en curso no debería notificar por esa suscripción a quien solo observa la selección local. Mantén el alcance por conversación cuando corresponda y verifica aislamiento y reinicio al cambiar de conversación. No dupliques el stream para obtener selectividad.
+
 ## Checkout con paso direccionable
 
 XState puede aportar cuando existen pasos con prerrequisitos y ramas de recuperación. Query administra las operaciones remotas y nuqs representa el paso solicitado. Una acción interna rechazada conserva el destino aceptado. Para un enlace directo o el historial hacia un paso no permitido, define la vista y URL resultantes, sin ciclos ni escrituras provocadas por corregir la URL. La URL nunca demuestra que se pagó.
