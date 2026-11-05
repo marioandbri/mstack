@@ -5,17 +5,24 @@ description: Chooses ownership and structure for React state, using TanStack Que
 
 # Arquitectura de estado en React
 
-Mantén un dueño por dato y elige la estructura más simple que permita expresar el comportamiento. Trabaja sobre la funcionalidad solicitada y respeta las convenciones y herramientas existentes.
+Mantén un dueño por dato y conserva las soluciones existentes si cubren el cambio. Los defaults de TanStack Query y nuqs orientan nuevas elecciones; no justifican migraciones por sí solos. Trabaja sobre la funcionalidad solicitada y respeta las convenciones del proyecto.
+
+## Separar comportamiento y presentación
+
+Encapsula por defecto el comportamiento con estado de una funcionalidad en un custom hook, aunque tenga un único consumidor. El componente conserva presentación, composición y conexión de eventos. Permite estado inline para interacciones visuales autocontenidas con actualizaciones directas.
+
+Extraer un hook no exige un reducer. Usa `useState` para cambios simples y prefiere reducer cuando centralizar eventos e invariantes facilite mantener las reglas. Agrupa lógica por una responsabilidad reconocible y expón valores y acciones de dominio que preserven sus reglas. Evita que el componente tenga que coordinar varios setters para completar una intención.
 
 ## Elegir el dueño y la estructura
 
 - **Datos remotos:** usa TanStack Query por defecto para consultas y mutaciones. Consume sus datos y estados de operación sin replicarlos en reducers o máquinas.
-- **UI local:** el estado pertenece a una instancia de componente o funcionalidad, aunque sus hijos reciban valores y acciones. Prefiere un hook de dominio con reducer cuando haya actualizaciones acopladas o flujo propio. Un valor independiente puede usar `useState`.
-- **UI compartida:** varios consumidores necesitan la misma instancia. Usa el alcance mínimo y expón un hook para leer e interactuar con ella. Contexto o el mecanismo existente pueden bastar; llamar al mismo hook que crea estado no comparte sus instancias.
-- **Flujo complejo:** usa XState por defecto si una máquina hace más claras las transiciones, prerrequisitos o ramas de recuperación. Compartir estado y gestionar una petición no bastan para justificarla. Explica qué dificultad concreta resuelve.
-- **Valores derivados:** calcúlalos desde su fuente en lugar de almacenarlos de nuevo.
+- **UI local:** el estado pertenece a una instancia de componente o funcionalidad, aunque sus hijos reciban valores y acciones.
+- **UI compartida:** varios consumidores necesitan la misma instancia. Mantén un propietario común en el alcance mínimo y expón un hook consumidor. Extraer o reutilizar un hook que crea estado no comparte sus instancias; contexto o el mecanismo existente pueden bastar.
+- **UI compartida con actualizaciones frecuentes:** si los consumidores necesitan distintas porciones del estado de cliente, prefiere suscripciones selectivas con el store del proyecto (Zustand, Jotai u otro). Context suele bastar para valores de bajo cambio; el alcance global por sí solo no exige un store. No copies datos de Query ni de nuqs en él.
+- **Flujo complejo:** evalúa una máquina de estados cuando explicitar transiciones y ciclo de vida aclare prerrequisitos, coordinación entre operaciones, interrupciones o recuperación. Compartir estado o gestionar la carga, cancelación y reintentos habituales de una petición no bastan. Explica qué dificultad concreta resuelve la máquina. Si aporta, prefiere XState salvo que el proyecto ya tenga una solución adecuada.
+- **Valores derivados:** calcula indicadores desde el estado existente, aunque condicionen transiciones. Representa explícitamente solo decisiones del proceso que no puedan reconstruirse desde sus datos y operaciones.
 
-El crecimiento previsto aumenta la preferencia por estructurar la lógica en un hook con reducer o, si aporta, una máquina. Basa esa previsión en requisitos conocidos o variantes ya presentes; evita diseñar para crecimiento hipotético.
+Elige la estructura según las reglas actuales y las variantes comprometidas; evita anticipar crecimiento hipotético.
 
 ## Evaluar la URL
 
@@ -28,8 +35,9 @@ Para cada dato de UI relevante, decide si compartir el enlace, recargar o navega
 
 ## Implementar el contrato
 
-- Encapsula las decisiones del flujo en el hook y su reducer o máquina. Expón valores y acciones de dominio; conserva el reducer puro.
-- Define cuándo nace, se reinicia y termina el estado compartido. El hook consumidor accede a esa instancia. En SSR, aísla el estado mutable por petición.
+- Mantén reducers puros. Ejecuta operaciones mediante handlers, servicios o actores; evita Effects para calcular valores derivados o encadenar transiciones.
+- Usa Effects para sincronizar APIs del navegador, suscripciones o widgets imperativos con el estado de React, incluyendo su limpieza. Para consultas y mutaciones remotas, conserva TanStack Query o la solución existente.
+- Define identidad, inicialización, reinicio y finalización del estado local y compartido, también al cambiar de entidad con un borrador. El hook consumidor accede al propietario correspondiente. En SSR, aísla el estado mutable por petición.
 - Si conviven Query y XState, Query posee las operaciones remotas y la máquina las decisiones del proceso. Evita duplicar peticiones o políticas de reintento.
 - Para URL, usa parsers y defaults compartidos, valida restricciones del dominio y decide qué debe restaurar Atrás. Agrupa cambios relacionados, como filtro y reinicio de página.
 - Usa tipos que distingan estados, eventos y errores esperados. No añadas ts-pattern, neverthrow o Effect por rutina; requieren un problema concreto que las herramientas existentes no resuelvan bien.
@@ -38,6 +46,6 @@ Consulta [límites de integración](references/integration.md) al conectar URL, 
 
 ## Comprobar el comportamiento
 
-Elige verificaciones del cambio real: consumidores de una misma instancia frente a instancias independientes, reinicio, transiciones permitidas, escritura e invalidación remota, o navegación directa y Atrás/Adelante con el router real. Comprueba que el flujo no dispare una operación dos veces.
+Elige verificaciones del cambio real: derivación sin copias, instancias compartidas o independientes, cambio de entidad con borrador, transiciones e invalidación remota, o destino rechazado al entrar por enlace y por historial. Verifica navegación con el router real. Comprueba que una intención no genere disparadores accidentales duplicados, distinguiendo los reintentos previstos.
 
 Explica las decisiones que afecten al diseño y los resultados de las verificaciones. No impongas una tabla o un inventario completo de estados para cambios pequeños.
